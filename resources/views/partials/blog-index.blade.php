@@ -6,7 +6,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?? 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?? 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?? 'Guide',
   'heroTitle' => $copy['hero_title'] ?? 'Realtor notes you can publish',
   'heroText' => $copy['hero_text'] ?? 'Showings, buyer checklists, and land vs home search — short posts you can adapt for local Adams County SEO.',
@@ -15,6 +15,33 @@
     ['href' => home_url('/guide'), 'label' => 'Buyer tools', 'class' => 'btn btn-outline light'],
   ],
 ])
+
+<section class="section">
+  <div class="wrap">
+    <header class="section-head left reveal">
+      <p class="eyebrow">What these notes cover</p>
+      <h2 id="blog-help-heading">Short reads you can adapt for Adams County</h2>
+      <p>Showings, first-time checklists, and land vs home search — the three posts buyers actually ask for. Use them as local SEO starters, then link back to listings and the booking form.</p>
+    </header>
+    <div class="scan-grid cols-3 reveal">
+      <article class="scan-card">
+        <span class="num">Showings</span>
+        <h3>How a tour should feel</h3>
+        <p>What to book, what to wear, and why a rural slot is not a 20-minute condo walk-through.</p>
+      </article>
+      <article class="scan-card">
+        <span class="num">Checklists</span>
+        <h3>First-time buyers</h3>
+        <p>Payment, inspection, and well/septic questions in an order you can scan before you call.</p>
+      </article>
+      <article class="scan-card">
+        <span class="num">Search</span>
+        <h3>Land vs home</h3>
+        <p>Different card hierarchy so acreage shoppers and house shoppers do not share one muddy filter.</p>
+      </article>
+    </div>
+  </div>
+</section>
 
 <section class="section section-alt">
   <div class="wrap">

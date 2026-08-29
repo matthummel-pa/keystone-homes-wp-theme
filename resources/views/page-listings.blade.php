@@ -14,7 +14,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample inventory',
   'heroTitle' => $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>',
   'heroText' => $copy['hero_text'] ?: 'Farms, historic houses, and acreage across Adams County townships. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',
@@ -121,17 +121,42 @@
     </div>
   </section>
 
-  <!-- ============================= LOCAL NOTE ============================= -->
-  <section class="section">
-    <div class="wrap prose reveal">
-      <h2>{!! $copy['intro_title'] ?? 'Buying rural property in Adams County' !!}</h2>
-      <p>{!! $copy['intro_text'] ?? 'Every parcel we list sits in a specific township — zoning, lot size, and clean-and-green enrollment change from one ridge to the next.' !!}</p>
-      <p>Keystone agents pull the township zoning, check well and septic feasibility, and flag easements or floodplain before you write an offer. If you're new to land, start with our <a href="{{ home_url('/guide') }}">Land Buyer's Guide</a> — it explains perc tests, well yields and land loans in plain language — then read up on the specific <a href="{{ home_url('/areas') }}">townships we serve</a>.</p>
+  <section class="section" aria-labelledby="listing-help-heading">
+    <div class="wrap">
+      <header class="section-head left reveal">
+        <p class="eyebrow">How to read a card</p>
+        <h2 id="listing-help-heading">{!! $copy['intro_title'] ?? 'Buying rural property in Adams County' !!}</h2>
+        <p>{!! $copy['intro_text'] ?? 'Every sample parcel sits in a township — zoning, lot size, and Clean and Green change from one ridge to the next. Filter first, then book a walk.' !!}</p>
+      </header>
+      <div class="scan-grid cols-3 reveal">
+        <article class="scan-card">
+          <span class="num">1</span>
+          <h3>Township before photo</h3>
+          <p>North Ridge, Mill Creek, and Oak Hollow are concept labels for real township patterns — lot size, orchard ground, and mountain woodlots do not behave the same.</p>
+        </article>
+        <article class="scan-card">
+          <span class="num">2</span>
+          <h3>Match the product</h3>
+          <p>Homes lead with beds. Land leads with acres and access. Farms mix both. Historic houses are about the building, not the acreage count on the card.</p>
+        </article>
+        <article class="scan-card">
+          <span class="num">3</span>
+          <h3>Then walk it</h3>
+          <p>Open the listing, then <a href="{{ home_url('/book/') }}">book a showing</a>. New to wells or perc tests? Start with the <a href="{{ home_url('/guide') }}">buyer guide</a> and the <a href="{{ home_url('/areas') }}">area pages</a>.</p>
+        </article>
+      </div>
     </div>
   </section>
 
+  @include('partials.faq-list', [
+    'faqTitle' => 'Listing questions',
+    'faqText' => 'How the sample grid is meant to be scanned — not a live MLS feed.',
+    'faqHeadClass' => 'left',
+    'faqSectionClass' => 'section-alt',
+  ])
+
   <!-- ============================= CTA BAND ============================= -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
         <h2>{!! $copy['cta_title'] ?? 'See a property you like?' !!}</h2>
