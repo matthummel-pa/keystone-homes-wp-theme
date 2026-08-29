@@ -358,20 +358,58 @@
         <p class="eyebrow">Samples</p>
         <h2 id="stories-heading">What clients might say</h2>
         <p>Placeholder quotes for layout — not real reviews.</p>
+        <p class="testi-avg">4.9 sample average — demo scores, not a brokerage claim.</p>
       </header>
       <div class="testi-grid reveal">
-        <figure class="testi">
-          <blockquote><p>“The showing scheduler made it obvious what to do next.”</p></blockquote>
-          <figcaption><span class="testi-name">Sample Buyer A</span><span class="testi-loc">Demo review</span></figcaption>
-        </figure>
-        <figure class="testi">
-          <blockquote><p>“Payment estimate beside the photo helped us compare homes faster.”</p></blockquote>
-          <figcaption><span class="testi-name">Sample Buyer B</span><span class="testi-loc">Demo review</span></figcaption>
-        </figure>
-        <figure class="testi">
-          <blockquote><p>“We used the value tool before calling — then booked a walk-through.”</p></blockquote>
-          <figcaption><span class="testi-name">Sample Seller C</span><span class="testi-loc">Demo review</span></figcaption>
-        </figure>
+        @php
+          $starD = 'M12 2.5l2.86 5.8 6.4.93-4.63 4.51 1.09 6.36L12 16.98 6.28 20.1l1.09-6.36L2.74 9.23l6.4-.93L12 2.5z';
+        @endphp
+        @foreach ([
+          [
+            'quote' => 'The showing scheduler made it obvious what to do next.',
+            'name' => 'Sample Buyer A',
+            'loc' => 'North Ridge · demo',
+            'rating' => 5.0,
+          ],
+          [
+            'quote' => 'Payment estimate beside the photo helped us compare homes faster.',
+            'name' => 'Sample Buyer B',
+            'loc' => 'Mill Creek · demo',
+            'rating' => 5.0,
+          ],
+          [
+            'quote' => 'We used the value tool before calling — then booked a walk-through.',
+            'name' => 'Sample Seller C',
+            'loc' => 'Oak Hollow · demo',
+            'rating' => 4.8,
+          ],
+        ] as $story)
+          @php
+            $score = number_format($story['rating'], 1);
+          @endphp
+          <figure class="testi">
+            <blockquote><p>“{{ $story['quote'] }}”</p></blockquote>
+            <div class="testi-rating">
+              <span class="visually-hidden">Sample rating {{ $score }} out of 5</span>
+              <span class="testi-stars" aria-hidden="true">
+                @for ($i = 1; $i <= 5; $i++)
+                  @php $fill = max(0, min(1, $story['rating'] - ($i - 1))); @endphp
+                  <span class="testi-star{{ $fill >= 1 ? ' is-full' : ($fill > 0 ? ' is-partial' : ' is-empty') }}"@if ($fill > 0 && $fill < 1) style="--star-fill: {{ (int) round($fill * 100) }}%"@endif>
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path class="testi-star-empty" d="{{ $starD }}"/>
+                      <path class="testi-star-fill" d="{{ $starD }}"/>
+                    </svg>
+                  </span>
+                @endfor
+              </span>
+              <span class="testi-score" aria-hidden="true">{{ $score }}</span>
+            </div>
+            <figcaption>
+              <span class="testi-name">{{ $story['name'] }}</span>
+              <span class="testi-loc">{{ $story['loc'] }}</span>
+            </figcaption>
+          </figure>
+        @endforeach
       </div>
     </div>
   </section>
