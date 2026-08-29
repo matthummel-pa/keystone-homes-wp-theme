@@ -66,6 +66,56 @@ class Post extends Composer
         ]);
     }
 
+    public function postEyebrow(): string
+    {
+        if (! is_singular('post')) {
+            return '';
+        }
+        $cats = wp_strip_all_tags(get_the_category_list(' · '));
+
+        return ($cats !== '' ? $cats : 'Notes').' · '.$this->readingMinutes().' min · '.get_the_date();
+    }
+
+    public function postLede(): string
+    {
+        if (has_excerpt()) {
+            return wp_strip_all_tags(get_the_excerpt());
+        }
+
+        return 'A short note for buyers comparing farms, historic houses, and acreage in Adams County.';
+    }
+
+    public function readingMinutes(): int
+    {
+        $words = str_word_count(wp_strip_all_tags((string) get_the_content()));
+
+        return max(1, (int) ceil($words / 200));
+    }
+
+    /**
+     * @return array{prev: array{title: string, url: string}|null, next: array{title: string, url: string}|null}
+     */
+    public function adjacentPosts(): array
+    {
+        if (! is_singular('post')) {
+            return ['prev' => null, 'next' => null];
+        }
+
+        $prev = get_adjacent_post(false, '', true);
+        $next = get_adjacent_post(false, '', false);
+
+        return [
+            'prev' => $prev instanceof \WP_Post ? [
+                'title' => get_the_title($prev),
+                'url' => (string) get_permalink($prev),
+            ] : null,
+            'next' => $next instanceof \WP_Post ? [
+                'title' => get_the_title($next),
+                'url' => (string) get_permalink($next),
+            ] : null,
+        ];
+    }
+
     /**
      * @return list<array{id: int, title: string, url: string, excerpt: string, image: string, alt: string, meta: string}>
      */
