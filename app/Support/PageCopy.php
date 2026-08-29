@@ -14,7 +14,7 @@ class PageCopy
             'hero_eyebrow' => ['label' => 'Hero eyebrow', 'type' => 'text', 'default' => $eyebrow],
             'hero_title' => ['label' => 'Hero title (use <em> for italics)', 'type' => 'text', 'default' => $title],
             'hero_text' => ['label' => 'Hero intro', 'type' => 'textarea', 'default' => $text],
-            'hero_image' => ['label' => 'Hero image URL', 'type' => 'url', 'default' => ''],
+            'hero_image' => ['label' => 'Hero image', 'type' => 'image', 'default' => ''],
         ];
 
         $cta = [

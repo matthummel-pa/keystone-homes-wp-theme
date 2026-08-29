@@ -48,3 +48,5 @@ After Blade edits, if the page looks stale: `wp acorn view:clear --path="$HOME/w
 ## Admin
 
 Field-only editing (`app/admin.php` metaboxes). Do not reintroduce blocks or the site editor as the editing path.
+
+Image fields use the media library (`resources/js/admin-media.js`): page `hero_image`, listing/agent `image`, post featured image. Store a URL in `ks_*` (Unsplash hotlinks still work). Uploads also set the featured image. Do not go back to a textarea “Photo URL” for those.
