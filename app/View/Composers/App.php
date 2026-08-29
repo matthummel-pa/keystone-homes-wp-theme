@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use App\Support\Catalog;
+use App\Support\HeroImage;
 use App\Support\PageCopy;
 use Roots\Acorn\View\Composer;
 
@@ -22,8 +23,14 @@ class App extends Composer
 
     public function with(): array
     {
+        $copy = PageCopy::all();
+        $heroOverride = is_array($copy) ? ($copy['hero_image'] ?? '') : '';
+
         return [
-            'copy' => PageCopy::all(),
+            'copy' => $copy,
+            'hero_image_url' => HeroImage::url($heroOverride),
+            'hero_image_srcset' => HeroImage::srcset($heroOverride),
+            'hero_image_alt' => HeroImage::ALT,
             'catalogListings' => Catalog::listings(),
             'spotlightListings' => Catalog::featuredListings(3),
             'catalogAgents' => Catalog::agents(),
