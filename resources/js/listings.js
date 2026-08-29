@@ -358,7 +358,7 @@
     document.getElementById("calcPrice").value = l.price;
     overlay.dataset.listingId = String(l.id);
     var book = (window.KEYSTONE && window.KEYSTONE.bookUrl) || "/book/";
-    document.getElementById("modalScheduleBtn").setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing=" + l.id);
+    document.getElementById("modalScheduleBtn").setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing_id=" + l.id);
     recalcMortgage();
 
     overlay.classList.add("open");
@@ -384,7 +384,7 @@
     if(pinnedId || overlay.dataset.listingId){
       var id = overlay.dataset.listingId || pinnedId;
       var book = (window.KEYSTONE && window.KEYSTONE.bookUrl) || "/book/";
-      this.setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing=" + id);
+      this.setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing_id=" + id);
     }
     closeModal();
   });

@@ -24,6 +24,9 @@ add_action('init', function () {
         'public' => true,
         'has_archive' => false,
         'rewrite' => ['slug' => 'listing'],
+        // Pretty URLs stay /listing/{slug}/. Do not register `listing` as a
+        // public query var — /book/?listing=33 would 404 (looks up slug "33").
+        'query_var' => false,
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-admin-home',
         'menu_position' => 20,
@@ -64,6 +67,7 @@ add_action('init', function () {
         'public' => true,
         'has_archive' => false,
         'rewrite' => ['slug' => 'agent'],
+        'query_var' => false,
         'show_in_rest' => true,
         'menu_icon' => 'dashicons-businessperson',
         'menu_position' => 22,
@@ -74,6 +78,21 @@ add_action('init', function () {
 
 add_action('after_switch_theme', function () {
     flush_rewrite_rules();
+});
+
+/**
+ * Booking links pass a numeric listing post ID as ?listing=33.
+ * If `listing` is still a query var (old rewrite rules), WordPress treats
+ * that as a CPT slug and 404s /book/. Drop numeric values only.
+ */
+add_filter('request', function (array $vars): array {
+    foreach (['listing', 'agent'] as $var) {
+        if (isset($vars[$var]) && ctype_digit((string) $vars[$var])) {
+            unset($vars[$var]);
+        }
+    }
+
+    return $vars;
 });
 
 add_action('rest_api_init', function () {

@@ -82,7 +82,7 @@
         <p>{{ $listing['desc'] }}</p>
       </div>
       <div class="cta-actions" style="margin-top:24px">
-        <a class="btn btn-primary" href="{{ home_url('/book/') }}?listing={{ $listing['id'] }}">Book a showing</a>
+        <a class="btn btn-primary" href="{{ home_url('/book/') }}?listing_id={{ $listing['id'] }}">Book a showing</a>
         <a class="btn btn-outline" href="{{ home_url('/listings') }}">All listings</a>
       </div>
     </div>
