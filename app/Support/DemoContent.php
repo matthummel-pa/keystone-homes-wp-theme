@@ -66,7 +66,7 @@ class DemoContent
     {
         $name = (string) get_option('blogname');
         if ($name === '' || in_array($name, ['My WordPress', 'WordPress', 'Another WordPress Site'], true)) {
-            update_option('blogname', 'Keystone Homes & Land');
+            update_option('blogname', 'Keystone Real Estate');
         }
 
         $tagline = (string) get_option('blogdescription');

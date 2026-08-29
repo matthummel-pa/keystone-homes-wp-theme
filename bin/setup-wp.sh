@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Bootstrap a local WordPress dev environment for the Keystone Homes theme.
+# Bootstrap a local WordPress dev environment for the Keystone Real Estate theme.
 #
 # Stands up a throwaway WordPress install (SQLite, no MySQL required) OUTSIDE
 # the repo, symlinks this theme into it, seeds concept pages + blog posts,
@@ -66,7 +66,7 @@ if ! $WP core is-installed 2>/dev/null; then
   echo "==> Installing WordPress"
   $WP core install \
     --url="$SITE_URL" \
-    --title="Keystone Homes & Land" \
+    --title="Keystone Real Estate" \
     --admin_user=admin \
     --admin_password=admin123 \
     --admin_email=admin@keystone-concept.test \
