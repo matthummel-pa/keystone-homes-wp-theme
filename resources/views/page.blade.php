@@ -12,16 +12,12 @@
         <li><span aria-current="page">{!! get_the_title() !!}</span></li>
       </ol>
     </nav>
-    <section class="page-hero">
-      <div class="page-hero-inner">
-        <p class="hero-brand">Keystone Homes &amp; Land</p>
-        <p class="hero-brand">{!! $copy['hero_brand'] ?? 'Keystone Homes &amp; Land' !!}</p>
-        <h1>{!! $copy['hero_title'] ?: get_the_title() !!}</h1>
-        @if (! empty($copy['hero_text']))
-          <p>{!! $copy['hero_text'] !!}</p>
-        @endif
-      </div>
-    </section>
+    @include('partials.page-hero', [
+      'heroBrand' => $copy['hero_brand'] ?? 'Keystone Homes &amp; Land',
+      'heroEyebrow' => $copy['hero_eyebrow'] ?? '',
+      'heroTitle' => $copy['hero_title'] ?: get_the_title(),
+      'heroText' => $copy['hero_text'] ?? '',
+    ])
     @if (! empty($copy['body']))
     <section class="section">
       <div class="wrap prose">
@@ -29,5 +25,17 @@
       </div>
     </section>
     @endif
+    <section class="section section-alt">
+      <div class="wrap">
+        <div class="cta-band reveal">
+          <h2>Ready to walk a sample home?</h2>
+          <p>Browse fictional inventory or book a showing — the same flow buyers expect on a modern realtor site.</p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="{{ home_url('/book/') }}">Book a showing</a>
+            <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse listings</a>
+          </div>
+        </div>
+      </div>
+    </section>
   @endwhile
 @endsection

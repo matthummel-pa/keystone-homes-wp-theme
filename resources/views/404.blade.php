@@ -8,14 +8,17 @@
     </ol>
   </nav>
 
-  <section class="page-hero">
-    <div class="page-hero-inner">
-      <p class="hero-brand">Keystone Homes &amp; Land</p>
-      <p class="hero-eyebrow">404</p>
-      <h1>That page isn’t here.</h1>
-      <p>The link may be old, or this demo page hasn’t been created yet. Use the paths below — they match the concept site.</p>
-    </div>
-  </section>
+  @include('partials.page-hero', [
+    'heroBrand' => 'Keystone Homes &amp; Land',
+    'heroEyebrow' => '404',
+    'heroTitle' => 'That page isn’t here.',
+    'heroText' => 'The link may be old, or this demo page hasn’t been created yet. Use the paths below — they match the concept site.',
+    'headingId' => 'error-hero-heading',
+    'heroActions' => [
+      ['href' => home_url('/'), 'label' => 'Back home', 'class' => 'btn btn-primary'],
+      ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-outline light'],
+    ],
+  ])
 
   <section class="section">
     <div class="wrap">

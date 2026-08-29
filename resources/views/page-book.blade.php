@@ -12,14 +12,16 @@
   </ol>
 </nav>
 
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Appointments' }}</p>
-    <h1>{!! $copy['hero_title'] ?: 'Book a house showing' !!}</h1>
-    <p>{!! $copy['hero_text'] ?: 'Pick a listing, date and time. The request is saved as a Booking in Requested status — nothing is emailed.' !!}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Appointments',
+  'heroTitle' => $copy['hero_title'] ?: 'Book a house showing',
+  'heroText' => $copy['hero_text'] ?: 'Pick a sample listing, a date, and a time. We save the request for the listing agent — this demo does not send email.',
+  'heroActions' => [
+    ['href' => '#book-showing', 'label' => 'Choose a time', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 <section class="section section-alt" id="book-showing" aria-labelledby="book-heading">
   <div class="wrap">

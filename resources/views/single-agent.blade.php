@@ -14,19 +14,17 @@
   </ol>
 </nav>
 
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">Keystone Homes &amp; Land</p>
-    <p class="hero-eyebrow">{{ $agent['job_title'] }}</p>
-    <h1>{{ $agent['name'] }}</h1>
-    <p>
-      {{ $agent['office'] }}
-      @if ($agent['years_experience'])
-        · {{ $agent['years_experience'] }} years
-      @endif
-    </p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $agent['job_title'],
+  'heroTitle' => $agent['name'],
+  'heroText' => trim($agent['office'].($agent['years_experience'] ? ' · '.$agent['years_experience'].' years' : '')),
+  'headingId' => 'agent-hero-heading',
+  'heroActions' => [
+    ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/contact'), 'label' => 'Contact the office', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 <section class="section">
   <div class="wrap listing-single">

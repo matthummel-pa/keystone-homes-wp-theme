@@ -14,14 +14,16 @@
 </nav>
 
 <!-- ============================= PAGE HERO ============================= -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Sample team' }}</p>
-    <h1>{!! $copy['hero_title'] ?: 'Agents who know the <em>demo ground</em>' !!}</h1>
-    <p>{!! $copy['hero_text'] ?: 'Team profiles are Agent posts. Contact numbers are fictional 555 lines.' !!}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample team',
+  'heroTitle' => $copy['hero_title'] ?: 'Agents who know the <em>demo ground</em>',
+  'heroText' => $copy['hero_text'] ?: 'A small local team for farms, orchards, and century houses. Profiles are Agent posts. Phones are fictional 555 lines.',
+  'heroActions' => [
+    ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/contact'), 'label' => 'Contact the office', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 
   <!-- ============================= INTRO ============================= -->

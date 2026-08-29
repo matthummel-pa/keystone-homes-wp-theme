@@ -25,12 +25,14 @@ class App extends Composer
     {
         $copy = PageCopy::all();
         $heroOverride = is_array($copy) ? ($copy['hero_image'] ?? '') : '';
+        $heroContext = PageCopy::schemaKeyForContext();
+        $hero = HeroImage::forRequest($heroOverride, $heroContext);
 
         return [
             'copy' => $copy,
-            'hero_image_url' => HeroImage::url($heroOverride),
-            'hero_image_srcset' => HeroImage::srcset($heroOverride),
-            'hero_image_alt' => HeroImage::ALT,
+            'hero_image_url' => $hero['url'],
+            'hero_image_srcset' => $hero['srcset'],
+            'hero_image_alt' => $hero['alt'],
             'catalogListings' => Catalog::listings(),
             'spotlightListings' => Catalog::featuredListings(3),
             'catalogAgents' => Catalog::agents(),
