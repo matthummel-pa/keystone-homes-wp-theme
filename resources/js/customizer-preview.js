@@ -1,0 +1,43 @@
+/* global wp, KEYSTONE_FONTS */
+(function () {
+  if (!wp || !wp.customize || !window.KEYSTONE_FONTS) return;
+
+  var stacks = KEYSTONE_FONTS.stacks || {};
+  var google = KEYSTONE_FONTS.google || {};
+  var roles = KEYSTONE_FONTS.roles || {};
+
+  function loadGoogleFont(key) {
+    var family = google[key];
+    if (!family) return;
+    var id = "ks-preview-font-" + key;
+    if (document.getElementById(id)) return;
+    var link = document.createElement("link");
+    link.id = id;
+    link.rel = "stylesheet";
+    link.href = "https://fonts.googleapis.com/css2?family=" + family + "&display=swap";
+    document.head.appendChild(link);
+  }
+
+  Object.keys(roles).forEach(function (role) {
+    wp.customize("ks_font_" + role, function (setting) {
+      setting.bind(function (value) {
+        var stack = stacks[value];
+        if (!stack) return;
+        loadGoogleFont(value);
+        document.documentElement.style.setProperty(roles[role], stack);
+      });
+    });
+  });
+
+  wp.customize("ks_font_size", function (setting) {
+    setting.bind(function (value) {
+      document.documentElement.style.setProperty("--font-size-base", parseInt(value, 10) + "px");
+    });
+  });
+
+  wp.customize("ks_heading_weight", function (setting) {
+    setting.bind(function (value) {
+      document.documentElement.style.setProperty("--fw-heading", String(value));
+    });
+  });
+})();

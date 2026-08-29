@@ -1,0 +1,8 @@
+@import "tailwindcss" theme(static);
+@source "../../app/**/*.php";
+@source "../**/*.blade.php";
+@source "../**/*.js";
+
+/* Keystone Homes & Land — concept design system.
+   Ported from realtor-keystone-homes-and-land-theme. */
+@import "./keystone.css";
