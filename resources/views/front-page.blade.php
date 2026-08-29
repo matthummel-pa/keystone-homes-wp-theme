@@ -242,12 +242,28 @@
         <h2 id="market-heading">Pulse at a glance</h2>
         <p>Illustrative numbers for layout — not live market data.</p>
       </header>
-      <div class="market-grid reveal">
-        <div class="market-stat"><strong>$398k</strong><span>Median (demo)</span><em>↑ Sample trend</em></div>
-        <div class="market-stat"><strong>32</strong><span>Days on market</span><em class="down">↓ Demo delta</em></div>
-        <div class="market-stat"><strong>1.6</strong><span>Months inventory</span><em>Sample signal</em></div>
-        <div class="market-stat"><strong>95%</strong><span>List-to-sale</span><em>Illustrative</em></div>
-      </div>
+      <ul class="market-grid reveal">
+        <li class="market-stat">
+          <strong>$398k</strong>
+          <span>Median (demo)</span>
+          <em class="up"><span class="market-stat-dir" aria-hidden="true">↑</span> Sample trend</em>
+        </li>
+        <li class="market-stat">
+          <strong>32</strong>
+          <span>Days on market</span>
+          <em class="down"><span class="market-stat-dir" aria-hidden="true">↓</span> Demo delta</em>
+        </li>
+        <li class="market-stat">
+          <strong>1.6</strong>
+          <span>Months inventory</span>
+          <em class="flat">Sample signal</em>
+        </li>
+        <li class="market-stat">
+          <strong>95%</strong>
+          <span>List-to-sale</span>
+          <em class="flat">Illustrative</em>
+        </li>
+      </ul>
     </div>
   </section>
 
