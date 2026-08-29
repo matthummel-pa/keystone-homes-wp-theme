@@ -199,18 +199,58 @@
       </header>
       <div class="step-grid reveal">
         <div class="step">
+          <figure class="step-photo">
+            <img
+              src="{{ get_theme_file_uri('public/images/tour-step-township.jpg') }}"
+              width="1200"
+              height="800"
+              alt="Country road past a white farmhouse and red barn in a rural Pennsylvania township"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
           <h3>Filter by township</h3>
           <p>Type, price, and acres matter — but zoning and Clean and Green sit on the township. Start there so you are not comparing Oak Hollow land to a North Ridge house.</p>
         </div>
         <div class="step">
+          <figure class="step-photo">
+            <img
+              src="{{ get_theme_file_uri('public/images/tour-step-card.jpg') }}"
+              width="1200"
+              height="800"
+              alt="Hands reviewing papers at a worn farmhouse kitchen table"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
           <h3>Read the card twice</h3>
           <p>Price and beds on a house. Usable acres, access, and utilities on land. Spotlight homes below jump you into a showing with the listing already selected.</p>
         </div>
         <div class="step">
+          <figure class="step-photo">
+            <img
+              src="{{ get_theme_file_uri('public/images/tour-step-book.jpg') }}"
+              width="1200"
+              height="800"
+              alt="Writing a showing time at a farmhouse table beside muddy work boots"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
           <h3>Book a slot</h3>
           <p>Pick a date and a time. Evening slots exist because farm showings often happen after commute. Wear boots; mention a well or perc question in the notes.</p>
         </div>
         <div class="step">
+          <figure class="step-photo">
+            <img
+              src="{{ get_theme_file_uri('public/images/tour-step-walk.jpg') }}"
+              width="1200"
+              height="800"
+              alt="An agent walking buyers up a gravel lane toward a white farmhouse"
+              loading="lazy"
+              decoding="async"
+            >
+          </figure>
           <h3>Walk it</h3>
           <p>On a live site the agent confirms. Here you get an on-page receipt and a Booking in Requested status — no email, no calendar invite.</p>
         </div>
