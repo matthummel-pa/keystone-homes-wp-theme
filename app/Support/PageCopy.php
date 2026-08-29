@@ -25,13 +25,19 @@ class PageCopy
         ];
 
         return [
-            'home' => $hero('', 'Homes worth walking through.', 'Search sample listings, price a demo home, and book a fictional showing — built to show modern realtor UX.') + [
+            'home' => $hero(
+                'Adams County, Pennsylvania',
+                'Homes worth <em>walking through.</em>',
+                'Farms, historic houses, and acreage across North Ridge, Mill Creek, and Oak Hollow. Filter by township, then book a showing.'
+            ) + [
                 'intent_buy' => ['label' => 'Buy card text', 'type' => 'text', 'default' => 'Filter sample homes, farms and land. Map + grid views.'],
                 'intent_sell' => ['label' => 'Sell card text', 'type' => 'text', 'default' => 'Run a demo value range, then request a sample CMA.'],
                 'intent_tour' => ['label' => 'Tour card text', 'type' => 'text', 'default' => 'Pick a sample address and reserve a showing slot.'],
                 'search_eyebrow' => ['label' => 'Search eyebrow', 'type' => 'text', 'default' => 'Find'],
                 'search_title' => ['label' => 'Search title', 'type' => 'text', 'default' => 'Search sample inventory'],
                 'search_text' => ['label' => 'Search intro', 'type' => 'textarea', 'default' => 'Short filters. Fast scan. Every result is fictional demo data.'],
+                'hero_cta_primary' => ['label' => 'Hero search button', 'type' => 'text', 'default' => 'Show matches'],
+                'hero_cta_secondary' => ['label' => 'Hero browse link', 'type' => 'text', 'default' => 'Browse all listings'],
                 'spotlight_eyebrow' => ['label' => 'Spotlight eyebrow', 'type' => 'text', 'default' => 'Spotlight'],
                 'spotlight_title' => ['label' => 'Spotlight title', 'type' => 'text', 'default' => 'Three sample homes to scan'],
                 'spotlight_text' => ['label' => 'Spotlight intro', 'type' => 'textarea', 'default' => 'Price · beds · acres — then book a fictional walk-through.'],

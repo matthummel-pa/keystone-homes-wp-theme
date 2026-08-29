@@ -302,11 +302,17 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 /* ============================= HERO ============================= */
 .hero{
   position:relative;overflow:hidden;isolation:isolate;
-  min-height:min(92vh,820px);
+  min-height:0;
   display:grid;align-items:end;
   color:#fff;
-  padding:clamp(88px,16vh,140px) 0 clamp(48px,8vh,72px);
+  padding:clamp(88px,10vh,120px) 0 28px;
   background:#141210;
+}
+@media(min-width:900px){
+  .hero{
+    min-height:min(86vh,800px);
+    padding:clamp(100px,12vh,132px) 0 36px;
+  }
 }
 .hero-media{
   position:absolute;inset:0;z-index:-2;margin:0;
@@ -342,19 +348,43 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
   content:"";width:40px;height:2px;background:var(--accent);display:inline-block;flex:none;
 }
 .hero h1{
-  font-size:clamp(2.8rem,8vw,5.2rem);color:#fff;max-width:11ch;margin-bottom:.28em;
+  font-size:clamp(2.55rem,7.2vw,4.6rem);color:#fff;max-width:13ch;margin-bottom:.22em;
   letter-spacing:-.035em;font-weight:700;
 }
 .hero h1 em{font-style:italic;font-weight:650;color:#fff;}
 .hero-sub{
-  font-size:1.08rem;max-width:36ch;color:rgba(255,255,255,.78);margin-bottom:30px;line-height:1.55;
+  font-size:1.05rem;max-width:46ch;color:rgba(255,255,255,.82);margin-bottom:18px;line-height:1.55;
   font-family:var(--ff-body);font-weight:400;
 }
+.hero-proof{
+  display:flex;flex-wrap:wrap;gap:10px 20px;align-items:center;
+  margin:0 0 22px;padding:0;list-style:none;
+  font-size:.86rem;color:rgba(255,255,255,.72);
+}
+.hero-proof li{display:inline-flex;align-items:center;gap:8px;}
+.hero-proof li + li::before{
+  content:"";width:4px;height:4px;border-radius:50%;background:var(--accent);margin-right:2px;
+}
+.hero-proof strong{color:#fff;font-weight:650;}
+.hero-proof a{color:#fff;font-weight:650;text-decoration:underline;text-underline-offset:3px;}
+.hero-proof a:hover{color:#d7efe4;}
 .hero-cta{display:flex;flex-wrap:wrap;gap:12px;}
 .hero-cta .btn-primary{box-shadow:0 14px 40px rgba(31,107,74,.45);}
+.hero .hero-search{
+  background:rgba(255,252,247,.97);
+  color:var(--ink);
+  box-shadow:var(--shadow-lg);
+}
+.hero .hero-search-actions{
+  display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+}
+.hero-search-link{
+  color:var(--ink-soft);font-size:.9rem;font-weight:600;text-decoration:none;
+}
+.hero-search-link:hover{color:var(--accent);text-decoration:underline;}
 
 /* Legacy aliases */
-.hero-eyebrow{font-family:var(--ff-mono);letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:rgba(255,255,255,.7);margin-bottom:16px;display:flex;align-items:center;gap:10px;}
+.hero-eyebrow{font-family:var(--ff-mono);letter-spacing:.16em;text-transform:uppercase;font-size:.72rem;color:rgba(255,255,255,.7);margin:0 0 16px;display:flex;align-items:center;gap:10px;}
 .hero-eyebrow::before{content:"";width:28px;height:2px;background:var(--accent);}
 
 /* ============================= INTENT + SEARCH ============================= */
