@@ -15,6 +15,22 @@ add_action('init', function () {
     DemoContent::maybeSeed();
 }, 40);
 
+add_action('after_switch_theme', function () {
+    DemoContent::maybeSeed();
+    flush_rewrite_rules();
+});
+
+add_action('admin_notices', function () {
+    if (! current_user_can('manage_options') || DemoContent::isComplete()) {
+        return;
+    }
+    $url = admin_url('tools.php?page=ks-seed-demo');
+    echo '<div class="notice notice-warning"><p>';
+    echo esc_html__('Keystone demo pages and listings are missing, so nav links 404 and the homepage has no inventory.', 'sage');
+    echo ' <a href="'.esc_url($url).'">'.esc_html__('Load demo content', 'sage').'</a>';
+    echo '</p></div>';
+});
+
 add_action('admin_menu', function () {
     add_management_page(
         __('Seed Keystone demo', 'sage'),

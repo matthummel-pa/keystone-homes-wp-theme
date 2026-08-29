@@ -9,23 +9,39 @@ class DemoContent
 {
     public const OPTION = 'ks_demo_content_v1';
 
+    public const LOCK = 'ks_demo_content_lock';
+
+    public static function isComplete(): bool
+    {
+        return self::findId('page', 'home') > 0
+            && self::findId('page', 'listings') > 0
+            && self::findId(Catalog::LISTING, 'wheatland-farmhouse') > 0;
+    }
+
     public static function maybeSeed(): void
     {
-        if (get_option(self::OPTION)) {
+        if (self::isComplete()) {
+            if (! get_option(self::OPTION)) {
+                update_option(self::OPTION, '1');
+            }
+
             return;
         }
         if (function_exists('wp_installing') && wp_installing()) {
             return;
         }
-        if (! add_option('ks_demo_content_lock', (string) time())) {
+
+        $lock = get_option(self::LOCK);
+        if ($lock && (time() - (int) $lock) < 90) {
             return;
         }
+        update_option(self::LOCK, (string) time(), false);
 
         try {
             self::seed();
             update_option(self::OPTION, '1');
         } finally {
-            delete_option('ks_demo_content_lock');
+            delete_option(self::LOCK);
         }
     }
 
