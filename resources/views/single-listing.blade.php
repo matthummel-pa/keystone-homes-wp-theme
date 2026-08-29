@@ -6,6 +6,40 @@
   $agent = $listing && $listing['listing_agent'] ? \App\Support\Catalog::agent((int) $listing['listing_agent']) : null;
 @endphp
 @if ($listing)
+  @php
+    $listingSchema = [
+      '@context' => 'https://schema.org',
+      '@type' => $listing['type'] === 'land' ? 'Place' : 'SingleFamilyResidence',
+      'name' => html_entity_decode($listing['title'], ENT_QUOTES | ENT_HTML5, 'UTF-8'),
+      'description' => html_entity_decode($listing['desc'], ENT_QUOTES | ENT_HTML5, 'UTF-8'),
+      'url' => $listing['permalink'],
+      'address' => [
+        '@type' => 'PostalAddress',
+        'streetAddress' => $listing['address'],
+        'addressLocality' => $listing['city'],
+        'addressRegion' => $listing['state'] ?: 'PA',
+        'postalCode' => $listing['zip'],
+        'addressCountry' => 'US',
+      ],
+      'offers' => [
+        '@type' => 'Offer',
+        'price' => (int) $listing['price'],
+        'priceCurrency' => 'USD',
+        'availability' => $listing['status'] === 'sold'
+          ? 'https://schema.org/SoldOut'
+          : 'https://schema.org/InStock',
+      ],
+    ];
+    if ($listing['image']) {
+      $listingSchema['image'] = $listing['image'];
+    }
+    if ($listing['type'] !== 'land' && $listing['beds']) {
+      $listingSchema['numberOfRooms'] = (float) $listing['beds'];
+    }
+  @endphp
+  <script type="application/ld+json">
+    {!! json_encode($listingSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
+  </script>
 <nav class="breadcrumb" aria-label="Breadcrumb">
   <ol>
     <li><a href="{{ home_url('/') }}">Home</a></li>
