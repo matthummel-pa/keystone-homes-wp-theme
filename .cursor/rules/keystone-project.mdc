@@ -1,0 +1,40 @@
+---
+description: Project identity, fiction-only constraints, and how theme vs live WordPress relate
+alwaysApply: true
+---
+
+# Keystone Homes & Land
+
+Sage 11 WordPress **theme only** (`wp-content/themes/keystone-homes`). Repo: `matthummel-pa/keystone-homes-wp-theme`. WordPress core is not in this repo.
+
+Matt is the owner (marketer). Prefer working in code. Keep copy editorial and local — rural Adams County farms, historic homes, and acreage — not generic luxury-broker voice.
+
+## Fiction only
+
+Listings, agents, phones, emails, appointments, and market stats are **sample / concept**. Not a live MLS, licensed brokerage, or booking system.
+
+- Phones: `555` numbers (office `(555) 010-0455`)
+- Emails: `@keystone-concept.test`
+- ZIPs / street numbers: fake (`00000`, Concept Way)
+- Keep the site-wide “concept demo · fiction only” disclaimer
+- Do not invent real people, real listings, or real licensed-agent claims
+
+## Two surfaces
+
+| Surface | What it is | How it updates |
+| --- | --- | --- |
+| **Theme** | Blade, CSS, JS, PHP, field defaults | Merge to `main` → GitHub Action publishes `theme-latest` zip → **Appearance → Update Theme** on the host |
+| **Content** | Pages, listings, agents, posts, `ks_*` meta, options | Lives in WordPress. Editing theme files does not change live posts |
+
+Live concept site: https://keystonehomes.ridgesandvalleys.com/
+
+CI **does not FTP** to the host. Do not assume a theme PR is live until the zip is installed.
+
+## Do not
+
+- Enable the block editor or Gutenberg patterns
+- Treat this repo as a full WordPress install
+- Put secrets in the theme. GitHub token lives in Customizer / `KS_GITHUB_TOKEN`, never commit it
+- Document rare setup steps here — see `AGENTS.md` and `README.md`
+
+Edit these rules when an agent repeats a mistake. Files in `.cursor/rules/` must stay `.mdc`.
