@@ -16,11 +16,13 @@ Implement these in `resources/css/keystone.css` (and Blade structure), **not** a
 - Horizontal padding: equivalent of `px-4 sm:px-6 lg:px-8` (16px / 24px / 32px). Keep it on `.wrap` / `.hero-inner` so pages stay aligned.
 - Center with `margin-inline: auto`.
 
-**5.2 Bento and cards.** Default card chrome (intent cards, listing cards, agent cards, search panels):
+**5.2 Bento and cards.** Default card chrome (intent cards, listing cards, agent cards, area cards, scan cards, market stats):
 
-- Border: `1px solid` `--line` (or `rgba` of ink at ~12%). Not `border-slate-200`.
+- Elevation: `--shadow-rest` at rest, `--shadow-lg` + one-step lift on hover, `transition` ~200ms. Soft charcoal shadows, not a heavy drop or a colored frame.
+- Do **not** use a forest/green top bar, left accent bar, or `border-color: var(--accent)` as card chrome. Forest stays on kickers, chips, links, and `:focus-visible` rings only.
+- Hairline: optional `1px solid` `--line` for contrast on `--paper` or white-on-white. Never a 3–4px accent/ink bar.
 - Radius: `--radius` ≈ `1rem`+ (`rounded-2xl` / 16–18px). Soft corners, not sharp rectangles.
-- Shadow: `--shadow` at rest, `--shadow-lg` or a one-step lift on hover, `transition` ~200ms. Soft elevation, not a heavy drop shadow.
+- Search/filter panels and form fields keep `--line` borders (those are inputs, not cards).
 
 Reuse existing classes (`.intent-card`, `.listing-search`, `.hero-search`, listing minis) instead of a one-off utility stack.
 
