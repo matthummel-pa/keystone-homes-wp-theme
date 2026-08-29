@@ -1,5 +1,5 @@
 /* =========================================================================
-   Keystone Homes & Land — GLOBAL behaviors (shared on every page)
+   Keystone Real Estate — GLOBAL behaviors (shared on every page)
    - Mobile nav toggle + Escape / focus return
    - Sticky header shadow on scroll
    - Scroll-reveal IntersectionObserver (respects prefers-reduced-motion)

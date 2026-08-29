@@ -8,9 +8,9 @@ namespace App\Support;
  */
 class Seo
 {
-    public const SITE = 'Keystone Homes & Land';
+    public const SITE = 'Keystone Real Estate';
 
-    public const FALLBACK = 'Sample farms, historic houses, and acreage in Adams County. Filter listings and book a fictional showing — Keystone Homes & Land concept demo.';
+    public const FALLBACK = 'Sample farms, historic houses, and acreage in Adams County. Filter listings and book a fictional showing — Keystone Real Estate concept demo.';
 
     public static function boot(): void
     {
@@ -36,7 +36,7 @@ class Seo
     {
         if (is_front_page()) {
             return [
-                'title' => 'Keystone Homes & Land · Adams County farms',
+                'title' => 'Keystone Real Estate · Adams County farms',
                 'tagline' => '',
                 'site' => '',
             ];
@@ -179,7 +179,7 @@ class Seo
     public static function ogTitle(array $copy): string
     {
         if (is_front_page()) {
-            return 'Keystone Homes & Land · Adams County farms';
+            return 'Keystone Real Estate · Adams County farms';
         }
         if (is_singular()) {
             return self::clip(self::plain((string) get_the_title()).' | '.self::SITE, 70);

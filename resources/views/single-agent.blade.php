@@ -15,7 +15,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => 'Keystone Homes &amp; Land',
+  'heroBrand' => 'Keystone Real Estate',
   'heroEyebrow' => $agent['job_title'],
   'heroTitle' => $agent['name'],
   'heroText' => trim($agent['office'].($agent['years_experience'] ? ' · '.$agent['years_experience'].' years' : '')),

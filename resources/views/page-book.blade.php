@@ -13,7 +13,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Appointments',
   'heroTitle' => $copy['hero_title'] ?: 'Book a house showing',
   'heroText' => $copy['hero_text'] ?: 'Pick a sample listing, a date, and a time. We save the request for the listing agent — this demo does not send email.',

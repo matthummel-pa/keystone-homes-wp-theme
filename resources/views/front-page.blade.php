@@ -9,7 +9,7 @@
   {
     "@@context":"https://schema.org",
     "@@type":"RealEstateAgent",
-    "name":"Keystone Homes & Land (Concept Demo)",
+    "name":"Keystone Real Estate (Concept Demo)",
     "description":"Fictional concept brokerage for design demonstration. Not a live MLS or licensed office.",
     "url":"{{ home_url('/') }}",
     "telephone":"+1-555-010-0455",
@@ -338,7 +338,7 @@
       <div class="faq-list reveal">
         <details class="faq-item">
           <summary>Is this a real brokerage?</summary>
-          <p>No. Keystone Homes &amp; Land here is a design concept. Contact details, listings and market stats are fictional.</p>
+          <p>No. Keystone Real Estate here is a design concept. Contact details, listings and market stats are fictional.</p>
         </details>
         <details class="faq-item">
           <summary>Does “Book a showing” schedule a real tour?</summary>
