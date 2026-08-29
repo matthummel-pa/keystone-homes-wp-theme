@@ -94,26 +94,63 @@
     </div>
   </section>
 
-  <!-- Intent grid -->
-  <section class="intent-band" id="search" aria-label="Choose a path">
+  <!-- Start here — buy / sell / tour -->
+  <section class="intent-band" id="search" aria-labelledby="intent-heading">
     <div class="wrap">
-      <div class="intent-grid">
+      <header class="section-head left intent-head reveal">
+        <p class="eyebrow">{{ $copy['intent_eyebrow'] ?: 'Start here' }}</p>
+        <h2 id="intent-heading">{!! $copy['intent_title'] ?: 'Pick the path' !!}</h2>
+        <p>{!! $copy['intent_text'] ?: 'Then we match a listing or a tour. Township first — the rest follows.' !!}</p>
+      </header>
+      <div class="intent-grid reveal">
         <a class="intent-card" href="{{ home_url('/listings') }}">
-          <strong>Buy</strong>
-          <span>{!! $copy['intent_buy'] ?: 'Filter sample homes, farms and land. Map + grid views.' !!}</span>
-          <em>Browse listings →</em>
+          <figure class="intent-photo">
+            <img src="@asset('images/intent-buy.jpg')" width="1200" height="900" alt="" loading="lazy" decoding="async">
+          </figure>
+          <div class="intent-copy">
+            <span class="intent-kicker">{{ $copy['intent_buy_kicker'] ?: 'Buy' }}</span>
+            <h3>{!! $copy['intent_buy_title'] ?: 'Scan homes, farms, and land' !!}</h3>
+            <p>{!! $copy['intent_buy_lead'] ?: ($copy['intent_buy'] ?? 'Township first — North Ridge, Mill Creek, Oak Hollow. Zoning and Clean and Green change before the listing photo does.') !!}</p>
+            <span class="intent-go">{{ $copy['intent_buy_cta'] ?: 'Browse listings' }} →</span>
+          </div>
         </a>
         <a class="intent-card" href="#value">
-          <strong>Sell</strong>
-          <span>{!! $copy['intent_sell'] ?: 'Run a demo value range, then request a sample CMA.' !!}</span>
-          <em>Price a home →</em>
+          <figure class="intent-photo">
+            <img src="@asset('images/intent-sell.jpg')" width="1200" height="900" alt="" loading="lazy" decoding="async">
+          </figure>
+          <div class="intent-copy">
+            <span class="intent-kicker">{{ $copy['intent_sell_kicker'] ?: 'Sell' }}</span>
+            <h3>{!! $copy['intent_sell_title'] ?: 'Price it before you list' !!}</h3>
+            <p>{!! $copy['intent_sell_lead'] ?: ($copy['intent_sell'] ?? 'Run a sample value range for a fictional address. Not an appraisal — a next step if you are comparing options.') !!}</p>
+            <span class="intent-go">{{ $copy['intent_sell_cta'] ?: 'Estimate value' }} →</span>
+          </div>
         </a>
-        <a class="intent-card" href="{{ home_url('/book/') }}">
-          <strong>Tour</strong>
-          <span>{!! $copy['intent_tour'] ?: 'Pick a sample address and reserve a showing slot.' !!}</span>
-          <em>Book showing →</em>
+        <a class="intent-card is-primary" href="{{ home_url('/book/') }}">
+          <figure class="intent-photo">
+            <img src="@asset('images/intent-tour.jpg')" width="1200" height="900" alt="" loading="lazy" decoding="async">
+          </figure>
+          <div class="intent-copy">
+            <span class="intent-kicker">{{ $copy['intent_tour_kicker'] ?: 'Tour' }}</span>
+            <h3>{!! $copy['intent_tour_title'] ?: 'Walk it on the ground' !!}</h3>
+            <p>{!! $copy['intent_tour_lead'] ?: ($copy['intent_tour'] ?? 'Pick a sample listing, a date, and a slot. Rural showings mean a lane, a well, and boots — mention perc or pets in the notes.') !!}</p>
+            <span class="intent-go">{{ $copy['intent_tour_cta'] ?: 'Book a showing' }} →</span>
+          </div>
         </a>
       </div>
+      <ul class="intent-notes reveal" aria-label="{{ $copy['intent_notes_label'] ?: 'Good to know' }}">
+        <li>
+          <strong>{!! $copy['intent_note_1_title'] ?: 'Township first' !!}</strong>
+          <span>{!! $copy['intent_note_1_text'] ?: 'Zoning and Act 319 change from North Ridge to Oak Hollow.' !!}</span>
+        </li>
+        <li>
+          <strong>{!! $copy['intent_note_2_title'] ?: 'Well and perc' !!}</strong>
+          <span>{!! $copy['intent_note_2_text'] ?: 'Rural parcels rarely have municipal hookups — walk that before an offer.' !!}</span>
+        </li>
+        <li>
+          <strong>{!! $copy['intent_note_3_title'] ?: 'Boots for showings' !!}</strong>
+          <span>{!! $copy['intent_note_3_text'] ?: 'Lanes get muddy after rain. Mention pets if you are new to land.' !!}</span>
+        </li>
+      </ul>
     </div>
   </section>
 
