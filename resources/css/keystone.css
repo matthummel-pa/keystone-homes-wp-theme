@@ -417,6 +417,12 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
   padding:22px;box-shadow:var(--shadow);display:grid;gap:14px;
 }
 .listing-search-row,.hero-search-row{display:grid;gap:12px;grid-template-columns:1fr;}
+@media(max-width:719px){
+  .hero .hero-search{padding:14px;}
+  .hero .hero-search-row{grid-template-columns:1fr 1fr;gap:10px;}
+  .hero .field select{padding:10px 8px;}
+  .hero .hero-search-actions{margin-top:4px;}
+}
 @media(min-width:720px){
   .listing-search-row,.hero-search-row{grid-template-columns:repeat(4,1fr);}
 }
