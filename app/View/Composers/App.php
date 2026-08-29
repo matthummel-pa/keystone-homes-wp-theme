@@ -30,7 +30,7 @@ class App extends Composer
             'catalogTownships' => Catalog::townships(),
             'selectedListingId' => (int) ($_GET['listing'] ?? 0),
             'showingTypes' => Catalog::SHOWING_TYPES,
-            'areaCards' => PageCopy::areaCards($id ?: null),
+            'areaCards' => PageCopy::areaCards(),
             'keystone' => [
                 'homeUrl' => home_url('/'),
                 'listingsUrl' => home_url('/listings'),
