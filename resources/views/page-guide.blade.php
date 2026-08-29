@@ -14,7 +14,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Buyer tools',
   'heroTitle' => $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>',
   'heroText' => $copy['hero_text'] ?: 'Wells, septic, and access change what acreage is worth. Short guides and demo calculators — then book a showing if you want to walk a sample parcel.',

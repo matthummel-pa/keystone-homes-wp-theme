@@ -22,14 +22,14 @@
 <a href="#main" class="skip-link">Skip to main content</a>
 <header class="site-header">
   <div class="header-inner">
-    <a href="{{ home_url('/') }}" class="brand" aria-label="Keystone Homes & Land concept, home">
+    <a href="{{ home_url('/') }}" class="brand" aria-label="Keystone Real Estate concept, home">
       <svg class="brand-mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
         <rect width="48" height="48" rx="12" fill="#141210"/>
         <path d="M24 10 L40 22 V38 H8 V22 Z" fill="#1f6b4a"/>
         <rect x="20" y="26" width="8" height="12" fill="#fffcf7"/>
       </svg>
       <span class="brand-text">
-        <strong>Keystone Homes &amp; Land</strong>
+        <strong>Keystone Real Estate</strong>
         <span>Concept demo</span>
       </span>
     </a>
@@ -69,7 +69,7 @@
       </svg>
       <div>
         <p class="mobile-nav-kicker">Browse</p>
-        <p class="mobile-nav-title">Keystone Homes</p>
+        <p class="mobile-nav-title">Keystone Real Estate</p>
       </div>
     </div>
     <button type="button" class="mobile-nav-close" id="mobileNavClose" aria-label="Close menu">

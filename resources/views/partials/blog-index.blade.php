@@ -6,7 +6,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?? 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?? 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?? 'Guide',
   'heroTitle' => $copy['hero_title'] ?? 'Realtor notes you can publish',
   'heroText' => $copy['hero_text'] ?? 'Showings, buyer checklists, and land vs home search — short posts you can adapt for local Adams County SEO.',

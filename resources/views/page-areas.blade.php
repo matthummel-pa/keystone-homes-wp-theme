@@ -14,7 +14,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample markets',
   'heroTitle' => $copy['hero_title'] ?: 'Areas we <em>demo</em>',
   'heroText' => $copy['hero_text'] ?: 'Township-by-township reads of rural Adams County — orchards, farms, and wooded lots from Franklin to Liberty. Fictional profiles for a scannable area page.',

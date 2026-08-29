@@ -3,7 +3,7 @@ description: Project identity, fiction-only constraints, and how theme vs live W
 alwaysApply: true
 ---
 
-# Keystone Homes & Land
+# Keystone Real Estate
 
 Sage 11 WordPress **theme only** (`wp-content/themes/keystone-homes`). Repo: `matthummel-pa/keystone-homes-wp-theme`. WordPress core is not in this repo.
 

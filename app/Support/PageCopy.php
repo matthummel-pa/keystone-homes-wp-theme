@@ -10,7 +10,7 @@ class PageCopy
     public static function schemas(): array
     {
         $hero = fn (string $eyebrow, string $title, string $text) => [
-            'hero_brand' => ['label' => 'Hero brand', 'type' => 'text', 'default' => 'Keystone Homes & Land'],
+            'hero_brand' => ['label' => 'Hero brand', 'type' => 'text', 'default' => 'Keystone Real Estate'],
             'hero_eyebrow' => ['label' => 'Hero eyebrow', 'type' => 'text', 'default' => $eyebrow],
             'hero_title' => ['label' => 'Hero title (use <em> for italics)', 'type' => 'text', 'default' => $title],
             'hero_text' => ['label' => 'Hero intro', 'type' => 'textarea', 'default' => $text],
@@ -94,7 +94,7 @@ class PageCopy
             ],
             'agents' => $hero('Sample team', 'Agents who know the <em>demo ground</em>', 'Team profiles are Agent posts. Contact numbers are fictional 555 lines.') + [
                 'intro_title' => ['label' => 'Intro title', 'type' => 'text', 'default' => 'A small, local team by design'],
-                'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'Keystone Homes &amp; Land was founded in Sample Borough in 2009 around a simple idea: rural property deserves an agent who understands rural property. Farms, orchards, raw land and century homesteads all come with questions a typical residential agent rarely faces.'],
+                'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'Keystone Real Estate was founded in Sample Borough in 2009 around a simple idea: rural property deserves an agent who understands rural property. Farms, orchards, raw land and century homesteads all come with questions a typical residential agent rarely faces.'],
                 'how_eyebrow' => ['label' => 'How-we-work eyebrow', 'type' => 'text', 'default' => 'How We Work'],
                 'how_title' => ['label' => 'How-we-work title', 'type' => 'text', 'default' => 'What working with Keystone looks like'],
                 'how_text' => ['label' => 'How-we-work intro', 'type' => 'textarea', 'default' => 'No pressure, no jargon, and a straight answer about the ground under your feet.'],
@@ -103,7 +103,7 @@ class PageCopy
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Reach the office at (555) 010-0455, or book a no-pressure showing and we\'ll match you with the agent who knows your corner of Sample County best.'],
             ],
             'contact' => $hero('Concept office', 'Get in touch <em>(demo only)</em>', 'Fictional address and phone. Prefer booking a sample showing for the full appointment UX.') + [
-                'office_title' => ['label' => 'Office heading', 'type' => 'text', 'default' => 'Keystone Homes &amp; Land'],
+                'office_title' => ['label' => 'Office heading', 'type' => 'text', 'default' => 'Keystone Real Estate'],
                 'office_address' => ['label' => 'Address', 'type' => 'textarea', 'default' => "100 Concept Way\nSample Borough, PA 00000"],
                 'office_phone' => ['label' => 'Phone', 'type' => 'text', 'default' => '(555) 010-0455'],
                 'office_email' => ['label' => 'Email', 'type' => 'text', 'default' => 'hello@keystone-concept.test'],

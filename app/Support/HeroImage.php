@@ -9,7 +9,7 @@ class HeroImage
 {
     public const DEFAULT = 'https://images.unsplash.com/photo-1570129477492-45c003edd2be';
 
-    public const ALT = 'Keystone Homes Featured Property';
+    public const ALT = 'Keystone Real Estate featured property';
 
     /**
      * Bundled 16:9 heroes in public/images/heroes/{key}.jpg
