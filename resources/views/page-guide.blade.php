@@ -85,7 +85,9 @@
                 </select>
               </div>
             </div>
-            <button type="submit" class="btn btn-gold" style="margin-top:16px;">Update Estimate</button>
+            <div class="form-block">
+              <button type="submit" class="btn btn-gold btn-block">Update Estimate</button>
+            </div>
           </form>
           <div class="calc-result" style="margin-top:16px;">
             <div>
@@ -120,7 +122,9 @@
                 <input type="number" id="pqRate" min="0" step="0.05" value="6.75" required>
               </div>
             </div>
-            <button type="submit" class="btn btn-gold" style="margin-top:16px;">See My Estimate</button>
+            <div class="form-block">
+              <button type="submit" class="btn btn-gold btn-block">See My Estimate</button>
+            </div>
           </form>
           <div class="calc-result" id="pqResult" style="display:none;margin-top:16px;">
             <div>
@@ -146,7 +150,7 @@
               </div>
               <div class="field">
                 <label for="schPhone">Phone</label>
-                <input type="tel" id="schPhone" required placeholder="(717) 555-0142">
+                <input type="tel" id="schPhone" required placeholder="(555) 010-0142">
               </div>
               <div class="field">
                 <label for="schDate">Preferred date</label>
@@ -163,12 +167,14 @@
                   <option>5:00 PM</option>
                 </select>
               </div>
+              <div class="field field-span">
+                <label for="schNote">What are you looking for? (optional)</label>
+                <input type="text" id="schNote" placeholder="e.g. 10+ acres near Franklin Township">
+              </div>
+              <div class="field field-span">
+                <button type="submit" class="btn btn-primary btn-block">Request a Call Back</button>
+              </div>
             </div>
-            <div class="field" style="margin-top:14px;">
-              <label for="schNote">What are you looking for? (optional)</label>
-              <input type="text" id="schNote" placeholder="e.g. 10+ acres near Franklin Township">
-            </div>
-            <button type="submit" class="btn btn-primary" style="margin-top:16px;">Request a Call Back</button>
           </form>
           <div class="confirm-msg" id="scheduleConfirm">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>

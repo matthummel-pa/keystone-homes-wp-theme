@@ -68,7 +68,7 @@
         <div class="reveal">
           <div class="tool-card">
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v12H5.17L4 17.17z"/></svg> {{ $copy['form_title'] ?? 'Send us a message' }}</h3>
-            <p style="color:var(--ink-soft);font-size:.92rem;margin-top:6px;">{!! $copy['form_text'] ?? 'Tell us what you\'re looking for — or what you\'re thinking of selling — and we\'ll be in touch.' !!}</p>
+            <p class="form-lede">{!! $copy['form_text'] ?? 'Tell us what you\'re looking for — or what you\'re thinking of selling — and we\'ll be in touch.' !!}</p>
             <form id="contactForm">
               <div class="form-grid two">
                 <div class="field">
@@ -77,11 +77,11 @@
                 </div>
                 <div class="field">
                   <label for="cPhone">Phone</label>
-                  <input type="tel" id="cPhone" required placeholder="(717) 555-0142">
+                  <input type="tel" id="cPhone" required placeholder="(555) 010-0142">
                 </div>
                 <div class="field">
                   <label for="cEmail">Email</label>
-                  <input type="email" id="cEmail" required placeholder="you@@example.com">
+                  <input type="email" id="cEmail" required placeholder="{{ 'you@keystone-concept.test' }}">
                 </div>
                 <div class="field">
                   <label for="cTopic">I'm interested in</label>
@@ -93,12 +93,14 @@
                     <option>Something else</option>
                   </select>
                 </div>
+                <div class="field field-span">
+                  <label for="cMessage">Message</label>
+                  <textarea id="cMessage" rows="4" placeholder="e.g. Looking for 10+ acres near Franklin Township with a well already in."></textarea>
+                </div>
+                <div class="field field-span">
+                  <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+                </div>
               </div>
-              <div class="field" style="margin-top:14px;">
-                <label for="cMessage">Message</label>
-                <textarea id="cMessage" rows="4" placeholder="e.g. Looking for 10+ acres near Franklin Township with a well already in."></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="margin-top:16px;">Send Message</button>
             </form>
             <div class="confirm-msg" id="contactConfirm">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
@@ -126,7 +128,7 @@
         </div>
         <div class="val-card">
           <h3>Free Land &amp; Farm Valuation</h3>
-          <p style="font-size:.85rem;color:var(--ink-soft);">Demo estimate — a Keystone agent will follow up with an accurate market analysis.</p>
+          <p class="form-lede">Demo estimate — a Keystone agent will follow up with an accurate market analysis.</p>
           <form id="valForm">
             <div class="val-grid">
               <div class="field">
@@ -159,8 +161,10 @@
                   <option value="Liberty">Liberty Twp</option>
                 </select>
               </div>
+              <div class="field field-span">
+                <button type="submit" class="btn btn-gold btn-block">Estimate My Value</button>
+              </div>
             </div>
-            <button type="submit" class="btn btn-gold" style="margin-top:16px;width:100%;">Estimate My Value</button>
           </form>
           <div class="val-result" id="valResult">
             <span style="font-size:.78rem;color:var(--ink-soft);">Estimated market range</span>

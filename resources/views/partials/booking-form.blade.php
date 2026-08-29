@@ -4,7 +4,7 @@
 @endphp
 <form id="showingForm" novalidate>
   <div class="form-grid two">
-    <div class="field" style="grid-column:1/-1">
+    <div class="field field-span">
       <label for="showProperty">Property to tour</label>
       <select id="showProperty" name="listing_id" required>
         <option value="">Select a sample home…</option>
@@ -31,8 +31,8 @@
     </div>
   </div>
 
-  <fieldset style="border:0;padding:0;margin:18px 0 0">
-    <legend class="field" style="margin-bottom:8px"><span style="font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)">Available times</span></legend>
+  <fieldset class="booking-times">
+    <legend>Available times</legend>
     <div class="slot-grid" id="slotGrid" role="group" aria-label="Time slots">
       <button type="button" class="slot" data-time="9:00 AM">9:00 AM</button>
       <button type="button" class="slot" data-time="10:30 AM">10:30 AM</button>
@@ -46,7 +46,7 @@
     <input type="hidden" id="showTime" name="time" value="" required>
   </fieldset>
 
-  <div class="form-grid two" style="margin-top:18px">
+  <div class="form-grid two form-block">
     <div class="field">
       <label for="showName">Your name</label>
       <input id="showName" name="name" type="text" autocomplete="name" placeholder="Alex Buyer" required>
@@ -55,16 +55,16 @@
       <label for="showPhone">Phone</label>
       <input id="showPhone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 010-0199" required>
     </div>
-    <div class="field" style="grid-column:1/-1">
+    <div class="field field-span">
       <label for="showEmail">Email</label>
-      <input id="showEmail" name="email" type="email" autocomplete="email" placeholder="you@@example.test" required>
+      <input id="showEmail" name="email" type="email" autocomplete="email" placeholder="{{ 'you@keystone-concept.test' }}" required>
     </div>
-    <div class="field" style="grid-column:1/-1">
+    <div class="field field-span">
       <label for="showNotes">Notes (optional)</label>
       <textarea id="showNotes" name="notes" rows="3" placeholder="Gate code questions, pets, first-time buyer…"></textarea>
     </div>
-    <div class="field" style="grid-column:1/-1">
-      <button type="submit" class="btn btn-primary" style="width:100%">Request showing</button>
+    <div class="field field-span">
+      <button type="submit" class="btn btn-primary btn-block">Request showing</button>
     </div>
   </div>
   <p class="form-note">{{ $copy['book_note'] ?? $copy['book_text'] ?? 'Demo only — requests are saved to Bookings as Requested.' }}</p>

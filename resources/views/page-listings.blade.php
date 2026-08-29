@@ -84,7 +84,7 @@
         </div>
         <div class="toolbar-bottom">
           <p class="result-count" aria-live="polite" id="resultCount"><strong>8</strong> properties found</p>
-          <div style="display:flex;gap:16px;align-items:center;flex-wrap:wrap;">
+          <div class="toolbar-actions">
             <button type="button" class="reset-btn" id="resetFilters">Reset filters</button>
             <div class="view-toggle" role="group" aria-label="Listing view">
               <button type="button" class="active" id="gridViewBtn" aria-pressed="true">
@@ -224,7 +224,7 @@
         </div>
       </div>
 
-      <div style="display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;">
+      <div class="modal-actions">
         <a href="{{ home_url('/book/') }}" class="btn btn-primary" id="modalScheduleBtn">Request Info / Book a Tour</a>
         <button type="button" class="btn btn-outline" id="modalSaveBtn">Save Listing</button>
       </div>
