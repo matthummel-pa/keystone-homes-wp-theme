@@ -1,0 +1,467 @@
+<?php
+
+/**
+ * Admin UI for listings, bookings, and agents.
+ */
+
+namespace App;
+
+use App\Support\Catalog;
+use App\Support\PageCopy;
+
+add_action('add_meta_boxes', function () {
+    add_meta_box('ks_listing_details', __('Listing details', 'sage'), __NAMESPACE__.'\\listing_metabox', Catalog::LISTING, 'normal', 'high');
+    add_meta_box('ks_agent_details', __('Agent details', 'sage'), __NAMESPACE__.'\\agent_metabox', Catalog::AGENT, 'normal', 'high');
+    add_meta_box('ks_booking_details', __('Booking details', 'sage'), __NAMESPACE__.'\\booking_metabox', Catalog::BOOKING, 'normal', 'high');
+    add_meta_box('ks_page_fields', __('Page fields', 'sage'), __NAMESPACE__.'\\page_metabox', 'page', 'normal', 'high');
+    add_meta_box('ks_post_fields', __('Post fields', 'sage'), __NAMESPACE__.'\\post_metabox', 'post', 'normal', 'high');
+});
+
+add_action('save_post_'.Catalog::LISTING, __NAMESPACE__.'\\save_listing_metabox');
+add_action('save_post_'.Catalog::AGENT, __NAMESPACE__.'\\save_agent_metabox');
+add_action('save_post_'.Catalog::BOOKING, __NAMESPACE__.'\\save_booking_metabox');
+add_action('save_post_page', __NAMESPACE__.'\\save_page_metabox');
+add_action('save_post_post', __NAMESPACE__.'\\save_post_metabox');
+
+function listing_metabox(\WP_Post $post): void
+{
+    wp_nonce_field('ks_listing_meta', 'ks_listing_nonce');
+    $type = (string) Catalog::getMeta($post->ID, 'type', 'home');
+    $status = (string) Catalog::getMeta($post->ID, 'status', 'active');
+    $agents = Catalog::agents();
+    $agentId = (int) Catalog::getMeta($post->ID, 'listing_agent', 0);
+    ?>
+    <table class="form-table" role="presentation">
+      <tr>
+        <th><label for="ks_type"><?php esc_html_e('Type', 'sage'); ?></label></th>
+        <td>
+          <select name="ks_type" id="ks_type">
+            <?php foreach (Catalog::LISTING_TYPES as $value => $label) { ?>
+              <option value="<?php echo esc_attr($value); ?>" <?php selected($type, $value); ?>><?php echo esc_html($label); ?></option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="ks_status"><?php esc_html_e('Status', 'sage'); ?></label></th>
+        <td>
+          <select name="ks_status" id="ks_status">
+            <?php foreach (Catalog::LISTING_STATUSES as $value => $label) { ?>
+              <option value="<?php echo esc_attr($value); ?>" <?php selected($status, $value); ?>><?php echo esc_html($label); ?></option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="ks_listing_agent"><?php esc_html_e('Listing agent', 'sage'); ?></label></th>
+        <td>
+          <select name="ks_listing_agent" id="ks_listing_agent">
+            <option value="0"><?php esc_html_e('Unassigned', 'sage'); ?></option>
+            <?php foreach ($agents as $agent) { ?>
+              <option value="<?php echo (int) $agent['id']; ?>" <?php selected($agentId, $agent['id']); ?>><?php echo esc_html($agent['name']); ?></option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <?php render_meta_inputs($post->ID, [
+          'address', 'city', 'state', 'zip', 'township', 'price', 'beds', 'baths', 'sqft', 'acres',
+          'year_built', 'mls_number', 'lat', 'lng', 'photo_grad', 'image', 'virtual_tour', 'property_tax', 'hoa',
+          'description',
+      ], Catalog::listingFields()); ?>
+      <tr>
+        <th><label for="ks_featured"><?php esc_html_e('Featured', 'sage'); ?></label></th>
+        <td>
+          <label>
+            <input type="checkbox" name="ks_featured" id="ks_featured" value="1" <?php checked(Catalog::getMeta($post->ID, 'featured', 0), '1'); ?>>
+            <?php esc_html_e('Show in the homepage spotlight', 'sage'); ?>
+          </label>
+        </td>
+      </tr>
+    </table>
+    <?php
+}
+
+function agent_metabox(\WP_Post $post): void
+{
+    wp_nonce_field('ks_agent_meta', 'ks_agent_nonce');
+    ?>
+    <p><?php esc_html_e('Standard fields used on realtor team pages — license, MLS/NRDS, contact, specialties, and social.', 'sage'); ?></p>
+    <table class="form-table" role="presentation">
+      <?php render_meta_inputs($post->ID, array_keys(Catalog::agentFields()), Catalog::agentFields()); ?>
+    </table>
+    <?php
+}
+
+function booking_metabox(\WP_Post $post): void
+{
+    wp_nonce_field('ks_booking_meta', 'ks_booking_nonce');
+    $status = (string) Catalog::getMeta($post->ID, 'status', 'requested');
+    $listingId = (int) Catalog::getMeta($post->ID, 'listing_id', 0);
+    $agentId = (int) Catalog::getMeta($post->ID, 'agent_id', 0);
+    $type = (string) Catalog::getMeta($post->ID, 'showing_type', 'in-person');
+    $next = Catalog::nextBookingStatus($status);
+    ?>
+    <p>
+      <?php esc_html_e('Pipeline:', 'sage'); ?>
+      <strong><?php echo esc_html(Catalog::BOOKING_STATUSES[$status] ?? $status); ?></strong>
+      <?php if ($next) { ?>
+        — <?php esc_html_e('Advance to', 'sage'); ?>
+        <strong><?php echo esc_html(Catalog::BOOKING_STATUSES[$next]); ?></strong>
+        <?php esc_html_e('with the row action on the Bookings list, or set status below.', 'sage'); ?>
+      <?php } ?>
+    </p>
+    <table class="form-table" role="presentation">
+      <tr>
+        <th><label for="ks_status"><?php esc_html_e('Status', 'sage'); ?></label></th>
+        <td>
+          <select name="ks_status" id="ks_status">
+            <?php foreach (Catalog::BOOKING_STATUSES as $value => $label) { ?>
+              <option value="<?php echo esc_attr($value); ?>" <?php selected($status, $value); ?>><?php echo esc_html($label); ?></option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="ks_listing_id"><?php esc_html_e('Listing', 'sage'); ?></label></th>
+        <td>
+          <select name="ks_listing_id" id="ks_listing_id">
+            <option value="0"><?php esc_html_e('Select listing…', 'sage'); ?></option>
+            <?php foreach (Catalog::listings() as $listing) { ?>
+              <option value="<?php echo (int) $listing['id']; ?>" <?php selected($listingId, $listing['id']); ?>>
+                <?php echo esc_html($listing['title'].' — '.Catalog::formatMoney((int) $listing['price'])); ?>
+              </option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="ks_agent_id"><?php esc_html_e('Assigned agent', 'sage'); ?></label></th>
+        <td>
+          <select name="ks_agent_id" id="ks_agent_id">
+            <option value="0"><?php esc_html_e('Unassigned', 'sage'); ?></option>
+            <?php foreach (Catalog::agents() as $agent) { ?>
+              <option value="<?php echo (int) $agent['id']; ?>" <?php selected($agentId, $agent['id']); ?>><?php echo esc_html($agent['name']); ?></option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th><label for="ks_showing_type"><?php esc_html_e('Showing type', 'sage'); ?></label></th>
+        <td>
+          <select name="ks_showing_type" id="ks_showing_type">
+            <?php foreach (Catalog::SHOWING_TYPES as $value => $label) { ?>
+              <option value="<?php echo esc_attr($value); ?>" <?php selected($type, $value); ?>><?php echo esc_html($label); ?></option>
+            <?php } ?>
+          </select>
+        </td>
+      </tr>
+      <?php render_meta_inputs($post->ID, [
+          'showing_date', 'showing_time', 'client_name', 'client_email', 'client_phone', 'notes', 'listing_title',
+      ], Catalog::bookingFields()); ?>
+    </table>
+    <?php
+}
+
+/**
+ * @param  list<string>  $fields
+ * @param  array<string, string>  $labels
+ */
+function render_meta_inputs(int $postId, array $fields, array $labels): void
+{
+    foreach ($fields as $field) {
+        $value = Catalog::getMeta($postId, $field, '');
+        $label = $labels[$field] ?? $field;
+        $id = 'ks_'.$field;
+        $isLong = in_array($field, ['notes', 'specialties', 'service_areas', 'photo_grad', 'image', 'virtual_tour', 'description', 'bio', 'body'], true);
+        echo '<tr><th><label for="'.esc_attr($id).'">'.esc_html($label).'</label></th><td>';
+        if ($isLong) {
+            echo '<textarea class="large-text" rows="3" name="'.esc_attr($id).'" id="'.esc_attr($id).'">'.esc_textarea((string) $value).'</textarea>';
+        } else {
+            $type = str_contains($field, 'email') ? 'email' : (str_contains($field, 'date') ? 'date' : 'text');
+            echo '<input class="regular-text" type="'.esc_attr($type).'" name="'.esc_attr($id).'" id="'.esc_attr($id).'" value="'.esc_attr((string) $value).'">';
+        }
+        echo '</td></tr>';
+    }
+}
+
+function save_listing_metabox(int $postId): void
+{
+    if (! isset($_POST['ks_listing_nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ks_listing_nonce'])), 'ks_listing_meta')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (! current_user_can('edit_post', $postId)) {
+        return;
+    }
+
+    foreach (array_keys(Catalog::listingFields()) as $field) {
+        if ($field === 'featured') {
+            Catalog::updateMeta($postId, 'featured', empty($_POST['ks_featured']) ? '0' : '1');
+
+            continue;
+        }
+        if (! isset($_POST['ks_'.$field])) {
+            continue;
+        }
+        $raw = wp_unslash($_POST['ks_'.$field]);
+        $value = in_array($field, ['photo_grad', 'image', 'virtual_tour', 'description'], true)
+            ? sanitize_textarea_field((string) $raw)
+            : sanitize_text_field((string) $raw);
+        Catalog::updateMeta($postId, $field, $value);
+    }
+}
+
+function save_agent_metabox(int $postId): void
+{
+    if (! isset($_POST['ks_agent_nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ks_agent_nonce'])), 'ks_agent_meta')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (! current_user_can('edit_post', $postId)) {
+        return;
+    }
+
+    foreach (array_keys(Catalog::agentFields()) as $field) {
+        if (! isset($_POST['ks_'.$field])) {
+            continue;
+        }
+        $raw = wp_unslash($_POST['ks_'.$field]);
+        $value = in_array($field, ['specialties', 'service_areas', 'bio'], true)
+            ? sanitize_textarea_field((string) $raw)
+            : sanitize_text_field((string) $raw);
+        Catalog::updateMeta($postId, $field, $value);
+    }
+}
+
+function save_booking_metabox(int $postId): void
+{
+    if (! isset($_POST['ks_booking_nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ks_booking_nonce'])), 'ks_booking_meta')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (! current_user_can('edit_post', $postId)) {
+        return;
+    }
+
+    foreach (array_keys(Catalog::bookingFields()) as $field) {
+        if (! isset($_POST['ks_'.$field])) {
+            continue;
+        }
+        $raw = wp_unslash($_POST['ks_'.$field]);
+        $value = $field === 'notes'
+            ? sanitize_textarea_field((string) $raw)
+            : sanitize_text_field((string) $raw);
+        Catalog::updateMeta($postId, $field, $value);
+    }
+
+    $listingId = (int) Catalog::getMeta($postId, 'listing_id', 0);
+    $listing = $listingId ? Catalog::listing($listingId) : null;
+    if ($listing) {
+        Catalog::updateMeta($postId, 'listing_title', $listing['title']);
+    }
+}
+
+add_filter('manage_'.Catalog::LISTING.'_posts_columns', function (array $columns) {
+    $columns['ks_price'] = __('Price', 'sage');
+    $columns['ks_type'] = __('Type', 'sage');
+    $columns['ks_status'] = __('Status', 'sage');
+    $columns['ks_township'] = __('Township', 'sage');
+
+    return $columns;
+});
+
+add_action('manage_'.Catalog::LISTING.'_posts_custom_column', function (string $column, int $postId) {
+    match ($column) {
+        'ks_price' => print esc_html(Catalog::formatMoney((int) Catalog::getMeta($postId, 'price', 0))),
+        'ks_type' => print esc_html(Catalog::LISTING_TYPES[(string) Catalog::getMeta($postId, 'type', 'home')] ?? ''),
+        'ks_status' => print esc_html(Catalog::LISTING_STATUSES[(string) Catalog::getMeta($postId, 'status', 'active')] ?? ''),
+        'ks_township' => print esc_html((string) Catalog::getMeta($postId, 'township', '')),
+        default => null,
+    };
+}, 10, 2);
+
+add_filter('manage_'.Catalog::AGENT.'_posts_columns', function (array $columns) {
+    $columns['ks_title'] = __('Title', 'sage');
+    $columns['ks_phone'] = __('Phone', 'sage');
+    $columns['ks_license'] = __('License', 'sage');
+
+    return $columns;
+});
+
+add_action('manage_'.Catalog::AGENT.'_posts_custom_column', function (string $column, int $postId) {
+    match ($column) {
+        'ks_title' => print esc_html((string) Catalog::getMeta($postId, 'job_title', '')),
+        'ks_phone' => print esc_html((string) Catalog::getMeta($postId, 'phone', '')),
+        'ks_license' => print esc_html(trim(Catalog::getMeta($postId, 'license_state', '').' '.Catalog::getMeta($postId, 'license_number', ''))),
+        default => null,
+    };
+}, 10, 2);
+
+add_filter('manage_'.Catalog::BOOKING.'_posts_columns', function (array $columns) {
+    unset($columns['date']);
+    $columns['ks_when'] = __('When', 'sage');
+    $columns['ks_listing'] = __('Listing', 'sage');
+    $columns['ks_client'] = __('Client', 'sage');
+    $columns['ks_status'] = __('Status', 'sage');
+
+    return $columns;
+});
+
+add_action('manage_'.Catalog::BOOKING.'_posts_custom_column', function (string $column, int $postId) {
+    $status = (string) Catalog::getMeta($postId, 'status', 'requested');
+    match ($column) {
+        'ks_when' => print esc_html(trim(Catalog::getMeta($postId, 'showing_date', '').' '.Catalog::getMeta($postId, 'showing_time', ''))),
+        'ks_listing' => print esc_html((string) Catalog::getMeta($postId, 'listing_title', '')),
+        'ks_client' => print esc_html(trim(Catalog::getMeta($postId, 'client_name', '').' · '.Catalog::getMeta($postId, 'client_phone', ''))),
+        'ks_status' => print esc_html(Catalog::BOOKING_STATUSES[$status] ?? $status),
+        default => null,
+    };
+}, 10, 2);
+
+add_filter('post_row_actions', function (array $actions, \WP_Post $post) {
+    if ($post->post_type !== Catalog::BOOKING) {
+        return $actions;
+    }
+    $status = (string) Catalog::getMeta($post->ID, 'status', 'requested');
+    $next = Catalog::nextBookingStatus($status);
+    if (! $next || ! current_user_can('edit_post', $post->ID)) {
+        return $actions;
+    }
+    $url = wp_nonce_url(
+        admin_url('admin-post.php?action=keystone_advance_booking&post='.$post->ID),
+        'ks_advance_'.$post->ID
+    );
+    $actions['ks_advance'] = '<a href="'.esc_url($url).'">'.esc_html(sprintf(
+        /* translators: next booking status */
+        __('Advance to %s', 'sage'),
+        Catalog::BOOKING_STATUSES[$next]
+    )).'</a>';
+
+    return $actions;
+}, 10, 2);
+
+add_action('admin_post_keystone_advance_booking', function () {
+    $postId = (int) ($_GET['post'] ?? 0);
+    if (! $postId || ! current_user_can('edit_post', $postId)) {
+        wp_die(esc_html__('You cannot advance this booking.', 'sage'));
+    }
+    check_admin_referer('ks_advance_'.$postId);
+    $post = get_post($postId);
+    if (! $post || $post->post_type !== Catalog::BOOKING) {
+        wp_die(esc_html__('Booking not found.', 'sage'));
+    }
+    $status = (string) Catalog::getMeta($postId, 'status', 'requested');
+    $next = Catalog::nextBookingStatus($status);
+    if ($next) {
+        Catalog::updateMeta($postId, 'status', $next);
+    }
+    wp_safe_redirect(admin_url('edit.php?post_type='.Catalog::BOOKING.'&ks_advanced=1'));
+    exit;
+});
+
+add_action('admin_notices', function () {
+    $screen = get_current_screen();
+    if (! $screen || $screen->post_type !== Catalog::BOOKING) {
+        return;
+    }
+    if (isset($_GET['ks_advanced'])) {
+        echo '<div class="notice notice-success is-dismissible"><p>'.esc_html__('Booking advanced to the next status.', 'sage').'</p></div>';
+    }
+});
+
+function page_metabox(\WP_Post $post): void
+{
+    wp_nonce_field('ks_page_meta', 'ks_page_nonce');
+    $key = PageCopy::schemaKeyForPost($post->ID);
+    echo '<p>'.esc_html(sprintf(
+        /* translators: page field group name */
+        __('This page uses the %s template. Edit copy in the fields below — the block editor is disabled.', 'sage'),
+        $key
+    )).'</p>';
+    echo '<table class="form-table" role="presentation">';
+    render_page_inputs($post->ID, PageCopy::schemaForPost($post->ID));
+    echo '</table>';
+}
+
+/**
+ * @param  array<string, array{label: string, type: string, default: string}>  $schema
+ */
+function render_page_inputs(int $postId, array $schema): void
+{
+    foreach ($schema as $field => $def) {
+        $stored = Catalog::getMeta($postId, $field, '');
+        $value = $stored !== '' ? $stored : html_entity_decode(str_replace('&amp;', '&', $def['default'] ?? ''), ENT_QUOTES);
+        $id = 'ks_'.$field;
+        echo '<tr><th><label for="'.esc_attr($id).'">'.esc_html($def['label']).'</label></th><td>';
+        if (($def['type'] ?? 'text') === 'textarea') {
+            echo '<textarea class="large-text" rows="4" name="'.esc_attr($id).'" id="'.esc_attr($id).'">'.esc_textarea((string) $value).'</textarea>';
+        } else {
+            echo '<input class="large-text" type="text" name="'.esc_attr($id).'" id="'.esc_attr($id).'" value="'.esc_attr((string) $value).'">';
+        }
+        echo '</td></tr>';
+    }
+}
+
+function save_page_metabox(int $postId): void
+{
+    if (! isset($_POST['ks_page_nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ks_page_nonce'])), 'ks_page_meta')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (! current_user_can('edit_post', $postId)) {
+        return;
+    }
+
+    foreach (PageCopy::schemaForPost($postId) as $field => $def) {
+        if (! isset($_POST['ks_'.$field])) {
+            continue;
+        }
+        $raw = wp_unslash($_POST['ks_'.$field]);
+        $value = ($def['type'] ?? 'text') === 'textarea'
+            ? wp_kses_post((string) $raw)
+            : wp_kses((string) $raw, ['em' => [], 'strong' => []]);
+        Catalog::updateMeta($postId, $field, $value);
+    }
+}
+
+function post_metabox(\WP_Post $post): void
+{
+    wp_nonce_field('ks_post_meta', 'ks_post_nonce');
+    $body = (string) Catalog::getMeta($post->ID, 'body', $post->post_content);
+    echo '<p>'.esc_html__('Blog posts use fields only. Paste HTML in the body if you need links or lists.', 'sage').'</p>';
+    echo '<table class="form-table" role="presentation">';
+    echo '<tr><th><label for="ks_body">'.esc_html__('Article body', 'sage').'</label></th>';
+    echo '<td><textarea class="large-text" rows="16" name="ks_body" id="ks_body">'.esc_textarea($body).'</textarea></td></tr>';
+    echo '</table>';
+}
+
+function save_post_metabox(int $postId): void
+{
+    if (! isset($_POST['ks_post_nonce']) || ! wp_verify_nonce(sanitize_text_field(wp_unslash($_POST['ks_post_nonce'])), 'ks_post_meta')) {
+        return;
+    }
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (! current_user_can('edit_post', $postId)) {
+        return;
+    }
+
+    $body = isset($_POST['ks_body']) ? wp_kses_post((string) wp_unslash($_POST['ks_body'])) : '';
+    Catalog::updateMeta($postId, 'body', $body);
+
+    remove_action('save_post_post', __NAMESPACE__.'\\save_post_metabox');
+    wp_update_post([
+        'ID' => $postId,
+        'post_content' => $body,
+    ]);
+    add_action('save_post_post', __NAMESPACE__.'\\save_post_metabox');
+}

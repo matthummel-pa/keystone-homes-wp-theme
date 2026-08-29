@@ -1,3 +1,7 @@
+{{--
+  Template Name: Guide
+--}}
+
 @extends('layouts.app')
 
 @section('content')
@@ -12,10 +16,10 @@
 <!-- ============================= PAGE HERO ============================= -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">Keystone Homes &amp; Land</p>
-    <p class="hero-eyebrow">Buyer tools</p>
-    <h1>A clearer path to <em>buying land or a home</em></h1>
-    <p>Short guides and demo calculators. Use with the homepage showing scheduler for a full agent workflow.</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
+    <h1>{!! $copy['hero_title'] !!}</h1>
+    <p>{!! $copy['hero_text'] !!}</p>
   </div>
 </section>
 
@@ -23,8 +27,8 @@
   <!-- ============================= GUIDE PROSE ============================= -->
   <section class="section">
     <div class="wrap prose reveal">
-      <h2>What's different about buying land</h2>
-      <p>When you buy an existing home in Gettysburg borough, the utilities, the septic or sewer, and the water are usually already sorted. Out in the townships, you often have to prove those things yourself — and the answers change the value of the ground. A pretty five acres that won't perc for a septic system is a very different purchase than an identical five acres that will. We built this guide so you know the questions to ask before you write an offer.</p>
+      <h2>{!! $copy['intro_title'] !!}</h2>
+      <p>{!! $copy['intro_text'] !!}</p>
 
       <h3>Water: wells &amp; yield</h3>
       <p>Most rural Adams County property is served by a private well rather than public water. Two things matter: whether a well already exists and produces enough water, and — if the lot is raw — whether a new well is likely to hit a good yield. In the rockier ground toward South Mountain (Hamiltonban) yields can vary well to well. For an existing well we recommend a flow test and a potability test; for raw land we look at neighboring wells as a guide.</p>
@@ -220,10 +224,10 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>Have a parcel in mind?</h2>
-        <p>Bring us an address or an idea and a Keystone agent will pull the zoning, check access and walk the ground with you — before you're ever committed.</p>
+        <h2>{!! $copy['cta_title'] !!}</h2>
+        <p>{!! $copy['cta_text'] !!}</p>
         <div class="cta-actions">
-          <a class="btn btn-gold" href="#schedule">Book a showing</a>
+          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse Listings</a>
         </div>
       </div>

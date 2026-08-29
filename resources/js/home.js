@@ -91,20 +91,13 @@
     });
   }
 
-  /* Spotlight cards → prefill booking property */
-  document.querySelectorAll("[data-book-property]").forEach(function(a){
-    a.addEventListener("click", function(){
-      if(!showProperty) return;
-      var name = a.getAttribute("data-book-property");
-      var opts = showProperty.options;
-      for(var i = 0; i < opts.length; i++){
-        if(opts[i].text.indexOf(name) === 0 || opts[i].value.indexOf(name) === 0 || opts[i].text.indexOf(name) !== -1){
-          showProperty.selectedIndex = i;
-          break;
-        }
-      }
-    });
-  });
+  if(showProperty){
+    var params = new URLSearchParams(window.location.search);
+    var listingId = params.get("listing");
+    if(listingId){
+      showProperty.value = listingId;
+    }
+  }
 
   if(showingForm && showingConfirm){
     showingForm.addEventListener("submit", function(e){
@@ -117,19 +110,67 @@
         showingConfirm.textContent = "Pick a time slot to continue.";
         return;
       }
-      var prop = showProperty ? showProperty.value : "a sample home";
+      var listingId = showProperty ? showProperty.value : "";
+      var propLabel = showProperty && showProperty.selectedOptions[0] ? showProperty.selectedOptions[0].text : "a sample home";
       var when = (showDate && showDate.value ? showDate.value : "your date") + " · " + showTime.value;
       var name = (document.getElementById("showName") || {}).value || "Guest";
-      showingConfirm.className = "confirm-msg show";
-      showingConfirm.style.background = "";
-      showingConfirm.style.borderColor = "";
-      showingConfirm.style.color = "";
-      showingConfirm.innerHTML =
-        "<span><strong>Demo showing requested.</strong> " + name +
-        " — " + prop + " on " + when +
-        ". No email or calendar invite was sent.</span>";
       var submitBtn = showingForm.querySelector("button[type=submit]");
       if(submitBtn) submitBtn.disabled = true;
+
+      var endpoint = window.KEYSTONE && window.KEYSTONE.restUrl ? window.KEYSTONE.restUrl + "bookings" : "";
+      var payload = {
+        listing_id: listingId,
+        date: showDate ? showDate.value : "",
+        time: showTime.value,
+        type: (document.getElementById("showType") || {}).value || "in-person",
+        name: name,
+        phone: (document.getElementById("showPhone") || {}).value || "",
+        email: (document.getElementById("showEmail") || {}).value || "",
+        notes: (document.getElementById("showNotes") || {}).value || ""
+      };
+
+      function showOk(message){
+        showingConfirm.className = "confirm-msg show";
+        showingConfirm.style.background = "";
+        showingConfirm.style.borderColor = "";
+        showingConfirm.style.color = "";
+        showingConfirm.innerHTML = "<span><strong>Showing requested.</strong> " + (message || (name + " — " + propLabel + " on " + when)) + "</span>";
+      }
+
+      function showErr(message){
+        if(submitBtn) submitBtn.disabled = false;
+        showingConfirm.className = "confirm-msg show";
+        showingConfirm.style.background = "#fff7ed";
+        showingConfirm.style.borderColor = "#fdba74";
+        showingConfirm.style.color = "#9a3412";
+        showingConfirm.textContent = message || "Could not save this showing. Try again.";
+      }
+
+      if(!endpoint){
+        showOk(name + " — " + propLabel + " on " + when + ". Saved locally only.");
+        return;
+      }
+
+      fetch(endpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-WP-Nonce": (window.KEYSTONE && window.KEYSTONE.nonce) || ""
+        },
+        body: JSON.stringify(payload)
+      }).then(function(res){
+        return res.json().then(function(data){ return { ok: res.ok, data: data }; });
+      }).then(function(result){
+        if(result.ok){
+          showOk(result.data && result.data.message ? result.data.message : (name + " — " + propLabel + " on " + when));
+        } else {
+          var msg = result.data && result.data.message ? result.data.message : "Could not save this showing.";
+          if(Array.isArray(msg)) msg = msg.join(" ");
+          showErr(msg);
+        }
+      }).catch(function(){
+        showErr("Network error — the showing was not saved.");
+      });
     });
   }
 })();

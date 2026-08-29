@@ -1,3 +1,7 @@
+{{--
+  Template Name: Simple page
+--}}
+
 @extends('layouts.app')
 
 @section('content')
@@ -11,13 +15,19 @@
     <section class="page-hero">
       <div class="page-hero-inner">
         <p class="hero-brand">Keystone Homes &amp; Land</p>
-        <h1>{!! get_the_title() !!}</h1>
+        <p class="hero-brand">{!! $copy['hero_brand'] ?? 'Keystone Homes &amp; Land' !!}</p>
+        <h1>{!! $copy['hero_title'] ?: get_the_title() !!}</h1>
+        @if (! empty($copy['hero_text']))
+          <p>{!! $copy['hero_text'] !!}</p>
+        @endif
       </div>
     </section>
+    @if (! empty($copy['body']))
     <section class="section">
       <div class="wrap prose">
-        @php(the_content())
+        {!! wpautop($copy['body']) !!}
       </div>
     </section>
+    @endif
   @endwhile
 @endsection

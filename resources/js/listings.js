@@ -93,6 +93,10 @@
     }
   ];
 
+  if(window.KEYSTONE && Array.isArray(window.KEYSTONE.listings) && window.KEYSTONE.listings.length){
+    LISTINGS = window.KEYSTONE.listings;
+  }
+
   if(!document.getElementById("listingGrid")) return; /* not the listings page */
 
   var savedListings = {};
@@ -117,7 +121,7 @@
     if(l.type !== "land"){
       parts.push('<span>'+ICONS.bed+' '+l.beds+' bd</span>');
       parts.push('<span>'+ICONS.bath+' '+l.baths+' ba</span>');
-      parts.push('<span>'+ICONS.sqft+' '+l.sqft.toLocaleString()+' sqft</span>');
+      parts.push('<span>'+ICONS.sqft+' '+Number(l.sqft).toLocaleString()+' sqft</span>');
     }
     parts.push('<span>'+ICONS.acres+' '+l.acres+' ac</span>');
     return parts.join("");
@@ -137,7 +141,7 @@
     var saved = !!savedListings[l.id];
     return (
       '<article class="card" id="card-'+l.id+'" data-id="'+l.id+'">' +
-        '<div class="card-photo" style="background:'+l.grad+';">' +
+        '<div class="card-photo" style="'+(l.image ? 'background-image:url('+l.image+');background-size:cover;background-position:center;' : 'background:'+l.grad+';')+'">' +
           '<span class="status-tag status-'+l.status+'">'+statusLabel(l.status)+'</span>' +
           '<span class="card-tag">'+l.typeLabel+'</span>' +
           '<button type="button" class="save-heart" aria-label="Save '+l.title+'" aria-pressed="'+saved+'" data-save="'+l.id+'">' +
@@ -352,6 +356,9 @@
     }).join("");
 
     document.getElementById("calcPrice").value = l.price;
+    overlay.dataset.listingId = String(l.id);
+    var book = (window.KEYSTONE && window.KEYSTONE.bookUrl) || "/book/";
+    document.getElementById("modalScheduleBtn").setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing=" + l.id);
     recalcMortgage();
 
     overlay.classList.add("open");
@@ -372,7 +379,15 @@
   document.addEventListener("keydown", function(e){
     if(e.key === "Escape" && overlay.classList.contains("open")) closeModal();
   });
-  document.getElementById("modalScheduleBtn").addEventListener("click", closeModal);
+  document.getElementById("modalScheduleBtn").addEventListener("click", function(e){
+    var href = this.getAttribute("href") || "";
+    if(pinnedId || overlay.dataset.listingId){
+      var id = overlay.dataset.listingId || pinnedId;
+      var book = (window.KEYSTONE && window.KEYSTONE.bookUrl) || "/book/";
+      this.setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing=" + id);
+    }
+    closeModal();
+  });
   document.getElementById("modalSaveBtn").addEventListener("click", function(){
     this.textContent = this.textContent === "Save Listing" ? "Saved ✓" : "Save Listing";
   });

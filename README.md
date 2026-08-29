@@ -17,10 +17,12 @@ Ported from the static concept:
 ## Features
 
 - Homepage search → listings with type / price / acreage / area filters
-- Grid + map listing views, payment estimate modal, save-to-shortlist demo
-- House-showing scheduler (property, date, time slots)
-- Home-value range and listing-alert demos
-- Areas, land-buyer guide, agents, and contact pages
+- `listing`, `booking`, and `agent` custom post types (custom fields only — no blocks)
+- Grid + map listing views fed by the Listings CPT, payment estimate modal
+- House-showing scheduler writes Bookings posts (Requested → Confirmed → Completed)
+- Agents page and singles from the Agents CPT (license, MLS/NRDS, specialties, contact)
+- Each marketing page has its own Blade template and field group
+- Areas, land-buyer guide, and contact pages
 - SEO-ready blog with sample posts
 
 ## Local development
@@ -56,13 +58,15 @@ If the theme folder is not `keystone-homes`, update `base` in `vite.config.js` a
 
 | Concept page | WordPress template |
 | --- | --- |
-| Home | `resources/views/front-page.blade.php` |
-| Listings | `resources/views/page-listings.blade.php` |
-| Areas | `resources/views/page-areas.blade.php` |
-| Guide | `resources/views/page-guide.blade.php` |
-| Agents | `resources/views/page-agents.blade.php` |
-| Contact | `resources/views/page-contact.blade.php` |
-| Blog | `resources/views/home.blade.php` |
-| Posts | `resources/views/single.blade.php` |
+| Home | `front-page.blade.php` (template: Home) |
+| Listings | `page-listings.blade.php` |
+| Book a showing | `page-book.blade.php` |
+| Areas | `page-areas.blade.php` |
+| Guide | `page-guide.blade.php` |
+| Agents | `page-agents.blade.php` |
+| Contact | `page-contact.blade.php` |
+| Blog | `home.blade.php` |
+| Listing / agent singles | `single-listing.blade.php`, `single-agent.blade.php` |
+| Posts | `single.blade.php` |
 
 Design tokens and layout CSS live in `resources/css/keystone.css`. Interactive tools live in `resources/js/`.

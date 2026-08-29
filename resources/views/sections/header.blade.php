@@ -1,13 +1,14 @@
 @php
   $req = trim($GLOBALS['wp']->request ?? '', '/');
   $isHome = ($req === '' || is_front_page());
-  $isListings = str_starts_with($req, 'listings');
   $isAreas = str_starts_with($req, 'areas');
   $isGuide = str_starts_with($req, 'guide');
-  $isAgents = str_starts_with($req, 'agents');
+  $isAgents = str_starts_with($req, 'agents') || is_singular('agent');
   $isContact = str_starts_with($req, 'contact');
+  $isBook = str_starts_with($req, 'book') || is_singular('booking');
   $isBlog = is_home() || is_singular('post') || $req === 'blog' || str_starts_with($req, 'blog/');
-  $bookUrl = home_url('/#book-showing');
+  $isListings = str_starts_with($req, 'listings') || is_singular('listing');
+  $bookUrl = home_url('/book/');
 @endphp
 
 <a href="#main" class="skip-link">Skip to main content</a>
@@ -33,7 +34,7 @@
         <li><a href="{{ home_url('/guide') }}" @if($isGuide) class="is-active" aria-current="page" @endif>Guide</a></li>
         <li><a href="{{ home_url('/blog') }}" @if($isBlog) class="is-active" aria-current="page" @endif>Blog</a></li>
         <li><a href="{{ home_url('/agents') }}" @if($isAgents) class="is-active" aria-current="page" @endif>Agents</a></li>
-        <li><a href="{{ $bookUrl }}">Book showing</a></li>
+        <li><a href="{{ $bookUrl }}" @if($isBook) class="is-active" aria-current="page" @endif>Book showing</a></li>
         <li><a href="{{ home_url('/contact') }}" @if($isContact) class="is-active" aria-current="page" @endif>Contact</a></li>
       </ul>
     </nav>
@@ -55,7 +56,7 @@
     <a href="{{ home_url('/guide') }}" @if($isGuide) class="is-active" aria-current="page" @endif>Guide</a>
     <a href="{{ home_url('/blog') }}" @if($isBlog) class="is-active" aria-current="page" @endif>Blog</a>
     <a href="{{ home_url('/agents') }}" @if($isAgents) class="is-active" aria-current="page" @endif>Agents</a>
-    <a href="{{ $bookUrl }}">Book showing</a>
+    <a href="{{ $bookUrl }}" @if($isBook) class="is-active" aria-current="page" @endif>Book showing</a>
     <a href="{{ home_url('/contact') }}" @if($isContact) class="is-active" aria-current="page" @endif>Contact</a>
     <a class="header-phone" href="tel:+15550100455">Call (555) 010-0455</a>
     <a class="btn btn-primary" href="{{ $bookUrl }}">Book a showing</a>

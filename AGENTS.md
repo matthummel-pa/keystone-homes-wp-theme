@@ -34,9 +34,11 @@ Then browse `http://localhost:8080/` (homepage), `/listings`, `/areas`, `/guide`
 - **You must build assets** (`npm run build`) or every page dies with a "Vite manifest not found" error. Build artifacts live in `public/build/` and are git-ignored.
 - **Blade template changes are cached by Acorn.** After editing `.blade.php` files, if you don't see changes, clear the cache: `wp acorn view:clear --path="$HOME/wp" --allow-root` (or `wp acorn optimize:clear`).
 - **Vite `base` path is hard-coded** in `vite.config.js` to `/wp-content/themes/keystone-homes/public/build/`. If the theme is installed under a different folder name, update it or built asset URLs will 404.
-- Concept pages are **slug-based Blade templates**: `front-page.blade.php` plus `page-listings`, `page-areas`, `page-guide`, `page-agents`, `page-contact`. Those only take effect if a published Page with that slug exists (`bin/setup-wp.sh` creates them). Shared chrome lives in `resources/views/sections/` and `partials/chat.blade.php`.
-- Homepage search, showing booking, value estimate, listing alerts, listing filters/map, and guide calculators are client-side demos. They do not email, calendar, or hit an MLS.
-- Listing inventory lives in `resources/js/listings.js` as sample data.
+- Every marketing page has a named Blade template (`Template Name`) plus slug fallback. `bin/setup-wp.sh` assigns `_wp_page_template` and seeds `listing` / `booking` / `agent` posts via `bin/seed-cpts.php`.
+- The block editor and patterns are disabled. Edit pages, listings, agents, bookings, and posts through custom-field metaboxes only.
+- Showing requests POST to `keystone/v1/bookings` and create Booking posts. Advance status from WP Admin → Bookings.
+- Listing inventory is the `listing` CPT (JS reads `window.KEYSTONE.listings`). Fallback sample data remains in `resources/js/listings.js`.
+- Shared chrome lives in `resources/views/sections/` and `partials/chat.blade.php`.
 
 ### Packaging & deploying the theme
 - This is a WordPress theme — it ships as an installable theme package to a WordPress host.

@@ -1,3 +1,7 @@
+{{--
+  Template Name: Home
+--}}
+
 @extends('layouts.app')
 
 @section('content')
@@ -34,12 +38,12 @@
     </figure>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="hero-brand">Keystone Homes &amp; Land</p>
-      <h1 id="hero-heading">Homes worth walking through.</h1>
-      <p class="hero-sub">Search sample listings, price a demo home, and book a fictional showing — built to show modern realtor UX.</p>
+      <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
+      <h1 id="hero-heading">{!! $copy['hero_title'] !!}</h1>
+      <p class="hero-sub">{!! $copy['hero_text'] !!}</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#search">Search samples</a>
-        <a class="btn btn-outline light" href="#book-showing">Book a showing</a>
+        <a class="btn btn-outline light" href="{{ home_url('/book/') }}">Book a showing</a>
       </div>
     </div>
   </section>
@@ -50,17 +54,17 @@
       <div class="intent-grid">
         <a class="intent-card" href="{{ home_url('/listings') }}">
           <strong>Buy</strong>
-          <span>Filter sample homes, farms and land. Map + grid views.</span>
+          <span>{!! $copy['intent_buy'] !!}</span>
           <em>Browse listings →</em>
         </a>
         <a class="intent-card" href="#value">
           <strong>Sell</strong>
-          <span>Run a demo value range, then request a sample CMA.</span>
+          <span>{!! $copy['intent_sell'] !!}</span>
           <em>Price a home →</em>
         </a>
-        <a class="intent-card" href="#book-showing">
+        <a class="intent-card" href="{{ home_url('/book/') }}">
           <strong>Tour</strong>
-          <span>Pick a sample address and reserve a showing slot.</span>
+          <span>{!! $copy['intent_tour'] !!}</span>
           <em>Book showing →</em>
         </a>
       </div>
@@ -70,9 +74,9 @@
   <section class="section search-band" id="search" aria-labelledby="search-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">Find</p>
-        <h2 id="search-heading">Search sample inventory</h2>
-        <p>Short filters. Fast scan. Every result is fictional demo data.</p>
+        <p class="eyebrow">{{ $copy['search_eyebrow'] }}</p>
+        <h2 id="search-heading">{!! $copy['search_title'] !!}</h2>
+        <p>{!! $copy['search_text'] !!}</p>
       </header>
       <form class="listing-search reveal" id="heroSearchForm" role="search" aria-label="Search sample listings">
         <div class="listing-search-row">
@@ -127,35 +131,27 @@
   <section class="section section-alt" aria-labelledby="spotlight-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">Spotlight</p>
-        <h2 id="spotlight-heading">Three sample homes to scan</h2>
-        <p>Price · beds · acres — then book a fictional walk-through.</p>
+        <p class="eyebrow">{{ $copy['spotlight_eyebrow'] }}</p>
+        <h2 id="spotlight-heading">{!! $copy['spotlight_title'] !!}</h2>
+        <p>{!! $copy['spotlight_text'] !!}</p>
       </header>
       <div class="listing-mini-grid reveal">
-        <a class="listing-mini" href="#book-showing" data-book-property="Willow Creek Farmhouse">
-          <img src="https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?auto=format&fit=crop&w=800&q=70" width="800" height="500" alt="White traditional farmhouse with picket fence" loading="lazy" decoding="async">
-          <div>
-            <strong>$649,000</strong>
-            <span>Willow Creek Farmhouse · 4 bd · 12 acres</span>
-            <span class="chip">Sample · Book showing</span>
-          </div>
-        </a>
-        <a class="listing-mini" href="#book-showing" data-book-property="Maple Street Cape">
-          <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=70" width="800" height="500" alt="Traditional Cape Cod style home with porch" loading="lazy" decoding="async">
-          <div>
-            <strong>$525,000</strong>
-            <span>Maple Street Cape · 4 bd · 8 acres</span>
-            <span class="chip">Sample · Book showing</span>
-          </div>
-        </a>
-        <a class="listing-mini" href="#book-showing" data-book-property="Harbor Lane Colonial">
-          <img src="https://images.unsplash.com/photo-1628624747186-a941c476b7ef?auto=format&fit=crop&w=800&q=70" width="800" height="500" alt="Traditional two-story suburban home" loading="lazy" decoding="async">
-          <div>
-            <strong>$349,900</strong>
-            <span>Harbor Lane Colonial · 3 bd · 0.6 acres</span>
-            <span class="chip">Sample · Book showing</span>
-          </div>
-        </a>
+        @forelse ($spotlightListings as $listing)
+          <a class="listing-mini" href="{{ home_url('/book/') }}?listing={{ $listing['id'] }}" data-listing-id="{{ $listing['id'] }}">
+            @if ($listing['image'])
+              <img src="{{ $listing['image'] }}" width="800" height="500" alt="" loading="lazy" decoding="async">
+            @else
+              <div class="listing-mini-photo" style="background:{{ $listing['grad'] }};height:150px"></div>
+            @endif
+            <div>
+              <strong>{{ \App\Support\Catalog::formatMoney((int) $listing['price']) }}</strong>
+              <span>{{ $listing['title'] }}@if ($listing['type'] !== 'land') · {{ $listing['beds'] }} bd@endif · {{ $listing['acres'] }} acres</span>
+              <span class="chip">Listing · Book showing</span>
+            </div>
+          </a>
+        @empty
+          <p class="empty-state">Add featured listings in WP Admin → Listings.</p>
+        @endforelse
       </div>
     </div>
   </section>
@@ -193,78 +189,13 @@
   <section class="section section-alt" id="book-showing" aria-labelledby="book-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">Appointments</p>
-        <h2 id="book-heading">Book a house showing</h2>
-        <p>Demo scheduler for touring sample homes. Nothing is sent to a real calendar.</p>
+        <p class="eyebrow">{{ $copy['book_eyebrow'] }}</p>
+        <h2 id="book-heading">{!! $copy['book_title'] !!}</h2>
+        <p>{!! $copy['book_text'] !!}</p>
       </header>
 
       <div class="booking-shell reveal">
-        <form id="showingForm" novalidate>
-          <div class="form-grid two">
-            <div class="field" style="grid-column:1/-1">
-              <label for="showProperty">Property to tour</label>
-              <select id="showProperty" name="property" required>
-                <option value="">Select a sample home…</option>
-                <option>Willow Creek Farmhouse — $649,000</option>
-                <option>Maple Street Cape — $525,000</option>
-                <option>Harbor Lane Colonial — $349,900</option>
-                <option>Mill Creek Acreage — $215,000</option>
-                <option>Oak Hollow Homestead — $795,000</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="showDate">Preferred date</label>
-              <input id="showDate" name="date" type="date" required>
-            </div>
-            <div class="field">
-              <label for="showType">Showing type</label>
-              <select id="showType" name="type">
-                <option>In-person tour</option>
-                <option>Private preview</option>
-                <option>Virtual walk-through</option>
-              </select>
-            </div>
-          </div>
-
-          <fieldset style="border:0;padding:0;margin:18px 0 0">
-            <legend class="field" style="margin-bottom:8px"><span style="font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-faint)">Available times</span></legend>
-            <div class="slot-grid" id="slotGrid" role="group" aria-label="Time slots">
-              <button type="button" class="slot" data-time="9:00 AM">9:00 AM</button>
-              <button type="button" class="slot" data-time="10:30 AM">10:30 AM</button>
-              <button type="button" class="slot" data-time="12:00 PM">12:00 PM</button>
-              <button type="button" class="slot" data-time="1:30 PM">1:30 PM</button>
-              <button type="button" class="slot" data-time="3:00 PM">3:00 PM</button>
-              <button type="button" class="slot" data-time="4:30 PM">4:30 PM</button>
-              <button type="button" class="slot" data-time="5:30 PM">5:30 PM</button>
-              <button type="button" class="slot" data-time="6:30 PM">6:30 PM</button>
-            </div>
-            <input type="hidden" id="showTime" name="time" value="" required>
-          </fieldset>
-
-          <div class="form-grid two" style="margin-top:18px">
-            <div class="field">
-              <label for="showName">Your name</label>
-              <input id="showName" name="name" type="text" autocomplete="name" placeholder="Alex Buyer" required>
-            </div>
-            <div class="field">
-              <label for="showPhone">Phone</label>
-              <input id="showPhone" name="phone" type="tel" autocomplete="tel" placeholder="(555) 010-0199" required>
-            </div>
-            <div class="field" style="grid-column:1/-1">
-              <label for="showEmail">Email</label>
-              <input id="showEmail" name="email" type="email" autocomplete="email" placeholder="you@@example.test" required>
-            </div>
-            <div class="field" style="grid-column:1/-1">
-              <label for="showNotes">Notes (optional)</label>
-              <textarea id="showNotes" name="notes" rows="3" placeholder="Gate code questions, pets, first-time buyer…"></textarea>
-            </div>
-            <div class="field" style="grid-column:1/-1">
-              <button type="submit" class="btn btn-primary" style="width:100%">Request showing</button>
-            </div>
-          </div>
-          <p class="form-note">Demo only — no emails, texts or calendar invites are sent.</p>
-          <div class="confirm-msg" id="showingConfirm" role="status" aria-live="polite"></div>
-        </form>
+        @include('partials.booking-form')
 
         <aside class="booking-summary" aria-label="Why agents use this">
           <strong>Built for realtor workflows</strong>
@@ -470,7 +401,7 @@
         <h2 id="cta-heading">Tour a sample home next.</h2>
         <p>Pick an address, choose a slot, and see how a modern realtor booking flow feels.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="#book-showing">Book a showing</a>
+          <a class="btn btn-primary" href="{{ home_url('/book/') }}">Book a showing</a>
           <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse samples</a>
         </div>
       </div>

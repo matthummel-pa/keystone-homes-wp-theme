@@ -91,7 +91,25 @@ seed_page "Areas" "areas"
 seed_page "Guide" "guide"
 seed_page "Agents" "agents"
 seed_page "Contact" "contact"
+seed_page "Book a showing" "book"
 seed_page "Blog" "blog"
+
+assign_template() {
+  local slug="$1" template="$2"
+  local id
+  id="$($WP post list --post_type=page --name="$slug" --field=ID --format=ids | awk '{print $1}')"
+  if [ -n "$id" ]; then
+    $WP post meta update "$id" _wp_page_template "$template" >/dev/null
+  fi
+}
+assign_template "home" "front-page.blade.php"
+assign_template "listings" "page-listings.blade.php"
+assign_template "areas" "page-areas.blade.php"
+assign_template "guide" "page-guide.blade.php"
+assign_template "agents" "page-agents.blade.php"
+assign_template "contact" "page-contact.blade.php"
+assign_template "book" "page-book.blade.php"
+assign_template "blog" "home.blade.php"
 
 HOME_ID="$($WP post list --post_type=page --name=home --field=ID --format=ids | awk '{print $1}')"
 BLOG_ID="$($WP post list --post_type=page --name=blog --field=ID --format=ids | awk '{print $1}')"
@@ -166,6 +184,10 @@ if [ -n "$hello_id" ]; then
   $WP post delete "$hello_id" --force >/dev/null
   echo "==> Removed default Hello world! post"
 fi
+
+echo "==> Seeding listings, agents, and sample bookings"
+$WP eval-file "$THEME_DIR/bin/seed-cpts.php" || true
+$WP rewrite flush --hard >/dev/null
 
 $WP acorn optimize:clear >/dev/null 2>&1 || true
 

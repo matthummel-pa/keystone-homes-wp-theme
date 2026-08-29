@@ -93,6 +93,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/block-editor/developers/themes/theme-support/#disabling-the-default-block-patterns
      */
     remove_theme_support('core-block-patterns');
+    remove_theme_support('block-template-parts');
+    remove_theme_support('widgets-block-editor');
 
     /**
      * Enable plugins to manage the document title.
@@ -143,6 +145,33 @@ add_action('after_setup_theme', function () {
  *
  * @return void
  */
+/**
+ * Classic custom-field editing only — no Gutenberg, patterns, or FSE.
+ */
+add_filter('use_block_editor_for_post', '__return_false', 100);
+add_filter('use_block_editor_for_post_type', '__return_false', 100);
+add_filter('use_widgets_block_editor', '__return_false');
+add_filter('should_load_remote_block_patterns', '__return_false');
+add_filter('should_load_block_editor_scripts_and_styles', '__return_false');
+
+add_action('init', function () {
+    foreach (['post', 'page', 'listing', 'booking', 'agent'] as $type) {
+        remove_post_type_support($type, 'editor');
+        remove_post_type_support($type, 'trackbacks');
+    }
+}, 100);
+
+add_action('init', function () {
+    if (! class_exists(\WP_Block_Patterns_Registry::class) || ! function_exists('unregister_block_pattern')) {
+        return;
+    }
+    foreach (\WP_Block_Patterns_Registry::get_instance()->get_all_registered() as $pattern) {
+        if (! empty($pattern['name'])) {
+            unregister_block_pattern($pattern['name']);
+        }
+    }
+}, 99);
+
 add_action('widgets_init', function () {
     $config = [
         'before_widget' => '<section class="widget %1$s %2$s">',

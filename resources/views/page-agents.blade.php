@@ -1,3 +1,7 @@
+{{--
+  Template Name: Agents
+--}}
+
 @extends('layouts.app')
 
 @section('content')
@@ -12,10 +16,10 @@
 <!-- ============================= PAGE HERO ============================= -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">Keystone Homes &amp; Land</p>
-    <p class="hero-eyebrow">Sample team</p>
-    <h1>Agents who know the <em>demo ground</em></h1>
-    <p>Placeholder profiles for layout. Contact numbers are fictional 555 lines.</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
+    <h1>{!! $copy['hero_title'] !!}</h1>
+    <p>{!! $copy['hero_text'] !!}</p>
   </div>
 </section>
 
@@ -23,33 +27,38 @@
   <!-- ============================= INTRO ============================= -->
   <section class="section">
     <div class="wrap prose reveal">
-      <h2>A small, local team by design</h2>
-      <p>Keystone Homes &amp; Land was founded in Sample Borough in 2009 around a simple idea: rural property deserves an agent who understands rural property. Farms, orchards, raw land and century homesteads all come with questions a typical residential agent rarely faces — perc tests, well yields, ag easements, clean-and-green rollback, floodplain, mineral rights. Our team lives with those questions every day, across Franklin, Menallen, Butler, Tyrone, Hamiltonban and Liberty Townships and the boroughs around them.</p>
+      <h2>{!! $copy['intro_title'] !!}</h2>
+      <p>{!! $copy['intro_text'] !!}</p>
     </div>
 
     <div class="wrap">
       <div class="agent-grid">
-        <div class="agent-card reveal">
-          <div class="agent-avatar" style="background:var(--accent);">DK</div>
-          <h4>Dale Kuhn</h4>
-          <p class="agent-title">Broker / Farm &amp; Land Specialist</p>
-          <p>28 years walking Sample County fence lines. If it has acreage, Dale has probably sold a piece of it — from Tyrone Township grain farms to Menallen orchards. He handles perc, easements and clean-and-green day in, day out.</p>
-          <a class="agent-phone" href="tel:+15550100461">(555) 010-0461</a>
-        </div>
-        <div class="agent-card reveal">
-          <div class="agent-avatar" style="background:var(--ink);">RM</div>
-          <h4>Renee Musselman</h4>
-          <p class="agent-title">Historic &amp; Residential Agent</p>
-          <p>Specializes in century farmhouses and in-town historic homes near the battlefield district. Renee knows stone foundations, log cores and the honest cost of restoring a Franklin Township homestead.</p>
-          <a class="agent-phone" href="tel:+15550100468">(555) 010-0468</a>
-        </div>
-        <div class="agent-card reveal">
-          <div class="agent-avatar" style="background:var(--success);">TB</div>
-          <h4>Trey Bushey</h4>
-          <p class="agent-title">Land &amp; New-Buyer Agent</p>
-          <p>Grew up on a Straban Township dairy farm — now helps first-time land buyers ask the right questions about wells, septic and access before they fall in love with a view.</p>
-          <a class="agent-phone" href="tel:+15550100473">(555) 010-0473</a>
-        </div>
+        @forelse ($catalogAgents as $agent)
+          <article class="agent-card reveal">
+            @if ($agent['photo'])
+              <img class="agent-avatar" src="{{ $agent['photo'] }}" alt="{{ $agent['name'] }}" width="76" height="76">
+            @else
+              <div class="agent-avatar" style="background:{{ $agent['avatar_color'] }};">{{ $agent['initials'] }}</div>
+            @endif
+            <h4><a href="{{ $agent['permalink'] }}">{{ $agent['name'] }}</a></h4>
+            <p class="agent-title">{{ $agent['job_title'] }}</p>
+            <p>{{ $agent['bio'] }}</p>
+            @if ($agent['specialties'])
+              <p class="agent-specs">{{ $agent['specialties'] }}</p>
+            @endif
+            @if ($agent['phone'])
+              <a class="agent-phone" href="{{ \App\Support\Catalog::telHref($agent['phone']) }}">{{ $agent['phone'] }}</a>
+            @endif
+            @if ($agent['email'])
+              <a class="agent-phone" href="mailto:{{ $agent['email'] }}">{{ $agent['email'] }}</a>
+            @endif
+            @if ($agent['license_number'])
+              <p class="agent-license">License {{ $agent['license_state'] }} {{ $agent['license_number'] }}</p>
+            @endif
+          </article>
+        @empty
+          <p class="empty-state">Add agents in WP Admin → Agents.</p>
+        @endforelse
       </div>
     </div>
   </section>
@@ -58,9 +67,9 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="section-head left reveal">
-        <p class="eyebrow">How We Work</p>
-        <h2>What working with Keystone looks like</h2>
-        <p>No pressure, no jargon, and a straight answer about the ground under your feet.</p>
+        <p class="eyebrow">{{ $copy['how_eyebrow'] }}</p>
+        <h2>{!! $copy['how_title'] !!}</h2>
+        <p>{!! $copy['how_text'] !!}</p>
       </div>
       <div class="why-list reveal" style="max-width:820px;">
         <div class="why-item">
@@ -83,10 +92,10 @@
   <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>Talk to a Keystone agent</h2>
-        <p>Reach the office at (555) 010-0455, or book a no-pressure call and we'll match you with the agent who knows your corner of Sample County best.</p>
+        <h2>{!! $copy['cta_title'] !!}</h2>
+        <p>{!! $copy['cta_text'] !!}</p>
         <div class="cta-actions">
-          <a class="btn btn-gold" href="{{ home_url('/#book-showing') }}">Book a showing</a>
+          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/contact') }}">Contact the Office</a>
         </div>
       </div>

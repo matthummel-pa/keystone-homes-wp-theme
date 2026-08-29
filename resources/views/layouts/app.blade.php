@@ -15,12 +15,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script>
-      window.KEYSTONE = {
-        homeUrl: @json(home_url('/')),
-        listingsUrl: @json(home_url('/listings')),
-        blogUrl: @json(home_url('/blog')),
-        bookUrl: @json(home_url('/#book-showing'))
-      };
+      window.KEYSTONE = @json($keystone);
     </script>
   </head>
 

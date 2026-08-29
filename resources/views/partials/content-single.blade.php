@@ -10,7 +10,7 @@
   <header class="page-hero">
     <div class="page-hero-inner">
       <p class="hero-brand">Keystone Homes &amp; Land</p>
-      <p class="hero-eyebrow">{{ get_the_category_list(' · ') ?: 'Notes' }} · {{ get_the_date() }}</p>
+      <p class="hero-eyebrow">{{ wp_strip_all_tags(get_the_category_list(' · ')) ?: 'Notes' }} · {{ get_the_date() }}</p>
       <h1 class="p-name">{!! $title !!}</h1>
       @if (has_excerpt())
         <p>{{ get_the_excerpt() }}</p>
@@ -34,7 +34,7 @@
         <h2>Tour a sample home next.</h2>
         <p>Pick an address, choose a slot, and see how a modern realtor booking flow feels.</p>
         <div class="cta-actions">
-          <a class="btn btn-primary" href="{{ home_url('/#book-showing') }}">Book a showing</a>
+          <a class="btn btn-primary" href="{{ home_url('/book/') }}">Book a showing</a>
           <a class="btn btn-outline light" href="{{ home_url('/blog') }}">All posts</a>
         </div>
       </div>

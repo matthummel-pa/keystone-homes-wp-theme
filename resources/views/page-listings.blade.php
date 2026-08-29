@@ -1,3 +1,7 @@
+{{--
+  Template Name: Listings
+--}}
+
 @extends('layouts.app')
 
 @section('content')
@@ -12,10 +16,10 @@
 <!-- ============================= PAGE HERO ============================= -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">Keystone Homes &amp; Land</p>
-    <p class="hero-eyebrow">Sample inventory</p>
-    <h1>Sample homes &amp; land <em>for demo tours</em></h1>
-    <p>Eight fictional properties for layout and filter testing. Switch grid or map — nothing here is a live MLS feed.</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
+    <h1>{!! $copy['hero_title'] !!}</h1>
+    <p>{!! $copy['hero_text'] !!}</p>
   </div>
 </section>
 
@@ -58,9 +62,13 @@
             <label for="fTownship">Township</label>
             <select id="fTownship">
               <option value="all">All townships</option>
-              <option value="Cumberland">Cumberland Twp</option>
-              <option value="Straban">Straban Twp</option>
-              <option value="Franklin">Franklin Twp</option>
+              @forelse ($catalogTownships as $town)
+                <option value="{{ $town }}">{{ $town }} Twp</option>
+              @empty
+                <option value="Cumberland">Cumberland Twp</option>
+                <option value="Straban">Straban Twp</option>
+                <option value="Franklin">Franklin Twp</option>
+              @endforelse
             </select>
           </div>
           <div class="field">
@@ -115,8 +123,8 @@
   <!-- ============================= LOCAL NOTE ============================= -->
   <section class="section">
     <div class="wrap prose reveal">
-      <h2>Buying rural property in Adams County</h2>
-      <p>Every parcel we list sits in a specific Adams County township, and that matters more than most buyers expect. Zoning, minimum lot sizes, agricultural-security areas and clean-and-green (Act 319) tax enrollment all change from Franklin Township to Cumberland to Straban. Before you fall in love with a view lot off Table Rock Road or a tillable stretch along Marsh Creek, it's worth understanding what you can actually build, farm or subdivide there.</p>
+      <h2>{!! $copy['intro_title'] !!}</h2>
+      <p>{!! $copy['intro_text'] !!}</p>
       <p>Keystone agents pull the township zoning, check well and septic feasibility, and flag easements or floodplain before you write an offer. If you're new to land, start with our <a href="{{ home_url('/guide') }}">Land Buyer's Guide</a> — it explains perc tests, well yields and land loans in plain language — then read up on the specific <a href="{{ home_url('/areas') }}">townships we serve</a>.</p>
     </div>
   </section>
@@ -125,10 +133,10 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>See a property you like?</h2>
-        <p>Book a walkthrough with a local Keystone agent, or run the numbers first with our land-loan and pre-qualification tools.</p>
+        <h2>{!! $copy['cta_title'] !!}</h2>
+        <p>{!! $copy['cta_text'] !!}</p>
         <div class="cta-actions">
-          <a class="btn btn-gold" href="{{ home_url('/#book-showing') }}">Book a showing</a>
+          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/guide') }}">Financing Tools</a>
         </div>
       </div>
@@ -191,7 +199,7 @@
       </div>
 
       <div style="display:flex;gap:12px;margin-top:22px;flex-wrap:wrap;">
-        <a href="{{ home_url('/#book-showing') }}" class="btn btn-primary" id="modalScheduleBtn">Request Info / Book a Tour</a>
+        <a href="{{ home_url('/book/') }}" class="btn btn-primary" id="modalScheduleBtn">Request Info / Book a Tour</a>
         <button type="button" class="btn btn-outline" id="modalSaveBtn">Save Listing</button>
       </div>
     </div>

@@ -29,7 +29,7 @@
         <h2 class="footer-heading" id="footer-links-heading">Links</h2>
         <ul class="footer-links">
           <li><a href="{{ home_url('/listings') }}">Listings</a></li>
-          <li><a href="{{ home_url('/#book-showing') }}">Book showing</a></li>
+          <li><a href="{{ home_url('/book/') }}">Book showing</a></li>
           <li><a href="{{ home_url('/guide') }}">Guide</a></li>
           <li><a href="{{ home_url('/blog') }}">Blog</a></li>
           <li><a href="{{ home_url('/agents') }}">Agents</a></li>

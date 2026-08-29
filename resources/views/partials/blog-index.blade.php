@@ -7,10 +7,10 @@
 
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">Keystone Homes &amp; Land</p>
-    <p class="hero-eyebrow">Guide</p>
-    <h1>Realtor notes you can publish</h1>
-    <p>Sample posts for showings, buyer checklists, and land vs home search — ready to adapt for local SEO.</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] ?? 'Keystone Homes &amp; Land' !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?? 'Guide' }}</p>
+    <h1>{!! $copy['hero_title'] ?? 'Realtor notes you can publish' !!}</h1>
+    <p>{!! $copy['hero_text'] ?? 'Sample posts for showings, buyer checklists, and land vs home search.' !!}</p>
   </div>
 </section>
 
@@ -47,7 +47,7 @@
       <h2>Ready to tour a sample home?</h2>
       <p>Use the demo showing scheduler on the homepage — property, date and time in one flow.</p>
       <div class="cta-actions">
-        <a class="btn btn-primary" href="{{ home_url('/#book-showing') }}">Book a showing</a>
+        <a class="btn btn-primary" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
         <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse samples</a>
       </div>
     </div>
