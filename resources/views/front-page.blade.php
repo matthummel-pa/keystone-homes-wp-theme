@@ -357,59 +357,90 @@
       <header class="section-head reveal">
         <p class="eyebrow">Samples</p>
         <h2 id="stories-heading">What clients might say</h2>
-        <p>Placeholder quotes for layout — not real reviews.</p>
+        <p>Placeholder quotes for layout — not real reviews. Sample names and photos only; nothing here is a live Google review.</p>
         <p class="testi-avg">4.9 sample average — demo scores, not a brokerage claim.</p>
       </header>
-      <div class="testi-grid reveal">
+      {{--
+        Future: replace [data-reviews-source="demo"] cards from a server-proxied Google Places
+        reviews payload (author_name, rating, text, profile_photo_url, relative_time_description).
+        Do not call Google from the browser. Theme stays static until an endpoint exists.
+        Do not emit Review / AggregateRating schema for these demo cards.
+      --}}
+      <div
+        id="client-reviews"
+        class="testi-grid reveal"
+        data-reviews-source="demo"
+        data-reviews-provider="google"
+      >
         @php
           $starD = 'M12 2.5l2.86 5.8 6.4.93-4.63 4.51 1.09 6.36L12 16.98 6.28 20.1l1.09-6.36L2.74 9.23l6.4-.93L12 2.5z';
+          $reviewCards = $reviews ?? [];
         @endphp
-        @foreach ([
-          [
-            'quote' => 'The showing scheduler made it obvious what to do next.',
-            'name' => 'Sample Buyer A',
-            'loc' => 'North Ridge · demo',
-            'rating' => 5.0,
-          ],
-          [
-            'quote' => 'Payment estimate beside the photo helped us compare homes faster.',
-            'name' => 'Sample Buyer B',
-            'loc' => 'Mill Creek · demo',
-            'rating' => 5.0,
-          ],
-          [
-            'quote' => 'We used the value tool before calling — then booked a walk-through.',
-            'name' => 'Sample Seller C',
-            'loc' => 'Oak Hollow · demo',
-            'rating' => 4.8,
-          ],
-        ] as $story)
+        @foreach ($reviewCards as $review)
           @php
-            $score = number_format($story['rating'], 1);
+            $rating = (float) ($review['rating'] ?? 0);
+            $score = number_format($rating, 1);
+            $author = $review['author_name'] ?? 'Sample reviewer';
+            $text = $review['text'] ?? '';
+            $photo = $review['profile_photo_url'] ?? '';
+            $relative = $review['relative_time_description'] ?? '';
+            $photoUrl = $photo !== '' ? \App\View\Composers\FrontPage::publicUri($photo) : '';
+            $initials = '';
+            foreach (array_slice(preg_split('/\s+/', trim($author)) ?: [], 0, 2) as $part) {
+                $initials .= strtoupper(substr($part, 0, 1));
+            }
           @endphp
-          <figure class="testi">
-            <blockquote><p>“{{ $story['quote'] }}”</p></blockquote>
-            <div class="testi-rating">
-              <span class="visually-hidden">Sample rating {{ $score }} out of 5</span>
-              <span class="testi-stars" aria-hidden="true">
-                @for ($i = 1; $i <= 5; $i++)
-                  @php $fill = max(0, min(1, $story['rating'] - ($i - 1))); @endphp
-                  <span class="testi-star{{ $fill >= 1 ? ' is-full' : ($fill > 0 ? ' is-partial' : ' is-empty') }}"@if ($fill > 0 && $fill < 1) style="--star-fill: {{ (int) round($fill * 100) }}%"@endif>
-                    <svg viewBox="0 0 24 24" focusable="false">
-                      <path class="testi-star-empty" d="{{ $starD }}"/>
-                      <path class="testi-star-fill" d="{{ $starD }}"/>
-                    </svg>
+          <article
+            class="review-card testi"
+            data-author-name="{{ $author }}"
+            data-rating="{{ $score }}"
+            data-relative-time="{{ $relative }}"
+            data-profile-photo-url="{{ $photoUrl }}"
+            data-text="{{ $text }}"
+          >
+            <div class="review-card__head">
+              @if ($photo !== '')
+                <img
+                  class="review-card__photo"
+                  src="@asset($photo)"
+                  alt="Portrait of {{ $author }}"
+                  width="52"
+                  height="52"
+                  loading="lazy"
+                  decoding="async"
+                >
+              @else
+                <span class="review-card__photo review-card__photo--fallback" aria-hidden="true">{{ $initials }}</span>
+              @endif
+              <div class="review-card__identity">
+                <p class="review-card__author testi-name">{{ $author }}</p>
+                @if (! empty($review['location']))
+                  <span class="review-card__loc testi-loc">{{ $review['location'] }}</span>
+                @endif
+                <div class="review-card__meta testi-rating">
+                  <span class="visually-hidden">Sample rating {{ $score }} out of 5</span>
+                  <span class="testi-stars" aria-hidden="true">
+                    @for ($i = 1; $i <= 5; $i++)
+                      @php $fill = max(0, min(1, $rating - ($i - 1))); @endphp
+                      <span class="testi-star{{ $fill >= 1 ? ' is-full' : ($fill > 0 ? ' is-partial' : ' is-empty') }}"@if ($fill > 0 && $fill < 1) style="--star-fill: {{ (int) round($fill * 100) }}%"@endif>
+                        <svg viewBox="0 0 24 24" focusable="false">
+                          <path class="testi-star-empty" d="{{ $starD }}"/>
+                          <path class="testi-star-fill" d="{{ $starD }}"/>
+                        </svg>
+                      </span>
+                    @endfor
                   </span>
-                @endfor
-              </span>
-              <span class="testi-score" aria-hidden="true">{{ $score }}</span>
+                  <span class="testi-score" aria-hidden="true">{{ $score }}</span>
+                  @if ($relative !== '')
+                    <span class="review-card__time">{{ $relative }}</span>
+                  @endif
+                </div>
+              </div>
             </div>
-            <figcaption>
-              <span class="testi-name">{{ $story['name'] }}</span>
-              <span class="testi-loc">{{ $story['loc'] }}</span>
-            </figcaption>
-          </figure>
+            <blockquote class="review-card__text"><p>“{{ $text }}”</p></blockquote>
+          </article>
         @endforeach
+        <p class="reviews-empty" hidden>Reviews will appear here once the Google feed is connected.</p>
       </div>
     </div>
   </section>
