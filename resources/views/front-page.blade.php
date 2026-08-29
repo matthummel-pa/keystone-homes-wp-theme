@@ -106,7 +106,7 @@
         <a class="intent-card" href="{{ home_url('/listings') }}">
           <span class="intent-kicker">Buyers</span>
           <h3>{!! $copy['intent_buy_title'] ?: 'Buy a home, farm, or land' !!}</h3>
-          <p>{!! $copy['intent_buy_lead'] ?: ($copy['intent_buy'] ?: 'Filter sample homes, working farms, and acreage by township — North Ridge, Mill Creek, and Oak Hollow. Scan price, beds, and usable acres on a grid or map.') !!}</p>
+          <p>{!! $copy['intent_buy_lead'] ?: ($copy['intent_buy'] ?? 'Filter sample homes, working farms, and acreage by township — North Ridge, Mill Creek, and Oak Hollow. Scan price, beds, and usable acres on a grid or map.') !!}</p>
           <ul>
             <li>{!! $copy['intent_buy_b1'] ?: 'Homes, farms, land, and historic houses' !!}</li>
             <li>{!! $copy['intent_buy_b2'] ?: 'Township, price, and acreage filters' !!}</li>
@@ -116,7 +116,7 @@
         <a class="intent-card" href="#value">
           <span class="intent-kicker">Sellers</span>
           <h3>{!! $copy['intent_sell_title'] ?: 'Price a place before you list' !!}</h3>
-          <p>{!! $copy['intent_sell_lead'] ?: ($copy['intent_sell'] ?: 'Run a demo value range for a fictional address, then see how a CMA request would feel. Not an appraisal — a clear next step for sellers comparing options.') !!}</p>
+          <p>{!! $copy['intent_sell_lead'] ?: ($copy['intent_sell'] ?? 'Run a demo value range for a fictional address, then see how a CMA request would feel. Not an appraisal — a clear next step for sellers comparing options.') !!}</p>
           <ul>
             <li>{!! $copy['intent_sell_b1'] ?: 'Instant sample value range' !!}</li>
             <li>{!! $copy['intent_sell_b2'] ?: 'Alert path for new matches' !!}</li>
@@ -126,7 +126,7 @@
         <a class="intent-card" href="{{ home_url('/book/') }}">
           <span class="intent-kicker">Tours</span>
           <h3>{!! $copy['intent_tour_title'] ?: 'Walk it with an agent' !!}</h3>
-          <p>{!! $copy['intent_tour_lead'] ?: ($copy['intent_tour'] ?: 'Pick a sample listing, a date, and a time. The request is saved for the listing agent. Rural Adams County showings often mean a lane, a well, and boots.') !!}</p>
+          <p>{!! $copy['intent_tour_lead'] ?: ($copy['intent_tour'] ?? 'Pick a sample listing, a date, and a time. The request is saved for the listing agent. Rural Adams County showings often mean a lane, a well, and boots.') !!}</p>
           <ul>
             <li>{!! $copy['intent_tour_b1'] ?: 'Date and time-slot picker' !!}</li>
             <li>{!! $copy['intent_tour_b2'] ?: 'Paired with the listing agent' !!}</li>
