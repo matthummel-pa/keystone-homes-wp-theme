@@ -197,8 +197,8 @@
         <h2 id="how-heading">From filter to a walk on the ground</h2>
         <p>Same path a working Adams County buyer uses — township first, then a time slot. This demo stops at on-page confirmation.</p>
       </header>
-      <div class="step-grid reveal">
-        <div class="step">
+      <ol class="step-grid reveal">
+        <li class="step">
           <figure class="step-photo">
             <img
               src="{{ get_theme_file_uri('public/images/tour-step-township.jpg') }}"
@@ -209,10 +209,12 @@
               decoding="async"
             >
           </figure>
-          <h3>Filter by township</h3>
-          <p>Type, price, and acres matter — but zoning and Clean and Green sit on the township. Start there so you are not comparing Oak Hollow land to a North Ridge house.</p>
-        </div>
-        <div class="step">
+          <div class="step-copy">
+            <h3>Filter by township</h3>
+            <p>Type, price, and acres matter — but zoning and Clean and Green sit on the township. Start there so you are not comparing Oak Hollow land to a North Ridge house.</p>
+          </div>
+        </li>
+        <li class="step">
           <figure class="step-photo">
             <img
               src="{{ get_theme_file_uri('public/images/tour-step-card.jpg') }}"
@@ -223,10 +225,12 @@
               decoding="async"
             >
           </figure>
-          <h3>Read the card twice</h3>
-          <p>Price and beds on a house. Usable acres, access, and utilities on land. Spotlight homes below jump you into a showing with the listing already selected.</p>
-        </div>
-        <div class="step">
+          <div class="step-copy">
+            <h3>Read the card twice</h3>
+            <p>Price and beds on a house. Usable acres, access, and utilities on land. Spotlight homes below jump you into a showing with the listing already selected.</p>
+          </div>
+        </li>
+        <li class="step">
           <figure class="step-photo">
             <img
               src="{{ get_theme_file_uri('public/images/tour-step-book.jpg') }}"
@@ -237,10 +241,12 @@
               decoding="async"
             >
           </figure>
-          <h3>Book a slot</h3>
-          <p>Pick a date and a time. Evening slots exist because farm showings often happen after commute. Wear boots; mention a well or perc question in the notes.</p>
-        </div>
-        <div class="step">
+          <div class="step-copy">
+            <h3>Book a slot</h3>
+            <p>Pick a date and a time. Evening slots exist because farm showings often happen after commute. Wear boots; mention a well or perc question in the notes.</p>
+          </div>
+        </li>
+        <li class="step">
           <figure class="step-photo">
             <img
               src="{{ get_theme_file_uri('public/images/tour-step-walk.jpg') }}"
@@ -251,10 +257,12 @@
               decoding="async"
             >
           </figure>
-          <h3>Walk it</h3>
-          <p>On a live site the agent confirms. Here you get an on-page receipt and a Booking in Requested status — no email, no calendar invite.</p>
-        </div>
-      </div>
+          <div class="step-copy">
+            <h3>Walk it</h3>
+            <p>On a live site the agent confirms. Here you get an on-page receipt and a Booking in Requested status — no email, no calendar invite.</p>
+          </div>
+        </li>
+      </ol>
     </div>
   </section>
 
