@@ -35,7 +35,7 @@ class App extends Composer
             'spotlightListings' => Catalog::featuredListings(3),
             'catalogAgents' => Catalog::agents(),
             'catalogTownships' => Catalog::townships(),
-            'selectedListingId' => (int) ($_GET['listing'] ?? 0),
+            'selectedListingId' => (int) ($_GET['listing_id'] ?? $_GET['listing'] ?? 0),
             'showingTypes' => Catalog::SHOWING_TYPES,
             'areaCards' => PageCopy::areaCards(),
             'keystone' => [

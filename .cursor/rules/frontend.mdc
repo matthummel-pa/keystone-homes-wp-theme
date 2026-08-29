@@ -35,6 +35,8 @@ Fonts are Customizer-driven (`app/customizer.php`, default Inter). Do not hard-c
 
 `window.KEYSTONE` is composed in `app/View/Composers/App.php` (listings URL, REST, nonce, listing payload). Prefer that over hardcoded `/listings`.
 
+Booking preselect is `?listing_id=` (not `?listing=` — that 404s `/book/` against the listing CPT).
+
 ## UI changes
 
 Verify the changed route in a browser (or local `wp server` at `:8080`) — homepage, listings, and any page that shares the same composer data. Check desktop and a ~390px viewport when layout changes.

@@ -127,7 +127,7 @@
       </header>
       <div class="listing-mini-grid reveal">
         @forelse ($spotlightListings as $listing)
-          <a class="listing-mini" href="{{ home_url('/book/') }}?listing={{ $listing['id'] }}" data-listing-id="{{ $listing['id'] }}">
+          <a class="listing-mini" href="{{ home_url('/book/') }}?listing_id={{ $listing['id'] }}" data-listing-id="{{ $listing['id'] }}">
             @if ($listing['image'])
               <img src="{{ $listing['image'] }}" width="800" height="500" alt="" loading="lazy" decoding="async">
             @else

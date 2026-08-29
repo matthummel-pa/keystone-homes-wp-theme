@@ -12,7 +12,8 @@ Stack: Blade + Acorn + Tailwind v4 + Vite 8. Design CSS is `resources/css/keysto
 
 Registered in `app/post-types.php`. Constants: `Catalog::LISTING` (`listing`), `Catalog::BOOKING` (`booking`), `Catalog::AGENT` (`agent`). ThemeForest / WP.org would move this to a companion plugin — see `marketplace.mdc`. Do not extract CPTs unless Matt asks to package for a store.
 
-- Rewrites: `/listing/{slug}/`, `/agent/{slug}/`. Bookings are not public.
+- Rewrites: `/listing/{slug}/`, `/agent/{slug}/`. Bookings are not public. CPT `query_var` is false so `?listing=` is not a WP query var.
+- Booking preselect: `?listing_id={post_id}` (composer also reads legacy `?listing=`). Never use `?listing=` as a public query — it 404s `/book/` when the CPT query var is registered.
 - All custom fields go through `Catalog::getMeta` / `updateMeta` → keys are `ks_{field}`.
 - Featured flag: store `1` or omit. Do **not** store `"0"` and treat it as false — `(bool) '0'` is true in PHP. `featuredListings()` uses `! empty($item['featured'])`.
 - Listing agent is `ks_listing_agent` (agent post ID), not a slug.
