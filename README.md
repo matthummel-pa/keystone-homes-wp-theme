@@ -1,6 +1,6 @@
-# Keystone Homes & Land
+# Keystone Real Estate
 
-Sage 11 WordPress theme for **Keystone Homes & Land** — a land-and-farms realtor concept by [Ridges & Valleys Studio](https://ridgesandvalleys.com).
+Sage 11 WordPress theme for **Keystone Real Estate** — a land-and-farms realtor concept by [Ridges & Valleys Studio](https://ridgesandvalleys.com).
 
 Ported from the static concept:
 

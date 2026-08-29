@@ -13,7 +13,7 @@
       </ol>
     </nav>
     @include('partials.page-hero', [
-      'heroBrand' => $copy['hero_brand'] ?? 'Keystone Homes &amp; Land',
+      'heroBrand' => $copy['hero_brand'] ?? 'Keystone Real Estate',
       'heroEyebrow' => $copy['hero_eyebrow'] ?? '',
       'heroTitle' => $copy['hero_title'] ?: get_the_title(),
       'heroText' => $copy['hero_text'] ?? '',

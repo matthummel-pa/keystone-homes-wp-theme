@@ -1,5 +1,5 @@
 /* =========================================================================
-   Keystone Homes & Land — design system
+   Keystone Real Estate — design system
    Direction: editorial realtor (ink + stone + forest), sans-serif type,
    photographic product. Fonts are Customizer-driven (default: Inter).
    ========================================================================= */
@@ -388,28 +388,61 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 .hero-eyebrow::before{content:"";width:28px;height:2px;background:var(--accent);}
 
 /* ============================= INTENT + SEARCH ============================= */
-.intent-band{padding:28px 0 0;}
+.intent-band{padding:64px 0 72px;}
+@media(min-width:720px){.intent-band{padding:80px 0 88px;}}
+.intent-head{margin-bottom:28px;}
+@media(min-width:720px){.intent-head{max-width:54ch;margin-bottom:36px;}}
 .intent-grid{
-  display:grid;gap:12px;grid-template-columns:1fr;
+  display:grid;gap:16px;grid-template-columns:1fr;
 }
-@media(min-width:720px){.intent-grid{grid-template-columns:repeat(3,1fr);}}
+@media(min-width:720px){.intent-grid{grid-template-columns:repeat(3,1fr);align-items:stretch;}}
 .intent-card{
-  display:flex;flex-direction:column;gap:8px;padding:22px 22px 20px;
+  display:flex;flex-direction:column;gap:10px;padding:26px 24px 22px;
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
-  text-decoration:none;color:inherit;
+  text-decoration:none;color:inherit;min-height:100%;
+  box-shadow:var(--shadow);
   transition:border-color .2s,transform .25s var(--ease),box-shadow .25s;
 }
-.intent-card:hover{
-  border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow);
+.intent-card:hover,.intent-card:focus-visible{
+  border-color:var(--accent);transform:translateY(-3px);box-shadow:var(--shadow-lg);
 }
-.intent-card strong{
-  font-family:var(--ff-display);font-size:1.45rem;letter-spacing:-.02em;
+.intent-card .intent-kicker{
+  margin:0;font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--accent);font-weight:500;line-height:1.3;
 }
-.intent-card span{color:var(--ink-soft);font-size:.92rem;}
-.intent-card em{
+.intent-card h3{
+  font-family:var(--ff-display);font-size:1.35rem;letter-spacing:-.03em;
+  margin:0;line-height:1.2;
+}
+.intent-card p{margin:0;color:var(--ink-soft);font-size:.95rem;line-height:1.55;}
+.intent-card ul{margin:4px 0 0;display:grid;gap:6px;}
+.intent-card li{
+  color:var(--ink-soft);font-size:.88rem;padding-left:14px;position:relative;line-height:1.45;
+}
+.intent-card li::before{
+  content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:1px;background:var(--accent);
+}
+.intent-go{
   font-style:normal;font-family:var(--ff-mono);font-size:.7rem;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--accent);margin-top:8px;
+  text-transform:uppercase;color:var(--accent);margin-top:auto;padding-top:12px;font-weight:600;
 }
+.intent-notes{margin-top:28px;}
+.intent-notes-label{
+  margin:0 0 12px;font-family:var(--ff-mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--ink-faint);font-weight:500;
+}
+.intent-notes-grid{
+  display:grid;gap:12px;grid-template-columns:1fr;
+}
+@media(min-width:720px){.intent-notes-grid{grid-template-columns:repeat(3,1fr);}}
+.intent-note{
+  padding:18px 18px 16px;background:var(--paper-2);border:1px solid var(--line);
+  border-radius:var(--radius-sm);display:grid;gap:6px;min-height:100%;
+}
+.intent-note strong{
+  font-family:var(--ff-display);font-size:1.05rem;letter-spacing:-.02em;margin:0;line-height:1.25;
+}
+.intent-note p{margin:0;color:var(--ink-soft);font-size:.9rem;line-height:1.5;}
 
 .search-band{padding-top:40px;}
 .listing-search,.hero-search{
@@ -1080,25 +1113,98 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 }
 
 .step-grid{
-  display:grid;gap:0;grid-template-columns:1fr;counter-reset:step;
-  border-top:1px solid var(--line);
-}
-@media(min-width:800px){.step-grid{grid-template-columns:repeat(4,1fr);}}
-.step{
-  padding:24px 18px;border-bottom:1px solid var(--line);
-  counter-increment:step;
+  display:grid;gap:14px;grid-template-columns:1fr;counter-reset:step;
+  list-style:none;margin:0;padding:0;
 }
 @media(min-width:800px){
-  .step{border-bottom:none;border-right:1px solid var(--line);}
-  .step:last-child{border-right:none;}
+  .step-grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;}
 }
+.step{
+  position:relative;
+  counter-increment:step;
+  display:grid;
+  grid-template-columns:minmax(104px,32%) 1fr;
+  column-gap:14px;
+  row-gap:2px;
+  align-items:start;
+  min-width:0;
+  margin:0;
+  padding:12px;
+  background:var(--white);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-rest, 0 6px 22px rgba(12,12,12,.06));
+  transition:transform .2s var(--ease),box-shadow .2s var(--ease);
+}
+.step:hover{
+  transform:translateY(-4px);
+  box-shadow:var(--shadow-lg);
+}
+/* Number is forest type — never a top/left accent bar. */
 .step::before{
   content:counter(step, decimal-leading-zero);
-  display:block;font-family:var(--ff-mono);font-size:.75rem;letter-spacing:.14em;
-  color:var(--accent);margin-bottom:12px;
+  display:block;
+  grid-column:2;
+  font-family:var(--ff-display);
+  font-size:clamp(1.45rem,4.2vw,1.85rem);
+  font-weight:var(--fw-heading);
+  letter-spacing:-.04em;
+  line-height:1;
+  color:var(--accent);
+  margin:2px 0 6px;
 }
-.step h3{font-size:1.2rem;margin:0 0 8px;}
-.step p{margin:0;color:var(--ink-soft);font-size:.9rem;}
+.step-photo{
+  grid-column:1;grid-row:1 / -1;
+  margin:0;
+  height:112px;
+  align-self:stretch;
+  border-radius:var(--radius-sm);
+  overflow:hidden;
+  background:var(--paper-2);
+}
+.step-photo img{
+  width:100%;height:100%;object-fit:cover;object-position:center;display:block;
+}
+.step-copy{
+  grid-column:2;
+  min-width:0;
+  display:grid;
+  gap:6px;
+}
+.step h3{
+  font-size:1.12rem;margin:0;letter-spacing:-.02em;line-height:1.2;
+}
+.step p{
+  margin:0;color:var(--ink-soft);font-size:.86rem;line-height:1.5;
+}
+@media(min-width:800px){
+  .step{
+    display:flex;
+    flex-direction:column;
+    padding:16px 16px 20px;
+    min-height:100%;
+  }
+  .step-photo{
+    order:1;
+    width:100%;
+    height:148px;
+    margin:0 0 14px;
+  }
+  .step::before{
+    order:2;
+    margin:0 0 8px;
+    font-size:clamp(1.7rem,2vw,2.05rem);
+  }
+  .step-copy{
+    order:3;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    flex:1;
+  }
+  .step h3{font-size:1.22rem;}
+  .step p{font-size:.88rem;margin-top:auto;}
+}
 
 .seo-block{
   display:grid;gap:28px;grid-template-columns:1fr;
@@ -1107,6 +1213,12 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 .seo-block h2{font-size:clamp(1.8rem,3.5vw,2.4rem);}
 .seo-block .prose-tight p{color:var(--ink-soft);font-size:1rem;margin:0 0 .85em;}
 .seo-block .prose-tight h3{font-size:1.15rem;margin:1.1em 0 .35em;}
+.help-links{display:flex;flex-wrap:wrap;gap:12px 20px;margin:18px 0 0;}
+.help-links a{
+  font-weight:700;color:var(--accent);text-decoration:none;font-size:.95rem;
+}
+.help-links a:hover{text-decoration:underline;}
+.scan-card a{color:var(--accent);font-weight:600;}
 
 /* Showing appointment booking */
 .booking-shell{

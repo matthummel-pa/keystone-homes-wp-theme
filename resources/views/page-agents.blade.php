@@ -15,7 +15,7 @@
 
 <!-- ============================= PAGE HERO ============================= -->
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample team',
   'heroTitle' => $copy['hero_title'] ?: 'Agents who know the <em>demo ground</em>',
   'heroText' => $copy['hero_text'] ?: 'A small local team for farms, orchards, and century houses. Profiles are Agent posts. Phones are fictional 555 lines.',

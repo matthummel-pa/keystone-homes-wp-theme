@@ -9,7 +9,7 @@
   </nav>
 
   @include('partials.page-hero', [
-    'heroBrand' => 'Keystone Homes &amp; Land',
+    'heroBrand' => 'Keystone Real Estate',
     'heroEyebrow' => '404',
     'heroTitle' => 'That page isn’t here.',
     'heroText' => 'The link may be old, or this demo page hasn’t been created yet. Use the paths below — they match the concept site.',

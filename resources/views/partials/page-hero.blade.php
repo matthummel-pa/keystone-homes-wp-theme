@@ -1,5 +1,5 @@
 @php
-  $heroBrand = $heroBrand ?? ($copy['hero_brand'] ?? 'Keystone Homes & Land');
+  $heroBrand = $heroBrand ?? ($copy['hero_brand'] ?? 'Keystone Real Estate');
   $heroEyebrow = $heroEyebrow ?? ($copy['hero_eyebrow'] ?? '');
   $heroTitle = $heroTitle ?? ($copy['hero_title'] ?? '');
   $heroText = $heroText ?? ($copy['hero_text'] ?? '');
