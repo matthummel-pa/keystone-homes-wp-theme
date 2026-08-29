@@ -215,7 +215,7 @@ input,select,textarea{font-family:inherit;font-size:1rem;}
 .hamburger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
 
 .nav-backdrop{
-  position:fixed;inset:0;z-index:940;
+  position:fixed;inset:0;z-index:1700;
   background:rgba(20,18,16,.46);
   opacity:0;pointer-events:none;
   transition:opacity .28s var(--ease);
@@ -224,7 +224,7 @@ input,select,textarea{font-family:inherit;font-size:1rem;}
 .nav-backdrop[hidden]{display:none;}
 
 .mobile-nav{
-  position:fixed;top:0;right:0;z-index:960;
+  position:fixed;top:0;right:0;z-index:1720;
   width:min(400px,92vw);height:100dvh;
   display:flex;flex-direction:column;
   background:var(--white);
@@ -292,6 +292,9 @@ input,select,textarea{font-family:inherit;font-size:1rem;}
   .main-nav a{font-size:.86rem;padding:8px 11px;}
 }
 body.nav-open,body.chat-open{overflow:hidden;}
+body.nav-open .chat-fab,
+body.nav-open .concept-badge,
+body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 @media(min-width:1100px){
   body.nav-open{overflow:auto;}
 }
