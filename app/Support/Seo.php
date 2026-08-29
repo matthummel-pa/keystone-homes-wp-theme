@@ -203,6 +203,11 @@ class Seo
             $graph[] = $crumbs;
         }
 
+        $faq = self::faqPage();
+        if ($faq !== []) {
+            $graph[] = $faq;
+        }
+
         if (is_singular('post')) {
             $graph[] = [
                 '@context' => 'https://schema.org',
@@ -240,6 +245,35 @@ class Seo
         }
 
         return $graph;
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    public static function faqPage(): array
+    {
+        $faqs = Faqs::forContext();
+        if ($faqs === []) {
+            return [];
+        }
+
+        $entities = [];
+        foreach ($faqs as $faq) {
+            $entities[] = [
+                '@type' => 'Question',
+                'name' => self::plain($faq['q']),
+                'acceptedAnswer' => [
+                    '@type' => 'Answer',
+                    'text' => self::plain($faq['a']),
+                ],
+            ];
+        }
+
+        return [
+            '@context' => 'https://schema.org',
+            '@type' => 'FAQPage',
+            'mainEntity' => $entities,
+        ];
     }
 
     /**

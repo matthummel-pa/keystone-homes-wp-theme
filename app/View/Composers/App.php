@@ -3,6 +3,7 @@
 namespace App\View\Composers;
 
 use App\Support\Catalog;
+use App\Support\Faqs;
 use App\Support\HeroImage;
 use App\Support\PageCopy;
 use Roots\Acorn\View\Composer;
@@ -40,6 +41,7 @@ class App extends Composer
             'selectedListingId' => (int) ($_GET['listing_id'] ?? $_GET['listing'] ?? 0),
             'showingTypes' => Catalog::SHOWING_TYPES,
             'areaCards' => PageCopy::areaCards(),
+            'faqs' => Faqs::forContext(),
             'keystone' => [
                 'homeUrl' => home_url('/'),
                 'listingsUrl' => home_url('/listings'),
