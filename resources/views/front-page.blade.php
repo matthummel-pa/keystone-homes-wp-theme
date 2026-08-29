@@ -139,7 +139,7 @@
         <div class="intent-notes-grid">
           <article class="intent-note">
             <strong>{!! $copy['intent_note_1_title'] ?: 'Township first' !!}</strong>
-            <p>{!! $copy['intent_note_1_text'] ?: 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Pick an area before you fall for a photo.' !!}</p>
+            <p>{!! $copy['intent_note_1_text'] ?: 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Choose a township before you compare photos.' !!}</p>
           </article>
           <article class="intent-note">
             <strong>{!! $copy['intent_note_2_title'] ?: 'Water and waste' !!}</strong>
