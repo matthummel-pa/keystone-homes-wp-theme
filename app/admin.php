@@ -23,6 +23,35 @@ add_action('save_post_'.Catalog::BOOKING, __NAMESPACE__.'\\save_booking_metabox'
 add_action('save_post_page', __NAMESPACE__.'\\save_page_metabox');
 add_action('save_post_post', __NAMESPACE__.'\\save_post_metabox');
 
+add_action('admin_enqueue_scripts', function (string $hook): void {
+    if (! in_array($hook, ['post.php', 'post-new.php'], true)) {
+        return;
+    }
+    wp_enqueue_media();
+    $path = get_theme_file_path('resources/js/admin-media.js');
+    $uri = get_theme_file_uri('resources/js/admin-media.js');
+    wp_enqueue_script(
+        'keystone-admin-media',
+        $uri,
+        [],
+        is_readable($path) ? (string) filemtime($path) : '1',
+        true
+    );
+});
+
+add_action('admin_head', function (): void {
+    $screen = get_current_screen();
+    if (! $screen || ! in_array($screen->base, ['post'], true)) {
+        return;
+    }
+    echo '<style>
+      .ks-media-field{display:flex;gap:12px;align-items:flex-start;flex-wrap:wrap;max-width:42rem}
+      .ks-media-preview{width:120px;height:80px;object-fit:cover;border-radius:8px;border:1px solid #d6d0c6;background:#f5f4f1}
+      .ks-media-actions{display:flex;flex-direction:column;gap:8px;min-width:16rem}
+      .ks-media-url{width:100%}
+    </style>';
+});
+
 function listing_metabox(\WP_Post $post): void
 {
     wp_nonce_field('ks_listing_meta', 'ks_listing_nonce');
@@ -162,6 +191,51 @@ function booking_metabox(\WP_Post $post): void
     <?php
 }
 
+function render_media_field(string $name, string $url, int $attachmentId, string $buttonLabel): void
+{
+    $preview = $url;
+    if ($preview === '' && $attachmentId > 0) {
+        $fromId = wp_get_attachment_image_url($attachmentId, 'medium');
+        $preview = is_string($fromId) ? $fromId : '';
+        if ($url === '' && $preview !== '') {
+            $full = wp_get_attachment_image_url($attachmentId, 'full');
+            $url = is_string($full) ? $full : $preview;
+        }
+    }
+    $has = $preview !== '';
+    echo '<div class="ks-media-field">';
+    echo '<img class="ks-media-preview" alt=""'.($has ? ' src="'.esc_url($preview).'"' : ' hidden').'>';
+    echo '<div class="ks-media-actions">';
+    echo '<input type="hidden" class="ks-media-id" name="'.esc_attr($name.'_id').'" value="'.($attachmentId > 0 ? (int) $attachmentId : '').'">';
+    echo '<input class="ks-media-url large-text" type="url" name="'.esc_attr($name).'" id="'.esc_attr($name).'" value="'.esc_attr($url).'" placeholder="https://">';
+    echo '<p>';
+    echo '<button type="button" class="button ks-media-select" data-title="'.esc_attr($buttonLabel).'" data-button="'.esc_attr__('Use image', 'sage').'">'.esc_html($buttonLabel).'</button> ';
+    echo '<button type="button" class="button-link ks-media-remove"'.($has ? '' : ' hidden').'>'.esc_html__('Remove', 'sage').'</button>';
+    echo '</p>';
+    echo '<p class="description">'.esc_html__('Upload or pick from the media library. A URL is kept for existing Unsplash / hotlinked photos.', 'sage').'</p>';
+    echo '</div></div>';
+}
+
+function save_image_field(int $postId, string $field, bool $syncThumbnail = true): void
+{
+    if (! isset($_POST['ks_'.$field]) && ! isset($_POST['ks_'.$field.'_id'])) {
+        return;
+    }
+    $url = isset($_POST['ks_'.$field])
+        ? esc_url_raw(trim((string) wp_unslash($_POST['ks_'.$field])))
+        : '';
+    $id = isset($_POST['ks_'.$field.'_id']) ? (int) $_POST['ks_'.$field.'_id'] : 0;
+    Catalog::updateMeta($postId, $field, $url);
+    if (! $syncThumbnail) {
+        return;
+    }
+    if ($id > 0 && get_post_type($id) === 'attachment') {
+        set_post_thumbnail($postId, $id);
+    } elseif ($url === '') {
+        delete_post_thumbnail($postId);
+    }
+}
+
 /**
  * @param  list<string>  $fields
  * @param  array<string, string>  $labels
@@ -172,8 +246,14 @@ function render_meta_inputs(int $postId, array $fields, array $labels): void
         $value = Catalog::getMeta($postId, $field, '');
         $label = $labels[$field] ?? $field;
         $id = 'ks_'.$field;
-        $isLong = in_array($field, ['notes', 'specialties', 'service_areas', 'photo_grad', 'image', 'virtual_tour', 'description', 'bio', 'body'], true);
+        $isLong = in_array($field, ['notes', 'specialties', 'service_areas', 'photo_grad', 'virtual_tour', 'description', 'bio', 'body'], true);
         echo '<tr><th><label for="'.esc_attr($id).'">'.esc_html($label).'</label></th><td>';
+        if ($field === 'image') {
+            render_media_field($id, (string) $value, (int) get_post_thumbnail_id($postId), __('Select photo', 'sage'));
+            echo '</td></tr>';
+
+            continue;
+        }
         if ($isLong) {
             echo '<textarea class="large-text" rows="3" name="'.esc_attr($id).'" id="'.esc_attr($id).'">'.esc_textarea((string) $value).'</textarea>';
         } else {
@@ -202,11 +282,16 @@ function save_listing_metabox(int $postId): void
 
             continue;
         }
+        if ($field === 'image') {
+            save_image_field($postId, 'image');
+
+            continue;
+        }
         if (! isset($_POST['ks_'.$field])) {
             continue;
         }
         $raw = wp_unslash($_POST['ks_'.$field]);
-        $value = in_array($field, ['photo_grad', 'image', 'virtual_tour', 'description'], true)
+        $value = in_array($field, ['photo_grad', 'virtual_tour', 'description'], true)
             ? sanitize_textarea_field((string) $raw)
             : sanitize_text_field((string) $raw);
         Catalog::updateMeta($postId, $field, $value);
@@ -226,6 +311,11 @@ function save_agent_metabox(int $postId): void
     }
 
     foreach (array_keys(Catalog::agentFields()) as $field) {
+        if ($field === 'image') {
+            save_image_field($postId, 'image');
+
+            continue;
+        }
         if (! isset($_POST['ks_'.$field])) {
             continue;
         }
@@ -399,7 +489,15 @@ function render_page_inputs(int $postId, array $schema): void
         $value = $stored !== '' ? $stored : html_entity_decode(str_replace('&amp;', '&', $def['default'] ?? ''), ENT_QUOTES);
         $id = 'ks_'.$field;
         echo '<tr><th><label for="'.esc_attr($id).'">'.esc_html($def['label']).'</label></th><td>';
-        if (($def['type'] ?? 'text') === 'textarea') {
+        if (($def['type'] ?? 'text') === 'image') {
+            $attachmentId = (int) get_post_thumbnail_id($postId);
+            if ($attachmentId === 0 && $stored !== '') {
+                $attachmentId = ctype_digit((string) $stored)
+                    ? (int) $stored
+                    : (int) attachment_url_to_postid((string) $stored);
+            }
+            render_media_field($id, (string) $stored, $attachmentId, __('Select image', 'sage'));
+        } elseif (($def['type'] ?? 'text') === 'textarea') {
             echo '<textarea class="large-text" rows="4" name="'.esc_attr($id).'" id="'.esc_attr($id).'">'.esc_textarea((string) $value).'</textarea>';
         } else {
             echo '<input class="large-text" type="text" name="'.esc_attr($id).'" id="'.esc_attr($id).'" value="'.esc_attr((string) $value).'">';
@@ -421,13 +519,21 @@ function save_page_metabox(int $postId): void
     }
 
     foreach (PageCopy::schemaForPost($postId) as $field => $def) {
+        if (($def['type'] ?? 'text') === 'image') {
+            save_image_field($postId, $field, $field === 'hero_image');
+
+            continue;
+        }
         if (! isset($_POST['ks_'.$field])) {
             continue;
         }
         $raw = wp_unslash($_POST['ks_'.$field]);
-        $value = ($def['type'] ?? 'text') === 'textarea'
+        $type = $def['type'] ?? 'text';
+        $value = $type === 'textarea'
             ? wp_kses_post((string) $raw)
-            : wp_kses((string) $raw, ['em' => [], 'strong' => []]);
+            : ($type === 'url'
+                ? esc_url_raw((string) $raw)
+                : wp_kses((string) $raw, ['em' => [], 'strong' => []]));
         Catalog::updateMeta($postId, $field, $value);
     }
 }
@@ -436,8 +542,13 @@ function post_metabox(\WP_Post $post): void
 {
     wp_nonce_field('ks_post_meta', 'ks_post_nonce');
     $body = (string) Catalog::getMeta($post->ID, 'body', $post->post_content);
+    $thumbId = (int) get_post_thumbnail_id($post->ID);
+    $thumbUrl = $thumbId ? (string) wp_get_attachment_image_url($thumbId, 'full') : '';
     echo '<p>'.esc_html__('Blog posts use fields only. Paste HTML in the body if you need links or lists.', 'sage').'</p>';
     echo '<table class="form-table" role="presentation">';
+    echo '<tr><th><label for="ks_image">'.esc_html__('Featured image', 'sage').'</label></th><td>';
+    render_media_field('ks_image', $thumbUrl, $thumbId, __('Select image', 'sage'));
+    echo '</td></tr>';
     echo '<tr><th><label for="ks_body">'.esc_html__('Article body', 'sage').'</label></th>';
     echo '<td><textarea class="large-text" rows="16" name="ks_body" id="ks_body">'.esc_textarea($body).'</textarea></td></tr>';
     echo '</table>';
@@ -454,6 +565,8 @@ function save_post_metabox(int $postId): void
     if (! current_user_can('edit_post', $postId)) {
         return;
     }
+
+    save_image_field($postId, 'image');
 
     $body = isset($_POST['ks_body']) ? wp_kses_post((string) wp_unslash($_POST['ks_body'])) : '';
     Catalog::updateMeta($postId, 'body', $body);

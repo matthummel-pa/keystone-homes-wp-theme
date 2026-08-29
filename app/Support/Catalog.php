@@ -65,7 +65,7 @@ class Catalog
             'lat' => 'Map pin top %',
             'lng' => 'Map pin left %',
             'photo_grad' => 'Card gradient (fallback)',
-            'image' => 'Photo URL (if no featured image)',
+            'image' => 'Listing photo',
             'virtual_tour' => 'Virtual tour URL',
             'property_tax' => 'Annual taxes',
             'hoa' => 'HOA / dues',
@@ -83,6 +83,7 @@ class Catalog
     public static function agentFields(): array
     {
         return [
+            'image' => 'Photo',
             'job_title' => 'Title / designation',
             'license_number' => 'License number',
             'license_state' => 'License state',
@@ -145,6 +146,29 @@ class Catalog
     public static function updateMeta(int $postId, string $field, mixed $value): void
     {
         update_post_meta($postId, self::metaKey($field), $value);
+    }
+
+    /**
+     * Featured image, then ks_image as attachment ID or URL.
+     */
+    public static function imageUrl(int $postId, string $size = 'large'): string
+    {
+        $thumb = get_the_post_thumbnail_url($postId, $size);
+        if (is_string($thumb) && $thumb !== '') {
+            return $thumb;
+        }
+
+        $raw = trim((string) self::getMeta($postId, 'image', ''));
+        if ($raw === '') {
+            return '';
+        }
+        if (ctype_digit($raw)) {
+            $url = wp_get_attachment_image_url((int) $raw, $size);
+
+            return is_string($url) ? $url : '';
+        }
+
+        return $raw;
     }
 
     /**
@@ -261,7 +285,7 @@ class Catalog
     public static function listingToArray(WP_Post $post): array
     {
         $type = (string) self::getMeta($post->ID, 'type', 'home');
-        $image = get_the_post_thumbnail_url($post, 'large') ?: (string) self::getMeta($post->ID, 'image', '');
+        $image = self::imageUrl($post->ID, 'large');
 
         return [
             'id' => (int) $post->ID,
@@ -298,7 +322,7 @@ class Catalog
 
     public static function agentToArray(WP_Post $post): array
     {
-        $photo = get_the_post_thumbnail_url($post, 'medium');
+        $photo = self::imageUrl($post->ID, 'medium');
 
         return [
             'id' => (int) $post->ID,
