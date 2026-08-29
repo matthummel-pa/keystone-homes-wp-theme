@@ -28,7 +28,7 @@
               <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=70" width="900" height="600" alt="" loading="lazy" decoding="async">
             @endif
             <div class="blog-card-body">
-              <span class="blog-meta">{{ get_the_category_list(' · ') ?: 'Notes' }} · {{ ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200) }} min</span>
+                <span class="blog-meta">{{ wp_strip_all_tags(get_the_category_list(' · ')) ?: 'Notes' }} · {{ max(1, (int) ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200)) }} min</span>
               <h2>{!! get_the_title() !!}</h2>
               <p>{{ get_the_excerpt() }}</p>
               <span class="teaser-link">Read post →</span>

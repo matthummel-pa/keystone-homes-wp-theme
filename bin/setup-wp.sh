@@ -139,6 +139,28 @@ if [ -d "$SEED" ]; then
     "$SEED/land-vs-home-search.html"
 fi
 
+ensure_term() {
+  local name="$1" slug="$2"
+  if ! $WP term get category "$slug" --by=slug --field=term_id >/dev/null 2>&1; then
+    $WP term create category "$name" --slug="$slug" >/dev/null
+  fi
+}
+ensure_term "Showings" "showings"
+ensure_term "Buyers" "buyers"
+ensure_term "Search" "search"
+
+assign_cat() {
+  local slug="$1" cat="$2"
+  local id
+  id="$($WP post list --post_type=post --name="$slug" --field=ID --format=ids | awk '{print $1}')"
+  if [ -n "$id" ]; then
+    $WP post term set "$id" category "$cat" --by=slug >/dev/null
+  fi
+}
+assign_cat "book-a-home-showing" "showings"
+assign_cat "first-time-buyer-checklist" "buyers"
+assign_cat "land-vs-home-search" "search"
+
 $WP acorn optimize:clear >/dev/null 2>&1 || true
 
 echo ""
