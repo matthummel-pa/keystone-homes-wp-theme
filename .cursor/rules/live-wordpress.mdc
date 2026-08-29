@@ -1,0 +1,32 @@
+---
+description: Seeding or editing the live Keystone WordPress site (WPVibe, WP-CLI emulator, host cache)
+alwaysApply: false
+---
+
+# Live WordPress
+
+Use when Matt asks to add/fix **content** on https://keystonehomes.ridgesandvalleys.com/ — not when the task is theme-only.
+
+## What the live site is
+
+- Theme slug `keystone-homes`. Connected via WPVibe (`vibe-ai`).
+- Content is already seeded: Home `#12`, marketing pages, 8 listings, 3 agents, 3 posts. Front page = page 12, posts page = Blog.
+- Installing a new theme zip does **not** recreate posts. Missing fields → empty headings unless Blade has `?:` fallbacks.
+
+## Writes (WPVibe)
+
+- `run_wp_cli` is an emulator, not real WP-CLI. Run **one** command. No `&&`, pipes, or `eval` / `eval-file`.
+- `post meta update <id> <key> <value>` — one key per call. Keys are `ks_*`.
+- `post update` does **not** support `--meta_input`.
+- REST `POST /wp/v2/listing/{id}` ignores unregistered `meta`. Use CLI meta updates.
+- Avoid `&` in CLI strings when a write fails (site title, Unsplash query strings). Use `and` or a URL without query params.
+- `post delete` without `--force` trash is fine; `--force` needs browser approval.
+- Do not install plugins unless Matt asks.
+
+## After content writes
+
+The host nginx proxy (`x-proxy-cache`) often keeps a stale `/`. Inner URLs (`/listings/`, `/book/`) usually miss. Confirm with `/?fresh=1` or ask Matt to purge Site Tools → Speed → Caching. `wp cache purge` only clears the WP object cache, not that proxy.
+
+## Local vs live
+
+Local throwaway install: `bin/setup-wp.sh` then `wp server --path="$HOME/wp" --host=0.0.0.0 --port=8080 --allow-root` (admin / admin123). Theme is symlinked from this repo.

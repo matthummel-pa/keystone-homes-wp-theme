@@ -2,6 +2,17 @@
 
 A [Roots Sage 11](https://roots.io/sage/) theme (Blade + Tailwind CSS v4 + Vite 8, powered by Acorn) for a land-and-farms realtor concept. The visual design is ported from the static concept in [`matthummel-pa/realtor-keystone-homes-and-land-theme`](https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme).
 
+## Project rules (Cursor Agent)
+
+Versioned Cursor rules live in [`.cursor/rules/`](.cursor/rules/) as `.mdc` files:
+
+- `keystone-project.mdc` — always on (fiction-only, theme vs live content)
+- `theme-sage.mdc` — PHP / Blade (CPTs, PageCopy, query pitfalls)
+- `frontend.mdc` — CSS / JS / views (tokens, Vite, homepage search)
+- `live-wordpress.mdc` — when editing the live WP site via WPVibe
+
+Edit those files when an agent repeats a mistake. Use `.mdc` only (plain `.md` in that folder is ignored).
+
 ## Cursor Cloud specific instructions
 
 ### What this repo is

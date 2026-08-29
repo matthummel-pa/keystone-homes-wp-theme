@@ -1,0 +1,37 @@
+---
+description: Keystone CSS tokens, homepage search, and front-end JS
+globs: resources/css/**/*.css,resources/js/**/*.js,resources/views/**/*.blade.php
+alwaysApply: false
+---
+
+# Front end
+
+## Visual system
+
+Tokens live in `resources/css/keystone.css` `:root`:
+
+- Ink `#141210`, paper `#f5f4f1`, accent forest `#1f6b4a`
+- No default “SaaS blue.” Keep charcoal + stone + forest.
+
+Shared chrome: `resources/views/sections/` (header/footer) and `partials/chat.blade.php`. Header nav is hardcoded URLs, not a WP menu.
+
+Fonts are Customizer-driven (`app/customizer.php`, default Inter). Do not hard-code a display serif unless Matt asks.
+
+## Assets
+
+`npm run build` is required. Manifest is `public/build/` and **gitignored**. Missing manifest = white-screen “Vite manifest not found.”
+
+`vite.config.js` `base` is `/wp-content/themes/keystone-homes/public/build/`. If the folder slug changes, update `base` and rebuild.
+
+## Homepage search
+
+- Form id: `heroSearchForm` (`resources/js/home.js`)
+- Query keys: `type`, `price`, `acreage`, `township`
+- Listings page reads those params in `resources/js/listings.js` (`fType`, `fPrice`, …)
+- Township option **values** are CPT meta (`Cumberland`, `Straban`, `Franklin`); labels are concept towns (North Ridge, Mill Creek, Oak Hollow)
+
+`window.KEYSTONE` is composed in `app/View/Composers/App.php` (listings URL, REST, nonce, listing payload). Prefer that over hardcoded `/listings`.
+
+## UI changes
+
+Verify the changed route in a browser (or local `wp server` at `:8080`) — homepage, listings, and any page that shares the same composer data. Check desktop and a ~390px viewport when layout changes.
