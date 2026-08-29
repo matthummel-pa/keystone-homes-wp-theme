@@ -3,6 +3,6 @@
 @source "../**/*.blade.php";
 @source "../**/*.js";
 
-/* Keystone Homes & Land — concept design system.
+/* Keystone Real Estate — concept design system.
    Ported from realtor-keystone-homes-and-land-theme. */
 @import "./keystone.css";

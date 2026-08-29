@@ -20,7 +20,7 @@
             <path d="M24 10 L40 22 V38 H8 V22 Z" fill="#141210"/>
             <rect x="20" y="26" width="8" height="12" fill="#fffcf7"/>
           </svg>
-          <strong>Keystone Homes &amp; Land</strong>
+          <strong>Keystone Real Estate</strong>
         </div>
         <p>Concept realtor site by Ridges &amp; Valleys Studio. Fiction only — not a licensed brokerage or live MLS feed.</p>
       </div>

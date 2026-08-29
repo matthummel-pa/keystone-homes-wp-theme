@@ -9,7 +9,7 @@
   {
     "@@context":"https://schema.org",
     "@@type":"RealEstateAgent",
-    "name":"Keystone Homes & Land (Concept Demo)",
+    "name":"Keystone Real Estate (Concept Demo)",
     "description":"Fictional concept brokerage for design demonstration. Not a live MLS or licensed office.",
     "url":"{{ home_url('/') }}",
     "telephone":"+1-555-010-0455",
@@ -94,25 +94,62 @@
     </div>
   </section>
 
-  <!-- Intent grid -->
-  <section class="intent-band" id="search" aria-label="Choose a path">
+  <!-- Buy / sell / tour -->
+  <section class="intent-band" id="search" aria-labelledby="intent-heading">
     <div class="wrap">
-      <div class="intent-grid">
+      <header class="section-head left intent-head reveal">
+        <p class="eyebrow">{{ $copy['intent_eyebrow'] ?: 'Start here' }}</p>
+        <h2 id="intent-heading">{!! $copy['intent_title'] ?: 'Buy, sell, or walk a place in Adams County' !!}</h2>
+        <p>{!! $copy['intent_text'] ?: 'Farms, historic houses, and acreage need different next steps. Scan sample inventory, run a value range, or book a showing — stay on the page, no brochure maze.' !!}</p>
+      </header>
+      <div class="intent-grid reveal">
         <a class="intent-card" href="{{ home_url('/listings') }}">
-          <strong>Buy</strong>
-          <span>{!! $copy['intent_buy'] ?: 'Filter sample homes, farms and land. Map + grid views.' !!}</span>
-          <em>Browse listings →</em>
+          <span class="intent-kicker">Buyers</span>
+          <h3>{!! $copy['intent_buy_title'] ?: 'Buy a home, farm, or land' !!}</h3>
+          <p>{!! $copy['intent_buy_lead'] ?: ($copy['intent_buy'] ?? 'Filter sample homes, working farms, and acreage by township — North Ridge, Mill Creek, and Oak Hollow. Scan price, beds, and usable acres on a grid or map.') !!}</p>
+          <ul>
+            <li>{!! $copy['intent_buy_b1'] ?: 'Homes, farms, land, and historic houses' !!}</li>
+            <li>{!! $copy['intent_buy_b2'] ?: 'Township, price, and acreage filters' !!}</li>
+          </ul>
+          <span class="intent-go">{{ $copy['intent_buy_cta'] ?: 'Browse listings' }} →</span>
         </a>
         <a class="intent-card" href="#value">
-          <strong>Sell</strong>
-          <span>{!! $copy['intent_sell'] ?: 'Run a demo value range, then request a sample CMA.' !!}</span>
-          <em>Price a home →</em>
+          <span class="intent-kicker">Sellers</span>
+          <h3>{!! $copy['intent_sell_title'] ?: 'Price a place before you list' !!}</h3>
+          <p>{!! $copy['intent_sell_lead'] ?: ($copy['intent_sell'] ?: 'Run a demo value range for a fictional address, then see how a CMA request would feel. Not an appraisal — a clear next step for sellers comparing options.') !!}</p>
+          <ul>
+            <li>{!! $copy['intent_sell_b1'] ?: 'Instant sample value range' !!}</li>
+            <li>{!! $copy['intent_sell_b2'] ?: 'Alert path for new matches' !!}</li>
+          </ul>
+          <span class="intent-go">{{ $copy['intent_sell_cta'] ?: 'Estimate value' }} →</span>
         </a>
         <a class="intent-card" href="{{ home_url('/book/') }}">
-          <strong>Tour</strong>
-          <span>{!! $copy['intent_tour'] ?: 'Pick a sample address and reserve a showing slot.' !!}</span>
-          <em>Book showing →</em>
+          <span class="intent-kicker">Tours</span>
+          <h3>{!! $copy['intent_tour_title'] ?: 'Walk it with an agent' !!}</h3>
+          <p>{!! $copy['intent_tour_lead'] ?: ($copy['intent_tour'] ?? 'Pick a sample listing, a date, and a time. The request is saved for the listing agent. Rural Adams County showings often mean a lane, a well, and boots.') !!}</p>
+          <ul>
+            <li>{!! $copy['intent_tour_b1'] ?: 'Date and time-slot picker' !!}</li>
+            <li>{!! $copy['intent_tour_b2'] ?: 'Paired with the listing agent' !!}</li>
+          </ul>
+          <span class="intent-go">{{ $copy['intent_tour_cta'] ?: 'Book a showing' }} →</span>
         </a>
+      </div>
+      <div class="intent-notes reveal">
+        <p class="intent-notes-label">{{ $copy['intent_notes_label'] ?: 'Good to know before you filter' }}</p>
+        <div class="intent-notes-grid">
+          <article class="intent-note">
+            <strong>{!! $copy['intent_note_1_title'] ?: 'Township first' !!}</strong>
+            <p>{!! $copy['intent_note_1_text'] ?: 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Pick an area before you fall for a photo.' !!}</p>
+          </article>
+          <article class="intent-note">
+            <strong>{!! $copy['intent_note_2_title'] ?: 'Water and waste' !!}</strong>
+            <p>{!! $copy['intent_note_2_text'] ?: 'Rural parcels often mean a well and a perc test, not municipal hookups. Walk that before you write an offer.' !!}</p>
+          </article>
+          <article class="intent-note">
+            <strong>{!! $copy['intent_note_3_title'] ?: 'Showings are muddy' !!}</strong>
+            <p>{!! $copy['intent_note_3_text'] ?: 'Lanes, gates, and wet ground. Wear boots. Mention pets or if you are new to land — the agent can prep.' !!}</p>
+          </article>
+        </div>
       </div>
     </div>
   </section>
@@ -155,27 +192,27 @@
   <!-- How it works -->
   <section class="section" aria-labelledby="how-heading">
     <div class="wrap">
-      <header class="section-head reveal">
-        <p class="eyebrow">Workflow</p>
-        <h2 id="how-heading">From search to showing</h2>
-        <p>Four scannable steps agents and buyers both understand.</p>
+      <header class="section-head left reveal">
+        <p class="eyebrow">How a tour starts</p>
+        <h2 id="how-heading">From filter to a walk on the ground</h2>
+        <p>Same path a working Adams County buyer uses — township first, then a time slot. This demo stops at on-page confirmation.</p>
       </header>
       <div class="step-grid reveal">
         <div class="step">
-          <h3>Search</h3>
-          <p>Filter sample homes by type, price and acreage.</p>
+          <h3>Filter by township</h3>
+          <p>Type, price, and acres matter — but zoning and Clean and Green sit on the township. Start there so you are not comparing Oak Hollow land to a North Ridge house.</p>
         </div>
         <div class="step">
-          <h3>Shortlist</h3>
-          <p>Save favorites or pick a spotlight address.</p>
+          <h3>Read the card twice</h3>
+          <p>Price and beds on a house. Usable acres, access, and utilities on land. Spotlight homes below jump you into a showing with the listing already selected.</p>
         </div>
         <div class="step">
-          <h3>Book</h3>
-          <p>Choose a demo date and time slot to tour.</p>
+          <h3>Book a slot</h3>
+          <p>Pick a date and a time. Evening slots exist because farm showings often happen after commute. Wear boots; mention a well or perc question in the notes.</p>
         </div>
         <div class="step">
-          <h3>Confirm</h3>
-          <p>See an on-page confirmation — no real emails.</p>
+          <h3>Walk it</h3>
+          <p>On a live site the agent confirms. Here you get an on-page receipt and a Booking in Requested status — no email, no calendar invite.</p>
         </div>
       </div>
     </div>
@@ -205,12 +242,28 @@
         <h2 id="market-heading">Pulse at a glance</h2>
         <p>Illustrative numbers for layout — not live market data.</p>
       </header>
-      <div class="market-grid reveal">
-        <div class="market-stat"><strong>$398k</strong><span>Median (demo)</span><em>↑ Sample trend</em></div>
-        <div class="market-stat"><strong>32</strong><span>Days on market</span><em class="down">↓ Demo delta</em></div>
-        <div class="market-stat"><strong>1.6</strong><span>Months inventory</span><em>Sample signal</em></div>
-        <div class="market-stat"><strong>95%</strong><span>List-to-sale</span><em>Illustrative</em></div>
-      </div>
+      <ul class="market-grid reveal">
+        <li class="market-stat">
+          <strong>$398k</strong>
+          <span>Median (demo)</span>
+          <em class="up"><span class="market-stat-dir" aria-hidden="true">↑</span> Sample trend</em>
+        </li>
+        <li class="market-stat">
+          <strong>32</strong>
+          <span>Days on market</span>
+          <em class="down"><span class="market-stat-dir" aria-hidden="true">↓</span> Demo delta</em>
+        </li>
+        <li class="market-stat">
+          <strong>1.6</strong>
+          <span>Months inventory</span>
+          <em class="flat">Sample signal</em>
+        </li>
+        <li class="market-stat">
+          <strong>95%</strong>
+          <span>List-to-sale</span>
+          <em class="flat">Illustrative</em>
+        </li>
+      </ul>
     </div>
   </section>
 
@@ -228,7 +281,7 @@
           <form class="form-grid two" id="valueForm">
             <div class="field" style="grid-column:1/-1">
               <label for="vAddress">Street address</label>
-              <input id="vAddress" type="text" placeholder="100 Concept Way" required>
+              <input id="vAddress" type="text" autocomplete="street-address" placeholder="100 Concept Way" required>
             </div>
             <div class="field">
               <label for="vBeds">Beds</label>
@@ -250,7 +303,7 @@
           <form class="form-grid" id="alertForm">
             <div class="field">
               <label for="aEmail">Email</label>
-              <input id="aEmail" type="email" placeholder="you@@example.test" required>
+              <input id="aEmail" type="email" autocomplete="email" placeholder="you@@example.test" required>
             </div>
             <div class="field">
               <label for="aType">Looking for</label>
@@ -268,60 +321,65 @@
     </div>
   </section>
 
-  <!-- SEO + scannable service grids -->
+  <!-- Buyer help — local, scannable -->
   <section class="section" aria-labelledby="seo-heading">
     <div class="wrap">
       <div class="seo-block reveal">
         <div>
-          <p class="eyebrow">Guide</p>
-          <h2 id="seo-heading">Buying a home or land parcel with a local agent</h2>
+          <p class="eyebrow">Adams County notes</p>
+          <h2 id="seo-heading">Buying a farm, house, or land parcel here</h2>
           <div class="prose-tight">
-            <p>Buyers comparing homes, farms and acreage need clearer next steps than a long brochure. A strong realtor site pairs scannable inventory with tools that move people forward: filters, payment estimates, home-value ranges and showing appointments.</p>
-            <h3>Homes for sale vs. land for sale</h3>
-            <p>House shoppers usually start with beds, baths and commute. Land buyers start with access, utilities, perc potential and usable acreage. Separate paths — Buy, Sell, Tour — keep both audiences from bouncing.</p>
-            <h3>Why showing bookings matter for SEO and conversion</h3>
-            <p>Search visitors who can request a tour without leaving the page send a clear intent signal. Even in a concept demo, appointment UX shows how agents capture high-intent leads on listing and homepage templates.</p>
+            <p>Rural Adams County is fruit-belt and farm country: orchards on the ridges, tillable ground in the valleys, and century houses that still sit on a well. A useful realtor page tells you what to scan before you fall for a photo.</p>
+            <h3>If you are shopping a house</h3>
+            <p>Lead with type, price, beds, and commute. Acreage is extra unless you want a shop, a barn, or hobby ground. Still ask about well-or-public-water and how you reach the lane in January.</p>
+            <h3>If you are shopping land</h3>
+            <p>Lead with usable acres, legal access, and septic. A parcel without a perc answer is not the same product as a turnkey farmhouse. Price-per-acre helps you compare North Ridge to Oak Hollow without mixing house inventory in.</p>
           </div>
+          <p class="help-links">
+            <a href="{{ home_url('/guide') }}">Buyer tools →</a>
+            <a href="{{ home_url('/areas') }}">Township reads →</a>
+            <a href="{{ home_url('/listings') }}">Sample inventory →</a>
+          </p>
         </div>
         <div class="scan-grid cols-2">
           <article class="scan-card">
-            <span class="num">Buyers</span>
-            <h3>What they scan for</h3>
+            <span class="num">Houses</span>
+            <h3>Scan this first</h3>
             <ul>
-              <li>Price and payment estimate</li>
-              <li>Beds / baths / acreage</li>
-              <li>Map location</li>
-              <li>Next open house or tour slot</li>
+              <li>Price, beds, and baths</li>
+              <li>Township and commute</li>
+              <li>Well vs public water</li>
+              <li>A showing slot that fits</li>
             </ul>
           </article>
           <article class="scan-card">
-            <span class="num">Sellers</span>
-            <h3>What they need fast</h3>
+            <span class="num">Land</span>
+            <h3>Scan this first</h3>
             <ul>
-              <li>Home value range</li>
-              <li>Days-on-market context</li>
-              <li>CMA / agent call</li>
-              <li>Prep checklist</li>
+              <li>Usable acres, not just deed acres</li>
+              <li>Perc / septic status</li>
+              <li>Road frontage and driveway</li>
+              <li>Clean and Green / rollback risk</li>
             </ul>
           </article>
           <article class="scan-card">
-            <span class="num">Agents</span>
-            <h3>Tools that save time</h3>
+            <span class="num">Farms</span>
+            <h3>Walk the working pieces</h3>
             <ul>
-              <li>Showing scheduler</li>
-              <li>Listing alerts</li>
-              <li>Shared market pulse</li>
-              <li>Guided FAQ content</li>
+              <li>Barn, shop, and outbuilding use</li>
+              <li>Tillable vs wooded split</li>
+              <li>Livestock or orchard notes</li>
+              <li>Who holds the water rights story</li>
             </ul>
           </article>
           <article class="scan-card">
-            <span class="num">SEO</span>
-            <h3>Content that ranks</h3>
+            <span class="num">Next</span>
+            <h3>Keep moving</h3>
             <ul>
-              <li>Clear H1 / H2 structure</li>
-              <li>HowTo + FAQ schema</li>
-              <li>Area + property-type pages</li>
-              <li>Fast LCP hero image</li>
+              <li>Filter the sample grid</li>
+              <li>Read a township page</li>
+              <li>Run the demo value tool</li>
+              <li>Book a fictional walk-through</li>
             </ul>
           </article>
         </div>
@@ -329,28 +387,11 @@
     </div>
   </section>
 
-  <section class="section section-alt" aria-labelledby="faq-heading">
-    <div class="wrap">
-      <header class="section-head reveal">
-        <p class="eyebrow">FAQ</p>
-        <h2 id="faq-heading">Quick answers</h2>
-      </header>
-      <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>Is this a real brokerage?</summary>
-          <p>No. Keystone Homes &amp; Land here is a design concept. Contact details, listings and market stats are fictional.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Does “Book a showing” schedule a real tour?</summary>
-          <p>It only demonstrates appointment UX. Submitting the form shows an on-page confirmation — nothing is emailed or calendared.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can agents reuse these patterns?</summary>
-          <p>Yes. Search, spotlight grids, showing slots, value estimates and alerts are common high-performing realtor site modules.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+  @include('partials.faq-list', [
+    'faqTitle' => 'Questions before you filter',
+    'faqText' => 'Short answers for house shoppers and acreage buyers. Sample listings stay fictional.',
+    'faqHeadClass' => 'left',
+  ])
 
   <section class="section" aria-labelledby="stories-heading">
     <div class="wrap">
