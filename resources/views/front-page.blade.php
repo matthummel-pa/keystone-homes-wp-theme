@@ -13,7 +13,7 @@
     "description":"Fictional concept brokerage for design demonstration. Not a live MLS or licensed office.",
     "url":"{{ home_url('/') }}",
     "telephone":"+1-555-010-0455",
-    "email":"hello@@keystone-concept.test",
+    "email":@json('hello@keystone-concept.test'),
     "priceRange":"$$",
     "address":{
       "@@type":"PostalAddress",
@@ -38,9 +38,9 @@
     </figure>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
-      <h1 id="hero-heading">{!! $copy['hero_title'] !!}</h1>
-      <p class="hero-sub">{!! $copy['hero_text'] !!}</p>
+      <p class="hero-brand">{!! $copy['hero_brand'] ?? 'Keystone Homes &amp; Land' !!}</p>
+      <h1 id="hero-heading">{!! $copy['hero_title'] ?: 'Homes worth walking through.' !!}</h1>
+      <p class="hero-sub">{!! $copy['hero_text'] ?: 'Search sample listings, price a demo home, and book a fictional showing — built to show modern realtor UX.' !!}</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#search">Search samples</a>
         <a class="btn btn-outline light" href="{{ home_url('/book/') }}">Book a showing</a>
@@ -54,17 +54,17 @@
       <div class="intent-grid">
         <a class="intent-card" href="{{ home_url('/listings') }}">
           <strong>Buy</strong>
-          <span>{!! $copy['intent_buy'] !!}</span>
+          <span>{!! $copy['intent_buy'] ?: 'Filter sample homes, farms and land. Map + grid views.' !!}</span>
           <em>Browse listings →</em>
         </a>
         <a class="intent-card" href="#value">
           <strong>Sell</strong>
-          <span>{!! $copy['intent_sell'] !!}</span>
+          <span>{!! $copy['intent_sell'] ?: 'Run a demo value range, then request a sample CMA.' !!}</span>
           <em>Price a home →</em>
         </a>
         <a class="intent-card" href="{{ home_url('/book/') }}">
           <strong>Tour</strong>
-          <span>{!! $copy['intent_tour'] !!}</span>
+          <span>{!! $copy['intent_tour'] ?: 'Pick a sample address and reserve a showing slot.' !!}</span>
           <em>Book showing →</em>
         </a>
       </div>
@@ -74,9 +74,9 @@
   <section class="section search-band" id="search" aria-labelledby="search-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['search_eyebrow'] }}</p>
-        <h2 id="search-heading">{!! $copy['search_title'] !!}</h2>
-        <p>{!! $copy['search_text'] !!}</p>
+        <p class="eyebrow">{{ $copy['search_eyebrow'] ?: 'Find' }}</p>
+        <h2 id="search-heading">{!! $copy['search_title'] ?: 'Search sample inventory' !!}</h2>
+        <p>{!! $copy['search_text'] ?: 'Short filters. Fast scan. Every result is fictional demo data.' !!}</p>
       </header>
       <form class="listing-search reveal" id="heroSearchForm" role="search" aria-label="Search sample listings">
         <div class="listing-search-row">
@@ -131,9 +131,9 @@
   <section class="section section-alt" aria-labelledby="spotlight-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['spotlight_eyebrow'] }}</p>
-        <h2 id="spotlight-heading">{!! $copy['spotlight_title'] !!}</h2>
-        <p>{!! $copy['spotlight_text'] !!}</p>
+        <p class="eyebrow">{{ $copy['spotlight_eyebrow'] ?: 'Spotlight' }}</p>
+        <h2 id="spotlight-heading">{!! $copy['spotlight_title'] ?: 'Three sample homes to scan' !!}</h2>
+        <p>{!! $copy['spotlight_text'] ?: 'Price · beds · acres — then book a fictional walk-through.' !!}</p>
       </header>
       <div class="listing-mini-grid reveal">
         @forelse ($spotlightListings as $listing)
@@ -195,9 +195,9 @@
   <section class="section section-alt" id="book-showing" aria-labelledby="book-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['book_eyebrow'] }}</p>
-        <h2 id="book-heading">{!! $copy['book_title'] !!}</h2>
-        <p>{!! $copy['book_text'] !!}</p>
+        <p class="eyebrow">{{ $copy['book_eyebrow'] ?: 'Appointments' }}</p>
+        <h2 id="book-heading">{!! $copy['book_title'] ?: 'Book a house showing' !!}</h2>
+        <p>{!! $copy['book_text'] ?: 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.' !!}</p>
       </header>
 
       <div class="booking-shell reveal">

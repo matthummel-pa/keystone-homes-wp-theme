@@ -43,6 +43,7 @@
     "lat": 52,
     "lng": 62,
     "photo_grad": "linear-gradient(135deg,#059669,#34d399)",
+    "image": "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "dale-kuhn",
     "description": "Thirty-eight acres of mostly tillable ground along Marsh Creek, currently leased for row crops. Road frontage, public water available at the road, and a soil map on file showing strong Class II farmland."
@@ -116,6 +117,7 @@
     "lat": 58,
     "lng": 74,
     "photo_grad": "linear-gradient(135deg,#047857,#059669)",
+    "image": "https://images.unsplash.com/photo-1500595046743-cd271d694d30?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "trey-bushey",
     "description": "Forty-five acres of fenced pasture along Rock Creek with a run-in shed and gravity-fed water. Long history as grazing ground for a beef cattle herd; also suitable for hay or a future homesite."
@@ -140,6 +142,7 @@
     "lat": 70,
     "lng": 30,
     "photo_grad": "linear-gradient(135deg,#d97706,#f59e0b)",
+    "image": "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "dale-kuhn",
     "description": "A sixty-acre producing apple and peach orchard with a renovated farmhouse, cold storage building, and roadside stand. A rare turn-key opportunity to continue an established Adams County orchard operation."
@@ -164,6 +167,7 @@
     "lat": 78,
     "lng": 44,
     "photo_grad": "linear-gradient(135deg,#0c0c0c,#27272a)",
+    "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "renee-musselman",
     "description": "A stone-and-frame homestead dating to 1852, lovingly maintained through six generations. Original summer kitchen, restored bank barn, twenty-two acres, and documented Civil War-era provenance."
@@ -187,6 +191,7 @@
     "lat": 86,
     "lng": 56,
     "photo_grad": "linear-gradient(135deg,#1f6b4a,#9fd5bb)",
+    "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "trey-bushey",
     "description": "A wooded 5.5-acre building lot with long-range views toward South Mountain. Perc-approved for a conventional septic system; electric at the road. A quiet, buildable spot minutes from Gettysburg."

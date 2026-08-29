@@ -16,10 +16,10 @@
 <!-- ============================= PAGE HERO ============================= -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
-    <h1>{!! $copy['hero_title'] !!}</h1>
-    <p>{!! $copy['hero_text'] !!}</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Sample team' }}</p>
+    <h1>{!! $copy['hero_title'] ?: 'Agents who know the <em>demo ground</em>' !!}</h1>
+    <p>{!! $copy['hero_text'] ?: 'Team profiles are Agent posts. Contact numbers are fictional 555 lines.' !!}</p>
   </div>
 </section>
 
@@ -27,8 +27,8 @@
   <!-- ============================= INTRO ============================= -->
   <section class="section">
     <div class="wrap prose reveal">
-      <h2>{!! $copy['intro_title'] !!}</h2>
-      <p>{!! $copy['intro_text'] !!}</p>
+      <h2>{!! $copy['intro_title'] ?? 'A small, local team by design' !!}</h2>
+      <p>{!! $copy['intro_text'] ?? 'Rural property deserves an agent who understands rural property — farms, orchards, raw land and century homesteads.' !!}</p>
     </div>
 
     <div class="wrap">
@@ -67,9 +67,9 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['how_eyebrow'] }}</p>
-        <h2>{!! $copy['how_title'] !!}</h2>
-        <p>{!! $copy['how_text'] !!}</p>
+        <p class="eyebrow">{{ $copy['how_eyebrow'] ?? 'How We Work' }}</p>
+        <h2>{!! $copy['how_title'] ?? 'What working with Keystone looks like' !!}</h2>
+        <p>{!! $copy['how_text'] ?? 'No pressure, no jargon, and a straight answer about the ground under your feet.' !!}</p>
       </div>
       <div class="why-list reveal" style="max-width:820px;">
         <div class="why-item">
@@ -92,10 +92,10 @@
   <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] !!}</h2>
-        <p>{!! $copy['cta_text'] !!}</p>
+        <h2>{!! $copy['cta_title'] ?? 'Talk to a Keystone agent' !!}</h2>
+        <p>{!! $copy['cta_text'] ?? 'Reach the office at (555) 010-0455, or book a no-pressure showing.' !!}</p>
         <div class="cta-actions">
-          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] }}</a>
+          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/contact') }}">Contact the Office</a>
         </div>
       </div>

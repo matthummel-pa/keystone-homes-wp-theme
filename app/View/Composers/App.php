@@ -22,17 +22,15 @@ class App extends Composer
 
     public function with(): array
     {
-        $id = (int) (get_queried_object_id() ?: get_the_ID());
-
         return [
-            'copy' => $id ? PageCopy::all($id) : [],
+            'copy' => PageCopy::all(),
             'catalogListings' => Catalog::listings(),
             'spotlightListings' => Catalog::featuredListings(3),
             'catalogAgents' => Catalog::agents(),
             'catalogTownships' => Catalog::townships(),
             'selectedListingId' => (int) ($_GET['listing'] ?? 0),
             'showingTypes' => Catalog::SHOWING_TYPES,
-            'areaCards' => PageCopy::areaCards($id ?: null),
+            'areaCards' => PageCopy::areaCards(),
             'keystone' => [
                 'homeUrl' => home_url('/'),
                 'listingsUrl' => home_url('/listings'),

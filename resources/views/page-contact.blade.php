@@ -16,10 +16,10 @@
 <!-- ============================= PAGE HERO ============================= -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
-    <h1>{!! $copy['hero_title'] !!}</h1>
-    <p>{!! $copy['hero_text'] !!}</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Concept office' }}</p>
+    <h1>{!! $copy['hero_title'] ?: 'Get in touch <em>(demo only)</em>' !!}</h1>
+    <p>{!! $copy['hero_text'] ?: 'Fictional address and phone. Prefer booking a sample showing for the full appointment UX.' !!}</p>
   </div>
 </section>
 
@@ -30,23 +30,23 @@
       <div class="contact-grid">
         <div class="contact-info reveal">
           <p class="eyebrow">Our Office</p>
-          <h2>{!! $copy['office_title'] !!}</h2>
+          <h2>{!! $copy['office_title'] ?? 'Keystone Homes &amp; Land' !!}</h2>
           <dl>
             <div>
               <dt>Address</dt>
-              <dd>{!! nl2br(e($copy['office_address'])) !!}</dd>
+              <dd>{!! nl2br(e($copy['office_address'] ?? "100 Concept Way\nSample Borough, PA 00000")) !!}</dd>
             </div>
             <div>
               <dt>Phone</dt>
-              <dd><a href="{{ \App\Support\Catalog::telHref($copy['office_phone']) }}">{{ $copy['office_phone'] }}</a></dd>
+              <dd><a href="{{ \App\Support\Catalog::telHref($copy['office_phone'] ?? '(555) 010-0455') }}">{{ $copy['office_phone'] ?? '(555) 010-0455' }}</a></dd>
             </div>
             <div>
               <dt>Email</dt>
-              <dd><a href="mailto:{{ $copy['office_email'] }}">{{ $copy['office_email'] }}</a></dd>
+              <dd><a href="mailto:{{ $copy['office_email'] ?? 'hello@keystone-concept.test' }}">{{ $copy['office_email'] ?? 'hello@keystone-concept.test' }}</a></dd>
             </div>
             <div>
               <dt>Hours</dt>
-              <dd>{!! nl2br(e($copy['office_hours'])) !!}</dd>
+              <dd>{!! nl2br(e($copy['office_hours'] ?? "Mon–Fri: 8:30am – 5:30pm\nSaturday: 9:00am – 1:00pm\nSunday: By appointment")) !!}</dd>
             </div>
             <div>
               <dt>Directions</dt>
@@ -66,8 +66,8 @@
 
         <div class="reveal">
           <div class="tool-card">
-            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v12H5.17L4 17.17z"/></svg> {{ $copy['form_title'] }}</h3>
-            <p style="color:var(--ink-soft);font-size:.92rem;margin-top:6px;">{!! $copy['form_text'] !!}</p>
+            <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v12H5.17L4 17.17z"/></svg> {{ $copy['form_title'] ?? 'Send us a message' }}</h3>
+            <p style="color:var(--ink-soft);font-size:.92rem;margin-top:6px;">{!! $copy['form_text'] ?? 'Tell us what you\'re looking for — or what you\'re thinking of selling — and we\'ll be in touch.' !!}</p>
             <form id="contactForm">
               <div class="form-grid two">
                 <div class="field">
