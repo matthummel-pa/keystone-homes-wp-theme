@@ -1,5 +1,5 @@
 /* =========================================================================
-   Keystone Homes & Land — LAND BUYER'S GUIDE page tools
+   Keystone Real Estate — LAND BUYER'S GUIDE page tools
    - Standalone land-loan / mortgage estimate
    - Financing pre-qualification estimate
    - Request info / book-a-call scheduler

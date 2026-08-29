@@ -14,7 +14,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Concept office',
   'heroTitle' => $copy['hero_title'] ?: 'Get in touch <em>(demo only)</em>',
   'heroText' => $copy['hero_text'] ?: '100 Concept Way, Sample Borough. Call (555) 010-0455 or send a message. Prefer the full appointment flow? Book a sample showing.',
@@ -31,7 +31,7 @@
       <div class="contact-grid">
         <div class="contact-info reveal">
           <p class="eyebrow">Our Office</p>
-          <h2>{!! $copy['office_title'] ?? 'Keystone Homes &amp; Land' !!}</h2>
+          <h2>{!! $copy['office_title'] ?? 'Keystone Real Estate' !!}</h2>
           <dl>
             <div>
               <dt>Address</dt>
@@ -55,7 +55,7 @@
             </div>
           </dl>
 
-          <div class="map-embed" role="img" aria-label="Illustrative map showing the Keystone Homes & Land office north of downtown Gettysburg, PA">
+          <div class="map-embed" role="img" aria-label="Illustrative map showing the Keystone Real Estate office north of downtown Gettysburg, PA">
             <div class="map-roads"></div>
             <div class="map-road-3"></div>
             <span class="pin-static">
