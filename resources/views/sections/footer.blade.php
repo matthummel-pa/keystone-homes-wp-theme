@@ -1,7 +1,19 @@
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-grid">
+    <div class="footer-cta">
       <div>
+        <p class="eyebrow">Next step</p>
+        <h2>Tour a sample home</h2>
+        <p>Pick a listing, choose a slot, and see how a modern realtor booking flow feels.</p>
+      </div>
+      <div class="footer-cta-actions">
+        <a class="btn btn-primary" href="{{ home_url('/book/') }}">Book a showing</a>
+        <a class="btn btn-outline light" href="tel:+15550100455">Call the office</a>
+      </div>
+    </div>
+
+    <div class="footer-grid">
+      <div class="footer-intro">
         <div class="footer-brand">
           <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
             <rect width="48" height="48" rx="12" fill="#1f6b4a"/>
@@ -26,12 +38,12 @@
         <p>Mon–Fri 9:00–5:00<br>Sat by appointment<br>Sun closed (demo)</p>
       </div>
       <nav aria-labelledby="footer-links-heading">
-        <h2 class="footer-heading" id="footer-links-heading">Links</h2>
+        <h2 class="footer-heading" id="footer-links-heading">Explore</h2>
         <ul class="footer-links">
           <li><a href="{{ home_url('/listings') }}">Listings</a></li>
-          <li><a href="{{ home_url('/book/') }}">Book showing</a></li>
-          <li><a href="{{ home_url('/guide') }}">Guide</a></li>
-          <li><a href="{{ home_url('/blog') }}">Blog</a></li>
+          <li><a href="{{ home_url('/areas') }}">Areas</a></li>
+          <li><a href="{{ home_url('/book/') }}">Book a showing</a></li>
+          <li><a href="{{ home_url('/guide') }}">Buyer guide</a></li>
           <li><a href="{{ home_url('/agents') }}">Agents</a></li>
           <li><a href="{{ home_url('/contact') }}">Contact</a></li>
         </ul>
