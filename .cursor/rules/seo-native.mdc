@@ -44,7 +44,7 @@ JSON-LD already on the home template (`RealEstateAgent`) stays native in Blade. 
 
 - Leave description as WordPress’s empty excerpt on marketing pages (they are field-driven).
 - Output duplicate canonical / description if a tag already exists — one writer owns the head.
-- Ship Rank Math / Yoast “just for now.”
+- Ship Rank Math / Yoast “just for now.” If a buyer later activates one, native tags must yield (see `marketplace.mdc` 8.2).
 - Use the luxury-broker fallback from generic snippets. Default something like: `Sample farms, historic houses, and acreage in Adams County. Filter listings and book a fictional showing — Keystone Homes & Land concept demo.`
 
 ## When implementing

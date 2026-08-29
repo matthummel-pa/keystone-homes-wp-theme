@@ -1,0 +1,79 @@
+---
+description: ThemeForest / WordPress.org marketplace rules — plugin territory, WPCS, demo assets, footer credits
+globs: app/**/*.php,resources/views/**/*.blade.php,bin/**/*.sh
+alwaysApply: false
+---
+
+# 8. Marketplace and distribution (ThemeForest / WordPress.org)
+
+Reviewer rules for a **sellable theme zip**. This repo is a **concept Sage theme** with listings in-theme today. Do **not** extract CPTs, add OCDI, or rip out `wp ks seed` unless Matt asks to package for a marketplace.
+
+When you *are* preparing a ThemeForest / WP.org submission, follow 8.1–8.9 strictly.
+
+## A. Plugin territory and content
+
+**8.1 No native CPTs in a marketplace theme.** Custom post types (`listing`, `booking`, `agent`) and custom taxonomies MUST NOT be registered in the theme (`functions.php`, `app/post-types.php`, Sage service providers) for a store submission.
+
+- Move registration to a bundled **Core Functionality Plugin** (or document ACF / a standard listings plugin).
+- Switching themes must leave listing / agent / booking **posts and `ks_*` meta** in the database.
+- Theme templates may *display* those types; they must not be the only thing that registers them.
+
+**Today (concept repo):** CPTs live in `app/post-types.php` via `Catalog::LISTING` / `BOOKING` / `AGENT`. Keep that until a marketplace split is requested. Do not delete `post-types.php` “to comply” on a normal feature PR.
+
+**8.2 No hardcoded SEO / analytics overrides.** Do not add theme-options metaboxes for custom meta titles, meta descriptions, or Google Analytics / gtag snippets.
+
+- Native fallback tags on `wp_head` are OK (`App\Support\Seo` — see `seo-native.mdc`).
+- If Yoast (`WPSEO_VERSION`), Rank Math, SEOPress, or AIOSEO is active, **yield**: skip duplicate `<title>` / description / canonical / OG / Twitter. Do not fight the plugin.
+- Do not enqueue `gtag.js` or insert GA IDs from Customizer.
+
+This concept site still should **not** install those plugins. Yield is for buyers who do.
+
+## B. Theme Check and WPCS
+
+**8.3 Escape every output.**
+
+| Kind | How |
+| --- | --- |
+| Text | `{{ $text }}` (Blade) or `esc_html()` |
+| Attributes | `esc_attr()` |
+| URLs | `esc_url()` |
+| HTML copy | `{!! wp_kses_post(...) !!}` or PageCopy allow-list (`em`, `strong`, `br`, `a`) |
+
+Do not `{!! $untrusted !!}`. REST / JSON-LD: `esc_url` on URLs; emails via `@json(...)`.
+
+**8.4 Prefix globals.** Functions, hooks, constants, image sizes, and script/style handles must be unique: `keystone_`, `ks_`, `KS_`, or Acorn `App\` (no new bare `function render_…` in the global namespace). New `add_image_size` / `wp_enqueue_*` handles: `keystone-*` or `ks-*`. Text domain stays `sage` unless a marketplace rename is requested.
+
+**8.5 Zero notices.** With `WP_DEBUG` true: no PHP notices/warnings, no JS `console.error` on the public site. Guard empty meta, missing query objects, and undefined JS nodes. Do not set `is_page` / `is_singular` without a real `WP_Post` (Sage 500).
+
+## C. Demo data and licensing
+
+**8.6 GPL-compatible assets.** Bundled JS, icons, and fonts must be GPL-compatible (MIT, Apache 2.0, SIL OFL).
+
+- **Do not** ship Unsplash (or other stock) **files** inside `keystone-homes.zip` unless redistribution is licensed.
+- Hotlinked Unsplash (`HeroImage::DEFAULT`, blog teasers) is fine for this concept demo; for a store zip use SVG / `public/` placeholders or public-domain stills.
+- Inter via Customizer / Google Fonts is OK; do not vendor a non-OFL font.
+
+**8.7 One-click demo import (marketplace only).** A ThemeForest package should ship OCDI-compatible `.xml` / `.json` so buyers match the live preview in one click.
+
+**Today:** `App\Support\DemoContent`, `wp ks seed`, Tools → Seed Keystone demo. Do not add the OCDI plugin unless packaging for sale.
+
+## D. Footer and admin
+
+**8.8 Credit links.** Author / studio credit in the footer (today: “Concept by Ridges & Valleys Studio”) must be removable via Customizer and use `rel="nofollow"` if it is a URL. Do not hard-require a dofollow backlink.
+
+**8.9 No admin upsells.** ThemeForest / WP.org reject dashboard nags, banner ads, and Freemius / “upgrade to Pro” chrome.
+
+Allowed first-party admin (not an upsell):
+
+- Appearance → Update Theme (GitHub zip)
+- Tools → Seed Keystone demo + the missing-content notice
+- Booking “advanced” confirmation notice
+
+Do not add Envato, affiliate, or third-party product banners.
+
+## Do not
+
+- Extract CPTs or add OCDI on a regular feature branch
+- Bundle Unsplash binaries in `dist-theme/keystone-homes.zip`
+- Add theme GA / SEO metaboxes
+- Leave `{!! $raw !!}` or unprefixed global functions

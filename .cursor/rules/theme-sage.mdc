@@ -10,7 +10,7 @@ Stack: Blade + Acorn + Tailwind v4 + Vite 8. Design CSS is `resources/css/keysto
 
 ## Custom post types
 
-Registered in `app/post-types.php`. Constants: `Catalog::LISTING` (`listing`), `Catalog::BOOKING` (`booking`), `Catalog::AGENT` (`agent`).
+Registered in `app/post-types.php`. Constants: `Catalog::LISTING` (`listing`), `Catalog::BOOKING` (`booking`), `Catalog::AGENT` (`agent`). ThemeForest / WP.org would move this to a companion plugin — see `marketplace.mdc`. Do not extract CPTs unless Matt asks to package for a store.
 
 - Rewrites: `/listing/{slug}/`, `/agent/{slug}/`. Bookings are not public.
 - All custom fields go through `Catalog::getMeta` / `updateMeta` → keys are `ks_{field}`.

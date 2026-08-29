@@ -13,6 +13,7 @@ Versioned Cursor rules live in [`.cursor/rules/`](.cursor/rules/) as `.mdc` file
 - `accessibility.mdc` — WCAG 2.2 AA (contrast, focus, 44px, semantics, reduced motion)
 - `conversion-ux.mdc` — labels, autocomplete, button states, `aria-live`
 - `seo-native.mdc` — native title / description / OG / Twitter; no SEO plugins
+- `marketplace.mdc` — ThemeForest / WP.org (plugin territory, WPCS, demo zip, no admin upsells)
 - `live-wordpress.mdc` — when editing the live WP site via WPVibe
 
 Edit those files when an agent repeats a mistake. Use `.mdc` only (plain `.md` in that folder is ignored).
