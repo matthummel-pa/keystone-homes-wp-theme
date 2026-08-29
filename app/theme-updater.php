@@ -289,6 +289,10 @@ function render_theme_updater_page(): void
                 set_theme_mod('ks_gh_token', $incoming);
                 $notice = ['notice-success', __('GitHub token saved.', 'sage')];
             }
+        } elseif (isset($_POST['ks_updater_reset_nonce'])) {
+            check_admin_referer('ks_theme_token_reset', 'ks_updater_reset_nonce');
+            [$ok, $msg] = github_reset_token();
+            $notice = [$ok ? 'notice-success' : 'notice-error', $msg];
         } elseif (isset($_POST['ks_updater_nonce'])) {
             check_admin_referer('ks_theme_update', 'ks_updater_nonce');
             $action = sanitize_key(wp_unslash((string) ($_POST['ks_updater_action'] ?? 'pull')));
@@ -398,6 +402,24 @@ function render_theme_updater_page(): void
         );
         echo '</form>';
         echo '<p style="margin-top:1rem"><a class="button" href="'.esc_url($self).'">'.esc_html__('Refresh status', 'sage').'</a></p>';
+
+        echo '<hr />';
+        echo '<h2>'.esc_html__('Access token', 'sage').'</h2>';
+        if (github_token_from_constant()) {
+            echo '<p class="description" style="max-width:70ch">'.esc_html__('This site is using KS_GITHUB_TOKEN or MH_GITHUB_TOKEN from wp-config.php. Remove that constant to reset the token.', 'sage').'</p>';
+        } else {
+            echo '<form method="post" action="">';
+            wp_nonce_field('ks_theme_token_reset', 'ks_updater_reset_nonce');
+            printf(
+                '<p><button type="submit" class="button">%s</button></p>',
+                esc_html__('Reset access token', 'sage')
+            );
+            printf(
+                '<p class="description">%s</p>',
+                esc_html__('Clears the saved GitHub token from this site. You will need to paste a new one before installing or rebuilding.', 'sage')
+            );
+            echo '</form>';
+        }
     }
 
     echo '</div>';
@@ -410,6 +432,10 @@ if (defined('WP_CLI') && WP_CLI) {
     });
     \WP_CLI::add_command('ks theme-build', function (): void {
         [$ok, $msg] = updater_dispatch();
+        $ok ? \WP_CLI::success($msg) : \WP_CLI::error($msg);
+    });
+    \WP_CLI::add_command('ks theme-token-reset', function (): void {
+        [$ok, $msg] = github_reset_token();
         $ok ? \WP_CLI::success($msg) : \WP_CLI::error($msg);
     });
 }
