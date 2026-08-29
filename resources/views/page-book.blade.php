@@ -27,16 +27,7 @@
   <div class="wrap">
     <div class="booking-shell reveal">
       @include('partials.booking-form')
-      <aside class="booking-summary" aria-label="What happens next">
-        <strong>Saved as a Booking</strong>
-        <p style="margin:0 0 12px">Each request creates a Bookings post in Requested status. Staff can advance it to Confirmed, then Completed.</p>
-        <ul class="scan-card" style="box-shadow:none;border:0;padding:0;background:transparent">
-          <li>Property comes from the Listings post type</li>
-          <li>Date and time slot are required</li>
-          <li>Assigned to the listing agent when set</li>
-          <li>Advance status from WP Admin → Bookings</li>
-        </ul>
-      </aside>
+      @include('partials.booking-photo')
     </div>
   </div>
 </section>

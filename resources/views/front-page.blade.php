@@ -192,22 +192,7 @@
 
       <div class="booking-shell reveal">
         @include('partials.booking-form')
-
-        <aside class="booking-summary" aria-label="Why agents use this">
-          <strong>Built for realtor workflows</strong>
-          <p style="margin:0 0 12px">Showing appointments are the highest-intent action on a listing site. This pattern keeps property, date and time in one scan.</p>
-          <ul class="scan-card" style="box-shadow:none;border:0;padding:0;background:transparent">
-            <li>Property locked before time selection</li>
-            <li>Slot chips beat long dropdowns</li>
-            <li>Mobile-first required fields</li>
-            <li>Clear “demo only” confirmation copy</li>
-          </ul>
-          <div class="chip-row">
-            <span class="chip">In-person</span>
-            <span class="chip">Private preview</span>
-            <span class="chip">Virtual</span>
-          </div>
-        </aside>
+        @include('partials.booking-photo')
       </div>
     </div>
   </section>
