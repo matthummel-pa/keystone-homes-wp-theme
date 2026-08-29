@@ -105,7 +105,7 @@
       <div class="intent-grid reveal">
         <a class="intent-card" href="{{ home_url('/listings') }}">
           <figure class="intent-photo">
-            <img src="{{ get_theme_file_uri('public/images/intent-buy.jpg') }}" width="1200" height="900" alt="" loading="lazy" decoding="async">
+            <img src="{{ get_theme_file_uri('public/images/intent-buy.jpg') }}" width="1200" height="900" alt="" decoding="async">
           </figure>
           <div class="intent-copy">
             <span class="intent-kicker">{{ $copy['intent_buy_kicker'] ?: 'Buy' }}</span>
@@ -116,7 +116,7 @@
         </a>
         <a class="intent-card" href="#value">
           <figure class="intent-photo">
-            <img src="{{ get_theme_file_uri('public/images/intent-sell.jpg') }}" width="1200" height="900" alt="" loading="lazy" decoding="async">
+            <img src="{{ get_theme_file_uri('public/images/intent-sell.jpg') }}" width="1200" height="900" alt="" decoding="async">
           </figure>
           <div class="intent-copy">
             <span class="intent-kicker">{{ $copy['intent_sell_kicker'] ?: 'Sell' }}</span>
@@ -127,7 +127,7 @@
         </a>
         <a class="intent-card is-primary" href="{{ home_url('/book/') }}">
           <figure class="intent-photo">
-            <img src="{{ get_theme_file_uri('public/images/intent-tour.jpg') }}" width="1200" height="900" alt="" loading="lazy" decoding="async">
+            <img src="{{ get_theme_file_uri('public/images/intent-tour.jpg') }}" width="1200" height="900" alt="" decoding="async">
           </figure>
           <div class="intent-copy">
             <span class="intent-kicker">{{ $copy['intent_tour_kicker'] ?: 'Tour' }}</span>

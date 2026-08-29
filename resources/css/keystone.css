@@ -417,10 +417,10 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
   box-shadow:var(--shadow-lg);
 }
 .intent-photo{
-  margin:0;aspect-ratio:4/3;max-height:160px;overflow:hidden;background:var(--paper-2);
+  margin:0;height:156px;overflow:hidden;background:var(--paper-2);
 }
-.intent-card.is-primary .intent-photo{max-height:188px;}
-.intent-photo img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;}
+.intent-card.is-primary .intent-photo{height:176px;}
+.intent-photo img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block;}
 .intent-copy{
   display:flex;flex-direction:column;gap:8px;padding:18px 20px 20px;flex:1;min-width:0;
 }
