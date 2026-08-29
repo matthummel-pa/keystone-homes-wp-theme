@@ -61,6 +61,8 @@ linear-gradient(0deg, rgba(12,12,12,.7) 0%, transparent 45%);
 
 LCP hero photos use `partials/hero-image.blade.php` (`fetchpriority="high"`, `loading="eager"`, `srcset`, `1600×900`).
 
+Focus rings, 44px targets, and reduced motion: see `accessibility.mdc` (6.3–6.6).
+
 ## Do not
 
 - Restyle the site with `slate-*` / `dark:bg-slate-900` utility dumps

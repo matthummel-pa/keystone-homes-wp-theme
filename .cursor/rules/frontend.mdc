@@ -13,6 +13,8 @@ Tokens live in `resources/css/keystone.css` `:root`:
 - Ink `#141210`, paper `#f5f4f1`, accent forest `#1f6b4a`
 - No default “SaaS blue.” Keep charcoal + stone + forest.
 - Layout / cards / type / photo overlays: see `ui-aesthetics.mdc`.
+- Contrast, focus rings, 44px targets, semantics, reduced motion: see `accessibility.mdc`.
+- Labels, input types, button states, `aria-live`: see `conversion-ux.mdc`.
 
 Shared chrome: `resources/views/sections/` (header/footer) and `partials/chat.blade.php`. Header nav is hardcoded URLs, not a WP menu.
 
