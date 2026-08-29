@@ -1,0 +1,68 @@
+---
+description: Modern UI aesthetics — fluid layout, cards, type scale, and photo-overlay contrast
+globs: resources/css/**/*.css,resources/views/**/*.blade.php
+alwaysApply: false
+---
+
+# 5. Modern UI aesthetics and design tokens
+
+Implement these in `resources/css/keystone.css` (and Blade structure), **not** as a new slate/dark Tailwind skin. Tokens stay charcoal + stone + forest (`--ink`, `--paper`, `--line`, `--accent`, `--radius`, `--shadow`). Do not introduce `dark:` slate palettes or SaaS-blue defaults.
+
+## A. Layout and spacing
+
+**5.1 Fluid containers.** Main content width is capped and centered.
+
+- Target: `max-width: 80rem` (`1280px`, Tailwind `max-w-7xl`). Today `.wrap` is `--maxw: 1200px` — when you change layout, move `--maxw` to `80rem` rather than sprinkling `max-w-7xl` on every section.
+- Horizontal padding: equivalent of `px-4 sm:px-6 lg:px-8` (16px / 24px / 32px). Keep it on `.wrap` / `.hero-inner` so pages stay aligned.
+- Center with `margin-inline: auto`.
+
+**5.2 Bento and cards.** Default card chrome (intent cards, listing cards, agent cards, search panels):
+
+- Border: `1px solid` `--line` (or `rgba` of ink at ~12%). Not `border-slate-200`.
+- Radius: `--radius` ≈ `1rem`+ (`rounded-2xl` / 16–18px). Soft corners, not sharp rectangles.
+- Shadow: `--shadow` at rest, `--shadow-lg` or a one-step lift on hover, `transition` ~200ms. Soft elevation, not a heavy drop shadow.
+
+Reuse existing classes (`.intent-card`, `.listing-search`, `.hero-search`, listing minis) instead of a one-off utility stack.
+
+**5.3 Typography scale.** Modular, tracking tight on headings. Prefer CSS on `h1`/`h2`/`.lede` over repeating Tailwind on every heading.
+
+| Role | Scale (approx) |
+| --- | --- |
+| H1 | `clamp(2.25rem, 5vw, 3.75rem)` — `text-4xl sm:text-5xl lg:text-6xl`, `font-semibold`, `tracking-tight` |
+| H2 | `clamp(1.5rem, 3vw, 1.875rem)` — `text-2xl sm:text-3xl`, `font-semibold`, `tracking-tight` |
+| Body | `1rem` / `1.125rem` large screens, `line-height: 1.65`, color `--ink-soft` — not `text-slate-600` |
+
+Homepage cinematic H1 may stay larger (hero already uses `clamp` ~2.5–4.6rem). Marketing `page-hero` H1 should stay readable, not tiny.
+
+Fonts stay Customizer-driven (default Inter).
+
+## B. Image overlay and polish
+
+**5.4 Hero text contrast.** Type on photography **must** sit on a protective gradient so contrast holds on a bright or dark photo (WCAG).
+
+Existing pattern: `.hero-veil` over `.hero-media`, copy in `.hero-inner` (`z-index` above the veil). Do not put white text directly on the `<img>`.
+
+Equivalent structure:
+
+```html
+<div class="relative overflow-hidden">
+  <img … class="absolute inset-0 h-full w-full object-cover" />
+  <div class="absolute inset-0" aria-hidden="true"><!-- ink/forest gradient, not slate-950 --></div>
+  <div class="relative z-10 text-white">…</div>
+</div>
+```
+
+Keystone veil (keep this direction):
+
+```css
+linear-gradient(105deg, rgba(12,12,12,.82) 0%, rgba(12,12,12,.45) 46%, rgba(12,12,12,.25) 100%),
+linear-gradient(0deg, rgba(12,12,12,.7) 0%, transparent 45%);
+```
+
+LCP hero photos use `partials/hero-image.blade.php` (`fetchpriority="high"`, `loading="eager"`, `srcset`, `1600×900`).
+
+## Do not
+
+- Restyle the site with `slate-*` / `dark:bg-slate-900` utility dumps
+- Drop the concept demo banner or forest accent
+- Put hero H1 on the photo with no veil
