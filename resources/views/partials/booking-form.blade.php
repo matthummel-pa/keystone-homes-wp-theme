@@ -57,7 +57,7 @@
     </div>
     <div class="field field-span">
       <label for="showEmail">Email</label>
-      <input id="showEmail" name="email" type="email" autocomplete="email" placeholder="you@@example.test" required>
+      <input id="showEmail" name="email" type="email" autocomplete="email" placeholder="{{ 'you@keystone-concept.test' }}" required>
     </div>
     <div class="field field-span">
       <label for="showNotes">Notes (optional)</label>

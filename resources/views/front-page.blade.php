@@ -336,7 +336,7 @@
           <form class="form-grid two" id="alertForm">
             <div class="field field-span">
               <label for="aEmail">Email</label>
-              <input id="aEmail" type="email" autocomplete="email" placeholder="you@@keystone-concept.test" required>
+              <input id="aEmail" type="email" autocomplete="email" placeholder="{{ 'you@keystone-concept.test' }}" required>
             </div>
             <div class="field">
               <label for="aType">Looking for</label>

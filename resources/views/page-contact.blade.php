@@ -81,7 +81,7 @@
                 </div>
                 <div class="field">
                   <label for="cEmail">Email</label>
-                  <input type="email" id="cEmail" required placeholder="you@@keystone-concept.test">
+                  <input type="email" id="cEmail" required placeholder="{{ 'you@keystone-concept.test' }}">
                 </div>
                 <div class="field">
                   <label for="cTopic">I'm interested in</label>
