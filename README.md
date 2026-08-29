@@ -54,6 +54,17 @@ wp theme install dist-theme/keystone-homes.zip --activate
 
 If the theme folder is not `keystone-homes`, update `base` in `vite.config.js` and rebuild.
 
+## Update from GitHub
+
+Same flow as [matthummel-theme](https://github.com/matthummel-pa/matthummel-theme): CI publishes a built zip on the `theme-latest` release, and WordPress installs it over HTTPS.
+
+1. Push `main` (or use **Appearance → Update Theme → Rebuild zip on GitHub**) so Actions builds `keystone-homes.zip`.
+2. In wp-admin go to **Appearance → Update Theme**.
+3. Paste a fine-grained PAT with **Contents: Read** (add **Actions: Read and write** only to trigger rebuilds). Or set `KS_GITHUB_TOKEN` / `MH_GITHUB_TOKEN` in `wp-config.php`, or **Appearance → Customize → GitHub**.
+4. Click **Install latest zip from GitHub**. Theme files only — pages, posts, and uploads stay put.
+
+CLI: `wp ks theme-update` and `wp ks theme-build`.
+
 ## Theme templates
 
 | Concept page | WordPress template |

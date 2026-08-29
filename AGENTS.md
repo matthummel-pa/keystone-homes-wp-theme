@@ -43,3 +43,4 @@ Then browse `http://localhost:8080/` (homepage), `/listings`, `/areas`, `/guide`
 ### Packaging & deploying the theme
 - This is a WordPress theme — it ships as an installable theme package to a WordPress host.
 - Build the installable zip with `bin/build-theme-zip.sh` → `dist-theme/keystone-homes.zip`. The script ships the compiled `public/build` assets and a production (`--no-dev`) `vendor/` so the target host needs no composer/npm. Install via WP Admin → Appearance → Themes → Add New → Upload Theme, or `wp theme install dist-theme/keystone-homes.zip --activate`.
+- Hosts can also update in place from **Appearance → Update Theme** (same pattern as matthummel-theme). `.github/workflows/deploy.yml` publishes that zip to the `theme-latest` GitHub release. Token: Customizer → GitHub, the updater screen, or `KS_GITHUB_TOKEN`.
