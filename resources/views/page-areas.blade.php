@@ -27,8 +27,8 @@
   <!-- ============================= INTRO PROSE ============================= -->
   <section class="section">
     <div class="wrap prose reveal">
-      <h2>{!! $copy['intro_title'] !!}</h2>
-      <p>{!! $copy['intro_text'] !!}</p>
+      <h2>{!! $copy['intro_title'] ?? 'Land, farms &amp; homesteads across Adams County' !!}</h2>
+      <p>{!! $copy['intro_text'] ?? 'Our office sits at 100 Concept Way on the north edge of Gettysburg. The townships below are where we spend most of our boot leather.' !!}</p>
     </div>
   </section>
 
@@ -36,9 +36,9 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['grid_eyebrow'] }}</p>
-        <h2>{!! $copy['grid_title'] !!}</h2>
-        <p>{!! $copy['grid_text'] !!}</p>
+        <p class="eyebrow">{{ $copy['grid_eyebrow'] ?? 'Township by Township' }}</p>
+        <h2>{!! $copy['grid_title'] ?? 'Where we work' !!}</h2>
+        <p>{!! $copy['grid_text'] ?? 'A quick, honest read on six rural townships — what the ground is like and what a buyer should watch for.' !!}</p>
       </div>
 
       <div class="area-grid">
@@ -104,10 +104,10 @@
   <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] !!}</h2>
-        <p>{!! $copy['cta_text'] !!}</p>
+        <h2>{!! $copy['cta_title'] ?? 'Walk a township with us' !!}</h2>
+        <p>{!! $copy['cta_text'] ?? 'Tell us which corner you want to understand, and we\'ll match you with the agent who knows that ground.' !!}</p>
         <div class="cta-actions">
-          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] }}</a>
+          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse Listings</a>
         </div>
       </div>

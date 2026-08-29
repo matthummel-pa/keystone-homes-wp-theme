@@ -162,7 +162,7 @@ class PageCopy
 
     public static function schemaKeyForContext(?int $postId = null): string
     {
-        $virtual = DemoPages::currentSlug();
+        $virtual = DemoPages::currentSlug() ?? DemoPages::requestSlug();
         if ($virtual === 'blog') {
             return 'blog';
         }

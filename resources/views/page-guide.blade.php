@@ -27,8 +27,8 @@
   <!-- ============================= GUIDE PROSE ============================= -->
   <section class="section">
     <div class="wrap prose reveal">
-      <h2>{!! $copy['intro_title'] !!}</h2>
-      <p>{!! $copy['intro_text'] !!}</p>
+      <h2>{!! $copy['intro_title'] ?? 'What\'s different about buying land' !!}</h2>
+      <p>{!! $copy['intro_text'] ?? 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself.' !!}</p>
 
       <h3>Water: wells &amp; yield</h3>
       <p>Most rural Adams County property is served by a private well rather than public water. Two things matter: whether a well already exists and produces enough water, and — if the lot is raw — whether a new well is likely to hit a good yield. In the rockier ground toward South Mountain (Hamiltonban) yields can vary well to well. For an existing well we recommend a flow test and a potability test; for raw land we look at neighboring wells as a guide.</p>
@@ -224,10 +224,10 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] !!}</h2>
-        <p>{!! $copy['cta_text'] !!}</p>
+        <h2>{!! $copy['cta_title'] ?? 'Ready to walk a sample parcel?' !!}</h2>
+        <p>{!! $copy['cta_text'] ?? 'Book a demo showing or browse the sample inventory.' !!}</p>
         <div class="cta-actions">
-          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] }}</a>
+          <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse Listings</a>
         </div>
       </div>

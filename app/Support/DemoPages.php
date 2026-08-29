@@ -72,7 +72,10 @@ class DemoPages
         if (! $slug || self::pageExists($slug)) {
             return;
         }
-        if (! is_404() && ! is_home()) {
+        if (is_admin() || wp_doing_ajax() || (defined('REST_REQUEST') && REST_REQUEST)) {
+            return;
+        }
+        if (is_singular() && ! is_404()) {
             return;
         }
 
@@ -80,9 +83,8 @@ class DemoPages
 
         global $wp_query;
         $wp_query->is_404 = false;
-        $wp_query->is_page = $slug !== 'blog';
-        $wp_query->is_singular = $slug !== 'blog';
-        $wp_query->is_home = $slug === 'blog';
+        $wp_query->is_page = false;
+        $wp_query->is_singular = false;
         $wp_query->is_front_page = false;
 
         if ($slug === 'blog') {
@@ -91,6 +93,15 @@ class DemoPages
                 'post_status' => 'publish',
                 'paged' => max(1, (int) get_query_var('paged')),
             ]);
+            $wp_query->is_home = true;
+            $wp_query->is_404 = false;
+        } else {
+            $wp_query->is_home = false;
+            $wp_query->posts = [];
+            $wp_query->post_count = 0;
+            $wp_query->post = null;
+            $wp_query->queried_object = null;
+            $wp_query->queried_object_id = 0;
         }
 
         status_header(200);
@@ -99,7 +110,10 @@ class DemoPages
 
     public static function templateFile(string $template): string
     {
-        $slug = self::currentSlug();
+        $slug = self::currentSlug() ?? self::requestSlug();
+        if ($slug && self::pageExists($slug)) {
+            return $template;
+        }
         $view = self::viewForSlug($slug);
         if (! $view) {
             return $template;
