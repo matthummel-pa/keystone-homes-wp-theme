@@ -161,6 +161,12 @@ assign_cat "book-a-home-showing" "showings"
 assign_cat "first-time-buyer-checklist" "buyers"
 assign_cat "land-vs-home-search" "search"
 
+hello_id="$($WP post list --post_type=post --name=hello-world --field=ID --format=ids | awk '{print $1}')"
+if [ -n "$hello_id" ]; then
+  $WP post delete "$hello_id" --force >/dev/null
+  echo "==> Removed default Hello world! post"
+fi
+
 $WP acorn optimize:clear >/dev/null 2>&1 || true
 
 echo ""
