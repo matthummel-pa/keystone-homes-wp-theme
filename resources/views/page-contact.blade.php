@@ -61,7 +61,7 @@
             <span class="pin-static">
               <svg viewBox="0 0 24 24"><path fill="#1f6b4a" stroke="#fffcf7" stroke-width="1.5" d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3" fill="#fffcf7"/></svg>
             </span>
-            <div class="map-legend"><span>455 Old Harrisburg Rd · Concept demo</span></div>
+            <div class="map-legend"><span>100 Concept Way · Sample Borough</span></div>
           </div>
         </div>
 
@@ -73,15 +73,15 @@
               <div class="form-grid two">
                 <div class="field">
                   <label for="cName">Full name</label>
-                  <input type="text" id="cName" required placeholder="Jordan Weikert">
+                  <input type="text" id="cName" autocomplete="name" required placeholder="Alex Buyer">
                 </div>
                 <div class="field">
                   <label for="cPhone">Phone</label>
-                  <input type="tel" id="cPhone" required placeholder="(717) 555-0142">
+                  <input type="tel" id="cPhone" autocomplete="tel" required placeholder="(555) 010-0199">
                 </div>
                 <div class="field">
                   <label for="cEmail">Email</label>
-                  <input type="email" id="cEmail" required placeholder="you@@example.com">
+                  <input type="email" id="cEmail" autocomplete="email" required placeholder="you@@example.test">
                 </div>
                 <div class="field">
                   <label for="cTopic">I'm interested in</label>
@@ -100,7 +100,7 @@
               </div>
               <button type="submit" class="btn btn-primary" style="margin-top:16px;">Send Message</button>
             </form>
-            <div class="confirm-msg" id="contactConfirm">
+            <div class="confirm-msg" id="contactConfirm" role="status" aria-live="polite">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
               <span>Thanks! This is a concept demo — on your live site, this message would be emailed straight to the Keystone team.</span>
             </div>
@@ -110,8 +110,47 @@
     </div>
   </section>
 
+  <section class="section section-alt" aria-labelledby="reach-heading">
+    <div class="wrap">
+      <header class="section-head left reveal">
+        <p class="eyebrow">{{ $copy['when_eyebrow'] ?? 'How to reach us' }}</p>
+        <h2 id="reach-heading">{!! $copy['when_title'] ?? 'Call, message, or book a walk' !!}</h2>
+        <p>{!! $copy['when_text'] ?? 'Pick the path that matches the job. All three stay on this concept site — nothing is emailed or texted.' !!}</p>
+      </header>
+      <div class="scan-grid cols-3 reveal">
+        <article class="scan-card">
+          <span class="num">Call</span>
+          <h3>Same-day question</h3>
+          <ul>
+            <li>(555) 010-0455 during posted hours</li>
+            <li>Best for a quick township or showing check</li>
+            <li>Concept line — not a live brokerage</li>
+          </ul>
+        </article>
+        <article class="scan-card">
+          <span class="num">Write</span>
+          <h3>Sell or a longer note</h3>
+          <ul>
+            <li>Use the form above — labels stay visible</li>
+            <li>Pick buying, selling, or a valuation</li>
+            <li>Confirmation stays on this page</li>
+          </ul>
+        </article>
+        <article class="scan-card">
+          <span class="num">Walk</span>
+          <h3>Want a time slot</h3>
+          <ul>
+            <li><a href="{{ home_url('/book/') }}">Book a showing</a> with a sample address</li>
+            <li>Price a demo place with the tool below</li>
+            <li>Read <a href="{{ home_url('/guide') }}">buyer tools</a> before raw land</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================= FREE VALUATION (SELL) ============================= -->
-  <section class="section section-alt" id="valuation">
+  <section class="section" id="valuation">
     <div class="wrap">
       <div class="sell-section reveal">
         <div class="sell-copy">
@@ -162,16 +201,22 @@
             </div>
             <button type="submit" class="btn btn-gold" style="margin-top:16px;width:100%;">Estimate My Value</button>
           </form>
-          <div class="val-result" id="valResult">
+          <div class="val-result" id="valResult" role="status" aria-live="polite">
             <span style="font-size:.78rem;color:var(--ink-soft);">Estimated market range</span>
             <strong id="valResultAmount">$0 – $0</strong>
-            <p style="margin:8px 0 0;font-size:.82rem;color:var(--ink-soft);">Based on recent township comps. A licensed Keystone agent will refine this with a full walkthrough.</p>
+            <p style="margin:8px 0 0;font-size:.82rem;color:var(--ink-soft);">Demo range only — not an appraisal. A live office would refine this on a walkthrough.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
+  @include('partials.faq-list', [
+    'faqTitle' => 'Contact questions',
+    'faqText' => 'When to call vs book, what the form does, and the fictional office address.',
+    'faqHeadClass' => 'left',
+    'faqSectionClass' => '',
+  ])
 
 <!-- ============================= FOOTER (SHARED) ============================= -->
 @endsection

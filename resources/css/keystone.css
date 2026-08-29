@@ -396,6 +396,8 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
   display:grid;gap:16px;grid-template-columns:1fr;
 }
 @media(min-width:720px){.intent-grid{grid-template-columns:repeat(3,1fr);align-items:stretch;}}
+@media(min-width:520px){.intent-grid.dest-grid{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:900px){.intent-grid.dest-grid{grid-template-columns:repeat(3,1fr);}}
 .intent-card{
   display:flex;flex-direction:column;gap:10px;padding:26px 24px 22px;
   background:var(--white);border:1px solid var(--line);border-radius:var(--radius);
@@ -847,7 +849,8 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 .listing-single{display:grid;gap:32px;}
 @media(min-width:900px){.listing-single{grid-template-columns:1.4fr .8fr;align-items:start;}}
 .listing-single-photo{height:280px;border-radius:var(--radius);margin-bottom:18px;}
-.listing-agent-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);}
+.listing-agent-card{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);display:grid;gap:10px;}
+.listing-agent-card .btn{min-height:44px;justify-content:center;text-align:center;}
 .agent-avatar img,.img.agent-avatar{object-fit:cover;}
 
 /* Footer */

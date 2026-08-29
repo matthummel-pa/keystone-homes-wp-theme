@@ -99,6 +99,9 @@ class PageCopy
                 'area_6_meta' => ['label' => 'Area 6 meta', 'type' => 'text', 'default' => 'Southwest · Fairfield &amp; the Maryland line · PA-116'],
                 'area_6_title' => ['label' => 'Area 6 title', 'type' => 'text', 'default' => 'Liberty Township'],
                 'area_6_body' => ['label' => 'Area 6 body', 'type' => 'textarea', 'default' => 'Liberty Township runs down to the Mason-Dixon line below Fairfield — small farms, pasture and wooded homesteads with an easy commute toward Frederick, Maryland.'],
+                'pick_eyebrow' => ['label' => 'Township-fit eyebrow', 'type' => 'text', 'default' => 'How to pick'],
+                'pick_title' => ['label' => 'Township-fit title', 'type' => 'text', 'default' => 'Match the ground to the Tuesday you will actually live'],
+                'pick_text' => ['label' => 'Township-fit intro', 'type' => 'textarea', 'default' => 'Borough names sell the postcard. Township rules decide the well, the perc, and whether you can split a lot. Scan these three questions before you fall for a ridge view.'],
             ] + $cta + [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Walk a township with us'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Tell us which corner of Sample County you want to understand, and we\'ll match you with the agent who knows that ground.'],
@@ -106,6 +109,9 @@ class PageCopy
             'guide' => $hero('Buyer tools', 'A clearer path to <em>buying land or a home</em>', 'Short guides and demo calculators. Use with the showing scheduler for a full agent workflow.') + [
                 'intro_title' => ['label' => 'Intro title', 'type' => 'text', 'default' => 'What\'s different about buying land'],
                 'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.'],
+                'check_eyebrow' => ['label' => 'Scan-cards eyebrow', 'type' => 'text', 'default' => 'Before the calculators'],
+                'check_title' => ['label' => 'Scan-cards title', 'type' => 'text', 'default' => 'Four things that change what acreage is worth'],
+                'check_text' => ['label' => 'Scan-cards intro', 'type' => 'textarea', 'default' => 'Read these first, then run the demo numbers. A pretty parcel without water, septic, or a recorded lane is a different product than a turnkey farmhouse.'],
                 'tools_eyebrow' => ['label' => 'Tools eyebrow', 'type' => 'text', 'default' => 'Run Your Numbers'],
                 'tools_title' => ['label' => 'Tools title', 'type' => 'text', 'default' => 'Land-loan &amp; pre-qualification tools'],
                 'tools_text' => ['label' => 'Tools intro', 'type' => 'textarea', 'default' => 'Friendly estimates to help you plan — not loan offers. A licensed lender will verify everything with full documentation.'],
@@ -120,6 +126,9 @@ class PageCopy
                 'how_eyebrow' => ['label' => 'How-we-work eyebrow', 'type' => 'text', 'default' => 'How We Work'],
                 'how_title' => ['label' => 'How-we-work title', 'type' => 'text', 'default' => 'What working with Keystone looks like'],
                 'how_text' => ['label' => 'How-we-work intro', 'type' => 'textarea', 'default' => 'No pressure, no jargon, and a straight answer about the ground under your feet.'],
+                'match_eyebrow' => ['label' => 'Who-to-call eyebrow', 'type' => 'text', 'default' => 'Who to call'],
+                'match_title' => ['label' => 'Who-to-call title', 'type' => 'text', 'default' => 'Match the agent to the ground'],
+                'match_text' => ['label' => 'Who-to-call intro', 'type' => 'textarea', 'default' => 'Farms, raw land, and century houses are different jobs. Scan the specialty, then book a showing or reach the office — phones on this page are fictional 555 lines.'],
             ] + $cta + [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Talk to a Keystone agent'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Reach the office at (555) 010-0455, or book a no-pressure showing and we\'ll match you with the agent who knows your corner of Sample County best.'],
@@ -132,6 +141,9 @@ class PageCopy
                 'office_hours' => ['label' => 'Hours', 'type' => 'textarea', 'default' => "Mon–Fri: 8:30am – 5:30pm\nSaturday: 9:00am – 1:00pm\nSunday: By appointment"],
                 'form_title' => ['label' => 'Form title', 'type' => 'text', 'default' => 'Send us a message'],
                 'form_text' => ['label' => 'Form intro', 'type' => 'textarea', 'default' => 'Tell us what you\'re looking for — or what you\'re thinking of selling — and we\'ll be in touch.'],
+                'when_eyebrow' => ['label' => 'Reach-us eyebrow', 'type' => 'text', 'default' => 'How to reach us'],
+                'when_title' => ['label' => 'Reach-us title', 'type' => 'text', 'default' => 'Call, message, or book a walk'],
+                'when_text' => ['label' => 'Reach-us intro', 'type' => 'textarea', 'default' => 'Pick the path that matches the job. All three stay on this concept site — nothing is emailed or texted.'],
             ],
             'book' => $hero('Appointments', 'Book a house showing', 'Pick a listing, date and time. The request is saved as a Booking in Requested status — nothing is emailed.') + [
                 'book_note' => ['label' => 'Form note', 'type' => 'text', 'default' => 'Demo only — no emails, texts or calendar invites are sent. Staff can advance the booking in WP Admin → Bookings.'],

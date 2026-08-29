@@ -70,8 +70,21 @@
   if(schForm){
     schForm.addEventListener("submit", function(e){
       e.preventDefault();
+      var btn = schForm.querySelector('button[type="submit"]');
+      if(btn){
+        btn.disabled = true;
+        btn.setAttribute("aria-disabled", "true");
+        btn.textContent = "Sending…";
+      }
       document.getElementById("scheduleConfirm").classList.add("show");
       this.reset();
+      if(btn){
+        window.setTimeout(function(){
+          btn.disabled = false;
+          btn.removeAttribute("aria-disabled");
+          btn.textContent = "Request a Call Back";
+        }, 600);
+      }
     });
     try{
       var dateInput = document.getElementById("schDate");
