@@ -19,7 +19,12 @@
     <p class="hero-brand">Keystone Homes &amp; Land</p>
     <p class="hero-eyebrow">{{ $agent['job_title'] }}</p>
     <h1>{{ $agent['name'] }}</h1>
-    <p>{{ $agent['office'] }}@if ($agent['years_experience']) · {{ $agent['years_experience'] }} years@endif</p>
+    <p>
+      {{ $agent['office'] }}
+      @if ($agent['years_experience'])
+        · {{ $agent['years_experience'] }} years
+      @endif
+    </p>
   </div>
 </section>
 

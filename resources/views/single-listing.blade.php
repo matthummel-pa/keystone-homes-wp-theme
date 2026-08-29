@@ -17,7 +17,12 @@
 <section class="page-hero">
   <div class="page-hero-inner">
     <p class="hero-brand">{{ $listing['typeLabel'] }} · {{ $listing['township'] }} Township</p>
-    <p class="hero-eyebrow">{{ strtoupper($listing['status']) }}@if ($listing['mls_number']) · MLS {{ $listing['mls_number'] }}@endif</p>
+    <p class="hero-eyebrow">
+      {{ strtoupper($listing['status']) }}
+      @if ($listing['mls_number'])
+        · MLS {{ $listing['mls_number'] }}
+      @endif
+    </p>
     <h1>{{ $listing['title'] }}</h1>
     <p>{{ $listing['address'] }}</p>
   </div>

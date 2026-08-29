@@ -145,7 +145,13 @@
             @endif
             <div>
               <strong>{{ \App\Support\Catalog::formatMoney((int) $listing['price']) }}</strong>
-              <span>{{ $listing['title'] }}@if ($listing['type'] !== 'land') · {{ $listing['beds'] }} bd@endif · {{ $listing['acres'] }} acres</span>
+              <span>
+                {{ $listing['title'] }}
+                @if ($listing['type'] !== 'land')
+                  · {{ $listing['beds'] }} bd
+                @endif
+                · {{ $listing['acres'] }} acres
+              </span>
               <span class="chip">Listing · Book showing</span>
             </div>
           </a>
