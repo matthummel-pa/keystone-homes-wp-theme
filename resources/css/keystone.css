@@ -14,12 +14,14 @@
   --paper-3:#dfd9cf;
   --line:#d6d0c6;
   --white:#fffcf7;
+  --card-bg:#fff; /* true white — --white is warm cream and blends into --paper */
   --accent:#1f6b4a;
   --accent-dark:#155539;
   --accent-soft:#d7efe4;
   --accent-glow:rgba(31,107,74,.28);
   --success:#1f6b4a;
   --warn:#b45309;
+  --shadow-rest:0 6px 22px rgba(12,12,12,.06);
   --shadow:0 12px 40px rgba(12,12,12,.08);
   --shadow-lg:0 28px 80px rgba(12,12,12,.16);
   --radius:18px;
