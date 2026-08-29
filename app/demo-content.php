@@ -7,6 +7,7 @@
 namespace App;
 
 use App\Support\DemoContent;
+use App\Support\DemoPages;
 
 add_action('init', function () {
     if (defined('WP_CLI') && WP_CLI) {
@@ -19,6 +20,9 @@ add_action('after_switch_theme', function () {
     DemoContent::maybeSeed();
     flush_rewrite_rules();
 });
+
+add_action('template_redirect', [DemoPages::class, 'maybeServe'], 1);
+add_filter('template_include', [DemoPages::class, 'templateFile'], 50);
 
 add_action('admin_notices', function () {
     if (! current_user_can('manage_options') || DemoContent::isComplete()) {

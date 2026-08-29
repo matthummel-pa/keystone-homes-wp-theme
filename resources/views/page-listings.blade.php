@@ -16,10 +16,10 @@
 <!-- ============================= PAGE HERO ============================= -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
-    <h1>{!! $copy['hero_title'] !!}</h1>
-    <p>{!! $copy['hero_text'] !!}</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Sample inventory' }}</p>
+    <h1>{!! $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>' !!}</h1>
+    <p>{!! $copy['hero_text'] ?: 'Eight fictional properties for layout and filter testing. Switch grid or map — nothing here is a live MLS feed.' !!}</p>
   </div>
 </section>
 

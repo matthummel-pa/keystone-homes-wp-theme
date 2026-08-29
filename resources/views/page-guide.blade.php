@@ -16,10 +16,10 @@
 <!-- ============================= PAGE HERO ============================= -->
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
-    <h1>{!! $copy['hero_title'] !!}</h1>
-    <p>{!! $copy['hero_text'] !!}</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Buyer tools' }}</p>
+    <h1>{!! $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>' !!}</h1>
+    <p>{!! $copy['hero_text'] ?: 'Short guides and demo calculators. Use with the showing scheduler for a full agent workflow.' !!}</p>
   </div>
 </section>
 

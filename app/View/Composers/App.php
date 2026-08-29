@@ -22,10 +22,8 @@ class App extends Composer
 
     public function with(): array
     {
-        $id = (int) (get_queried_object_id() ?: get_the_ID());
-
         return [
-            'copy' => $id ? PageCopy::all($id) : [],
+            'copy' => PageCopy::all(),
             'catalogListings' => Catalog::listings(),
             'spotlightListings' => Catalog::featuredListings(3),
             'catalogAgents' => Catalog::agents(),

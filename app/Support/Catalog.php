@@ -163,7 +163,7 @@ class Catalog
         $items = array_map([self::class, 'listingToArray'], $query->posts);
         wp_reset_postdata();
 
-        return $items;
+        return $items !== [] ? $items : self::listingsFromSeed();
     }
 
     /**
@@ -212,27 +212,39 @@ class Catalog
         $items = array_map([self::class, 'agentToArray'], $query->posts);
         wp_reset_postdata();
 
-        return $items;
+        return $items !== [] ? $items : self::agentsFromSeed();
     }
 
     public static function agent(int $id): ?array
     {
         $post = get_post($id);
-        if (! $post instanceof WP_Post || $post->post_type !== self::AGENT) {
-            return null;
+        if ($post instanceof WP_Post && $post->post_type === self::AGENT) {
+            return self::agentToArray($post);
         }
 
-        return self::agentToArray($post);
+        foreach (self::agents() as $item) {
+            if ((int) $item['id'] === $id) {
+                return $item;
+            }
+        }
+
+        return null;
     }
 
     public static function listing(int $id): ?array
     {
         $post = get_post($id);
-        if (! $post instanceof WP_Post || $post->post_type !== self::LISTING) {
-            return null;
+        if ($post instanceof WP_Post && $post->post_type === self::LISTING) {
+            return self::listingToArray($post);
         }
 
-        return self::listingToArray($post);
+        foreach (self::listings() as $item) {
+            if ((int) $item['id'] === $id) {
+                return $item;
+            }
+        }
+
+        return null;
     }
 
     /**
@@ -348,5 +360,136 @@ class Catalog
         $digits = preg_replace('/\D+/', '', $phone) ?? '';
 
         return $digits !== '' ? 'tel:+1'.$digits : '#';
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public static function listingsFromSeed(): array
+    {
+        $rows = self::decodeSeed('listings.json');
+        $items = [];
+        foreach (array_values($rows) as $index => $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+            $items[] = self::listingFromSeed($row, $index + 1);
+        }
+
+        return $items;
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    public static function agentsFromSeed(): array
+    {
+        $rows = self::decodeSeed('agents.json');
+        $items = [];
+        foreach (array_values($rows) as $index => $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+            $items[] = self::agentFromSeed($row, $index + 1);
+        }
+
+        return $items;
+    }
+
+    /**
+     * @return list<array<string, mixed>>
+     */
+    private static function decodeSeed(string $file): array
+    {
+        $path = get_template_directory().'/resources/seed/'.$file;
+        if (! is_readable($path)) {
+            return [];
+        }
+        $data = json_decode((string) file_get_contents($path), true);
+
+        return is_array($data) ? $data : [];
+    }
+
+    /**
+     * @param  array<string, mixed>  $item
+     * @return array<string, mixed>
+     */
+    private static function listingFromSeed(array $item, int $id): array
+    {
+        $type = (string) ($item['type'] ?? 'home');
+        $slug = (string) ($item['slug'] ?? 'listing-'.$id);
+
+        return [
+            'id' => $id,
+            'slug' => $slug,
+            'permalink' => home_url('/listings'),
+            'title' => (string) ($item['title'] ?? 'Sample listing'),
+            'desc' => (string) ($item['description'] ?? ''),
+            'type' => $type,
+            'typeLabel' => self::LISTING_TYPES[$type] ?? 'Home',
+            'status' => (string) ($item['status'] ?? 'active'),
+            'address' => (string) ($item['address'] ?? ''),
+            'city' => (string) ($item['city'] ?? ''),
+            'state' => (string) ($item['state'] ?? 'PA'),
+            'zip' => (string) ($item['zip'] ?? ''),
+            'township' => (string) ($item['township'] ?? ''),
+            'price' => (int) ($item['price'] ?? 0),
+            'beds' => (float) ($item['beds'] ?? 0),
+            'baths' => (float) ($item['baths'] ?? 0),
+            'sqft' => (int) ($item['sqft'] ?? 0),
+            'acres' => (float) ($item['acres'] ?? 0),
+            'year_built' => (string) ($item['year_built'] ?? ''),
+            'mls_number' => (string) ($item['mls_number'] ?? ''),
+            'lat' => (float) ($item['lat'] ?? 40),
+            'lng' => (float) ($item['lng'] ?? 40),
+            'grad' => (string) ($item['photo_grad'] ?? 'linear-gradient(135deg,#155539,#1f6b4a)'),
+            'image' => (string) ($item['image'] ?? ''),
+            'virtual_tour' => (string) ($item['virtual_tour'] ?? ''),
+            'property_tax' => (string) ($item['property_tax'] ?? ''),
+            'hoa' => (string) ($item['hoa'] ?? ''),
+            'listing_agent' => 0,
+            'featured' => ! empty($item['featured']) && (string) $item['featured'] !== '0',
+        ];
+    }
+
+    /**
+     * @param  array<string, mixed>  $item
+     * @return array<string, mixed>
+     */
+    private static function agentFromSeed(array $item, int $id): array
+    {
+        $name = (string) ($item['name'] ?? 'Agent');
+
+        return [
+            'id' => $id,
+            'slug' => (string) ($item['slug'] ?? 'agent-'.$id),
+            'permalink' => home_url('/agents'),
+            'name' => $name,
+            'bio' => (string) ($item['bio'] ?? ''),
+            'job_title' => (string) ($item['job_title'] ?? 'Realtor'),
+            'license_number' => (string) ($item['license_number'] ?? ''),
+            'license_state' => (string) ($item['license_state'] ?? 'PA'),
+            'phone' => (string) ($item['phone'] ?? ''),
+            'mobile' => (string) ($item['mobile'] ?? ''),
+            'email' => (string) ($item['email'] ?? ''),
+            'office' => (string) ($item['office'] ?? 'Keystone Homes & Land'),
+            'office_phone' => (string) ($item['office_phone'] ?? '(555) 010-0455'),
+            'years_experience' => (string) ($item['years_experience'] ?? ''),
+            'specialties' => (string) ($item['specialties'] ?? ''),
+            'service_areas' => (string) ($item['service_areas'] ?? ''),
+            'languages' => (string) ($item['languages'] ?? 'English'),
+            'designations' => (string) ($item['designations'] ?? ''),
+            'mls_id' => (string) ($item['mls_id'] ?? ''),
+            'nrds_id' => (string) ($item['nrds_id'] ?? ''),
+            'website' => (string) ($item['website'] ?? ''),
+            'calendly' => (string) ($item['calendly'] ?? ''),
+            'facebook' => (string) ($item['facebook'] ?? ''),
+            'instagram' => (string) ($item['instagram'] ?? ''),
+            'linkedin' => (string) ($item['linkedin'] ?? ''),
+            'initials' => (string) ($item['initials'] ?? self::initials($name)),
+            'avatar_color' => (string) ($item['avatar_color'] ?? 'var(--accent)'),
+            'photo' => '',
+            'featured' => ! empty($item['featured']) && (string) $item['featured'] !== '0',
+        ];
     }
 }

@@ -14,10 +14,10 @@
 
 <section class="page-hero">
   <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] }}</p>
-    <h1>{!! $copy['hero_title'] !!}</h1>
-    <p>{!! $copy['hero_text'] !!}</p>
+    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
+    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Appointments' }}</p>
+    <h1>{!! $copy['hero_title'] ?: 'Book a house showing' !!}</h1>
+    <p>{!! $copy['hero_text'] ?: 'Pick a listing, date and time. The request is saved as a Booking in Requested status — nothing is emailed.' !!}</p>
   </div>
 </section>
 
