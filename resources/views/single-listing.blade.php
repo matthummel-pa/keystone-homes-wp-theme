@@ -10,8 +10,8 @@
     $listingSchema = [
       '@context' => 'https://schema.org',
       '@type' => $listing['type'] === 'land' ? 'Place' : 'SingleFamilyResidence',
-      'name' => $listing['title'],
-      'description' => $listing['desc'],
+      'name' => html_entity_decode($listing['title'], ENT_QUOTES | ENT_HTML5, 'UTF-8'),
+      'description' => html_entity_decode($listing['desc'], ENT_QUOTES | ENT_HTML5, 'UTF-8'),
       'url' => $listing['permalink'],
       'address' => [
         '@type' => 'PostalAddress',
