@@ -126,7 +126,7 @@
           </div>
         </a>
         <a class="intent-card is-primary" href="{{ home_url('/book/') }}">
-          <figure class="intent-photo">
+          <figure class="intent-photo intent-photo--ground">
             <img src="{{ get_theme_file_uri('public/images/intent-tour.jpg') }}" width="1200" height="900" alt="" decoding="async">
           </figure>
           <div class="intent-copy">
