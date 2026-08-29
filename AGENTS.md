@@ -9,6 +9,9 @@ Versioned Cursor rules live in [`.cursor/rules/`](.cursor/rules/) as `.mdc` file
 - `keystone-project.mdc` — always on (fiction-only, theme vs live content)
 - `theme-sage.mdc` — PHP / Blade (CPTs, PageCopy, query pitfalls)
 - `frontend.mdc` — CSS / JS / views (tokens, Vite, homepage search)
+- `ui-aesthetics.mdc` — wrap, cards, type, hero contrast (no slate/dark skin)
+- `accessibility.mdc` — WCAG 2.2 AA (contrast, focus, 44px, semantics, reduced motion)
+- `conversion-ux.mdc` — labels, autocomplete, button states, `aria-live`
 - `seo-native.mdc` — native title / description / OG / Twitter; no SEO plugins
 - `live-wordpress.mdc` — when editing the live WP site via WPVibe
 
