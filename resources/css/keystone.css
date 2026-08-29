@@ -506,24 +506,29 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 
 /* ============================= MARKET + OPEN HOUSES ============================= */
 .market-grid{
-  display:grid;gap:18px;grid-template-columns:1fr;
+  display:grid;gap:14px;grid-template-columns:1fr 1fr;
 }
-@media(min-width:800px){.market-grid{grid-template-columns:repeat(4,1fr);}}
+@media(min-width:800px){.market-grid{grid-template-columns:repeat(4,1fr);gap:18px;}}
 .market-stat{
-  padding:22px 8px;border-top:2px solid var(--ink);
+  margin:0;padding:22px 20px 18px;
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+  box-shadow:var(--shadow-rest, var(--shadow));
+  display:grid;gap:6px;align-content:start;min-width:0;
 }
 .market-stat strong{
-  display:block;font-family:var(--ff-display);font-size:clamp(1.8rem,3vw,2.4rem);
-  letter-spacing:-.03em;margin-bottom:4px;
+  display:block;font-family:var(--ff-display);font-size:clamp(1.85rem,4vw,2.55rem);
+  font-weight:800;letter-spacing:-.04em;line-height:.95;color:var(--ink);
 }
 .market-stat span{
-  font-family:var(--ff-mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--ink-faint);
+  font-family:var(--ff-body);font-size:.88rem;font-weight:600;letter-spacing:-.01em;
+  text-transform:none;color:var(--ink-soft);line-height:1.3;
 }
 .market-stat em{
-  display:block;margin-top:10px;font-style:normal;font-size:.85rem;color:var(--success);font-weight:600;
+  display:flex;align-items:center;gap:6px;margin-top:6px;
+  font-style:normal;font-size:.82rem;color:var(--ink-faint);font-weight:600;
 }
-.market-stat em.down{color:var(--warn);}
+.market-stat em.is-up{color:var(--success);}
+.market-stat em.is-down,.market-stat em.down{color:var(--warn);}
 
 .open-list{display:grid;gap:0;border-top:1px solid var(--line);}
 .open-row{

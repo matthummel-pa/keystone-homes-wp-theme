@@ -28,19 +28,19 @@ class Faqs
         return [
             [
                 'q' => 'What should I compare first on a rural Adams County listing?',
-                'a' => 'Start with township, price, and usable acres — then water, septic, and legal access. Beds and commute matter on houses; perc status and road frontage matter on land. Sample inventory on this site is fictional, but the scan order is what a working farm buyer uses.',
+                'a' => 'Start with township, price, and usable acres, then water, septic, and legal access. Bedrooms and commute matter on houses; perc status and road frontage matter on land. Inventory on this site is sample data; the review order is what a working farm buyer uses.',
             ],
             [
                 'q' => 'How is buying land different from buying a house here?',
-                'a' => 'A house usually has utilities already. Raw acreage often needs a well, a perc test, and a recorded driveway. Zoning and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Read the buyer guide before you write an offer on a parcel with no house.',
+                'a' => 'A house usually has utilities in place. Raw acreage often needs a well, a perc test, and a recorded driveway. Zoning and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Review the buyer guide before you write an offer on a parcel without a house.',
             ],
             [
                 'q' => 'Do I need a showing to walk a farm or historic house?',
-                'a' => 'Yes for occupied homes and most working farms — lanes, livestock, and locked shops are common. Book a sample slot on this demo to see the flow: pick a listing, a date, and a time. Wear boots; mention pets or if you are new to land.',
+                'a' => 'Yes for occupied homes and most working farms — lanes, livestock, and locked shops are common. Schedule a sample showing to see the flow: choose a listing, a date, and a time. Wear boots, and mention pets or if you are new to land.',
             ],
             [
                 'q' => 'Is Keystone Real Estate a live brokerage?',
-                'a' => 'No. This is a concept demo by Ridges & Valleys Studio. Listings, phones, and market stats are fictional. Use it to walk a modern realtor site — then replace sample data with your own inventory.',
+                'a' => 'No. This is a concept site by Ridges & Valleys Studio. Listings, phone numbers, and market figures are fictional. Use it to evaluate a modern realtor website, then replace the sample data with your own inventory.',
             ],
         ];
     }

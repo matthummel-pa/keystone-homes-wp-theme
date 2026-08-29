@@ -28,7 +28,7 @@ class PageCopy
             'home' => $hero(
                 'Adams County, Pennsylvania',
                 'Homes worth <em>walking through.</em>',
-                'Farms, historic houses, and acreage across North Ridge, Mill Creek, and Oak Hollow. Filter by township, then book a showing.'
+                'Farms, historic houses, and acreage in North Ridge, Mill Creek, and Oak Hollow. Filter by township, then schedule a showing.'
             ) + [
                 'intent_eyebrow' => ['label' => 'Start-here eyebrow', 'type' => 'text', 'default' => 'Start here'],
                 'intent_title' => ['label' => 'Start-here title', 'type' => 'text', 'default' => 'Buy, sell, or walk a place in Adams County'],
