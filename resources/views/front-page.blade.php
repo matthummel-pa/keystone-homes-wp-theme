@@ -312,7 +312,7 @@
           <h3>Demo home value</h3>
           <p class="lede">Instant range for a fictional address. Not an appraisal.</p>
           <form class="form-grid two" id="valueForm">
-            <div class="field" style="grid-column:1/-1">
+            <div class="field field-span">
               <label for="vAddress">Street address</label>
               <input id="vAddress" type="text" autocomplete="street-address" placeholder="100 Concept Way" required>
             </div>
@@ -324,8 +324,8 @@
               <label for="vAcres">Acres</label>
               <select id="vAcres"><option value="0.5">&lt; 1</option><option value="5" selected>1–10</option><option value="20">10–30</option><option value="40">30+</option></select>
             </div>
-            <div class="field" style="grid-column:1/-1">
-              <button type="submit" class="btn btn-primary" style="width:100%">Estimate value</button>
+            <div class="field field-span">
+              <button type="submit" class="btn btn-primary btn-block">Estimate value</button>
             </div>
           </form>
           <div class="val-result" id="valueResult" role="status" aria-live="polite"></div>
@@ -333,10 +333,10 @@
         <div class="alert-panel reveal">
           <h3>Listing alerts</h3>
           <p>Demo inbox signup for new sample matches.</p>
-          <form class="form-grid" id="alertForm">
-            <div class="field">
+          <form class="form-grid two" id="alertForm">
+            <div class="field field-span">
               <label for="aEmail">Email</label>
-              <input id="aEmail" type="email" autocomplete="email" placeholder="you@@example.test" required>
+              <input id="aEmail" type="email" autocomplete="email" placeholder="you@@keystone-concept.test" required>
             </div>
             <div class="field">
               <label for="aType">Looking for</label>
@@ -346,7 +346,9 @@
               <label for="aMax">Max price</label>
               <select id="aMax"><option>$400,000</option><option selected>$600,000</option><option>$800,000</option><option>No max</option></select>
             </div>
-            <button type="submit" class="btn btn-primary">Create alert</button>
+            <div class="field field-span">
+              <button type="submit" class="btn btn-primary btn-block">Create alert</button>
+            </div>
           </form>
           <div class="confirm-msg" id="alertConfirm" role="status" aria-live="polite"><span>Demo alert saved — no email is sent.</span></div>
         </div>
