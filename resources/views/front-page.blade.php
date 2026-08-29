@@ -27,21 +27,12 @@
   </script>
 
   @php
-    $heroImage = trim((string) ($copy['hero_image'] ?? ''));
-    if ($heroImage === '') {
-      $heroImage = 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&q=75';
-    }
     $listingCount = count($catalogListings ?? []);
     $townshipCount = count($catalogTownships ?? []);
   @endphp
   <section class="hero" id="top" aria-labelledby="hero-heading">
     <figure class="hero-media">
-      <img
-        src="{{ $heroImage }}"
-        srcset="{{ $heroImage }} 1600w"
-        sizes="100vw"
-        width="1600" height="1067" alt="" decoding="async" fetchpriority="high"
-      >
+      @include('partials.hero-image')
     </figure>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-inner">
