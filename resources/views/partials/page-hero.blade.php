@@ -5,8 +5,9 @@
   $heroText = $heroText ?? ($copy['hero_text'] ?? '');
   $heroActions = $heroActions ?? [];
   $headingId = $headingId ?? 'page-hero-heading';
+  $heroClass = $heroClass ?? '';
 @endphp
-<section class="page-hero page-hero--photo" aria-labelledby="{{ $headingId }}">
+<section class="page-hero page-hero--photo{{ $heroClass ? ' '.$heroClass : '' }}" aria-labelledby="{{ $headingId }}">
   <figure class="page-hero-media">
     @include('partials.hero-image')
   </figure>
