@@ -1,0 +1,153 @@
+/* =========================================================================
+   Keystone Homes & Land — GLOBAL behaviors (shared on every page)
+   - Mobile nav toggle + Escape / focus return
+   - Sticky header shadow on scroll
+   - Scroll-reveal IntersectionObserver (respects prefers-reduced-motion)
+   - Concept chat widget (dialog semantics + aria-live)
+   - Current year in footer
+   ========================================================================= */
+(function(){
+  "use strict";
+
+  var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ============================= MOBILE NAV ============================= */
+  var hamburgerBtn = document.getElementById("hamburgerBtn");
+  var mobileNav = document.getElementById("mobileNav");
+
+  function setNavOpen(open){
+    if(!hamburgerBtn || !mobileNav) return;
+    mobileNav.classList.toggle("open", open);
+    if(open) mobileNav.removeAttribute("hidden");
+    else mobileNav.setAttribute("hidden", "");
+    hamburgerBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    hamburgerBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    document.body.classList.toggle("nav-open", open);
+  }
+
+  if(hamburgerBtn && mobileNav){
+    if(!mobileNav.classList.contains("open")) mobileNav.setAttribute("hidden", "");
+
+    hamburgerBtn.addEventListener("click", function(){
+      var willOpen = mobileNav.hasAttribute("hidden");
+      setNavOpen(willOpen);
+      if(willOpen){
+        var first = mobileNav.querySelector("a");
+        if(first) first.focus();
+      }
+    });
+    mobileNav.querySelectorAll("a").forEach(function(a){
+      a.addEventListener("click", function(){ setNavOpen(false); });
+    });
+  }
+
+  /* ============================= HEADER SHADOW ON SCROLL ============================= */
+  var header = document.querySelector(".site-header");
+  if(header){
+    var onScroll = function(){
+      header.classList.toggle("scrolled", window.scrollY > 8);
+    };
+    window.addEventListener("scroll", onScroll, {passive:true});
+    onScroll();
+  }
+
+  /* ============================= REVEAL ON SCROLL ============================= */
+  var revealEls = document.querySelectorAll(".reveal");
+  if(reduceMotion){
+    revealEls.forEach(function(el){ el.classList.add("in-view"); });
+  } else if("IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add("in-view");
+          io.unobserve(entry.target);
+        }
+      });
+    }, {threshold:.12, rootMargin:"0px 0px -40px 0px"});
+    revealEls.forEach(function(el){ io.observe(el); });
+  } else {
+    revealEls.forEach(function(el){ el.classList.add("in-view"); });
+  }
+
+  /* ============================= CONCEPT CHAT WIDGET ============================= */
+  var chatFab = document.getElementById("chatFab");
+  var chatWidget = document.getElementById("chatWidget");
+  var chatCloseBtn = document.getElementById("chatCloseBtn");
+  var chatBody = document.getElementById("chatBody");
+  var chatQuick = document.getElementById("chatQuick");
+
+  var REPLIES = {
+    land: {label:"Land prices?", reply:"Sample land parcels in this demo range from about $129,000 to $215,000. Open Listings and filter by Land — numbers are fictional."},
+    historic: {label:"Historic homes?", reply:"This concept includes sample historic-style listings. Browse Listings or book a demo showing from the homepage."},
+    tour: {label:"Book a tour", reply:"Use the demo showing scheduler on the homepage — pick a sample home, date and time slot. Nothing is emailed; it's a UX demo only."},
+    financing: {label:"Financing help?", reply:"Open the Guide page for sample loan and pre-qualification tools, or use the homepage payment and value estimators for quick demos."}
+  };
+
+  function openChat(){
+    if(!chatWidget || !chatFab) return;
+    chatWidget.classList.add("open");
+    chatWidget.removeAttribute("hidden");
+    chatWidget.setAttribute("aria-hidden","false");
+    chatFab.setAttribute("aria-expanded","true");
+    document.body.classList.add("chat-open");
+    if(chatCloseBtn) chatCloseBtn.focus();
+  }
+
+  function closeChat(){
+    if(!chatWidget || !chatFab) return;
+    chatWidget.classList.remove("open");
+    chatWidget.setAttribute("hidden","");
+    chatWidget.setAttribute("aria-hidden","true");
+    chatFab.setAttribute("aria-expanded","false");
+    document.body.classList.remove("chat-open");
+    chatFab.focus();
+  }
+
+  function appendChat(text, who){
+    if(!chatBody) return;
+    var div = document.createElement("div");
+    div.className = "chat-msg " + who;
+    div.textContent = text;
+    chatBody.appendChild(div);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+
+  if(chatFab && chatWidget){
+    if(!chatWidget.classList.contains("open")){
+      chatWidget.setAttribute("hidden","");
+      chatWidget.setAttribute("aria-hidden","true");
+    }
+    chatFab.addEventListener("click", function(){
+      if(chatWidget.hasAttribute("hidden")) openChat();
+      else closeChat();
+    });
+    if(chatCloseBtn) chatCloseBtn.addEventListener("click", closeChat);
+    if(chatQuick){
+      chatQuick.addEventListener("click", function(e){
+        var btn = e.target.closest("button[data-q]");
+        if(!btn) return;
+        var key = btn.getAttribute("data-q");
+        var r = REPLIES[key];
+        if(!r) return;
+        appendChat(r.label, "user");
+        window.setTimeout(function(){ appendChat(r.reply, "bot"); }, reduceMotion ? 0 : 400);
+      });
+    }
+  }
+
+  /* Escape closes chat or mobile nav */
+  document.addEventListener("keydown", function(e){
+    if(e.key !== "Escape") return;
+    if(chatWidget && !chatWidget.hasAttribute("hidden")) closeChat();
+    else if(mobileNav && !mobileNav.hasAttribute("hidden")){
+      setNavOpen(false);
+      if(hamburgerBtn) hamburgerBtn.focus();
+    }
+  });
+
+  /* ============================= CURRENT YEAR ============================= */
+  var yearEls = document.querySelectorAll("[data-year]");
+  var yr = new Date().getFullYear();
+  yearEls.forEach(function(el){ el.textContent = yr; });
+
+})();
