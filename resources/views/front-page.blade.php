@@ -194,8 +194,8 @@
     <div class="wrap">
       <header class="section-head left reveal">
         <p class="eyebrow">How a tour starts</p>
-        <h2 id="how-heading">From filter to a walk on the ground</h2>
-        <p>Same path a working Adams County buyer uses — township first, then a time slot. This demo stops at on-page confirmation.</p>
+        <h2 id="how-heading">From search to showing</h2>
+        <p>Township first, then a walk on the ground — not office theater. This demo stops at on-page confirmation.</p>
       </header>
       <ol class="step-grid reveal">
         <li class="step">
@@ -210,8 +210,8 @@
             >
           </figure>
           <div class="step-copy">
-            <h3>Filter by township</h3>
-            <p>Type, price, and acres matter — but zoning and Clean and Green sit on the township. Start there so you are not comparing Oak Hollow land to a North Ridge house.</p>
+            <h3>Filter the township</h3>
+            <p>Start with the township so zoning and Clean and Green are not compared across Oak Hollow land and a North Ridge house.</p>
           </div>
         </li>
         <li class="step">
@@ -226,8 +226,8 @@
             >
           </figure>
           <div class="step-copy">
-            <h3>Read the card twice</h3>
-            <p>Price and beds on a house. Usable acres, access, and utilities on land. Spotlight homes below jump you into a showing with the listing already selected.</p>
+            <h3>Read the card</h3>
+            <p>Price and beds on a house; usable acres, access, and utilities on land. Spotlight homes below already select the listing.</p>
           </div>
         </li>
         <li class="step">
@@ -242,8 +242,8 @@
             >
           </figure>
           <div class="step-copy">
-            <h3>Book a slot</h3>
-            <p>Pick a date and a time. Evening slots exist because farm showings often happen after commute. Wear boots; mention a well or perc question in the notes.</p>
+            <h3>Book the hour</h3>
+            <p>Pick a date and a time. Evening slots exist because farm showings often happen after commute.</p>
           </div>
         </li>
         <li class="step">
@@ -258,9 +258,10 @@
             >
           </figure>
           <div class="step-copy">
-            <h3>Walk it</h3>
-            <p>On a live site the agent confirms. Here you get an on-page receipt and a Booking in Requested status — no email, no calendar invite.</p>
+            <h3>Walk the ground</h3>
+            <p>Wear boots and walk the lane. Here you get an on-page receipt — no email, no calendar invite.</p>
           </div>
+          <a class="btn btn-primary" href="{{ home_url('/book/') }}">Book a showing</a>
         </li>
       </ol>
     </div>
