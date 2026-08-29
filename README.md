@@ -34,6 +34,12 @@ wp server --path="$HOME/wp" --host=0.0.0.0 --port=8080 --allow-root
 
 Admin: `http://localhost:8080/wp-admin` — user `admin`, password `admin123`.
 
+On a fresh WordPress install the theme loads demo pages, eight listings, three agents, and sample blog posts on the first public request. Re-run anytime from **Tools → Seed Keystone demo** or:
+
+```bash
+wp ks seed --path="$HOME/wp" --allow-root
+```
+
 ```bash
 npm run build          # required before first page load
 npm run dev            # Vite HMR alongside wp server

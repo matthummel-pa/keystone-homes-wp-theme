@@ -38,9 +38,9 @@
     </figure>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="hero-brand">{!! $copy['hero_brand'] !!}</p>
-      <h1 id="hero-heading">{!! $copy['hero_title'] !!}</h1>
-      <p class="hero-sub">{!! $copy['hero_text'] !!}</p>
+      <p class="hero-brand">{!! $copy['hero_brand'] ?? 'Keystone Homes &amp; Land' !!}</p>
+      <h1 id="hero-heading">{!! $copy['hero_title'] ?: 'Homes worth walking through.' !!}</h1>
+      <p class="hero-sub">{!! $copy['hero_text'] ?: 'Search sample listings, price a demo home, and book a fictional showing — built to show modern realtor UX.' !!}</p>
       <div class="hero-cta">
         <a class="btn btn-primary" href="#search">Search samples</a>
         <a class="btn btn-outline light" href="{{ home_url('/book/') }}">Book a showing</a>

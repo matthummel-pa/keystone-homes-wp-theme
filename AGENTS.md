@@ -34,7 +34,7 @@ Then browse `http://localhost:8080/` (homepage), `/listings`, `/areas`, `/guide`
 - **You must build assets** (`npm run build`) or every page dies with a "Vite manifest not found" error. Build artifacts live in `public/build/` and are git-ignored.
 - **Blade template changes are cached by Acorn.** After editing `.blade.php` files, if you don't see changes, clear the cache: `wp acorn view:clear --path="$HOME/wp" --allow-root` (or `wp acorn optimize:clear`).
 - **Vite `base` path is hard-coded** in `vite.config.js` to `/wp-content/themes/keystone-homes/public/build/`. If the theme is installed under a different folder name, update it or built asset URLs will 404.
-- Every marketing page has a named Blade template (`Template Name`) plus slug fallback. `bin/setup-wp.sh` assigns `_wp_page_template` and seeds `listing` / `booking` / `agent` posts via `bin/seed-cpts.php`.
+- Every marketing page has a named Blade template (`Template Name`) plus slug fallback. `App\Support\DemoContent` creates the pages, assigns `_wp_page_template`, and seeds listings / agents / bookings / blog posts. `bin/setup-wp.sh` and `wp ks seed` both call that. The first public request on a fresh install also auto-seeds once (`ks_demo_content_v1`).
 - The block editor and patterns are disabled. Edit pages, listings, agents, bookings, and posts through custom-field metaboxes only.
 - Showing requests POST to `keystone/v1/bookings` and create Booking posts. Advance status from WP Admin → Bookings.
 - Listing inventory is the `listing` CPT (JS reads `window.KEYSTONE.listings`). Fallback sample data remains in `resources/js/listings.js`.

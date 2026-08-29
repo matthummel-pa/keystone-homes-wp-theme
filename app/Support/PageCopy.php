@@ -160,6 +160,27 @@ class PageCopy
         return self::templateMap()[$base] ?? 'simple';
     }
 
+    public static function schemaKeyForContext(?int $postId = null): string
+    {
+        $id = $postId ?? (int) (get_queried_object_id() ?: get_the_ID());
+        if ($id > 0) {
+            $key = self::schemaKeyForPost($id);
+            if (is_front_page() && ! is_page() && $key === 'simple') {
+                return 'home';
+            }
+
+            return $key;
+        }
+        if (function_exists('is_front_page') && is_front_page()) {
+            return 'home';
+        }
+        if (function_exists('is_home') && is_home()) {
+            return 'blog';
+        }
+
+        return 'simple';
+    }
+
     /**
      * @return array<string, array{label: string, type: string, default: string}>
      */
@@ -191,9 +212,12 @@ class PageCopy
     public static function all(?int $postId = null): array
     {
         $id = $postId ?: (int) (get_queried_object_id() ?: get_the_ID());
+        $schemas = self::schemas();
+        $key = $id ? self::schemaKeyForContext($id) : self::schemaKeyForContext(null);
+        $schema = $schemas[$key] ?? $schemas['simple'];
         $out = [];
-        foreach (self::schemaForPost($id) as $key => $def) {
-            $out[$key] = self::field($key, $def['default'] ?? '', $id);
+        foreach ($schema as $field => $def) {
+            $out[$field] = self::field($field, $def['default'] ?? '', $id ?: null);
         }
 
         return $out;
