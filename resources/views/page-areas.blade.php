@@ -14,7 +14,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample markets',
   'heroTitle' => $copy['hero_title'] ?: 'Areas we <em>demo</em>',
   'heroText' => $copy['hero_text'] ?: 'Township-by-township reads of rural Adams County — orchards, farms, and wooded lots from Franklin to Liberty. Fictional profiles for a scannable area page.',
@@ -91,8 +91,47 @@
     </div>
   </section>
 
+  <section class="section section-alt" aria-labelledby="township-fit-heading">
+    <div class="wrap">
+      <header class="section-head left reveal">
+        <p class="eyebrow">{{ $copy['pick_eyebrow'] ?? 'How to pick' }}</p>
+        <h2 id="township-fit-heading">{!! $copy['pick_title'] ?? 'Match the ground to the Tuesday you will actually live' !!}</h2>
+        <p>{!! $copy['pick_text'] ?? 'Borough names sell the postcard. Township rules decide the well, the perc, and whether you can split a lot. Scan these three questions before you fall for a ridge view.' !!}</p>
+      </header>
+      <div class="scan-grid cols-3 reveal">
+        <article class="scan-card">
+          <span class="num">Orchard</span>
+          <h3>Fruit belt &amp; tillable</h3>
+          <ul>
+            <li>Menallen, Butler, and parts of Franklin</li>
+            <li>Ask about packing access and spray neighbors</li>
+            <li>Tillable vs wooded split matters more than deed acres</li>
+          </ul>
+        </article>
+        <article class="scan-card">
+          <span class="num">Mountain</span>
+          <h3>Woodlots &amp; cabins</h3>
+          <ul>
+            <li>Hamiltonban and Liberty toward Michaux</li>
+            <li>Driveway grade and winter access first</li>
+            <li>Well yield in rock can change house placement</li>
+          </ul>
+        </article>
+        <article class="scan-card">
+          <span class="num">Commute</span>
+          <h3>Still need a town</h3>
+          <ul>
+            <li>Name the Tuesday drive, not the weekend view</li>
+            <li>Filter <a href="{{ home_url('/listings') }}">listings</a> by township</li>
+            <li>Read wells and perc in the <a href="{{ home_url('/guide') }}">buyer guide</a></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <!-- ============================= GETTYSBURG ANCHOR ============================= -->
-  <section class="section section-alt">
+  <section class="section">
     <div class="wrap prose reveal">
       <h2>Getting here &amp; getting around</h2>
       <p>Gettysburg is the hub of it all. Our office at 100 Concept Way is about a mile north of Lincoln Square — from US-15, take the Gettysburg exits and head toward town; from US-30, you're minutes away whether you're coming from Chambersburg to the west or York to the east. Downtown parking is easiest in the lots off Race Horse Alley and along Stratton Street, and most of the historic district around Steinwehr Avenue, Baltimore Street and the David Wills House is walkable once you're in.</p>
@@ -100,6 +139,13 @@
       <p>Ready to narrow it down? Browse our <a href="{{ home_url('/listings') }}">current listings</a>, read the <a href="{{ home_url('/guide') }}">Land Buyer's Guide</a>, or <a href="{{ home_url('/contact') }}">reach out to the office</a> and we'll point you toward the townships that fit what you're after.</p>
     </div>
   </section>
+
+  @include('partials.faq-list', [
+    'faqTitle' => 'Township questions',
+    'faqText' => 'How to use these area reads — zoning, orchard vs woodlot, and what is fictional.',
+    'faqHeadClass' => 'left',
+    'faqSectionClass' => 'section-alt',
+  ])
 
   <!-- ============================= CTA BAND ============================= -->
   <section class="section">

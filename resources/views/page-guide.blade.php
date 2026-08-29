@@ -14,7 +14,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Buyer tools',
   'heroTitle' => $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>',
   'heroText' => $copy['hero_text'] ?: 'Wells, septic, and access change what acreage is worth. Short guides and demo calculators — then book a showing if you want to walk a sample parcel.',
@@ -30,7 +30,43 @@
     <div class="wrap prose reveal">
       <h2>{!! $copy['intro_title'] ?? 'What\'s different about buying land' !!}</h2>
       <p>{!! $copy['intro_text'] ?? 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself.' !!}</p>
+    </div>
+  </section>
 
+  <section class="section section-alt" aria-labelledby="land-check-heading">
+    <div class="wrap">
+      <header class="section-head left reveal">
+        <p class="eyebrow">{{ $copy['check_eyebrow'] ?? 'Before the calculators' }}</p>
+        <h2 id="land-check-heading">{!! $copy['check_title'] ?? 'Four things that change what acreage is worth' !!}</h2>
+        <p>{!! $copy['check_text'] ?? 'Read these first, then run the demo numbers. A pretty parcel without water, septic, or a recorded lane is a different product than a turnkey farmhouse.' !!}</p>
+      </header>
+      <div class="scan-grid cols-4 reveal">
+        <article class="scan-card">
+          <span class="num">Water</span>
+          <h3>Wells &amp; yield</h3>
+          <p>Most rural lots are on a private well. Ask if it exists, has been flow-tested, and whether neighbors hit water in the same rock.</p>
+        </article>
+        <article class="scan-card">
+          <span class="num">Waste</span>
+          <h3>Perc &amp; septic</h3>
+          <p>No public sewer means a perc test. A valid soils report is worth more — and closes faster — than a parcel still marked unknown.</p>
+        </article>
+        <article class="scan-card">
+          <span class="num">Access</span>
+          <h3>Recorded lane</h3>
+          <p>Legal road frontage or a written easement — not a handshake across a neighbor's field. Flag utility and ag-security rights-of-way.</p>
+        </article>
+        <article class="scan-card">
+          <span class="num">Taxes</span>
+          <h3>Act 319</h3>
+          <p>Clean and Green saves annually. Changing use or subdividing can trigger a rollback of up to seven years. Know what you inherit.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap prose reveal">
       <h3>Water: wells &amp; yield</h3>
       <p>Most rural Adams County property is served by a private well rather than public water. Two things matter: whether a well already exists and produces enough water, and — if the lot is raw — whether a new well is likely to hit a good yield. In the rockier ground toward South Mountain (Hamiltonban) yields can vary well to well. For an existing well we recommend a flow test and a potability test; for raw land we look at neighboring wells as a guide.</p>
 
@@ -52,9 +88,9 @@
   <section class="section section-alt" id="tools">
     <div class="wrap">
       <div class="section-head reveal">
-        <p class="eyebrow">Run Your Numbers</p>
-        <h2>Land-loan &amp; pre-qualification tools</h2>
-        <p>Friendly estimates to help you plan — not loan offers. A licensed lender will verify everything with full documentation.</p>
+        <p class="eyebrow">{{ $copy['tools_eyebrow'] ?? 'Run Your Numbers' }}</p>
+        <h2>{!! $copy['tools_title'] ?? 'Land-loan &amp; pre-qualification tools' !!}</h2>
+        <p>{!! $copy['tools_text'] ?? 'Friendly estimates to help you plan — not loan offers. A licensed lender will verify everything with full documentation.' !!}</p>
       </div>
 
       <div class="support-grid">
@@ -122,7 +158,7 @@
             </div>
             <button type="submit" class="btn btn-gold" style="margin-top:16px;">See My Estimate</button>
           </form>
-          <div class="calc-result" id="pqResult" style="display:none;margin-top:16px;">
+          <div class="calc-result" id="pqResult" style="display:none;margin-top:16px;" role="status" aria-live="polite">
             <div>
               <span>You may pre-qualify up to</span>
               <strong id="pqAmount">$0</strong>
@@ -142,11 +178,11 @@
             <div class="form-grid two">
               <div class="field">
                 <label for="schName">Full name</label>
-                <input type="text" id="schName" required placeholder="Jordan Weikert">
+                <input type="text" id="schName" autocomplete="name" required placeholder="Alex Buyer">
               </div>
               <div class="field">
                 <label for="schPhone">Phone</label>
-                <input type="tel" id="schPhone" required placeholder="(717) 555-0142">
+                <input type="tel" id="schPhone" autocomplete="tel" required placeholder="(555) 010-0199">
               </div>
               <div class="field">
                 <label for="schDate">Preferred date</label>
@@ -166,11 +202,11 @@
             </div>
             <div class="field" style="margin-top:14px;">
               <label for="schNote">What are you looking for? (optional)</label>
-              <input type="text" id="schNote" placeholder="e.g. 10+ acres near Franklin Township">
+              <textarea id="schNote" rows="3" placeholder="e.g. 10+ acres near Franklin Township"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="margin-top:16px;">Request a Call Back</button>
           </form>
-          <div class="confirm-msg" id="scheduleConfirm">
+          <div class="confirm-msg" id="scheduleConfirm" role="status" aria-live="polite">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
             <span>Thanks! This is a concept demo — on your live site, a Keystone agent would be notified instantly and confirm by text.</span>
           </div>
@@ -193,33 +229,12 @@
     </div>
   </section>
 
-  <!-- ============================= FAQ ============================= -->
-  <section class="section">
-    <div class="wrap">
-      <div class="section-head reveal">
-        <p class="eyebrow">Common Questions</p>
-        <h2>Land-buying FAQs</h2>
-      </div>
-      <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>How much land do I need for a house and a well and septic?</summary>
-          <p>It depends on the township's minimum lot size and the results of the perc test, but for a conventional on-lot septic system in rural Adams County, buyers commonly look at one to two acres or more. Our agents can tell you what a specific township requires.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What's a perc test and who pays for it?</summary>
-          <p>A percolation test checks whether the soil will absorb septic effluent and where a system can go. On raw land it's usually done as a buyer contingency, and the buyer typically pays — though on some listings the seller has already had it done. Either way, don't skip it.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I get a normal mortgage on raw land?</summary>
-          <p>Often not a standard 30-year mortgage. Land and farm purchases usually run through a land loan, construction loan or farm-credit lender, with a larger down payment. We'll connect you with local lenders who do this every day.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What is Act 319 clean and green?</summary>
-          <p>It's a Pennsylvania program that taxes qualifying farm and forest land at its use value instead of market value. It saves money annually, but subdividing or changing the use can trigger a rollback tax. We flag it on any enrolled parcel.</p>
-        </details>
-      </div>
-    </div>
-  </section>
+  @include('partials.faq-list', [
+    'faqTitle' => 'Land-buying FAQs',
+    'faqText' => 'Wells, perc, land loans, and Clean and Green — short answers before you write an offer.',
+    'faqHeadClass' => '',
+    'faqSectionClass' => '',
+  ])
 
   <!-- ============================= CTA BAND ============================= -->
   <section class="section section-alt">

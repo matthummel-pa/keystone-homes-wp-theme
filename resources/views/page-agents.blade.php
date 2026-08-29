@@ -15,7 +15,7 @@
 
 <!-- ============================= PAGE HERO ============================= -->
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample team',
   'heroTitle' => $copy['hero_title'] ?: 'Agents who know the <em>demo ground</em>',
   'heroText' => $copy['hero_text'] ?: 'A small local team for farms, orchards, and century houses. Profiles are Agent posts. Phones are fictional 555 lines.',
@@ -89,6 +89,52 @@
       </div>
     </div>
   </section>
+
+  <section class="section" aria-labelledby="agent-match-heading">
+    <div class="wrap">
+      <header class="section-head left reveal">
+        <p class="eyebrow">{{ $copy['match_eyebrow'] ?? 'Who to call' }}</p>
+        <h2 id="agent-match-heading">{!! $copy['match_title'] ?? 'Match the agent to the ground' !!}</h2>
+        <p>{!! $copy['match_text'] ?? 'Farms, raw land, and century houses are different jobs. Scan the specialty, then book a showing or reach the office — phones on this page are fictional 555 lines.' !!}</p>
+      </header>
+      <div class="scan-grid cols-3 reveal">
+        <article class="scan-card">
+          <span class="num">Farms</span>
+          <h3>Working ground</h3>
+          <ul>
+            <li>Barn, shop, and orchard questions</li>
+            <li>Tillable split and who uses the lane</li>
+            <li>Act 319 enrollment before you list or buy</li>
+          </ul>
+        </article>
+        <article class="scan-card">
+          <span class="num">Land</span>
+          <h3>Raw acreage</h3>
+          <ul>
+            <li>Perc status and house-pad placement</li>
+            <li>Recorded access, not a handshake</li>
+            <li>Start with the <a href="{{ home_url('/guide') }}">buyer guide</a></li>
+          </ul>
+        </article>
+        <article class="scan-card">
+          <span class="num">Houses</span>
+          <h3>Historic &amp; turnkey</h3>
+          <ul>
+            <li>Systems, well vs public water, winter lane</li>
+            <li>Book a slot — occupied homes stay locked</li>
+            <li>Or <a href="{{ home_url('/contact') }}">message the office</a></li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  @include('partials.faq-list', [
+    'faqTitle' => 'Working with an agent',
+    'faqText' => 'How to pick a specialty, what a rural walk checks, and what this demo roster is.',
+    'faqHeadClass' => 'left',
+    'faqSectionClass' => 'section-alt',
+  ])
 
   <!-- ============================= CTA BAND ============================= -->
   <section class="section">

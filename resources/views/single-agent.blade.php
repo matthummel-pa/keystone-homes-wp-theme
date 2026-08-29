@@ -15,7 +15,7 @@
 </nav>
 
 @include('partials.page-hero', [
-  'heroBrand' => 'Keystone Homes &amp; Land',
+  'heroBrand' => 'Keystone Real Estate',
   'heroEyebrow' => $agent['job_title'],
   'heroTitle' => $agent['name'],
   'heroText' => trim($agent['office'].($agent['years_experience'] ? ' · '.$agent['years_experience'].' years' : '')),
@@ -63,9 +63,56 @@
         <a class="agent-phone" href="mailto:{{ $agent['email'] }}">{{ $agent['email'] }}</a>
       @endif
       <a class="btn btn-primary" href="{{ home_url('/book/') }}" style="margin-top:16px">Book a showing</a>
+      <a class="btn btn-outline" href="{{ home_url('/agents') }}" style="margin-top:10px">All agents</a>
     </aside>
   </div>
 </section>
+
+<section class="section section-alt" aria-labelledby="agent-help-heading">
+  <div class="wrap">
+    <header class="section-head left reveal">
+      <p class="eyebrow">How this walk works</p>
+      <h2 id="agent-help-heading">What {{ $agent['name'] }} is for</h2>
+      <p>Rural Adams County showings are not a 20-minute condo tour. Scan this, then book a sample slot or call the concept line.</p>
+    </header>
+    <div class="scan-grid cols-3 reveal">
+      <article class="scan-card">
+        <span class="num">Specialty</span>
+        <h3>{{ $agent['specialties'] ?: 'Farms, houses, and land' }}</h3>
+        <ul>
+          <li>{{ $agent['service_areas'] ?: 'Adams County townships and nearby boroughs' }}</li>
+          <li>Boots, well questions, and a recorded lane</li>
+          <li>Honest notes on wet corners and rollback risk</li>
+        </ul>
+      </article>
+      <article class="scan-card">
+        <span class="num">On the walk</span>
+        <h3>What gets checked</h3>
+        <ul>
+          <li>Access, well, and septic feasibility</li>
+          <li>Zoning and easements before an offer</li>
+          <li>Barn, shop, or historic systems if they apply</li>
+        </ul>
+      </article>
+      <article class="scan-card">
+        <span class="num">Next</span>
+        <h3>Stay moving</h3>
+        <ul>
+          <li><a href="{{ home_url('/book/') }}">Book a showing</a> with a sample address</li>
+          <li>Read the <a href="{{ home_url('/guide') }}">buyer guide</a> for perc and Act 319</li>
+          <li>Browse <a href="{{ home_url('/listings') }}">listings</a> assigned below</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+@include('partials.faq-list', [
+  'faqTitle' => 'Agent questions',
+  'faqText' => 'How to reach this sample profile — and what is fictional.',
+  'faqHeadClass' => 'left',
+  'faqSectionClass' => '',
+])
 
 @if ($listings)
 <section class="section section-alt">

@@ -79,6 +79,19 @@
       <div class="prose">
         <p>{{ $listing['desc'] }}</p>
       </div>
+      @if ($listing['property_tax'] || $listing['hoa'] || $listing['virtual_tour'])
+        <dl class="agent-facts">
+          @if ($listing['property_tax'])
+            <div><dt>Property tax</dt><dd>{{ $listing['property_tax'] }}</dd></div>
+          @endif
+          @if ($listing['hoa'])
+            <div><dt>HOA</dt><dd>{{ $listing['hoa'] }}</dd></div>
+          @endif
+          @if ($listing['virtual_tour'])
+            <div><dt>Virtual tour</dt><dd><a href="{{ $listing['virtual_tour'] }}">Open tour</a></dd></div>
+          @endif
+        </dl>
+      @endif
       <div class="cta-actions" style="margin-top:24px">
         <a class="btn btn-primary" href="{{ home_url('/book/') }}?listing_id={{ $listing['id'] }}">Book a showing</a>
         <a class="btn btn-outline" href="{{ home_url('/listings') }}">All listings</a>
@@ -97,5 +110,80 @@
     @endif
   </div>
 </section>
+
+@php
+  $kind = $listing['type'];
+@endphp
+<section class="section section-alt" aria-labelledby="listing-walk-heading">
+  <div class="wrap">
+    <header class="section-head left reveal">
+      <p class="eyebrow">Before you book</p>
+      <h2 id="listing-walk-heading">What to check on this walk</h2>
+      <p>
+        @if ($kind === 'land')
+          Acreage is the product. Water, perc, and a recorded lane matter more than a pretty drone still.
+        @elseif ($kind === 'farm')
+          Walk the working pieces — barn, tillable split, and who uses the lane — not just the farmhouse kitchen.
+        @else
+          Lead with rooms and systems, then well-or-public-water and how you reach the lane in January.
+        @endif
+      </p>
+    </header>
+    <div class="scan-grid cols-3 reveal">
+      <article class="scan-card">
+        <span class="num">{{ $listing['typeLabel'] }}</span>
+        <h3>
+          @if ($kind === 'land')
+            Scan the ground
+          @elseif ($kind === 'farm')
+            Walk the working pieces
+          @else
+            Scan the house
+          @endif
+        </h3>
+        <ul>
+          @if ($kind === 'land')
+            <li>Usable acres, not just deed acres</li>
+            <li>Perc / septic status or a contingency</li>
+            <li>Road frontage and a recorded driveway</li>
+          @elseif ($kind === 'farm')
+            <li>Barn, shop, and outbuilding use</li>
+            <li>Tillable vs wooded split</li>
+            <li>Well, septic, and who holds the lane</li>
+          @else
+            <li>Beds, baths, and how you live weeknights</li>
+            <li>Well vs public water</li>
+            <li>Township commute and winter access</li>
+          @endif
+        </ul>
+      </article>
+      <article class="scan-card">
+        <span class="num">Township</span>
+        <h3>{{ $listing['township'] ? $listing['township'].' Township' : 'Adams County' }}</h3>
+        <ul>
+          <li>Zoning and lot-size rules sit here</li>
+          <li>Clean and Green can change the tax bill</li>
+          <li>Read the <a href="{{ home_url('/areas') }}">area pages</a> before you fall for the photo</li>
+        </ul>
+      </article>
+      <article class="scan-card">
+        <span class="num">Next</span>
+        <h3>Stay moving</h3>
+        <ul>
+          <li><a href="{{ home_url('/book/') }}?listing_id={{ $listing['id'] }}">Book a showing</a> with this address selected</li>
+          <li>New to wells or perc? Open the <a href="{{ home_url('/guide') }}">buyer guide</a></li>
+          <li>Sample inventory — not a live MLS card</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+@include('partials.faq-list', [
+  'faqTitle' => 'Listing questions',
+  'faqText' => 'How to walk this sample card — then book a fictional showing.',
+  'faqHeadClass' => 'left',
+  'faqSectionClass' => '',
+])
 @endif
 @endsection

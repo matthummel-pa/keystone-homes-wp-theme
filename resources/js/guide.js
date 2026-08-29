@@ -1,5 +1,5 @@
 /* =========================================================================
-   Keystone Homes & Land — LAND BUYER'S GUIDE page tools
+   Keystone Real Estate — LAND BUYER'S GUIDE page tools
    - Standalone land-loan / mortgage estimate
    - Financing pre-qualification estimate
    - Request info / book-a-call scheduler
@@ -70,8 +70,21 @@
   if(schForm){
     schForm.addEventListener("submit", function(e){
       e.preventDefault();
+      var btn = schForm.querySelector('button[type="submit"]');
+      if(btn){
+        btn.disabled = true;
+        btn.setAttribute("aria-disabled", "true");
+        btn.textContent = "Sending…";
+      }
       document.getElementById("scheduleConfirm").classList.add("show");
       this.reset();
+      if(btn){
+        window.setTimeout(function(){
+          btn.disabled = false;
+          btn.removeAttribute("aria-disabled");
+          btn.textContent = "Request a Call Back";
+        }, 600);
+      }
     });
     try{
       var dateInput = document.getElementById("schDate");
