@@ -2,6 +2,7 @@
 
 namespace App\View\Composers;
 
+use App\Support\HeroImage;
 use Roots\Acorn\View\Composer;
 
 class Post extends Composer
@@ -63,5 +64,39 @@ class Post extends Composer
             'before' => '<p>'.__('Pages:', 'sage'),
             'after' => '</p>',
         ]);
+    }
+
+    /**
+     * @return list<array{id: int, title: string, url: string, excerpt: string, image: string, alt: string, meta: string}>
+     */
+    public function relatedPosts(): array
+    {
+        if (! is_singular('post')) {
+            return [];
+        }
+
+        $posts = get_posts([
+            'numberposts' => 2,
+            'post__not_in' => [(int) get_the_ID()],
+            'post_status' => 'publish',
+            'orderby' => 'date',
+        ]);
+
+        $out = [];
+        foreach ($posts as $post) {
+            $id = (int) $post->ID;
+            $cats = wp_strip_all_tags(get_the_category_list(' · ', '', $id));
+            $out[] = [
+                'id' => $id,
+                'title' => get_the_title($id),
+                'url' => (string) get_permalink($id),
+                'excerpt' => get_the_excerpt($id),
+                'image' => HeroImage::cardUrl($id),
+                'alt' => HeroImage::cardAlt($id),
+                'meta' => ($cats !== '' ? $cats : 'Notes').' · '.get_the_date('', $id),
+            ];
+        }
+
+        return $out;
     }
 }

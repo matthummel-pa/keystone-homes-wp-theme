@@ -13,15 +13,16 @@
   </ol>
 </nav>
 
-<!-- ============================= PAGE HERO ============================= -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Sample inventory' }}</p>
-    <h1>{!! $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>' !!}</h1>
-    <p>{!! $copy['hero_text'] ?: 'Eight fictional properties for layout and filter testing. Switch grid or map — nothing here is a live MLS feed.' !!}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample inventory',
+  'heroTitle' => $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>',
+  'heroText' => $copy['hero_text'] ?: 'Farms, historic houses, and acreage across Adams County townships. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',
+  'heroActions' => [
+    ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/guide'), 'label' => 'Buyer tools', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 
   <section class="section section-alt">

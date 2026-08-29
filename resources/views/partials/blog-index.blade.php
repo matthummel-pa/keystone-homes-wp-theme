@@ -5,14 +5,16 @@
   </ol>
 </nav>
 
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] ?? 'Keystone Homes &amp; Land' !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?? 'Guide' }}</p>
-    <h1>{!! $copy['hero_title'] ?? 'Realtor notes you can publish' !!}</h1>
-    <p>{!! $copy['hero_text'] ?? 'Sample posts for showings, buyer checklists, and land vs home search.' !!}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $copy['hero_brand'] ?? 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $copy['hero_eyebrow'] ?? 'Guide',
+  'heroTitle' => $copy['hero_title'] ?? 'Realtor notes you can publish',
+  'heroText' => $copy['hero_text'] ?? 'Showings, buyer checklists, and land vs home search — short posts you can adapt for local Adams County SEO.',
+  'heroActions' => [
+    ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/guide'), 'label' => 'Buyer tools', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 <section class="section section-alt">
   <div class="wrap">
@@ -22,11 +24,14 @@
       <div class="blog-grid reveal">
         @while(have_posts()) @php(the_post())
           <a class="blog-card" href="{{ get_permalink() }}">
-            @if (has_post_thumbnail())
-              {!! get_the_post_thumbnail(null, 'large', ['loading' => 'lazy', 'decoding' => 'async']) !!}
-            @else
-              <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=70" width="900" height="600" alt="" loading="lazy" decoding="async">
-            @endif
+            <img
+              src="{{ \App\Support\HeroImage::cardUrl((int) get_the_ID()) }}"
+              width="900"
+              height="560"
+              alt="{{ \App\Support\HeroImage::cardAlt((int) get_the_ID()) }}"
+              loading="lazy"
+              decoding="async"
+            >
             <div class="blog-card-body">
                 <span class="blog-meta">{{ wp_strip_all_tags(get_the_category_list(' · ')) ?: 'Notes' }} · {{ max(1, (int) ceil(str_word_count(wp_strip_all_tags(get_the_content())) / 200)) }} min</span>
               <h2>{!! get_the_title() !!}</h2>

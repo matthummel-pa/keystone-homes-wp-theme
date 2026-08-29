@@ -48,19 +48,17 @@
   </ol>
 </nav>
 
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{{ $listing['typeLabel'] }} · {{ $listing['township'] }} Township</p>
-    <p class="hero-eyebrow">
-      {{ strtoupper($listing['status']) }}
-      @if ($listing['mls_number'])
-        · MLS {{ $listing['mls_number'] }}
-      @endif
-    </p>
-    <h1>{{ $listing['title'] }}</h1>
-    <p>{{ $listing['address'] }}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $listing['typeLabel'].' · '.$listing['township'].' Township',
+  'heroEyebrow' => strtoupper($listing['status']).($listing['mls_number'] ? ' · MLS '.$listing['mls_number'] : ''),
+  'heroTitle' => $listing['title'],
+  'heroText' => $listing['address'] ?: $listing['desc'],
+  'headingId' => 'listing-hero-heading',
+  'heroActions' => [
+    ['href' => home_url('/book/').'?listing_id='.$listing['id'], 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/listings'), 'label' => 'All listings', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 <section class="section">
   <div class="wrap listing-single">

@@ -6,6 +6,7 @@
 
 namespace App;
 
+use App\Support\Seo;
 use Illuminate\Support\Facades\Vite;
 
 /**
@@ -190,3 +191,5 @@ add_action('widgets_init', function () {
         'id' => 'sidebar-footer',
     ] + $config);
 });
+
+Seo::boot();

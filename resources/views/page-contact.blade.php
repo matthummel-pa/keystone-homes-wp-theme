@@ -13,15 +13,16 @@
   </ol>
 </nav>
 
-<!-- ============================= PAGE HERO ============================= -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Concept office' }}</p>
-    <h1>{!! $copy['hero_title'] ?: 'Get in touch <em>(demo only)</em>' !!}</h1>
-    <p>{!! $copy['hero_text'] ?: 'Fictional address and phone. Prefer booking a sample showing for the full appointment UX.' !!}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Concept office',
+  'heroTitle' => $copy['hero_title'] ?: 'Get in touch <em>(demo only)</em>',
+  'heroText' => $copy['hero_text'] ?: '100 Concept Way, Sample Borough. Call (555) 010-0455 or send a message. Prefer the full appointment flow? Book a sample showing.',
+  'heroActions' => [
+    ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
+    ['href' => 'tel:+15550100455', 'label' => 'Call the office', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 
   <!-- ============================= CONTACT INFO + FORM ============================= -->

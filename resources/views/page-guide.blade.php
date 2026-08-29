@@ -13,15 +13,16 @@
   </ol>
 </nav>
 
-<!-- ============================= PAGE HERO ============================= -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Buyer tools' }}</p>
-    <h1>{!! $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>' !!}</h1>
-    <p>{!! $copy['hero_text'] ?: 'Short guides and demo calculators. Use with the showing scheduler for a full agent workflow.' !!}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Buyer tools',
+  'heroTitle' => $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>',
+  'heroText' => $copy['hero_text'] ?: 'Wells, septic, and access change what acreage is worth. Short guides and demo calculators — then book a showing if you want to walk a sample parcel.',
+  'heroActions' => [
+    ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 
   <!-- ============================= GUIDE PROSE ============================= -->

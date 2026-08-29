@@ -13,15 +13,16 @@
   </ol>
 </nav>
 
-<!-- ============================= PAGE HERO ============================= -->
-<section class="page-hero">
-  <div class="page-hero-inner">
-    <p class="hero-brand">{!! $copy['hero_brand'] ?: 'Keystone Homes &amp; Land' !!}</p>
-    <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Sample markets' }}</p>
-    <h1>{!! $copy['hero_title'] ?: 'Areas we <em>demo</em>' !!}</h1>
-    <p>{!! $copy['hero_text'] ?: 'Fictional North Ridge, Mill Creek and Oak Hollow profiles — written for scannable area-page SEO.' !!}</p>
-  </div>
-</section>
+@include('partials.page-hero', [
+  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Homes &amp; Land',
+  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample markets',
+  'heroTitle' => $copy['hero_title'] ?: 'Areas we <em>demo</em>',
+  'heroText' => $copy['hero_text'] ?: 'Township-by-township reads of rural Adams County — orchards, farms, and wooded lots from Franklin to Liberty. Fictional profiles for a scannable area page.',
+  'heroActions' => [
+    ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-primary'],
+    ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-outline light'],
+  ],
+])
 
 
   <!-- ============================= INTRO PROSE ============================= -->

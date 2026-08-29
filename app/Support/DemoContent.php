@@ -24,6 +24,10 @@ class DemoContent
             if (! get_option(self::OPTION)) {
                 update_option(self::OPTION, '1');
             }
+            if (! get_option('ks_demo_heroes_v1')) {
+                self::attachHeroImages();
+                update_option('ks_demo_heroes_v1', '1');
+            }
 
             return;
         }
@@ -40,6 +44,7 @@ class DemoContent
         try {
             self::seed();
             update_option(self::OPTION, '1');
+            update_option('ks_demo_heroes_v1', '1');
         } finally {
             delete_option(self::LOCK);
         }
@@ -52,6 +57,7 @@ class DemoContent
         self::pages();
         self::posts();
         self::cpts();
+        self::attachHeroImages();
         self::cleanupDefaults();
         flush_rewrite_rules(false);
     }
@@ -195,6 +201,118 @@ class DemoContent
                 'agent_id' => $agentIds['renee-musselman'] ?? 0,
             ]);
         }
+    }
+
+    public static function attachHeroImages(): void
+    {
+        $pages = [
+            'listings' => 'listings',
+            'areas' => 'areas',
+            'guide' => 'guide',
+            'agents' => 'agents',
+            'contact' => 'contact',
+            'book' => 'book',
+            'blog' => 'blog',
+        ];
+        foreach ($pages as $slug => $key) {
+            $id = self::findId('page', $slug);
+            if ($id > 0) {
+                self::ensureBundledHero($id, $key, true);
+            }
+        }
+
+        $posts = [
+            'book-a-home-showing' => 'post-showing',
+            'first-time-buyer-checklist' => 'post-checklist',
+            'land-vs-home-search' => 'post-land',
+        ];
+        foreach ($posts as $slug => $key) {
+            $id = self::findId('post', $slug);
+            if ($id > 0) {
+                self::ensureBundledHero($id, $key, false);
+            }
+        }
+    }
+
+    private static function ensureBundledHero(int $postId, string $key, bool $setCopy): void
+    {
+        $thumbId = (int) get_post_thumbnail_id($postId);
+        if ($thumbId > 0) {
+            if ($setCopy && (string) Catalog::getMeta($postId, 'hero_image', '') === '') {
+                Catalog::updateMeta($postId, 'hero_image', (string) $thumbId);
+            }
+
+            return;
+        }
+
+        $attachmentId = self::importBundledHero($key, $postId);
+        if ($attachmentId <= 0) {
+            return;
+        }
+        set_post_thumbnail($postId, $attachmentId);
+        if ($setCopy) {
+            Catalog::updateMeta($postId, 'hero_image', (string) $attachmentId);
+        }
+    }
+
+    private static function importBundledHero(string $key, int $parentId = 0): int
+    {
+        $title = 'Hero · '.$key;
+        $existing = get_posts([
+            'post_type' => 'attachment',
+            'title' => $title,
+            'posts_per_page' => 1,
+            'post_status' => 'inherit',
+            'fields' => 'ids',
+        ]);
+        if ($existing) {
+            return (int) $existing[0];
+        }
+
+        $path = '';
+        foreach (['public/images/heroes/'.$key.'.jpg', 'resources/images/heroes/'.$key.'.jpg'] as $relative) {
+            $candidate = get_theme_file_path($relative);
+            if (is_readable($candidate)) {
+                $path = $candidate;
+                break;
+            }
+        }
+        if ($path === '') {
+            return 0;
+        }
+
+        if (! function_exists('media_handle_sideload')) {
+            require_once ABSPATH.'wp-admin/includes/file.php';
+            require_once ABSPATH.'wp-admin/includes/media.php';
+            require_once ABSPATH.'wp-admin/includes/image.php';
+        }
+
+        $tmp = wp_tempnam($key.'.jpg');
+        if (! $tmp || ! copy($path, $tmp)) {
+            return 0;
+        }
+
+        $file = [
+            'name' => $key.'.jpg',
+            'tmp_name' => $tmp,
+            'type' => 'image/jpeg',
+            'error' => 0,
+            'size' => (int) filesize($tmp),
+        ];
+        $id = media_handle_sideload($file, $parentId, $title);
+        if (is_wp_error($id)) {
+            @unlink($tmp);
+
+            return 0;
+        }
+
+        wp_update_post([
+            'ID' => (int) $id,
+            'post_title' => $title,
+        ]);
+        update_post_meta((int) $id, '_wp_attachment_image_alt', HeroImage::bundledAlt($key));
+
+        return (int) $id;
     }
 
     public static function cleanupDefaults(): void
