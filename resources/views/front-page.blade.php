@@ -26,60 +26,35 @@
   }
   </script>
 
+  @php
+    $heroImage = trim((string) ($copy['hero_image'] ?? ''));
+    if ($heroImage === '') {
+      $heroImage = 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&q=75';
+    }
+    $listingCount = count($catalogListings ?? []);
+    $townshipCount = count($catalogTownships ?? []);
+  @endphp
   <section class="hero" id="top" aria-labelledby="hero-heading">
     <figure class="hero-media">
       <img
-        src="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&q=75"
-        srcset="https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=800&q=70 800w,
-                https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=1600&q=75 1600w"
+        src="{{ $heroImage }}"
+        srcset="{{ $heroImage }} 1600w"
         sizes="100vw"
         width="1600" height="1067" alt="" decoding="async" fetchpriority="high"
       >
     </figure>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="hero-brand">{!! $copy['hero_brand'] ?? 'Keystone Homes &amp; Land' !!}</p>
-      <h1 id="hero-heading">{!! $copy['hero_title'] ?: 'Homes worth walking through.' !!}</h1>
-      <p class="hero-sub">{!! $copy['hero_text'] ?: 'Search sample listings, price a demo home, and book a fictional showing — built to show modern realtor UX.' !!}</p>
-      <div class="hero-cta">
-        <a class="btn btn-primary" href="#search">Search samples</a>
-        <a class="btn btn-outline light" href="{{ home_url('/book/') }}">Book a showing</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Intent grid -->
-  <section class="intent-band" aria-label="Choose a path">
-    <div class="wrap">
-      <div class="intent-grid">
-        <a class="intent-card" href="{{ home_url('/listings') }}">
-          <strong>Buy</strong>
-          <span>{!! $copy['intent_buy'] ?: 'Filter sample homes, farms and land. Map + grid views.' !!}</span>
-          <em>Browse listings →</em>
-        </a>
-        <a class="intent-card" href="#value">
-          <strong>Sell</strong>
-          <span>{!! $copy['intent_sell'] ?: 'Run a demo value range, then request a sample CMA.' !!}</span>
-          <em>Price a home →</em>
-        </a>
-        <a class="intent-card" href="{{ home_url('/book/') }}">
-          <strong>Tour</strong>
-          <span>{!! $copy['intent_tour'] ?: 'Pick a sample address and reserve a showing slot.' !!}</span>
-          <em>Book showing →</em>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <section class="section search-band" id="search" aria-labelledby="search-heading">
-    <div class="wrap">
-      <header class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['search_eyebrow'] ?: 'Find' }}</p>
-        <h2 id="search-heading">{!! $copy['search_title'] ?: 'Search sample inventory' !!}</h2>
-        <p>{!! $copy['search_text'] ?: 'Short filters. Fast scan. Every result is fictional demo data.' !!}</p>
-      </header>
-      <form class="listing-search reveal" id="heroSearchForm" role="search" aria-label="Search sample listings">
-        <div class="listing-search-row">
+      <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Adams County, Pennsylvania' }}</p>
+      <h1 id="hero-heading">{!! $copy['hero_title'] ?: 'Homes worth <em>walking through.</em>' !!}</h1>
+      <p class="hero-sub">{!! $copy['hero_text'] ?: 'Farms, historic houses, and acreage across North Ridge, Mill Creek, and Oak Hollow. Filter by township, then book a showing.' !!}</p>
+      <ul class="hero-proof">
+        <li><strong>{{ $listingCount ?: 8 }}</strong> sample listings</li>
+        <li><strong>{{ $townshipCount ?: 3 }}</strong> townships</li>
+        <li><a href="{{ home_url('/book/') }}">Book a showing</a></li>
+      </ul>
+      <form class="hero-search" id="heroSearchForm" role="search" aria-label="Search sample listings">
+        <div class="hero-search-row">
           <div class="field">
             <label for="hsType">Type</label>
             <select id="hsType" name="type">
@@ -120,10 +95,34 @@
             </select>
           </div>
         </div>
-        <div class="listing-search-actions">
-          <button type="submit" class="btn btn-primary">Show matches</button>
+        <div class="hero-search-actions">
+          <a class="hero-search-link" href="{{ home_url('/listings') }}">{{ $copy['hero_cta_secondary'] ?: 'Browse all listings' }}</a>
+          <button type="submit" class="btn btn-primary">{{ $copy['hero_cta_primary'] ?: 'Show matches' }}</button>
         </div>
       </form>
+    </div>
+  </section>
+
+  <!-- Intent grid -->
+  <section class="intent-band" id="search" aria-label="Choose a path">
+    <div class="wrap">
+      <div class="intent-grid">
+        <a class="intent-card" href="{{ home_url('/listings') }}">
+          <strong>Buy</strong>
+          <span>{!! $copy['intent_buy'] ?: 'Filter sample homes, farms and land. Map + grid views.' !!}</span>
+          <em>Browse listings →</em>
+        </a>
+        <a class="intent-card" href="#value">
+          <strong>Sell</strong>
+          <span>{!! $copy['intent_sell'] ?: 'Run a demo value range, then request a sample CMA.' !!}</span>
+          <em>Price a home →</em>
+        </a>
+        <a class="intent-card" href="{{ home_url('/book/') }}">
+          <strong>Tour</strong>
+          <span>{!! $copy['intent_tour'] ?: 'Pick a sample address and reserve a showing slot.' !!}</span>
+          <em>Book showing →</em>
+        </a>
+      </div>
     </div>
   </section>
 
