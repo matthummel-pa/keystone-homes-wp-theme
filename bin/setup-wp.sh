@@ -31,6 +31,10 @@ echo "==> WP path   : $WP_PATH"
 echo "==> Site URL  : $SITE_URL"
 
 echo "==> Installing theme dependencies (composer + npm) and building assets"
+if [ -L "$THEME_DIR/vendor" ]; then
+  echo "==> vendor/ is a symlink — removing so Composer autoloads App\\ from this worktree"
+  rm "$THEME_DIR/vendor"
+fi
 ( cd "$THEME_DIR" && composer install --no-interaction --no-progress )
 ( cd "$THEME_DIR" && npm install && npm run build )
 

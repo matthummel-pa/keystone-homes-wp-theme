@@ -29,6 +29,12 @@
   @php
     $listingCount = count($catalogListings ?? []);
     $townshipCount = count($catalogTownships ?? []);
+    $copy = is_array($copy ?? null) ? $copy : [];
+    $t = static function (string $key, string $fallback = '') use ($copy): string {
+        $value = $copy[$key] ?? '';
+
+        return $value !== '' ? $value : $fallback;
+    };
   @endphp
   <section class="hero" id="top" aria-labelledby="hero-heading">
     <figure class="hero-media">
@@ -36,9 +42,9 @@
     </figure>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Adams County, Pennsylvania' }}</p>
-      <h1 id="hero-heading">{!! $copy['hero_title'] ?: 'Homes worth <em>walking through.</em>' !!}</h1>
-      <p class="hero-sub">{!! $copy['hero_text'] ?: 'Farms, historic houses, and acreage in North Ridge, Mill Creek, and Oak Hollow. Filter by township, then schedule a showing.' !!}</p>
+      <p class="hero-eyebrow">{{ $t('hero_eyebrow', 'Adams County, Pennsylvania') }}</p>
+      <h1 id="hero-heading">{!! $t('hero_title', 'Homes worth <em>walking through.</em>') !!}</h1>
+      <p class="hero-sub">{!! $t('hero_text', 'Farms, historic houses, and acreage in North Ridge, Mill Creek, and Oak Hollow. Filter by township, then schedule a showing.') !!}</p>
       <ul class="hero-proof">
         <li><strong>{{ $listingCount ?: 8 }}</strong> sample listings</li>
         <li><strong>{{ $townshipCount ?: 3 }}</strong> townships</li>
@@ -87,8 +93,8 @@
           </div>
         </div>
         <div class="hero-search-actions">
-          <a class="hero-search-link" href="{{ home_url('/listings') }}">{{ $copy['hero_cta_secondary'] ?: 'Browse all listings' }}</a>
-          <button type="submit" class="btn btn-primary">{{ $copy['hero_cta_primary'] ?: 'Show matches' }}</button>
+          <a class="hero-search-link" href="{{ home_url('/listings') }}">{{ $t('hero_cta_secondary', 'Browse all listings') }}</a>
+          <button type="submit" class="btn btn-primary">{{ $t('hero_cta_primary', 'Show matches') }}</button>
         </div>
       </form>
     </div>
@@ -98,9 +104,9 @@
   <section class="intent-band" id="search" aria-labelledby="intent-heading">
     <div class="wrap">
       <header class="section-head left intent-head reveal">
-        <p class="eyebrow">{{ $copy['intent_eyebrow'] ?: 'Start here' }}</p>
-        <h2 id="intent-heading">{!! $copy['intent_title'] ?: 'Pick the path' !!}</h2>
-        <p>{!! $copy['intent_text'] ?: 'Then we match a listing or a tour. Township first — the rest follows.' !!}</p>
+        <p class="eyebrow">{{ $t('intent_eyebrow', 'Start here') }}</p>
+        <h2 id="intent-heading">{!! $t('intent_title', 'Pick the path') !!}</h2>
+        <p>{!! $t('intent_text', 'Then we match a listing or a tour. Township first — the rest follows.') !!}</p>
       </header>
       <div class="intent-grid reveal">
         <a class="intent-card" href="{{ home_url('/listings') }}">
@@ -108,10 +114,10 @@
             <img src="{{ get_theme_file_uri('public/images/intent-buy.jpg') }}" width="1200" height="900" alt="" decoding="async">
           </figure>
           <div class="intent-copy">
-            <span class="intent-kicker">{{ $copy['intent_buy_kicker'] ?: 'Buy' }}</span>
-            <h3>{!! $copy['intent_buy_title'] ?: 'Scan homes, farms, and land' !!}</h3>
-            <p>{!! $copy['intent_buy_lead'] ?: ($copy['intent_buy'] ?? 'Township first — North Ridge, Mill Creek, Oak Hollow. Zoning and Clean and Green change before the listing photo does.') !!}</p>
-            <span class="intent-go">{{ $copy['intent_buy_cta'] ?: 'Browse listings' }} →</span>
+            <span class="intent-kicker">{{ $t('intent_buy_kicker', 'Buy') }}</span>
+            <h3>{!! $t('intent_buy_title', 'Scan homes, farms, and land') !!}</h3>
+            <p>{!! $t('intent_buy_lead', $t('intent_buy', 'Township first — North Ridge, Mill Creek, Oak Hollow. Zoning and Clean and Green change before the listing photo does.')) !!}</p>
+            <span class="intent-go">{{ $t('intent_buy_cta', 'Browse listings') }} →</span>
           </div>
         </a>
         <a class="intent-card" href="#value">
@@ -119,10 +125,10 @@
             <img src="{{ get_theme_file_uri('public/images/intent-sell.jpg') }}" width="1200" height="900" alt="" decoding="async">
           </figure>
           <div class="intent-copy">
-            <span class="intent-kicker">{{ $copy['intent_sell_kicker'] ?: 'Sell' }}</span>
-            <h3>{!! $copy['intent_sell_title'] ?: 'Price it before you list' !!}</h3>
-            <p>{!! $copy['intent_sell_lead'] ?: ($copy['intent_sell'] ?? 'Run a sample value range for a fictional address. Not an appraisal — a next step if you are comparing options.') !!}</p>
-            <span class="intent-go">{{ $copy['intent_sell_cta'] ?: 'Estimate value' }} →</span>
+            <span class="intent-kicker">{{ $t('intent_sell_kicker', 'Sell') }}</span>
+            <h3>{!! $t('intent_sell_title', 'Price it before you list') !!}</h3>
+            <p>{!! $t('intent_sell_lead', $t('intent_sell', 'Run a sample value range for a fictional address. Not an appraisal — a next step if you are comparing options.')) !!}</p>
+            <span class="intent-go">{{ $t('intent_sell_cta', 'Estimate value') }} →</span>
           </div>
         </a>
         <a class="intent-card is-primary" href="{{ home_url('/book/') }}">
@@ -130,25 +136,25 @@
             <img src="{{ get_theme_file_uri('public/images/intent-tour.jpg') }}" width="1200" height="900" alt="" decoding="async">
           </figure>
           <div class="intent-copy">
-            <span class="intent-kicker">{{ $copy['intent_tour_kicker'] ?: 'Tour' }}</span>
-            <h3>{!! $copy['intent_tour_title'] ?: 'Walk it on the ground' !!}</h3>
-            <p>{!! $copy['intent_tour_lead'] ?: ($copy['intent_tour'] ?? 'Pick a sample listing, a date, and a slot. Rural showings mean a lane, a well, and boots — mention perc or pets in the notes.') !!}</p>
-            <span class="intent-go">{{ $copy['intent_tour_cta'] ?: 'Book a showing' }} →</span>
+            <span class="intent-kicker">{{ $t('intent_tour_kicker', 'Tour') }}</span>
+            <h3>{!! $t('intent_tour_title', 'Walk it on the ground') !!}</h3>
+            <p>{!! $t('intent_tour_lead', $t('intent_tour', 'Pick a sample listing, a date, and a slot. Rural showings mean a lane, a well, and boots — mention perc or pets in the notes.')) !!}</p>
+            <span class="intent-go">{{ $t('intent_tour_cta', 'Book a showing') }} →</span>
           </div>
         </a>
       </div>
-      <ul class="intent-notes reveal" aria-label="{{ $copy['intent_notes_label'] ?: 'Good to know' }}">
+      <ul class="intent-notes reveal" aria-label="{{ $t('intent_notes_label', 'Good to know') }}">
         <li>
-          <strong>{!! $copy['intent_note_1_title'] ?: 'Township first' !!}</strong>
-          <span>{!! $copy['intent_note_1_text'] ?: 'Zoning and Act 319 change from North Ridge to Oak Hollow.' !!}</span>
+          <strong>{!! $t('intent_note_1_title', 'Township first') !!}</strong>
+          <span>{!! $t('intent_note_1_text', 'Zoning and Act 319 change from North Ridge to Oak Hollow.') !!}</span>
         </li>
         <li>
-          <strong>{!! $copy['intent_note_2_title'] ?: 'Well and perc' !!}</strong>
-          <span>{!! $copy['intent_note_2_text'] ?: 'Rural parcels rarely have municipal hookups — walk that before an offer.' !!}</span>
+          <strong>{!! $t('intent_note_2_title', 'Well and perc') !!}</strong>
+          <span>{!! $t('intent_note_2_text', 'Rural parcels rarely have municipal hookups — walk that before an offer.') !!}</span>
         </li>
         <li>
-          <strong>{!! $copy['intent_note_3_title'] ?: 'Boots for showings' !!}</strong>
-          <span>{!! $copy['intent_note_3_text'] ?: 'Lanes get muddy after rain. Mention pets if you are new to land.' !!}</span>
+          <strong>{!! $t('intent_note_3_title', 'Boots for showings') !!}</strong>
+          <span>{!! $t('intent_note_3_text', 'Lanes get muddy after rain. Mention pets if you are new to land.') !!}</span>
         </li>
       </ul>
     </div>
@@ -158,9 +164,9 @@
   <section class="section section-alt" aria-labelledby="spotlight-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['spotlight_eyebrow'] ?: 'Spotlight' }}</p>
-        <h2 id="spotlight-heading">{!! $copy['spotlight_title'] ?: 'Three sample homes to scan' !!}</h2>
-        <p>{!! $copy['spotlight_text'] ?: 'Price · beds · acres — then book a fictional walk-through.' !!}</p>
+        <p class="eyebrow">{{ $t('spotlight_eyebrow', 'Spotlight') }}</p>
+        <h2 id="spotlight-heading">{!! $t('spotlight_title', 'Three sample homes to scan') !!}</h2>
+        <p>{!! $t('spotlight_text', 'Price · beds · acres — then book a fictional walk-through.') !!}</p>
       </header>
       <div class="listing-mini-grid reveal">
         @forelse ($spotlightListings as $listing)
@@ -271,9 +277,9 @@
   <section class="section section-alt" id="book-showing" aria-labelledby="book-heading">
     <div class="wrap">
       <header class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['book_eyebrow'] ?: 'Appointments' }}</p>
-        <h2 id="book-heading">{!! $copy['book_title'] ?: 'Book a house showing' !!}</h2>
-        <p>{!! $copy['book_text'] ?: 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.' !!}</p>
+        <p class="eyebrow">{{ $t('book_eyebrow', 'Appointments') }}</p>
+        <h2 id="book-heading">{!! $t('book_title', 'Book a house showing') !!}</h2>
+        <p>{!! $t('book_text', 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.') !!}</p>
       </header>
 
       <div class="booking-shell reveal">
