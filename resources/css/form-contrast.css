@@ -50,13 +50,29 @@
 .listings-toolbar select,
 .listing-search select,
 .hero-search select{
-  color:var(--field-text);
-  -webkit-text-fill-color:var(--field-text);
-  background-color:var(--field-bg);
-  background-image:none;
+  color:#141210 !important;
+  -webkit-text-fill-color:#141210 !important;
+  background-color:#fff;
   border:1.5px solid var(--field-border);
   color-scheme:light;
   opacity:1;
+  font-weight:600;
+}
+
+.field select,
+.sort-field select,
+.calc-grid select,
+.val-grid select,
+.listings-toolbar select,
+.listing-search select,
+.hero-search select{
+  appearance:none;
+  -webkit-appearance:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23141210' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;
+  background-position:right 12px center;
+  background-size:16px 16px;
+  padding-right:38px;
 }
 
 .field select option,
