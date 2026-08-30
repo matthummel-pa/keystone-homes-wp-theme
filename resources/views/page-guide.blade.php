@@ -207,22 +207,22 @@
         <h2>Land-buying FAQs</h2>
       </div>
       <div class="faq-list reveal">
-        <details class="faq-item">
-          <summary>How much land do I need for a house and a well and septic?</summary>
-          <p>It depends on the township's minimum lot size and the results of the perc test, but for a conventional on-lot septic system in rural Adams County, buyers commonly look at one to two acres or more. Our agents can tell you what a specific township requires.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What's a perc test and who pays for it?</summary>
-          <p>A percolation test checks whether the soil will absorb septic effluent and where a system can go. On raw land it's usually done as a buyer contingency, and the buyer typically pays — though on some listings the seller has already had it done. Either way, don't skip it.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Can I get a normal mortgage on raw land?</summary>
-          <p>Often not a standard 30-year mortgage. Land and farm purchases usually run through a land loan, construction loan or farm-credit lender, with a larger down payment. We'll connect you with local lenders who do this every day.</p>
-        </details>
-        <details class="faq-item">
-          <summary>What is Act 319 clean and green?</summary>
-          <p>It's a Pennsylvania program that taxes qualifying farm and forest land at its use value instead of market value. It saves money annually, but subdividing or changing the use can trigger a rollback tax. We flag it on any enrolled parcel.</p>
-        </details>
+        <article class="faq-item">
+          <h3>How much land do I need for a house, well, and septic?</h3>
+          <p>Township minimum lot size and the perc result decide this more than a round acre count. For a conventional on-lot system in rural Adams County, buyers commonly start at one to two acres. Check the township first, then the soil — not the listing photo.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What is a perc test, and who pays for it?</h3>
+          <p>A percolation test shows whether the soil can take septic effluent and where a system can sit. On raw land it is usually a buyer contingency, and the buyer typically pays. Some sellers already have a report. Do not skip it either way.</p>
+        </article>
+        <article class="faq-item">
+          <h3>Can I get a normal mortgage on raw land?</h3>
+          <p>Often not a standard 30-year mortgage. Land and farm purchases usually run through a land loan, construction loan, or farm-credit lender, with a larger down payment. Use the calculators on this page as planning math, not a loan offer.</p>
+        </article>
+        <article class="faq-item">
+          <h3>What is Act 319 Clean and Green?</h3>
+          <p>Pennsylvania taxes qualifying farm and forest land at use value instead of market value. It lowers the annual bill, but subdividing or changing use can trigger a rollback tax. Flag enrollment before you write an offer.</p>
+        </article>
       </div>
     </div>
   </section>

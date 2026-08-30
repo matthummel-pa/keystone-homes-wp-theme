@@ -27,11 +27,11 @@
 
   <section class="section section-alt">
     <div class="wrap">
-      <form class="listings-toolbar reveal" id="filterForm">
+      <form class="listings-toolbar reveal" id="filterForm" aria-label="Filter sample listings">
         <div class="filters-grid">
           <div class="field">
             <label for="fType">Type</label>
-            <select id="fType">
+            <select id="fType" name="type">
               <option value="all">All types</option>
               <option value="home">Home</option>
               <option value="farm">Farm</option>
@@ -41,7 +41,7 @@
           </div>
           <div class="field">
             <label for="fPrice">Price</label>
-            <select id="fPrice">
+            <select id="fPrice" name="price">
               <option value="all">Any price</option>
               <option value="0-250000">Under $250k</option>
               <option value="250000-500000">$250k – $500k</option>
@@ -51,7 +51,7 @@
           </div>
           <div class="field">
             <label for="fAcreage">Acreage</label>
-            <select id="fAcreage">
+            <select id="fAcreage" name="acreage">
               <option value="all">Any acreage</option>
               <option value="0-1">Under 1 acre</option>
               <option value="1-10">1 – 10 acres</option>
@@ -61,7 +61,7 @@
           </div>
           <div class="field">
             <label for="fTownship">Township</label>
-            <select id="fTownship">
+            <select id="fTownship" name="township">
               <option value="all">All townships</option>
               @forelse ($catalogTownships as $town)
                 <option value="{{ $town }}">{{ $town }} Twp</option>
@@ -74,7 +74,7 @@
           </div>
           <div class="field">
             <label for="fSort">Sort by</label>
-            <select id="fSort">
+            <select id="fSort" name="sort">
               <option value="default">Featured</option>
               <option value="price-asc">Price: Low to High</option>
               <option value="price-desc">Price: High to Low</option>
@@ -149,10 +149,11 @@
   </section>
 
   @include('partials.faq-list', [
-    'faqTitle' => 'Listing questions',
-    'faqText' => 'How the sample grid is meant to be scanned — not a live MLS feed.',
+    'faqTitle' => 'Before you filter',
+    'faqText' => 'Answers stay on the page — no tap-to-open. Township first, then type, then a showing.',
     'faqHeadClass' => 'left',
     'faqSectionClass' => 'section-alt',
+    'faqEyebrow' => 'Listing help',
   ])
 
   <!-- ============================= CTA BAND ============================= -->

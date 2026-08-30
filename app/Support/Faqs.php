@@ -77,16 +77,20 @@ class Faqs
     {
         return [
             [
-                'q' => 'Why do township filters matter more than city names?',
-                'a' => 'Adams County zoning, lot-size rules, and Clean and Green enrollment sit at the township. Two parcels a mile apart can have different well, septic, and subdivision answers. Filter by township first, then price and acres.',
+                'q' => 'Why filter by township before city?',
+                'a' => 'Zoning, lot-size rules, and Clean and Green sit at the township. Two parcels a mile apart can have different well, septic, and subdivision answers. Pick a township first, then price and acres.',
             ],
             [
-                'q' => 'What does “land” vs “farm” vs “historic” mean here?',
-                'a' => 'Land is acreage to build or hold. Farm includes working ground, barns, or orchard. Historic is an older house where the building is the product. Homes are turnkey dwellings. All eight sample cards are fictional.',
+                'q' => 'What do Land, Farm, and Historic mean?',
+                'a' => 'Land is acreage to build or hold. Farm includes working ground, barns, or orchard. Historic is an older house where the building is the product. Home is a turnkey dwelling. All eight cards are fictional samples.',
             ],
             [
                 'q' => 'How do I get from a card to a showing?',
-                'a' => 'Open a listing for beds, acres, and the write-up, then use Book a showing with that listing preselected. You can also book from the homepage or /book/ and pick the address there.',
+                'a' => 'Open a listing for beds, acres, and the write-up, then Book a showing — that address is preselected. You can also start from the homepage or /book/ and pick the listing there.',
+            ],
+            [
+                'q' => 'Is this a live MLS feed?',
+                'a' => 'No. Prices, addresses, and township labels are concept data for this demo. Use the filters to see how a working farm search should feel, then replace the sample inventory with a real feed.',
             ],
         ];
     }

@@ -10,10 +10,10 @@
     </header>
     <div class="faq-list reveal">
       @foreach ($faqs as $faq)
-        <details class="faq-item">
-          <summary>{{ $faq['q'] }}</summary>
+        <article class="faq-item">
+          <h3>{{ $faq['q'] }}</h3>
           <p>{!! $faq['a'] !!}</p>
-        </details>
+        </article>
       @endforeach
     </div>
   </div>
