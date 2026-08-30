@@ -199,7 +199,7 @@ class PageCopy
         }
 
         $id = $postId ?? (int) (get_queried_object_id() ?: get_the_ID());
-        if (function_exists('is_front_page') && is_front_page() && ! is_page()) {
+        if (function_exists('is_front_page') && is_front_page()) {
             return 'home';
         }
         if ($id > 0) {
@@ -244,8 +244,11 @@ class PageCopy
     {
         $key = self::schemaKeyForContext($postId);
         $id = $postId ?: (int) (get_queried_object_id() ?: get_the_ID());
-        if ($key === 'home' && function_exists('is_page') && ! is_page()) {
-            $id = (int) get_option('page_on_front');
+        if ($key === 'home') {
+            $front = function_exists('get_option') ? (int) get_option('page_on_front') : 0;
+            if ($front > 0) {
+                $id = $front;
+            }
         }
         if (DemoPages::currentSlug()) {
             $id = 0;

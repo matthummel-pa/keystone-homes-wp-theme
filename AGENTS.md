@@ -48,6 +48,7 @@ Then browse `http://localhost:8080/` (homepage), `/listings`, `/areas`, `/guide`
 
 ### Non-obvious gotchas
 - **You must build assets** (`npm run build`) or every page dies with a "Vite manifest not found" error. Build artifacts live in `public/build/` and are git-ignored.
+- **Do not symlink `vendor/` to another git worktree.** Composer maps `App\\` to that tree's `app/`. Blade is loaded from this theme folder. A mismatch 500s the homepage (`Undefined array key "intent_eyebrow"`). Run `composer install` in the theme directory you symlink into `~/wp`.
 - **Blade template changes are cached by Acorn.** After editing `.blade.php` files, if you don't see changes, clear the cache: `wp acorn view:clear --path="$HOME/wp" --allow-root` (or `wp acorn optimize:clear`).
 - **Vite `base` path is hard-coded** in `vite.config.js` to `/wp-content/themes/keystone-homes/public/build/`. If the theme is installed under a different folder name, update it or built asset URLs will 404.
 - Every marketing page has a named Blade template (`Template Name`) plus slug fallback. `App\Support\DemoContent` creates the pages, assigns `_wp_page_template`, and seeds listings / agents / bookings / blog posts. `bin/setup-wp.sh` and `wp ks seed` both call that. The first public request on a fresh install also auto-seeds once (`ks_demo_content_v1`).
