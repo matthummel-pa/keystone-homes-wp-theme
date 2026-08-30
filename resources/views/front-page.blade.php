@@ -94,63 +94,63 @@
     </div>
   </section>
 
-  <!-- Buy / sell / tour -->
+  <!-- Start here — buy / sell / tour -->
   <section class="intent-band" id="search" aria-labelledby="intent-heading">
     <div class="wrap">
       <header class="section-head left intent-head reveal">
         <p class="eyebrow">{{ $copy['intent_eyebrow'] ?: 'Start here' }}</p>
-        <h2 id="intent-heading">{!! $copy['intent_title'] ?: 'Buy, sell, or walk a place in Adams County' !!}</h2>
-        <p>{!! $copy['intent_text'] ?: 'Farms, historic houses, and acreage need different next steps. Scan sample inventory, run a value range, or book a showing — stay on the page, no brochure maze.' !!}</p>
+        <h2 id="intent-heading">{!! $copy['intent_title'] ?: 'Pick the path' !!}</h2>
+        <p>{!! $copy['intent_text'] ?: 'Then we match a listing or a tour. Township first — the rest follows.' !!}</p>
       </header>
       <div class="intent-grid reveal">
         <a class="intent-card" href="{{ home_url('/listings') }}">
-          <span class="intent-kicker">Buyers</span>
-          <h3>{!! $copy['intent_buy_title'] ?: 'Buy a home, farm, or land' !!}</h3>
-          <p>{!! $copy['intent_buy_lead'] ?: ($copy['intent_buy'] ?? 'Filter sample homes, working farms, and acreage by township — North Ridge, Mill Creek, and Oak Hollow. Scan price, beds, and usable acres on a grid or map.') !!}</p>
-          <ul>
-            <li>{!! $copy['intent_buy_b1'] ?: 'Homes, farms, land, and historic houses' !!}</li>
-            <li>{!! $copy['intent_buy_b2'] ?: 'Township, price, and acreage filters' !!}</li>
-          </ul>
-          <span class="intent-go">{{ $copy['intent_buy_cta'] ?: 'Browse listings' }} →</span>
+          <figure class="intent-photo">
+            <img src="{{ get_theme_file_uri('public/images/intent-buy.jpg') }}" width="1200" height="900" alt="" decoding="async">
+          </figure>
+          <div class="intent-copy">
+            <span class="intent-kicker">{{ $copy['intent_buy_kicker'] ?: 'Buy' }}</span>
+            <h3>{!! $copy['intent_buy_title'] ?: 'Scan homes, farms, and land' !!}</h3>
+            <p>{!! $copy['intent_buy_lead'] ?: ($copy['intent_buy'] ?? 'Township first — North Ridge, Mill Creek, Oak Hollow. Zoning and Clean and Green change before the listing photo does.') !!}</p>
+            <span class="intent-go">{{ $copy['intent_buy_cta'] ?: 'Browse listings' }} →</span>
+          </div>
         </a>
         <a class="intent-card" href="#value">
-          <span class="intent-kicker">Sellers</span>
-          <h3>{!! $copy['intent_sell_title'] ?: 'Price a place before you list' !!}</h3>
-          <p>{!! $copy['intent_sell_lead'] ?: ($copy['intent_sell'] ?: 'Run a demo value range for a fictional address, then see how a CMA request would feel. Not an appraisal — a clear next step for sellers comparing options.') !!}</p>
-          <ul>
-            <li>{!! $copy['intent_sell_b1'] ?: 'Instant sample value range' !!}</li>
-            <li>{!! $copy['intent_sell_b2'] ?: 'Alert path for new matches' !!}</li>
-          </ul>
-          <span class="intent-go">{{ $copy['intent_sell_cta'] ?: 'Estimate value' }} →</span>
+          <figure class="intent-photo">
+            <img src="{{ get_theme_file_uri('public/images/intent-sell.jpg') }}" width="1200" height="900" alt="" decoding="async">
+          </figure>
+          <div class="intent-copy">
+            <span class="intent-kicker">{{ $copy['intent_sell_kicker'] ?: 'Sell' }}</span>
+            <h3>{!! $copy['intent_sell_title'] ?: 'Price it before you list' !!}</h3>
+            <p>{!! $copy['intent_sell_lead'] ?: ($copy['intent_sell'] ?? 'Run a sample value range for a fictional address. Not an appraisal — a next step if you are comparing options.') !!}</p>
+            <span class="intent-go">{{ $copy['intent_sell_cta'] ?: 'Estimate value' }} →</span>
+          </div>
         </a>
-        <a class="intent-card" href="{{ home_url('/book/') }}">
-          <span class="intent-kicker">Tours</span>
-          <h3>{!! $copy['intent_tour_title'] ?: 'Walk it with an agent' !!}</h3>
-          <p>{!! $copy['intent_tour_lead'] ?: ($copy['intent_tour'] ?? 'Pick a sample listing, a date, and a time. The request is saved for the listing agent. Rural Adams County showings often mean a lane, a well, and boots.') !!}</p>
-          <ul>
-            <li>{!! $copy['intent_tour_b1'] ?: 'Date and time-slot picker' !!}</li>
-            <li>{!! $copy['intent_tour_b2'] ?: 'Paired with the listing agent' !!}</li>
-          </ul>
-          <span class="intent-go">{{ $copy['intent_tour_cta'] ?: 'Book a showing' }} →</span>
+        <a class="intent-card is-primary" href="{{ home_url('/book/') }}">
+          <figure class="intent-photo intent-photo--ground">
+            <img src="{{ get_theme_file_uri('public/images/intent-tour.jpg') }}" width="1200" height="900" alt="" decoding="async">
+          </figure>
+          <div class="intent-copy">
+            <span class="intent-kicker">{{ $copy['intent_tour_kicker'] ?: 'Tour' }}</span>
+            <h3>{!! $copy['intent_tour_title'] ?: 'Walk it on the ground' !!}</h3>
+            <p>{!! $copy['intent_tour_lead'] ?: ($copy['intent_tour'] ?? 'Pick a sample listing, a date, and a slot. Rural showings mean a lane, a well, and boots — mention perc or pets in the notes.') !!}</p>
+            <span class="intent-go">{{ $copy['intent_tour_cta'] ?: 'Book a showing' }} →</span>
+          </div>
         </a>
       </div>
-      <div class="intent-notes reveal">
-        <p class="intent-notes-label">{{ $copy['intent_notes_label'] ?: 'Good to know before you filter' }}</p>
-        <div class="intent-notes-grid">
-          <article class="intent-note">
-            <strong>{!! $copy['intent_note_1_title'] ?: 'Township first' !!}</strong>
-            <p>{!! $copy['intent_note_1_text'] ?: 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Choose a township before you compare photos.' !!}</p>
-          </article>
-          <article class="intent-note">
-            <strong>{!! $copy['intent_note_2_title'] ?: 'Water and waste' !!}</strong>
-            <p>{!! $copy['intent_note_2_text'] ?: 'Rural parcels often mean a well and a perc test, not municipal hookups. Walk that before you write an offer.' !!}</p>
-          </article>
-          <article class="intent-note">
-            <strong>{!! $copy['intent_note_3_title'] ?: 'Showings are muddy' !!}</strong>
-            <p>{!! $copy['intent_note_3_text'] ?: 'Lanes, gates, and wet ground. Wear boots. Mention pets or if you are new to land — the agent can prep.' !!}</p>
-          </article>
-        </div>
-      </div>
+      <ul class="intent-notes reveal" aria-label="{{ $copy['intent_notes_label'] ?: 'Good to know' }}">
+        <li>
+          <strong>{!! $copy['intent_note_1_title'] ?: 'Township first' !!}</strong>
+          <span>{!! $copy['intent_note_1_text'] ?: 'Zoning and Act 319 change from North Ridge to Oak Hollow.' !!}</span>
+        </li>
+        <li>
+          <strong>{!! $copy['intent_note_2_title'] ?: 'Well and perc' !!}</strong>
+          <span>{!! $copy['intent_note_2_text'] ?: 'Rural parcels rarely have municipal hookups — walk that before an offer.' !!}</span>
+        </li>
+        <li>
+          <strong>{!! $copy['intent_note_3_title'] ?: 'Boots for showings' !!}</strong>
+          <span>{!! $copy['intent_note_3_text'] ?: 'Lanes get muddy after rain. Mention pets if you are new to land.' !!}</span>
+        </li>
+      </ul>
     </div>
   </section>
 
