@@ -1,0 +1,83 @@
+/* =========================================================================
+   Card lock — LAST stylesheet import. Do not delete or move above keystone.css.
+
+   Homepage PRs keep rewriting the same selectors in keystone.css, so Pulse,
+   tour steps, reviews, and start-here cards flip back to cream fills,
+   forest/ink bars, or tiny kickers. This file re-asserts the settled chrome.
+
+   Tokens: --card-bg (#fff), --shadow-rest, --line. Forest stays on type,
+   stars, and focus rings — never as a card frame.
+   ========================================================================= */
+
+.step,
+.market-stat,
+.testi,
+.testi-card,
+.review-card,
+.intent-card,
+.scan-card,
+.area-card,
+.listing-mini,
+.blog-card,
+.agent-card,
+.card,
+.teaser,
+.tool-panel,
+.tool-card,
+.faq-item,
+.booking-shell,
+.listing-agent-card,
+.nearby-card{
+  background:var(--card-bg, #fff);
+  border:1px solid var(--line);
+  box-shadow:var(--shadow-rest, 0 6px 22px rgba(12,12,12,.06));
+}
+
+.area-card{
+  border-left-width:1px;
+  border-left-color:var(--line);
+}
+
+.market-stat{
+  border-top:1px solid var(--line);
+  padding:22px 20px 18px;
+  border-radius:var(--radius);
+}
+
+.market-stat::before{
+  content:none;
+}
+
+.intent-card:hover,
+.intent-card:focus-visible{
+  border-color:var(--line);
+}
+
+/* From search to showing — large bold grey numbers (not forest kickers). */
+.step::before{
+  font-family:var(--ff-display);
+  font-size:clamp(2.15rem, 6.4vw, 2.75rem);
+  font-weight:800;
+  letter-spacing:-.06em;
+  line-height:.85;
+  color:var(--ink-faint);
+  text-transform:none;
+  font-variant-numeric:tabular-nums;
+}
+
+@media(min-width:800px){
+  .step::before{font-size:3.15rem;}
+}
+
+.step:hover,
+.market-stat:hover,
+.intent-card:hover,
+.scan-card:hover,
+.listing-mini:hover,
+.blog-card:hover,
+.card:hover,
+.teaser:hover,
+.review-card:hover,
+.testi:hover{
+  box-shadow:var(--shadow-lg);
+}
