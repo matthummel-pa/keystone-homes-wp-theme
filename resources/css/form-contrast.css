@@ -1,0 +1,102 @@
+/* =========================================================================
+   Form contrast lock — after keystone.css + responsive-forms.css.
+
+   Tailwind preflight sets `select { color: inherit; background: transparent }`.
+   Cream `--paper` / `--white` fields then sit on a cream toolbar, and OS
+   dark-mode native pickers inherit ink-on-ink. Closed and open dropdowns
+   must stay charcoal on true white with a 3:1+ border (WCAG 1.4.11).
+   ========================================================================= */
+
+:root{
+  --field-bg:#fff;
+  --field-text:#141210;
+  --field-border:#6f685e; /* ≥3:1 on #fff */
+}
+
+.listings-toolbar,
+.listing-search,
+.hero-search,
+.sort-field select,
+.calc-box,
+.val-card,
+.tool-panel,
+.tool-card{
+  color:var(--field-text);
+  color-scheme:light;
+}
+
+.listings-toolbar{
+  background:var(--card-bg, #fff);
+}
+
+.field label,
+.sort-field label,
+.calc-box .field label{
+  color:var(--ink-soft);
+}
+
+.result-count{
+  color:var(--ink-soft);
+}
+
+.field select,
+.field input,
+.field textarea,
+.sort-field select,
+.calc-grid input,
+.calc-grid select,
+.val-grid input,
+.val-grid select,
+.listings-toolbar select,
+.listing-search select,
+.hero-search select{
+  color:var(--field-text);
+  -webkit-text-fill-color:var(--field-text);
+  background-color:var(--field-bg);
+  background-image:none;
+  border:1.5px solid var(--field-border);
+  color-scheme:light;
+  opacity:1;
+}
+
+.field select option,
+.field select optgroup,
+.sort-field select option,
+.calc-grid select option,
+.val-grid select option,
+.listings-toolbar select option,
+.listing-search select option,
+.hero-search select option{
+  color:#141210;
+  background-color:#fff;
+}
+
+.field select:focus,
+.field input:focus,
+.field textarea:focus,
+.sort-field select:focus,
+.calc-grid input:focus,
+.calc-grid select:focus,
+.val-grid input:focus,
+.val-grid select:focus{
+  color:var(--field-text);
+  -webkit-text-fill-color:var(--field-text);
+  background-color:#fff;
+  border-color:var(--accent);
+}
+
+/* Keep alert-band fields on the dark sell panel readable. */
+.alert-panel .field label{color:rgba(255,255,255,.82);}
+.alert-panel .field input,
+.alert-panel .field select{
+  color:#fff;
+  -webkit-text-fill-color:#fff;
+  background-color:#243028;
+  border-color:#c8c2b6;
+  color-scheme:dark;
+}
+.alert-panel .field input::placeholder{color:rgba(255,255,255,.72);}
+.alert-panel .field select option{
+  color:#141210;
+  background-color:#fff;
+}
