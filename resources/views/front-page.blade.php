@@ -38,7 +38,7 @@
     <div class="hero-inner">
       <p class="hero-eyebrow">{{ $copy['hero_eyebrow'] ?: 'Adams County, Pennsylvania' }}</p>
       <h1 id="hero-heading">{!! $copy['hero_title'] ?: 'Homes worth <em>walking through.</em>' !!}</h1>
-      <p class="hero-sub">{!! $copy['hero_text'] ?: 'Farms, historic houses, and acreage across North Ridge, Mill Creek, and Oak Hollow. Filter by township, then book a showing.' !!}</p>
+      <p class="hero-sub">{!! $copy['hero_text'] ?: 'Farms, historic houses, and acreage in North Ridge, Mill Creek, and Oak Hollow. Filter by township, then schedule a showing.' !!}</p>
       <ul class="hero-proof">
         <li><strong>{{ $listingCount ?: 8 }}</strong> sample listings</li>
         <li><strong>{{ $townshipCount ?: 3 }}</strong> townships</li>
@@ -139,7 +139,7 @@
         <div class="intent-notes-grid">
           <article class="intent-note">
             <strong>{!! $copy['intent_note_1_title'] ?: 'Township first' !!}</strong>
-            <p>{!! $copy['intent_note_1_text'] ?: 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Pick an area before you fall for a photo.' !!}</p>
+            <p>{!! $copy['intent_note_1_text'] ?: 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Choose a township before you compare photos.' !!}</p>
           </article>
           <article class="intent-note">
             <strong>{!! $copy['intent_note_2_title'] ?: 'Water and waste' !!}</strong>
@@ -287,15 +287,31 @@
   <section class="section" aria-labelledby="market-heading">
     <div class="wrap">
       <header class="section-head reveal">
-        <p class="eyebrow">Sample market</p>
+        <p class="eyebrow">Adams County market</p>
         <h2 id="market-heading">Pulse at a glance</h2>
-        <p>Illustrative numbers for layout — not live market data.</p>
+        <p>A sample snapshot of how this inventory would read in a listing conversation — not a live CMA or MLS feed.</p>
       </header>
       <div class="market-grid reveal">
-        <div class="market-stat"><strong>$398k</strong><span>Median (demo)</span><em>↑ Sample trend</em></div>
-        <div class="market-stat"><strong>32</strong><span>Days on market</span><em class="down">↓ Demo delta</em></div>
-        <div class="market-stat"><strong>1.6</strong><span>Months inventory</span><em>Sample signal</em></div>
-        <div class="market-stat"><strong>95%</strong><span>List-to-sale</span><em>Illustrative</em></div>
+        <article class="market-stat">
+          <strong>$398k</strong>
+          <span>Median sale price</span>
+          <em class="is-up"><span aria-hidden="true">↑</span> 2.1% vs last quarter</em>
+        </article>
+        <article class="market-stat">
+          <strong>32</strong>
+          <span>Days on market</span>
+          <em class="is-down"><span aria-hidden="true">↓</span> 5 days vs last quarter</em>
+        </article>
+        <article class="market-stat">
+          <strong>1.6</strong>
+          <span>Months of inventory</span>
+          <em>Limited active supply</em>
+        </article>
+        <article class="market-stat">
+          <strong>95%</strong>
+          <span>List-to-sale ratio</span>
+          <em>Offers near asking</em>
+        </article>
       </div>
     </div>
   </section>
@@ -304,8 +320,8 @@
     <div class="wrap">
       <header class="section-head reveal">
         <p class="eyebrow">Agent tools</p>
-        <h2 id="tools-heading">Price it. Watch it.</h2>
-        <p>Two grids buyers and sellers actually use — value estimate and listing alerts.</p>
+        <h2 id="tools-heading">Value range and listing alerts</h2>
+        <p>Two tools buyers and sellers use first: a sample value range, then an alert for new matches.</p>
       </header>
       <div class="tools-grid">
         <div class="tool-panel reveal">
@@ -362,59 +378,59 @@
       <div class="seo-block reveal">
         <div>
           <p class="eyebrow">Adams County notes</p>
-          <h2 id="seo-heading">Buying a farm, house, or land parcel here</h2>
+          <h2 id="seo-heading">Buying a home, farm, or land in Adams County</h2>
           <div class="prose-tight">
-            <p>Rural Adams County is fruit-belt and farm country: orchards on the ridges, tillable ground in the valleys, and century houses that still sit on a well. A useful realtor page tells you what to scan before you fall for a photo.</p>
-            <h3>If you are shopping a house</h3>
-            <p>Lead with type, price, beds, and commute. Acreage is extra unless you want a shop, a barn, or hobby ground. Still ask about well-or-public-water and how you reach the lane in January.</p>
-            <h3>If you are shopping land</h3>
-            <p>Lead with usable acres, legal access, and septic. A parcel without a perc answer is not the same product as a turnkey farmhouse. Price-per-acre helps you compare North Ridge to Oak Hollow without mixing house inventory in.</p>
+            <p>Rural Adams County is orchard and farm country: fruit on the ridges, tillable ground in the valleys, and older houses that still rely on a private well. Compare listings the way a local agent would — township first, then the utilities and access that change value.</p>
+            <h3>When you are buying a house</h3>
+            <p>Start with price, bedrooms, and the commute. Acreage matters when you want a shop or barn; it does not replace water, septic, and a lane you can use in January. Confirm well or public water before you schedule a second visit.</p>
+            <h3>When you are buying land</h3>
+            <p>Start with usable acres, recorded access, and septic feasibility. A parcel without a perc answer is a different product than a finished farmhouse. Price per acre lets you compare North Ridge to Oak Hollow without mixing house inventory into the set.</p>
           </div>
           <p class="help-links">
-            <a href="{{ home_url('/guide') }}">Buyer tools →</a>
-            <a href="{{ home_url('/areas') }}">Township reads →</a>
-            <a href="{{ home_url('/listings') }}">Sample inventory →</a>
+            <a href="{{ home_url('/guide') }}">Buyer guide →</a>
+            <a href="{{ home_url('/areas') }}">Township notes →</a>
+            <a href="{{ home_url('/listings') }}">Sample listings →</a>
           </p>
         </div>
         <div class="scan-grid cols-2">
           <article class="scan-card">
             <span class="num">Houses</span>
-            <h3>Scan this first</h3>
+            <h3>Review first</h3>
             <ul>
-              <li>Price, beds, and baths</li>
+              <li>Price, bedrooms, and baths</li>
               <li>Township and commute</li>
-              <li>Well vs public water</li>
-              <li>A showing slot that fits</li>
+              <li>Well or public water</li>
+              <li>A showing that fits the week</li>
             </ul>
           </article>
           <article class="scan-card">
             <span class="num">Land</span>
-            <h3>Scan this first</h3>
+            <h3>Review first</h3>
             <ul>
-              <li>Usable acres, not just deed acres</li>
-              <li>Perc / septic status</li>
+              <li>Usable acres, not only deed acres</li>
+              <li>Perc and septic status</li>
               <li>Road frontage and driveway</li>
-              <li>Clean and Green / rollback risk</li>
+              <li>Clean and Green rollback risk</li>
             </ul>
           </article>
           <article class="scan-card">
             <span class="num">Farms</span>
-            <h3>Walk the working pieces</h3>
+            <h3>Walk the working ground</h3>
             <ul>
-              <li>Barn, shop, and outbuilding use</li>
-              <li>Tillable vs wooded split</li>
-              <li>Livestock or orchard notes</li>
-              <li>Who holds the water rights story</li>
+              <li>Barn, shop, and outbuildings</li>
+              <li>Tillable versus wooded split</li>
+              <li>Livestock or orchard use</li>
+              <li>Water rights and irrigation</li>
             </ul>
           </article>
           <article class="scan-card">
             <span class="num">Next</span>
-            <h3>Keep moving</h3>
+            <h3>Recommended next steps</h3>
             <ul>
-              <li>Filter the sample grid</li>
-              <li>Read a township page</li>
-              <li>Run the demo value tool</li>
-              <li>Book a fictional walk-through</li>
+              <li>Filter the sample listings</li>
+              <li>Read the township notes</li>
+              <li>Run a sample value range</li>
+              <li>Schedule a showing</li>
             </ul>
           </article>
         </div>
@@ -423,8 +439,8 @@
   </section>
 
   @include('partials.faq-list', [
-    'faqTitle' => 'Questions before you filter',
-    'faqText' => 'Short answers for house shoppers and acreage buyers. Sample listings stay fictional.',
+    'faqTitle' => 'Questions buyers ask first',
+    'faqText' => 'Practical answers for house and acreage shoppers. Listings on this page are samples.',
     'faqHeadClass' => 'left',
   ])
 

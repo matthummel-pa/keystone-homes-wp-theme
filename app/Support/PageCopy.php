@@ -28,7 +28,7 @@ class PageCopy
             'home' => $hero(
                 'Adams County, Pennsylvania',
                 'Homes worth <em>walking through.</em>',
-                'Farms, historic houses, and acreage across North Ridge, Mill Creek, and Oak Hollow. Filter by township, then book a showing.'
+                'Farms, historic houses, and acreage in North Ridge, Mill Creek, and Oak Hollow. Filter by township, then schedule a showing.'
             ) + [
                 'intent_eyebrow' => ['label' => 'Start-here eyebrow', 'type' => 'text', 'default' => 'Start here'],
                 'intent_title' => ['label' => 'Start-here title', 'type' => 'text', 'default' => 'Buy, sell, or walk a place in Adams County'],
@@ -50,7 +50,7 @@ class PageCopy
                 'intent_tour_cta' => ['label' => 'Tour card CTA', 'type' => 'text', 'default' => 'Book a showing'],
                 'intent_notes_label' => ['label' => 'Help notes label', 'type' => 'text', 'default' => 'Good to know before you filter'],
                 'intent_note_1_title' => ['label' => 'Help note 1 title', 'type' => 'text', 'default' => 'Township first'],
-                'intent_note_1_text' => ['label' => 'Help note 1 text', 'type' => 'textarea', 'default' => 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Pick an area before you fall for a photo.'],
+                'intent_note_1_text' => ['label' => 'Help note 1 text', 'type' => 'textarea', 'default' => 'Zoning, lot size, and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Choose a township before you compare photos.'],
                 'intent_note_2_title' => ['label' => 'Help note 2 title', 'type' => 'text', 'default' => 'Water and waste'],
                 'intent_note_2_text' => ['label' => 'Help note 2 text', 'type' => 'textarea', 'default' => 'Rural parcels often mean a well and a perc test, not municipal hookups. Walk that before you write an offer.'],
                 'intent_note_3_title' => ['label' => 'Help note 3 title', 'type' => 'text', 'default' => 'Showings are muddy'],

@@ -10,7 +10,7 @@ class Seo
 {
     public const SITE = 'Keystone Real Estate';
 
-    public const FALLBACK = 'Sample farms, historic houses, and acreage in Adams County. Filter listings and book a fictional showing — Keystone Real Estate concept demo.';
+    public const FALLBACK = 'Farms, historic houses, and acreage in Adams County. Filter listings by township and book a showing with a Keystone Real Estate agent.';
 
     public static function boot(): void
     {
@@ -36,7 +36,7 @@ class Seo
     {
         if (is_front_page()) {
             return [
-                'title' => 'Keystone Real Estate · Adams County farms',
+                'title' => 'Keystone Real Estate | Homes & Land, Adams County',
                 'tagline' => '',
                 'site' => '',
             ];
@@ -159,7 +159,7 @@ class Seo
             }
         }
         if (is_404()) {
-            return 'That Keystone demo page is missing. Browse sample listings, book a showing, or return home to keep walking the Adams County concept site today.';
+            return 'That page is not available. Browse sample listings, schedule a showing, or return home to continue on the Keystone Real Estate site.';
         }
 
         $fromCopy = self::plain($copy['hero_text'] ?? '');
@@ -179,7 +179,7 @@ class Seo
     public static function ogTitle(array $copy): string
     {
         if (is_front_page()) {
-            return 'Keystone Real Estate · Adams County farms';
+            return 'Keystone Real Estate | Homes & Land, Adams County';
         }
         if (is_singular()) {
             return self::clip(self::plain((string) get_the_title()).' | '.self::SITE, 70);
@@ -328,14 +328,14 @@ class Seo
     public static function defaultDescriptions(): array
     {
         return [
-            'home' => 'Farms, historic houses, and acreage across Adams County townships. Filter sample inventory, estimate payments, and book a fictional house showing today.',
-            'listings' => 'Browse eight fictional farms, historic houses, and acreage parcels. Filter by type, price, acres, and township — then book a demo tour with an agent.',
-            'areas' => 'Township-by-township reads of rural Adams County: orchards, farms, and wooded lots from Franklin to Liberty. Fictional area pages written for local SEO.',
-            'guide' => 'Plain-language notes on wells, septic, access, and land loans in Adams County. Demo calculators plus a path to book a sample parcel showing next.',
-            'agents' => 'Meet the sample Keystone team. Local agents for farms, orchards, and century houses — fictional 555 lines and concept bios, not a live roster yet.',
-            'contact' => 'Reach the Keystone concept office at 100 Concept Way, Sample Borough, PA. Call (555) 010-0455 or book a fictional house showing online today.',
-            'book' => 'Pick a sample listing, date, and time slot. Showing requests save as Bookings in Requested status — this demo does not send email or texts out.',
-            'blog' => 'Short realtor notes on house showings, first-time buyer checklists, and land vs home search — ready to adapt for Adams County local SEO work.',
+            'home' => 'Farms, historic houses, and acreage in Adams County. Filter by township, review sample listings, and book a showing with a Keystone Real Estate agent.',
+            'listings' => 'Browse sample farms, historic houses, and acreage. Filter by type, price, acres, and township, then schedule a showing with a Keystone agent.',
+            'areas' => 'Township notes for rural Adams County: orchards, farms, and wooded lots from Franklin to Liberty. Local context before you tour a listing.',
+            'guide' => 'Guidance on wells, septic, access, and land loans in Adams County, plus calculators and a path to schedule a parcel showing.',
+            'agents' => 'Meet the Keystone team. Agents focused on farms, orchards, and historic houses across Adams County sample markets.',
+            'contact' => 'Contact Keystone Real Estate at 100 Concept Way, Sample Borough, PA. Call (555) 010-0455 or book a house showing online.',
+            'book' => 'Choose a listing, date, and time. Showing requests are saved for the listing agent so you can review the booking flow.',
+            'blog' => 'Notes on house showings, first-time buyer checklists, and land versus home search for Adams County buyers and sellers.',
             'simple' => self::FALLBACK,
         ];
     }
