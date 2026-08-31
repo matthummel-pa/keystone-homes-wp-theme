@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.1
+
+- Theme Name is **Acreline** (what buyers see in Appearance → Themes)
+- Admin: Appearance → Acreline Setup, Tools → Seed Acreline demo
+- Sample office in the preview stays Keystone Real Estate until Identity is changed
+- Install folder and text domain stay `keystone-homes`
+
 ## 1.0.0
 
 - Marketplace packaging: Customizer identity, accent color, social URLs, removable footer credit

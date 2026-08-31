@@ -41,7 +41,7 @@
 <section class="section section-alt">
   <div class="wrap">
     @if (! have_posts())
-      <p class="empty-state">Sample posts load with Tools → Seed Keystone demo. Until then, use <a href="{{ home_url('/guide') }}">the buyer’s guide</a> or <a href="{{ home_url('/listings') }}">browse listings</a>.</p>
+      <p class="empty-state">Sample posts load with Tools → Seed Acreline demo. Until then, use <a href="{{ home_url('/guide') }}">the buyer’s guide</a> or <a href="{{ home_url('/listings') }}">browse listings</a>.</p>
     @else
       <div class="blog-grid reveal">
         @while(have_posts()) @php(the_post())

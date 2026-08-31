@@ -1,20 +1,20 @@
-=== Keystone Real Estate ===
+=== Acreline ===
 Contributors: ridgesandvalleys
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 8.3
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
 
-Land-and-farms realtor theme for rural listings, agents, and showing requests.
+Rural listings, agents, and showing requests.
 
 == Description ==
 
-Keystone Real Estate is a classic (non-block) Sage 11 theme for land, farms, and historic-home inventory. Buyers set office identity, accent color, menus, and logo from the Customizer. Demo pages and sample listings load from Tools → Seed Keystone demo.
+Acreline is a classic (non-block) Sage 11 theme for land, farms, and historic-home inventory. Buyers set office identity, accent color, menus, and logo from the Customizer. Demo pages and sample listings load from Tools → Seed Acreline demo.
 
-This is a concept theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
+The sample office in the preview is named Keystone Real Estate — replace it under Customize → Identity. This is a concept theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
 
 = Features =
 
@@ -34,11 +34,11 @@ This theme ships compiled Vite assets and an Acorn/Sage vendor tree. The directo
 == Installation ==
 
 1. Upload `keystone-homes` to `/wp-content/themes/` (or use the zip from Appearance → Themes → Add New).
-2. Activate Keystone Real Estate.
+2. Activate Acreline.
 3. Optional: install and activate Keystone Core from the marketplace pack so listings survive a theme switch.
-4. Go to Appearance → Keystone Setup and walk the checklist.
+4. Go to Appearance → Acreline Setup and walk the checklist.
 5. Appearance → Customize → Identity to replace concept phone and address.
-6. Tools → Seed Keystone demo if you want the preview pages and sample inventory.
+6. Tools → Seed Acreline demo if you want the preview pages and sample inventory.
 
 The theme folder must stay `keystone-homes` (Vite `base` path). After a source checkout run `npm run build` and `composer install --no-dev`. Store zips already include `public/build` and `vendor`.
 
@@ -62,9 +62,12 @@ Yes. The marketplace pack includes `keystone-homes-child`.
 
 == Changelog ==
 
+= 1.0.1 =
+* Theme Name is now Acreline. Sample office in the demo stays Keystone Real Estate until you change Identity.
+
 = 1.0.0 =
-* Marketplace layer: Customizer identity/colors/social, WP menus, breadcrumbs, Keystone Setup, companion plugin, child theme, readme.txt
-* Text domain is now `keystone-homes`
+* Marketplace layer: Customizer identity/colors/social, WP menus, breadcrumbs, setup checklist, companion plugin, child theme, readme.txt
+* Text domain is `keystone-homes` (install folder)
 * Footer copyright is the site name; studio credit is optional and nofollow
 
 == Resources ==

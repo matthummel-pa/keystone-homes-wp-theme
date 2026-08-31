@@ -1,4 +1,4 @@
-# Selling Keystone (for Matt)
+# Selling Acreline (for Matt)
 
 This is the seller brief — not buyer docs. Buyer HTML is `buyer-guide.html`.
 
@@ -55,4 +55,4 @@ A future “Keystone Lite” without Acorn would have a real shot at the picker.
 
 ## After a sale
 
-Buyer path is Appearance → Keystone Setup. Do not add a license server unless a marketplace requires it. Envato purchase codes are their problem, not a theme options lock.
+Buyer path is Appearance → Acreline Setup. Do not add a license server unless a marketplace requires it. Envato purchase codes are their problem, not a theme options lock.

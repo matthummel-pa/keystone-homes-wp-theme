@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Keystone Real Estate child theme.
+ * Acreline child theme.
  */
 defined('ABSPATH') || exit;
 

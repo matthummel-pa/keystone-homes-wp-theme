@@ -1,9 +1,9 @@
-Keystone demo content
+Acreline demo content
 =====================
 
 Preferred (matches the live concept site):
 
-  WordPress admin → Tools → Seed Keystone demo
+  WordPress admin → Tools → Seed Acreline demo
   or: wp ks seed
 
 That creates the marketing pages, sample listings, agents, blog posts, and
@@ -14,7 +14,7 @@ Manual import
 
 If you need Tools → Import → WordPress (WXR):
 
-  1. Activate Keystone Real Estate (and Keystone Core if you use the plugin).
+  1. Activate Acreline (and Keystone Core if you use the plugin).
   2. Install the official WordPress Importer from wordpress.org if asked.
   3. Import a WXR you export from a seeded site:
        wp export --path="$HOME/wp" --dir=./Demos

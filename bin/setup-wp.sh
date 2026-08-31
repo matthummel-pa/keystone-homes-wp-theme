@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Bootstrap a local WordPress dev environment for the Keystone Real Estate theme.
+# Bootstrap a local WordPress dev environment for the Acreline theme (folder: keystone-homes).
 #
 # Stands up a throwaway WordPress install (SQLite, no MySQL required) OUTSIDE
 # the repo, symlinks this theme into it, seeds concept pages + blog posts,

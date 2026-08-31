@@ -1,4 +1,4 @@
-# Keystone Real Estate — WordPress Theme
+# Acreline — WordPress Theme
 
 A [Roots Sage 11](https://roots.io/sage/) theme (Blade + Tailwind CSS v4 + Vite 8, powered by Acorn) for a land-and-farms realtor concept. The visual design is ported from the static concept in [`matthummel-pa/realtor-keystone-homes-and-land-theme`](https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme).
 

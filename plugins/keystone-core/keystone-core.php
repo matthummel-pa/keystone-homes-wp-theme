@@ -3,7 +3,7 @@
 /**
  * Plugin Name:       Keystone Core
  * Plugin URI:        https://github.com/matthummel-pa/keystone-homes-wp-theme
- * Description:       Listings, agents, and showing bookings for the Keystone Real Estate theme. Keeps inventory in the database when you switch themes.
+ * Description:       Listings, agents, and showing bookings for the Acreline theme. Keeps inventory in the database when you switch themes.
  * Version:           1.0.0
  * Requires at least: 6.6
  * Requires PHP:      8.1
