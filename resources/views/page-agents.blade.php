@@ -6,12 +6,7 @@
 
 @section('content')
 <!-- ============================= BREADCRUMB ============================= -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ home_url('/') }}">Home</a></li>
-    <li><span aria-current="page">Our Agents</span></li>
-  </ol>
-</nav>
+@include('partials.breadcrumbs')
 
 <!-- ============================= PAGE HERO ============================= -->
 @include('partials.page-hero', [

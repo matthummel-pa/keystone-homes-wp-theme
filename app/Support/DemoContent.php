@@ -57,6 +57,7 @@ class DemoContent
         self::pages();
         self::posts();
         self::cpts();
+        self::menus();
         self::attachHeroImages();
         self::cleanupDefaults();
         flush_rewrite_rules(false);
@@ -73,6 +74,66 @@ class DemoContent
         if ($tagline === '' || $tagline === 'Just another WordPress site') {
             update_option('blogdescription', 'Concept demo · Fiction only');
         }
+    }
+
+    public static function menus(): void
+    {
+        $primary = self::ensureMenu('Primary', [
+            ['title' => 'Home', 'url' => home_url('/')],
+            ['title' => 'Listings', 'url' => home_url('/listings/')],
+            ['title' => 'Areas', 'url' => home_url('/areas/')],
+            ['title' => 'Guide', 'url' => home_url('/guide/')],
+            ['title' => 'Blog', 'url' => home_url('/blog/')],
+            ['title' => 'Agents', 'url' => home_url('/agents/')],
+            ['title' => 'Contact', 'url' => home_url('/contact/')],
+        ]);
+        $footer = self::ensureMenu('Footer', [
+            ['title' => 'Listings', 'url' => home_url('/listings/')],
+            ['title' => 'Areas', 'url' => home_url('/areas/')],
+            ['title' => 'Book a showing', 'url' => home_url('/book/')],
+            ['title' => 'Buyer guide', 'url' => home_url('/guide/')],
+            ['title' => 'Agents', 'url' => home_url('/agents/')],
+            ['title' => 'Contact', 'url' => home_url('/contact/')],
+        ]);
+
+        $locations = get_theme_mod('nav_menu_locations');
+        if (! is_array($locations)) {
+            $locations = [];
+        }
+        if ($primary > 0) {
+            $locations['primary_navigation'] = $primary;
+        }
+        if ($footer > 0) {
+            $locations['footer_navigation'] = $footer;
+        }
+        set_theme_mod('nav_menu_locations', $locations);
+    }
+
+    /**
+     * @param  list<array{title: string, url: string}>  $items
+     */
+    private static function ensureMenu(string $name, array $items): int
+    {
+        $existing = wp_get_nav_menu_object($name);
+        if ($existing instanceof \WP_Term) {
+            return (int) $existing->term_id;
+        }
+
+        $id = (int) wp_create_nav_menu($name);
+        if ($id <= 0) {
+            return 0;
+        }
+
+        foreach ($items as $item) {
+            wp_update_nav_menu_item($id, 0, [
+                'menu-item-title' => $item['title'],
+                'menu-item-url' => $item['url'],
+                'menu-item-status' => 'publish',
+                'menu-item-type' => 'custom',
+            ]);
+        }
+
+        return $id;
     }
 
     public static function permalinks(): void
@@ -409,11 +470,7 @@ class DemoContent
         }
 
         foreach (PageCopy::schemaForPost($id) as $key => $def) {
-            $meta = Catalog::metaKey($key);
-            $current = get_post_meta($id, $meta, true);
-            if ($current === '' || $current === false) {
-                update_post_meta($id, $meta, $def['default'] ?? '');
-            }
+            update_post_meta($id, Catalog::metaKey($key), $def['default'] ?? '');
         }
     }
 }

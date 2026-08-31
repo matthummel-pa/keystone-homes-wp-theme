@@ -6,12 +6,7 @@
 
 @section('content')
 <!-- ============================= BREADCRUMB ============================= -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ home_url('/') }}">Home</a></li>
-    <li><span aria-current="page">Land Buyer's Guide</span></li>
-  </ol>
-</nav>
+@include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
   'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
@@ -32,16 +27,16 @@
       <p>{!! $copy['intro_text'] ?? 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself.' !!}</p>
 
       <h3>Water: wells &amp; yield</h3>
-      <p>Most rural Adams County property is served by a private well rather than public water. Two things matter: whether a well already exists and produces enough water, and — if the lot is raw — whether a new well is likely to hit a good yield. In the rockier ground toward South Mountain (Hamiltonban) yields can vary well to well. For an existing well we recommend a flow test and a potability test; for raw land we look at neighboring wells as a guide.</p>
+      <p>Most rural property is served by a private well rather than public water. Two things matter: whether a well already exists and produces enough water, and — if the lot is raw — whether a new well is likely to hit a good yield. In rockier hill country, yields can vary well to well. For an existing well we recommend a flow test and a potability test; for raw land we look at neighboring wells as a guide.</p>
 
       <h3>Waste: septic &amp; the perc test</h3>
-      <p>No public sewer usually means an on-lot septic system, and that means a percolation ("perc") test through the township and the Pennsylvania DEP / SEO process. A perc test tells you whether — and where — the soil will absorb effluent, which in turn dictates where a house can sit. A parcel advertised as "perc-approved" with a valid soils report is worth more and closes faster than one where the test is still an unknown. We help you read an existing perc report or schedule a new one as an inspection contingency.</p>
+      <p>No public sewer usually means an on-lot septic system, and that means a percolation ("perc") test through the township or county health office. A perc test tells you whether — and where — the soil will absorb effluent, which in turn dictates where a house can sit. A parcel advertised as "perc-approved" with a valid soils report is worth more and closes faster than one where the test is still an unknown. We help you read an existing perc report or schedule a new one as an inspection contingency.</p>
 
       <h3>Access &amp; easements</h3>
       <p>Every buildable parcel needs legal, recorded access to a public road — a surprising number of back-lot tracts rely on a handshake lane across a neighbor's field. We confirm access in writing and flag utility easements, agricultural-security areas, right-of-way and any deed restrictions before you're committed.</p>
 
-      <h3>Taxes: clean &amp; green (Act 319)</h3>
-      <p>A lot of farm and orchard ground in the county is enrolled in Act 319 "clean and green," which taxes it at use value instead of market value — a real annual savings. But changing the use or subdividing can trigger a rollback tax of up to seven years. If a parcel is enrolled, we make sure you understand what you're inheriting.</p>
+      <h3>Taxes: use-value / preferential farmland programs</h3>
+      <p>A lot of farm and orchard ground is enrolled in a use-value or "clean and green" tax program, which taxes it at agricultural use instead of market value — a real annual savings. But changing the use or subdividing can trigger a rollback tax of several years. If a parcel is enrolled, we make sure you understand what you're inheriting. Rename this section for the program in your state.</p>
 
       <h3>Financing: land loans</h3>
       <p>Raw land and working farms often don't fit a standard 30-year mortgage. Local banks and farm-credit lenders offer land loans, construction-to-permanent loans and ag loans, typically with a larger down payment and a slightly higher rate than a home mortgage. The estimator below gives you a friendly ballpark; a lender will give you the real terms.</p>
@@ -169,7 +164,7 @@
               </div>
               <div class="field field-span">
                 <label for="schNote">What are you looking for? (optional)</label>
-                <input type="text" id="schNote" placeholder="e.g. 10+ acres near Franklin Township">
+                <input type="text" id="schNote" placeholder="e.g. 10+ acres near Oak Hollow">
               </div>
               <div class="field field-span">
                 <button type="submit" class="btn btn-primary btn-block">Request a Call Back</button>
@@ -184,13 +179,13 @@
 
         <div class="tool-card reveal">
           <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg> A quick land-buying checklist</h3>
-          <p style="color:var(--ink-soft);font-size:.92rem;margin-top:6px;">Before you write an offer on a parcel in Adams County, confirm:</p>
+          <p style="color:var(--ink-soft);font-size:.92rem;margin-top:6px;">Before you write an offer on a rural parcel, confirm:</p>
           <ul class="bullets" style="margin-top:14px;display:grid;gap:10px;list-style:none;padding:0;">
             <li style="display:flex;gap:10px;"><span style="flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--wheat);"></span>Legal, recorded road access (not just a neighbor's lane)</li>
             <li style="display:flex;gap:10px;"><span style="flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--wheat);"></span>A valid perc test / soils report, or a perc contingency</li>
             <li style="display:flex;gap:10px;"><span style="flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--wheat);"></span>Well status &amp; likely yield, or public water at the road</li>
             <li style="display:flex;gap:10px;"><span style="flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--wheat);"></span>Township zoning &amp; minimum lot size for your plans</li>
-            <li style="display:flex;gap:10px;"><span style="flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--wheat);"></span>Act 319 clean-and-green enrollment &amp; rollback risk</li>
+            <li style="display:flex;gap:10px;"><span style="flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--wheat);"></span>Preferential farmland-tax enrollment &amp; rollback risk</li>
             <li style="display:flex;gap:10px;"><span style="flex:none;width:8px;height:8px;margin-top:8px;border-radius:2px;background:var(--wheat);"></span>Floodplain, easements &amp; any deed restrictions</li>
           </ul>
           <p style="margin-top:18px;"><a class="btn btn-outline" href="{{ home_url('/listings') }}">Browse land listings</a></p>
@@ -209,7 +204,7 @@
       <div class="faq-list reveal">
         <article class="faq-item">
           <h3>How much land do I need for a house, well, and septic?</h3>
-          <p>Township minimum lot size and the perc result decide this more than a round acre count. For a conventional on-lot system in rural Adams County, buyers commonly start at one to two acres. Check the township first, then the soil — not the listing photo.</p>
+          <p>Township minimum lot size and the perc result decide this more than a round acre count. For a conventional on-lot system in rural country, buyers commonly start at one to two acres. Check the township first, then the soil — not the listing photo.</p>
         </article>
         <article class="faq-item">
           <h3>What is a perc test, and who pays for it?</h3>
@@ -220,8 +215,8 @@
           <p>Often not a standard 30-year mortgage. Land and farm purchases usually run through a land loan, construction loan, or farm-credit lender, with a larger down payment. Use the calculators on this page as planning math, not a loan offer.</p>
         </article>
         <article class="faq-item">
-          <h3>What is Act 319 Clean and Green?</h3>
-          <p>Pennsylvania taxes qualifying farm and forest land at use value instead of market value. It lowers the annual bill, but subdividing or changing use can trigger a rollback tax. Flag enrollment before you write an offer.</p>
+          <h3>What is a use-value or "clean and green" tax program?</h3>
+          <p>Many states tax qualifying farm and forest land at agricultural use value instead of market value. It lowers the annual bill, but subdividing or changing use can trigger a rollback tax. Flag enrollment before you write an offer, and swap in the program name your buyers actually use.</p>
         </article>
       </div>
     </div>

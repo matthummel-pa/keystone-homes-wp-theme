@@ -5,19 +5,13 @@
 @extends('layouts.app')
 
 @section('content')
-<!-- ============================= BREADCRUMB ============================= -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ home_url('/') }}">Home</a></li>
-    <li><span aria-current="page">Listings</span></li>
-  </ol>
-</nav>
+@include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
   'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample inventory',
   'heroTitle' => $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>',
-  'heroText' => $copy['hero_text'] ?: 'Farms, historic houses, and acreage across Adams County townships. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',
+  'heroText' => $copy['hero_text'] ?: 'Farms, historic houses, and acreage across three sample areas. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',
   'heroActions' => [
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
     ['href' => home_url('/guide'), 'label' => 'Buyer tools', 'class' => 'btn btn-outline light'],
@@ -60,15 +54,15 @@
             </select>
           </div>
           <div class="field">
-            <label for="fTownship">Township</label>
+            <label for="fTownship">Area</label>
             <select id="fTownship" name="township">
-              <option value="all">All townships</option>
+              <option value="all">All sample areas</option>
               @forelse ($catalogTownships as $town)
-                <option value="{{ $town }}">{{ $town }} Twp</option>
+                <option value="{{ $town }}">{{ \App\Support\Catalog::townshipLabel($town) }}</option>
               @empty
-                <option value="Cumberland">Cumberland Twp</option>
-                <option value="Straban">Straban Twp</option>
-                <option value="Franklin">Franklin Twp</option>
+                <option value="Cumberland">North Ridge</option>
+                <option value="Straban">Mill Creek</option>
+                <option value="Franklin">Oak Hollow</option>
               @endforelse
             </select>
           </div>
@@ -125,8 +119,8 @@
     <div class="wrap">
       <header class="section-head left reveal">
         <p class="eyebrow">How to read a card</p>
-        <h2 id="listing-help-heading">{!! $copy['intro_title'] ?? 'Buying rural property in Adams County' !!}</h2>
-        <p>{!! $copy['intro_text'] ?? 'Every sample parcel sits in a township — zoning, lot size, and Clean and Green change from one ridge to the next. Filter first, then book a walk.' !!}</p>
+        <h2 id="listing-help-heading">{!! $copy['intro_title'] ?? 'Buying rural property' !!}</h2>
+        <p>{!! $copy['intro_text'] ?? 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk. Replace this inventory with your own market.' !!}</p>
       </header>
       <div class="scan-grid cols-3 reveal">
         <article class="scan-card">

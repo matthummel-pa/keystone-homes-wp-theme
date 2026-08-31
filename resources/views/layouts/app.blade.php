@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#1f6b4a">
-    <meta name="author" content="Ridges & Valleys Studio — concept demo">
+    <meta name="theme-color" content="{{ \App\Support\Identity::accent() }}">
+    <meta name="author" content="{{ $identity['brand'] ?? get_bloginfo('name') }}">
     @php(do_action('get_header'))
     @php(wp_head())
 
@@ -18,7 +18,9 @@
   <body @php(body_class())>
     @php(wp_body_open())
 
-    <p class="demo-banner"><strong>Concept demo</strong> · Fiction only · Not a live MLS, brokerage or booking system</p>
+    @if (! empty($identity['showDemoChrome']))
+      <p class="demo-banner"><strong>{{ __('Concept demo', 'keystone-homes') }}</strong> · {{ __('Fiction only', 'keystone-homes') }} · {{ __('Not a live MLS, brokerage or booking system', 'keystone-homes') }}</p>
+    @endif
 
     @include('sections.header')
 
@@ -35,7 +37,9 @@
     @include('sections.footer')
     @include('partials.chat')
 
-    <a href="https://ridgesandvalleys.com" class="concept-badge" rel="noopener">Concept · Ridges &amp; Valleys Studio</a>
+    @if (! empty($identity['showDemoChrome']) && ! empty($identity['creditUrl']))
+      <a href="{{ esc_url($identity['creditUrl']) }}" class="concept-badge" rel="nofollow noopener">{{ $identity['creditText'] }}</a>
+    @endif
 
     @php(do_action('get_footer'))
     @php(wp_footer())

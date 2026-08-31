@@ -72,6 +72,13 @@ add_filter('should_load_separate_core_block_assets', '__return_false');
  * @return void
  */
 add_action('after_setup_theme', function () {
+    global $content_width;
+    if (! isset($content_width)) {
+        $content_width = 1200;
+    }
+
+    load_theme_textdomain('keystone-homes', get_template_directory().'/languages');
+
     /**
      * Disable full-site editing support.
      *
@@ -85,7 +92,17 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'sage'),
+        'primary_navigation' => __('Primary Navigation', 'keystone-homes'),
+        'footer_navigation' => __('Footer Navigation', 'keystone-homes'),
+    ]);
+
+    add_theme_support('automatic-feed-links');
+
+    add_theme_support('custom-logo', [
+        'height' => 80,
+        'width' => 240,
+        'flex-height' => true,
+        'flex-width' => true,
     ]);
 
     /**
@@ -182,12 +199,12 @@ add_action('widgets_init', function () {
     ];
 
     register_sidebar([
-        'name' => __('Primary', 'sage'),
+        'name' => __('Primary', 'keystone-homes'),
         'id' => 'sidebar-primary',
     ] + $config);
 
     register_sidebar([
-        'name' => __('Footer', 'sage'),
+        'name' => __('Footer', 'keystone-homes'),
         'id' => 'sidebar-footer',
     ] + $config);
 });

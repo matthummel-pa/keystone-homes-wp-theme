@@ -1,0 +1,32 @@
+# Credits and licenses
+
+Everything in a store zip must be GPL-compatible. This list is the Theme Check / Envato “Resources” file.
+
+## Theme
+
+- Keystone Real Estate theme code — Ridges & Valleys Studio — [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+- Sage 11 / Acorn — Roots Software LLC — [MIT](https://opensource.org/licenses/MIT) (see `LICENSE.md`)
+
+MIT is GPL-compatible. The distributed theme is offered under GPLv2 or later.
+
+## Fonts (loaded from Google Fonts when selected)
+
+| Family | License | Source |
+| --- | --- | --- |
+| Inter | SIL OFL | https://fonts.google.com/specimen/Inter |
+| Plus Jakarta Sans | SIL OFL | https://fonts.google.com/specimen/Plus+Jakarta+Sans |
+| DM Sans | SIL OFL | https://fonts.google.com/specimen/DM+Sans |
+| Manrope | SIL OFL | https://fonts.google.com/specimen/Manrope |
+| Montserrat | SIL OFL | https://fonts.google.com/specimen/Montserrat |
+
+No font files are vendored in the zip.
+
+## Images
+
+- House mark SVGs in the header/footer — original, GPLv2 or later
+- `screenshot.png` — capture of the concept homepage; Unsplash photo is hotlinked on the live demo, not copied into `public/`
+- Listing / blog Unsplash URLs — preview only. **Do not** bundle those binaries in `keystone-homes.zip`
+
+## Companion plugin
+
+- Keystone Core — Ridges & Valleys Studio — GPLv2 or later (`plugins/keystone-core`)

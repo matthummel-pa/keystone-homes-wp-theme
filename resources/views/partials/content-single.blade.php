@@ -1,11 +1,5 @@
 <article @php(post_class('h-entry post-article'))>
-  <nav class="breadcrumb" aria-label="Breadcrumb">
-    <ol>
-      <li><a href="{{ home_url('/') }}">Home</a></li>
-      <li><a href="{{ home_url('/blog') }}">Blog</a></li>
-      <li><span aria-current="page">{!! get_the_title() !!}</span></li>
-    </ol>
-  </nav>
+  @include('partials.breadcrumbs')
 
   @include('partials.page-hero', [
     'heroBrand' => '',
@@ -65,7 +59,7 @@
           <ul>
             <li>{{ $readingMinutes }} min read</li>
             <li>Published {{ get_the_date() }}</li>
-            <li>Adams County concept copy</li>
+            <li>Sample-market concept copy</li>
           </ul>
         </div>
       </aside>

@@ -9,4 +9,5 @@ npm-debug.log
 
 # Generated installable theme package
 /dist-theme
+/dist-marketplace
 

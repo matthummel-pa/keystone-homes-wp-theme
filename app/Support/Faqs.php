@@ -27,12 +27,12 @@ class Faqs
     {
         return [
             [
-                'q' => 'What should I compare first on a rural Adams County listing?',
-                'a' => 'Start with township, price, and usable acres, then water, septic, and legal access. Bedrooms and commute matter on houses; perc status and road frontage matter on land. Inventory on this site is sample data; the review order is what a working farm buyer uses.',
+                'q' => 'What should I compare first on a rural listing?',
+                'a' => 'Start with area, price, and usable acres, then water, septic, and legal access. Bedrooms and commute matter on houses; perc status and road frontage matter on land. Inventory on this site is sample data; the review order is what a working farm buyer uses.',
             ],
             [
                 'q' => 'How is buying land different from buying a house here?',
-                'a' => 'A house usually has utilities in place. Raw acreage often needs a well, a perc test, and a recorded driveway. Zoning and Clean and Green (Act 319) change from North Ridge to Oak Hollow. Review the buyer guide before you write an offer on a parcel without a house.',
+                'a' => 'A house usually has utilities in place. Raw acreage often needs a well, a perc test, and a recorded driveway. Zoning and farmland-tax enrollment change from North Ridge to Oak Hollow. Review the buyer guide before you write an offer on a parcel without a house.',
             ],
             [
                 'q' => 'Do I need a showing to walk a farm or historic house?',
@@ -78,7 +78,7 @@ class Faqs
         return [
             [
                 'q' => 'Why filter by township before city?',
-                'a' => 'Zoning, lot-size rules, and Clean and Green sit at the township. Two parcels a mile apart can have different well, septic, and subdivision answers. Pick a township first, then price and acres.',
+                'a' => 'Zoning, lot-size rules, and preferential farmland-tax programs sit at the township or county. Two parcels a mile apart can have different well, septic, and subdivision answers. Pick an area first, then price and acres.',
             ],
             [
                 'q' => 'What do Land, Farm, and Historic mean?',

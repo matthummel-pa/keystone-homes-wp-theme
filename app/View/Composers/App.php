@@ -2,9 +2,12 @@
 
 namespace App\View\Composers;
 
+use App\Support\Breadcrumbs;
 use App\Support\Catalog;
 use App\Support\Faqs;
 use App\Support\HeroImage;
+use App\Support\Identity;
+use App\Support\Navigation;
 use App\Support\PageCopy;
 use Roots\Acorn\View\Composer;
 
@@ -42,11 +45,16 @@ class App extends Composer
             'showingTypes' => Catalog::SHOWING_TYPES,
             'areaCards' => PageCopy::areaCards(),
             'faqs' => Faqs::forContext(),
+            'identity' => Identity::toArray(),
+            'primaryNav' => Navigation::items('primary_navigation'),
+            'footerNav' => Navigation::items('footer_navigation'),
+            'breadcrumbs' => Breadcrumbs::items(),
+            'breadcrumbLd' => Breadcrumbs::jsonLd(),
             'keystone' => [
                 'homeUrl' => home_url('/'),
-                'listingsUrl' => home_url('/listings'),
-                'bookUrl' => home_url('/book/'),
-                'blogUrl' => home_url('/blog'),
+                'listingsUrl' => Navigation::pageUrl('listings'),
+                'bookUrl' => Identity::bookUrl(),
+                'blogUrl' => Navigation::pageUrl('blog', '/blog'),
                 'restUrl' => rest_url('keystone/v1/'),
                 'nonce' => wp_create_nonce('wp_rest'),
                 'listings' => Catalog::listings(),

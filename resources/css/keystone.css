@@ -151,6 +151,8 @@ input,select,textarea{font-family:inherit;font-size:1rem;}
   display:flex;align-items:center;gap:10px;
   text-decoration:none;color:var(--ink);min-width:0;flex:1 1 auto;
 }
+.brand-logo .custom-logo-link{display:flex;align-items:center;line-height:0;}
+.brand-logo .custom-logo{max-height:44px;width:auto;height:auto;}
 .brand-mark{width:38px;height:38px;flex:none;border-radius:10px;}
 .brand-text{display:flex;flex-direction:column;line-height:1.15;min-width:0;}
 .brand-text strong{
@@ -174,7 +176,9 @@ input,select,textarea{font-family:inherit;font-size:1rem;}
   transition:color .2s,background .2s;
 }
 .main-nav a:hover{color:var(--ink);background:var(--paper-2);}
-.main-nav a.is-active{color:var(--accent-dark);background:var(--accent-soft);}
+.main-nav a.is-active,
+.main-nav .current-menu-item > a,
+.main-nav .current-menu-ancestor > a{color:var(--accent-dark);background:var(--accent-soft);}
 .header-cta{display:none;align-items:center;gap:8px;flex:none;}
 .header-phone{
   font-family:var(--ff-nav);font-weight:600;font-size:.84rem;text-decoration:none;
@@ -994,6 +998,23 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 }
 .equal-housing{display:flex;align-items:center;gap:8px;}
 .equal-housing svg{width:22px;height:22px;stroke:rgba(255,255,255,.55);}
+.footer-bottom a{color:rgba(255,255,255,.7);text-decoration:underline;}
+.footer-bottom a:hover{color:#fff;}
+.footer-widgets{
+  display:grid;gap:24px;grid-template-columns:1fr;
+  margin-top:28px;padding-top:22px;border-top:1px solid rgba(255,255,255,.1);
+}
+@media(min-width:700px){.footer-widgets{grid-template-columns:repeat(2,1fr);}}
+@media(min-width:1000px){.footer-widgets{grid-template-columns:repeat(4,1fr);}}
+.site-footer .widget{font-size:.9rem;}
+.site-footer .widget h3,
+.site-footer .widget .widget-title{
+  color:#fff;font-family:var(--ff-mono);font-size:.68rem;text-transform:uppercase;
+  letter-spacing:.16em;margin:0 0 12px;font-weight:600;
+}
+.site-footer .widget ul{display:grid;gap:4px;}
+.site-footer .widget a{color:rgba(255,255,255,.72);text-decoration:none;}
+.site-footer .widget a:hover{color:#fff;}
 
 /* Chat */
 .chat-widget{

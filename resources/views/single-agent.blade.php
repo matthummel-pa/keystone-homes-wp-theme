@@ -6,13 +6,8 @@
   $listings = $agent ? \App\Support\Catalog::listingsForAgent($agent['id']) : [];
 @endphp
 @if ($agent)
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ home_url('/') }}">Home</a></li>
-    <li><a href="{{ home_url('/agents') }}">Agents</a></li>
-    <li><span aria-current="page">{{ $agent['name'] }}</span></li>
-  </ol>
-</nav>
+@include('partials.breadcrumbs')
+
 
 @include('partials.page-hero', [
   'heroBrand' => 'Keystone Real Estate',

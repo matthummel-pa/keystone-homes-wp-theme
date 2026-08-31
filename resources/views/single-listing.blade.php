@@ -40,13 +40,7 @@
   <script type="application/ld+json">
     {!! json_encode($listingSchema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) !!}
   </script>
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ home_url('/') }}">Home</a></li>
-    <li><a href="{{ home_url('/listings') }}">Listings</a></li>
-    <li><span aria-current="page">{{ $listing['title'] }}</span></li>
-  </ol>
-</nav>
+@include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
   'heroBrand' => $listing['typeLabel'].' · '.$listing['township'].' Township',

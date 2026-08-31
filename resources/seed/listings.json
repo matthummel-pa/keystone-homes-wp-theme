@@ -22,7 +22,7 @@
     "image": "https://images.unsplash.com/photo-1570129477492-45c003edd2be?auto=format&fit=crop&w=900&q=70",
     "featured": "1",
     "agent": "renee-musselman",
-    "description": "A handsome 1890s brick farmhouse with original hardwood floors, a wraparound porch, and a restored bank barn. Eight-plus acres of gently rolling pasture bordered by mature hedgerow, minutes from downtown Gettysburg."
+    "description": "A handsome 1890s brick farmhouse with original hardwood floors, a wraparound porch, and a restored bank barn. Eight-plus acres of gently rolling pasture bordered by mature hedgerow, minutes from the county seat."
   },
   {
     "slug": "marsh-creek-land-parcel",
@@ -53,7 +53,7 @@
     "title": "Wheatland Farmhouse & Outbuildings",
     "type": "farm",
     "status": "active",
-    "address": "1420 Fairfield Rd, North Ridge, PA 00000",
+    "address": "1420 Orchard Farm Rd, North Ridge, PA 00000",
     "city": "North Ridge",
     "state": "PA",
     "zip": "00000",
@@ -75,10 +75,10 @@
   },
   {
     "slug": "seminary-ridge-cottage",
-    "title": "Seminary Ridge Cottage",
+    "title": "Ridge Lane Cottage",
     "type": "home",
     "status": "active",
-    "address": "980 Chambersburg Pike, North Ridge, PA 00000",
+    "address": "980 Ridge Lane, North Ridge, PA 00000",
     "city": "North Ridge",
     "state": "PA",
     "zip": "00000",
@@ -96,7 +96,7 @@
     "image": "https://images.unsplash.com/photo-1628624747186-a941c476b7ef?auto=format&fit=crop&w=900&q=70",
     "featured": "1",
     "agent": "renee-musselman",
-    "description": "A move-in-ready cottage a short walk from Seminary Ridge, with an updated kitchen, screened porch, and a level, fenced back yard. Ideal starter home or in-town pied-a-terre."
+    "description": "A move-in-ready cottage a short walk from the square, with an updated kitchen, screened porch, and a level, fenced back yard. Ideal starter home or in-town pied-a-terre."
   },
   {
     "slug": "rock-creek-grazing-land",
@@ -145,7 +145,7 @@
     "image": "https://images.unsplash.com/photo-1560493676-04071c5f467b?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "dale-kuhn",
-    "description": "A sixty-acre producing apple and peach orchard with a renovated farmhouse, cold storage building, and roadside stand. A rare turn-key opportunity to continue an established Adams County orchard operation."
+    "description": "A sixty-acre producing apple and peach orchard with a renovated farmhouse, cold storage building, and roadside stand. A rare turn-key opportunity to continue an established orchard operation."
   },
   {
     "slug": "herr-homestead",
@@ -170,7 +170,7 @@
     "image": "https://images.unsplash.com/photo-1568605114967-8130f3a36994?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "renee-musselman",
-    "description": "A stone-and-frame homestead dating to 1852, lovingly maintained through six generations. Original summer kitchen, restored bank barn, twenty-two acres, and documented Civil War-era provenance."
+    "description": "A stone-and-frame homestead dating to 1852, lovingly maintained through six generations. Original summer kitchen, restored bank barn, twenty-two acres, and documented 19th-century provenance."
   },
   {
     "slug": "table-rock-view-lot",
@@ -194,6 +194,6 @@
     "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=900&q=70",
     "featured": "0",
     "agent": "trey-bushey",
-    "description": "A wooded 5.5-acre building lot with long-range views toward South Mountain. Perc-approved for a conventional septic system; electric at the road. A quiet, buildable spot minutes from Gettysburg."
+    "description": "A wooded 5.5-acre building lot with long-range ridge views. Perc-approved for a conventional septic system; electric at the road. A quiet, buildable spot minutes from the county seat."
   }
 ]

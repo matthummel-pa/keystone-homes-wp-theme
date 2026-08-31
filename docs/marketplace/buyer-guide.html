@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Keystone Real Estate — Buyer guide</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0 auto; max-width: 44rem; padding: 2rem 1.25rem 4rem; font: 17px/1.6 system-ui, sans-serif; color: #141210; background: #f5f4f1; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -.02em; }
+    h1 { font-size: 2rem; }
+    h2 { margin-top: 2.2rem; font-size: 1.35rem; }
+    code, kbd { font-size: .9em; background: #fff; padding: .1em .35em; border-radius: 4px; }
+    a { color: #155539; }
+    .note { background: #fff; border: 1px solid #d6d0c6; border-radius: 12px; padding: 1rem 1.1rem; }
+    ol { padding-left: 1.2rem; }
+    footer { margin-top: 3rem; font-size: .85rem; color: #7a7368; }
+  </style>
+</head>
+<body>
+  <p><strong>Keystone Real Estate</strong> · Buyer documentation</p>
+  <h1>Install and match the demo</h1>
+  <p>This theme is a land-and-farms realtor concept. Sample phones are 555 numbers. It is not a live MLS or licensed brokerage.</p>
+
+  <div class="note">
+    <strong>Pack contents.</strong> Use <code>keystone-homes.zip</code> in Appearance → Themes. Optional: <code>keystone-homes-child.zip</code>, <code>keystone-core.zip</code> (listings survive a theme switch).
+  </div>
+
+  <h2>1. Install</h2>
+  <ol>
+    <li>WordPress 6.6+ and PHP 8.3+.</li>
+    <li>Upload and activate <code>keystone-homes.zip</code>. The folder name must stay <code>keystone-homes</code>.</li>
+    <li>Activate <strong>Keystone Core</strong> if you shipped the plugin. Skip this on the public concept site — the theme still registers listings as a fallback.</li>
+    <li>Optional: activate the child theme so your CSS lives through parent updates.</li>
+  </ol>
+
+  <h2>2. Identity</h2>
+  <p>Go to <strong>Appearance → Customize → Identity</strong>. Set brand name, phone, email, address, hours, and the header button. Upload a logo under <strong>Site Identity</strong>.</p>
+  <p>Uncheck <em>Show concept demo banner</em> and <em>Show removable studio credit</em> before a client preview. Footer copyright is always the site name and year.</p>
+  <p>Accent color: <strong>Customize → Colors</strong>. Fonts: <strong>Customize → Typography</strong> (Inter by default, Google Fonts).</p>
+
+  <h2>3. Menus and widgets</h2>
+  <p><strong>Appearance → Menus</strong>: assign <em>Primary</em> and <em>Footer</em>. Seed creates those menus if they are missing. <strong>Appearance → Widgets → Footer</strong> is optional.</p>
+
+  <h2>4. Demo content</h2>
+  <p>Preferred: <strong>Tools → Seed Keystone demo</strong> (or <code>wp ks seed</code>). Safe to run again — slugs update, they do not duplicate.</p>
+  <p>That creates Home, Listings, Areas, Guide, Agents, Contact, Book a showing, Blog, sample listings, agents, and menus.</p>
+
+  <h2>5. Listings and showings</h2>
+  <p>Edit <strong>Listings</strong> and <strong>Agents</strong> from wp-admin (custom fields, not the block editor). Showing requests POST to <code>keystone/v1/bookings</code> and land in <strong>Bookings</strong> (Requested → Confirmed → Completed).</p>
+  <p>Booking links use <code>?listing_id=123</code>. Do not use <code>?listing=</code> as a public query.</p>
+
+  <h2>6. SEO plugins</h2>
+  <p>The theme prints native title, description, canonical, Open Graph, and Twitter tags. If Yoast, Rank Math, SEOPress, or AIOSEO is active, native tags yield. Do not add a second SEO panel in the theme.</p>
+
+  <h2>7. Child theme</h2>
+  <p>Put CSS in the child <code>style.css</code>. Do not edit parent Blade or PHP if you want clean updates from the <code>theme-latest</code> zip.</p>
+
+  <h2>Support</h2>
+  <p>Concept demo: <a href="https://keystonehomes.ridgesandvalleys.com/">keystonehomes.ridgesandvalleys.com</a>. Studio: <a href="https://ridgesandvalleys.com/">ridgesandvalleys.com</a>.</p>
+
+  <footer>Fiction only · Equal Housing Opportunity (concept) · Theme license GPLv2 or later</footer>
+</body>
+</html>

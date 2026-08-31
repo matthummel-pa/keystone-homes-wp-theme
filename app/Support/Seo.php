@@ -10,7 +10,7 @@ class Seo
 {
     public const SITE = 'Keystone Real Estate';
 
-    public const FALLBACK = 'Farms, historic houses, and acreage in Adams County. Filter listings by township and book a showing with a Keystone Real Estate agent.';
+    public const FALLBACK = 'Farms, historic houses, and acreage in a sample rural market. Filter listings by area and book a showing with a Keystone Real Estate agent.';
 
     public static function boot(): void
     {
@@ -36,7 +36,7 @@ class Seo
     {
         if (is_front_page()) {
             return [
-                'title' => 'Keystone Real Estate | Homes & Land, Adams County',
+                'title' => 'Keystone Real Estate | Homes, Farms & Land',
                 'tagline' => '',
                 'site' => '',
             ];
@@ -179,7 +179,7 @@ class Seo
     public static function ogTitle(array $copy): string
     {
         if (is_front_page()) {
-            return 'Keystone Real Estate | Homes & Land, Adams County';
+            return 'Keystone Real Estate | Homes, Farms & Land';
         }
         if (is_singular()) {
             return self::clip(self::plain((string) get_the_title()).' | '.self::SITE, 70);
@@ -328,14 +328,14 @@ class Seo
     public static function defaultDescriptions(): array
     {
         return [
-            'home' => 'Farms, historic houses, and acreage in Adams County. Filter by township, review sample listings, and book a showing with a Keystone Real Estate agent.',
-            'listings' => 'Browse sample farms, historic houses, and acreage. Filter by type, price, acres, and township, then schedule a showing with a Keystone agent.',
-            'areas' => 'Township notes for rural Adams County: orchards, farms, and wooded lots from Franklin to Liberty. Local context before you tour a listing.',
-            'guide' => 'Guidance on wells, septic, access, and land loans in Adams County, plus calculators and a path to schedule a parcel showing.',
-            'agents' => 'Meet the Keystone team. Agents focused on farms, orchards, and historic houses across Adams County sample markets.',
-            'contact' => 'Contact Keystone Real Estate at 100 Concept Way, Sample Borough, PA. Call (555) 010-0455 or book a house showing online.',
+            'home' => 'Farms, historic houses, and acreage in a sample rural market. Filter by area, review sample listings, and book a showing with a Keystone Real Estate agent.',
+            'listings' => 'Browse sample farms, historic houses, and acreage. Filter by type, price, acres, and area, then schedule a showing with a Keystone agent.',
+            'areas' => 'Sample-market notes: orchards, farms, and wooded lots from Oak Hollow to Border Farms. Context before you tour a listing — rename the areas for your county.',
+            'guide' => 'Guidance on wells, septic, access, and land loans, plus calculators and a path to schedule a parcel showing.',
+            'agents' => 'Meet the Keystone team. Agents focused on farms, orchards, and historic houses across sample rural markets.',
+            'contact' => 'Contact Keystone Real Estate at 100 Concept Way, Sample Borough. Call (555) 010-0455 or book a house showing online.',
             'book' => 'Choose a listing, date, and time. Showing requests are saved for the listing agent so you can review the booking flow.',
-            'blog' => 'Notes on house showings, first-time buyer checklists, and land versus home search for Adams County buyers and sellers.',
+            'blog' => 'Notes on house showings, first-time buyer checklists, and land versus home search for rural buyers and sellers.',
             'simple' => self::FALLBACK,
         ];
     }

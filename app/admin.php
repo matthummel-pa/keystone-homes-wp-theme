@@ -10,11 +10,17 @@ use App\Support\Catalog;
 use App\Support\PageCopy;
 
 add_action('add_meta_boxes', function () {
-    add_meta_box('ks_listing_details', __('Listing details', 'sage'), __NAMESPACE__.'\\listing_metabox', Catalog::LISTING, 'normal', 'high');
-    add_meta_box('ks_agent_details', __('Agent details', 'sage'), __NAMESPACE__.'\\agent_metabox', Catalog::AGENT, 'normal', 'high');
-    add_meta_box('ks_booking_details', __('Booking details', 'sage'), __NAMESPACE__.'\\booking_metabox', Catalog::BOOKING, 'normal', 'high');
-    add_meta_box('ks_page_fields', __('Page fields', 'sage'), __NAMESPACE__.'\\page_metabox', 'page', 'normal', 'high');
-    add_meta_box('ks_post_fields', __('Post fields', 'sage'), __NAMESPACE__.'\\post_metabox', 'post', 'normal', 'high');
+    if (post_type_exists(Catalog::LISTING)) {
+        add_meta_box('ks_listing_details', __('Listing details', 'keystone-homes'), __NAMESPACE__.'\\listing_metabox', Catalog::LISTING, 'normal', 'high');
+    }
+    if (post_type_exists(Catalog::AGENT)) {
+        add_meta_box('ks_agent_details', __('Agent details', 'keystone-homes'), __NAMESPACE__.'\\agent_metabox', Catalog::AGENT, 'normal', 'high');
+    }
+    if (post_type_exists(Catalog::BOOKING)) {
+        add_meta_box('ks_booking_details', __('Booking details', 'keystone-homes'), __NAMESPACE__.'\\booking_metabox', Catalog::BOOKING, 'normal', 'high');
+    }
+    add_meta_box('ks_page_fields', __('Page fields', 'keystone-homes'), __NAMESPACE__.'\\page_metabox', 'page', 'normal', 'high');
+    add_meta_box('ks_post_fields', __('Post fields', 'keystone-homes'), __NAMESPACE__.'\\post_metabox', 'post', 'normal', 'high');
 });
 
 add_action('save_post_'.Catalog::LISTING, __NAMESPACE__.'\\save_listing_metabox');
@@ -62,7 +68,7 @@ function listing_metabox(\WP_Post $post): void
     ?>
     <table class="form-table" role="presentation">
       <tr>
-        <th><label for="ks_type"><?php esc_html_e('Type', 'sage'); ?></label></th>
+        <th><label for="ks_type"><?php esc_html_e('Type', 'keystone-homes'); ?></label></th>
         <td>
           <select name="ks_type" id="ks_type">
             <?php foreach (Catalog::LISTING_TYPES as $value => $label) { ?>
@@ -72,7 +78,7 @@ function listing_metabox(\WP_Post $post): void
         </td>
       </tr>
       <tr>
-        <th><label for="ks_status"><?php esc_html_e('Status', 'sage'); ?></label></th>
+        <th><label for="ks_status"><?php esc_html_e('Status', 'keystone-homes'); ?></label></th>
         <td>
           <select name="ks_status" id="ks_status">
             <?php foreach (Catalog::LISTING_STATUSES as $value => $label) { ?>
@@ -82,10 +88,10 @@ function listing_metabox(\WP_Post $post): void
         </td>
       </tr>
       <tr>
-        <th><label for="ks_listing_agent"><?php esc_html_e('Listing agent', 'sage'); ?></label></th>
+        <th><label for="ks_listing_agent"><?php esc_html_e('Listing agent', 'keystone-homes'); ?></label></th>
         <td>
           <select name="ks_listing_agent" id="ks_listing_agent">
-            <option value="0"><?php esc_html_e('Unassigned', 'sage'); ?></option>
+            <option value="0"><?php esc_html_e('Unassigned', 'keystone-homes'); ?></option>
             <?php foreach ($agents as $agent) { ?>
               <option value="<?php echo (int) $agent['id']; ?>" <?php selected($agentId, $agent['id']); ?>><?php echo esc_html($agent['name']); ?></option>
             <?php } ?>
@@ -98,11 +104,11 @@ function listing_metabox(\WP_Post $post): void
           'description',
       ], Catalog::listingFields()); ?>
       <tr>
-        <th><label for="ks_featured"><?php esc_html_e('Featured', 'sage'); ?></label></th>
+        <th><label for="ks_featured"><?php esc_html_e('Featured', 'keystone-homes'); ?></label></th>
         <td>
           <label>
             <input type="checkbox" name="ks_featured" id="ks_featured" value="1" <?php checked(Catalog::getMeta($post->ID, 'featured', 0), '1'); ?>>
-            <?php esc_html_e('Show in the homepage spotlight', 'sage'); ?>
+            <?php esc_html_e('Show in the homepage spotlight', 'keystone-homes'); ?>
           </label>
         </td>
       </tr>
@@ -114,7 +120,7 @@ function agent_metabox(\WP_Post $post): void
 {
     wp_nonce_field('ks_agent_meta', 'ks_agent_nonce');
     ?>
-    <p><?php esc_html_e('Standard fields used on realtor team pages — license, MLS/NRDS, contact, specialties, and social.', 'sage'); ?></p>
+    <p><?php esc_html_e('Standard fields used on realtor team pages — license, MLS/NRDS, contact, specialties, and social.', 'keystone-homes'); ?></p>
     <table class="form-table" role="presentation">
       <?php render_meta_inputs($post->ID, array_keys(Catalog::agentFields()), Catalog::agentFields()); ?>
     </table>
@@ -131,17 +137,17 @@ function booking_metabox(\WP_Post $post): void
     $next = Catalog::nextBookingStatus($status);
     ?>
     <p>
-      <?php esc_html_e('Pipeline:', 'sage'); ?>
+      <?php esc_html_e('Pipeline:', 'keystone-homes'); ?>
       <strong><?php echo esc_html(Catalog::BOOKING_STATUSES[$status] ?? $status); ?></strong>
       <?php if ($next) { ?>
-        — <?php esc_html_e('Advance to', 'sage'); ?>
+        — <?php esc_html_e('Advance to', 'keystone-homes'); ?>
         <strong><?php echo esc_html(Catalog::BOOKING_STATUSES[$next]); ?></strong>
-        <?php esc_html_e('with the row action on the Bookings list, or set status below.', 'sage'); ?>
+        <?php esc_html_e('with the row action on the Bookings list, or set status below.', 'keystone-homes'); ?>
       <?php } ?>
     </p>
     <table class="form-table" role="presentation">
       <tr>
-        <th><label for="ks_status"><?php esc_html_e('Status', 'sage'); ?></label></th>
+        <th><label for="ks_status"><?php esc_html_e('Status', 'keystone-homes'); ?></label></th>
         <td>
           <select name="ks_status" id="ks_status">
             <?php foreach (Catalog::BOOKING_STATUSES as $value => $label) { ?>
@@ -151,10 +157,10 @@ function booking_metabox(\WP_Post $post): void
         </td>
       </tr>
       <tr>
-        <th><label for="ks_listing_id"><?php esc_html_e('Listing', 'sage'); ?></label></th>
+        <th><label for="ks_listing_id"><?php esc_html_e('Listing', 'keystone-homes'); ?></label></th>
         <td>
           <select name="ks_listing_id" id="ks_listing_id">
-            <option value="0"><?php esc_html_e('Select listing…', 'sage'); ?></option>
+            <option value="0"><?php esc_html_e('Select listing…', 'keystone-homes'); ?></option>
             <?php foreach (Catalog::listings() as $listing) { ?>
               <option value="<?php echo (int) $listing['id']; ?>" <?php selected($listingId, $listing['id']); ?>>
                 <?php echo esc_html($listing['title'].' — '.Catalog::formatMoney((int) $listing['price'])); ?>
@@ -164,10 +170,10 @@ function booking_metabox(\WP_Post $post): void
         </td>
       </tr>
       <tr>
-        <th><label for="ks_agent_id"><?php esc_html_e('Assigned agent', 'sage'); ?></label></th>
+        <th><label for="ks_agent_id"><?php esc_html_e('Assigned agent', 'keystone-homes'); ?></label></th>
         <td>
           <select name="ks_agent_id" id="ks_agent_id">
-            <option value="0"><?php esc_html_e('Unassigned', 'sage'); ?></option>
+            <option value="0"><?php esc_html_e('Unassigned', 'keystone-homes'); ?></option>
             <?php foreach (Catalog::agents() as $agent) { ?>
               <option value="<?php echo (int) $agent['id']; ?>" <?php selected($agentId, $agent['id']); ?>><?php echo esc_html($agent['name']); ?></option>
             <?php } ?>
@@ -175,7 +181,7 @@ function booking_metabox(\WP_Post $post): void
         </td>
       </tr>
       <tr>
-        <th><label for="ks_showing_type"><?php esc_html_e('Showing type', 'sage'); ?></label></th>
+        <th><label for="ks_showing_type"><?php esc_html_e('Showing type', 'keystone-homes'); ?></label></th>
         <td>
           <select name="ks_showing_type" id="ks_showing_type">
             <?php foreach (Catalog::SHOWING_TYPES as $value => $label) { ?>
@@ -209,10 +215,10 @@ function render_media_field(string $name, string $url, int $attachmentId, string
     echo '<input type="hidden" class="ks-media-id" name="'.esc_attr($name.'_id').'" value="'.($attachmentId > 0 ? (int) $attachmentId : '').'">';
     echo '<input class="ks-media-url large-text" type="url" name="'.esc_attr($name).'" id="'.esc_attr($name).'" value="'.esc_attr($url).'" placeholder="https://">';
     echo '<p>';
-    echo '<button type="button" class="button ks-media-select" data-title="'.esc_attr($buttonLabel).'" data-button="'.esc_attr__('Use image', 'sage').'">'.esc_html($buttonLabel).'</button> ';
-    echo '<button type="button" class="button-link ks-media-remove"'.($has ? '' : ' hidden').'>'.esc_html__('Remove', 'sage').'</button>';
+    echo '<button type="button" class="button ks-media-select" data-title="'.esc_attr($buttonLabel).'" data-button="'.esc_attr__('Use image', 'keystone-homes').'">'.esc_html($buttonLabel).'</button> ';
+    echo '<button type="button" class="button-link ks-media-remove"'.($has ? '' : ' hidden').'>'.esc_html__('Remove', 'keystone-homes').'</button>';
     echo '</p>';
-    echo '<p class="description">'.esc_html__('Upload or pick from the media library. A URL is kept for existing Unsplash / hotlinked photos.', 'sage').'</p>';
+    echo '<p class="description">'.esc_html__('Upload or pick from the media library. A URL is kept for existing Unsplash / hotlinked photos.', 'keystone-homes').'</p>';
     echo '</div></div>';
 }
 
@@ -249,7 +255,7 @@ function render_meta_inputs(int $postId, array $fields, array $labels): void
         $isLong = in_array($field, ['notes', 'specialties', 'service_areas', 'photo_grad', 'virtual_tour', 'description', 'bio', 'body'], true);
         echo '<tr><th><label for="'.esc_attr($id).'">'.esc_html($label).'</label></th><td>';
         if ($field === 'image') {
-            render_media_field($id, (string) $value, (int) get_post_thumbnail_id($postId), __('Select photo', 'sage'));
+            render_media_field($id, (string) $value, (int) get_post_thumbnail_id($postId), __('Select photo', 'keystone-homes'));
             echo '</td></tr>';
 
             continue;
@@ -358,10 +364,10 @@ function save_booking_metabox(int $postId): void
 }
 
 add_filter('manage_'.Catalog::LISTING.'_posts_columns', function (array $columns) {
-    $columns['ks_price'] = __('Price', 'sage');
-    $columns['ks_type'] = __('Type', 'sage');
-    $columns['ks_status'] = __('Status', 'sage');
-    $columns['ks_township'] = __('Township', 'sage');
+    $columns['ks_price'] = __('Price', 'keystone-homes');
+    $columns['ks_type'] = __('Type', 'keystone-homes');
+    $columns['ks_status'] = __('Status', 'keystone-homes');
+    $columns['ks_township'] = __('Township', 'keystone-homes');
 
     return $columns;
 });
@@ -377,9 +383,9 @@ add_action('manage_'.Catalog::LISTING.'_posts_custom_column', function (string $
 }, 10, 2);
 
 add_filter('manage_'.Catalog::AGENT.'_posts_columns', function (array $columns) {
-    $columns['ks_title'] = __('Title', 'sage');
-    $columns['ks_phone'] = __('Phone', 'sage');
-    $columns['ks_license'] = __('License', 'sage');
+    $columns['ks_title'] = __('Title', 'keystone-homes');
+    $columns['ks_phone'] = __('Phone', 'keystone-homes');
+    $columns['ks_license'] = __('License', 'keystone-homes');
 
     return $columns;
 });
@@ -395,10 +401,10 @@ add_action('manage_'.Catalog::AGENT.'_posts_custom_column', function (string $co
 
 add_filter('manage_'.Catalog::BOOKING.'_posts_columns', function (array $columns) {
     unset($columns['date']);
-    $columns['ks_when'] = __('When', 'sage');
-    $columns['ks_listing'] = __('Listing', 'sage');
-    $columns['ks_client'] = __('Client', 'sage');
-    $columns['ks_status'] = __('Status', 'sage');
+    $columns['ks_when'] = __('When', 'keystone-homes');
+    $columns['ks_listing'] = __('Listing', 'keystone-homes');
+    $columns['ks_client'] = __('Client', 'keystone-homes');
+    $columns['ks_status'] = __('Status', 'keystone-homes');
 
     return $columns;
 });
@@ -429,7 +435,7 @@ add_filter('post_row_actions', function (array $actions, \WP_Post $post) {
     );
     $actions['ks_advance'] = '<a href="'.esc_url($url).'">'.esc_html(sprintf(
         /* translators: next booking status */
-        __('Advance to %s', 'sage'),
+        __('Advance to %s', 'keystone-homes'),
         Catalog::BOOKING_STATUSES[$next]
     )).'</a>';
 
@@ -439,12 +445,12 @@ add_filter('post_row_actions', function (array $actions, \WP_Post $post) {
 add_action('admin_post_keystone_advance_booking', function () {
     $postId = (int) ($_GET['post'] ?? 0);
     if (! $postId || ! current_user_can('edit_post', $postId)) {
-        wp_die(esc_html__('You cannot advance this booking.', 'sage'));
+        wp_die(esc_html__('You cannot advance this booking.', 'keystone-homes'));
     }
     check_admin_referer('ks_advance_'.$postId);
     $post = get_post($postId);
     if (! $post || $post->post_type !== Catalog::BOOKING) {
-        wp_die(esc_html__('Booking not found.', 'sage'));
+        wp_die(esc_html__('Booking not found.', 'keystone-homes'));
     }
     $status = (string) Catalog::getMeta($postId, 'status', 'requested');
     $next = Catalog::nextBookingStatus($status);
@@ -461,7 +467,7 @@ add_action('admin_notices', function () {
         return;
     }
     if (isset($_GET['ks_advanced'])) {
-        echo '<div class="notice notice-success is-dismissible"><p>'.esc_html__('Booking advanced to the next status.', 'sage').'</p></div>';
+        echo '<div class="notice notice-success is-dismissible"><p>'.esc_html__('Booking advanced to the next status.', 'keystone-homes').'</p></div>';
     }
 });
 
@@ -471,7 +477,7 @@ function page_metabox(\WP_Post $post): void
     $key = PageCopy::schemaKeyForPost($post->ID);
     echo '<p>'.esc_html(sprintf(
         /* translators: page field group name */
-        __('This page uses the %s template. Edit copy in the fields below — the block editor is disabled.', 'sage'),
+        __('This page uses the %s template. Edit copy in the fields below — the block editor is disabled.', 'keystone-homes'),
         $key
     )).'</p>';
     echo '<table class="form-table" role="presentation">';
@@ -496,7 +502,7 @@ function render_page_inputs(int $postId, array $schema): void
                     ? (int) $stored
                     : (int) attachment_url_to_postid((string) $stored);
             }
-            render_media_field($id, (string) $stored, $attachmentId, __('Select image', 'sage'));
+            render_media_field($id, (string) $stored, $attachmentId, __('Select image', 'keystone-homes'));
         } elseif (($def['type'] ?? 'text') === 'textarea') {
             echo '<textarea class="large-text" rows="4" name="'.esc_attr($id).'" id="'.esc_attr($id).'">'.esc_textarea((string) $value).'</textarea>';
         } else {
@@ -544,12 +550,12 @@ function post_metabox(\WP_Post $post): void
     $body = (string) Catalog::getMeta($post->ID, 'body', $post->post_content);
     $thumbId = (int) get_post_thumbnail_id($post->ID);
     $thumbUrl = $thumbId ? (string) wp_get_attachment_image_url($thumbId, 'full') : '';
-    echo '<p>'.esc_html__('Blog posts use fields only. Paste HTML in the body if you need links or lists.', 'sage').'</p>';
+    echo '<p>'.esc_html__('Blog posts use fields only. Paste HTML in the body if you need links or lists.', 'keystone-homes').'</p>';
     echo '<table class="form-table" role="presentation">';
-    echo '<tr><th><label for="ks_image">'.esc_html__('Featured image', 'sage').'</label></th><td>';
-    render_media_field('ks_image', $thumbUrl, $thumbId, __('Select image', 'sage'));
+    echo '<tr><th><label for="ks_image">'.esc_html__('Featured image', 'keystone-homes').'</label></th><td>';
+    render_media_field('ks_image', $thumbUrl, $thumbId, __('Select image', 'keystone-homes'));
     echo '</td></tr>';
-    echo '<tr><th><label for="ks_body">'.esc_html__('Article body', 'sage').'</label></th>';
+    echo '<tr><th><label for="ks_body">'.esc_html__('Article body', 'keystone-homes').'</label></th>';
     echo '<td><textarea class="large-text" rows="16" name="ks_body" id="ks_body">'.esc_textarea($body).'</textarea></td></tr>';
     echo '</table>';
 }

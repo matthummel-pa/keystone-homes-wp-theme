@@ -42,9 +42,9 @@
     </figure>
     <div class="hero-veil" aria-hidden="true"></div>
     <div class="hero-inner">
-      <p class="hero-eyebrow">{{ $t('hero_eyebrow', 'Adams County, Pennsylvania') }}</p>
+      <p class="hero-eyebrow">{{ $t('hero_eyebrow', 'Farms, land, and historic homes') }}</p>
       <h1 id="hero-heading">{!! $t('hero_title', 'Homes worth <em>walking through.</em>') !!}</h1>
-      <p class="hero-sub">{!! $t('hero_text', 'Farms, historic houses, and acreage in North Ridge, Mill Creek, and Oak Hollow. Filter by township, then schedule a showing.') !!}</p>
+      <p class="hero-sub">{!! $t('hero_text', 'Sample farms, historic houses, and acreage across three demo areas. Filter by type and township, then schedule a showing.') !!}</p>
       <ul class="hero-proof">
         <li><strong>{{ $listingCount ?: 8 }}</strong> sample listings</li>
         <li><strong>{{ $townshipCount ?: 3 }}</strong> townships</li>
@@ -116,7 +116,7 @@
           <div class="intent-copy">
             <span class="intent-kicker">{{ $t('intent_buy_kicker', 'Buy') }}</span>
             <h3>{!! $t('intent_buy_title', 'Scan homes, farms, and land') !!}</h3>
-            <p>{!! $t('intent_buy_lead', $t('intent_buy', 'Township first — North Ridge, Mill Creek, Oak Hollow. Zoning and Clean and Green change before the listing photo does.')) !!}</p>
+            <p>{!! $t('intent_buy_lead', $t('intent_buy', 'Area first — North Ridge, Mill Creek, Oak Hollow. Zoning and farmland tax rules change before the listing photo does.')) !!}</p>
             <span class="intent-go">{{ $t('intent_buy_cta', 'Browse listings') }} →</span>
           </div>
         </a>
@@ -146,7 +146,7 @@
       <ul class="intent-notes reveal" aria-label="{{ $t('intent_notes_label', 'Good to know') }}">
         <li>
           <strong>{!! $t('intent_note_1_title', 'Township first') !!}</strong>
-          <span>{!! $t('intent_note_1_text', 'Zoning and Act 319 change from North Ridge to Oak Hollow.') !!}</span>
+          <span>{!! $t('intent_note_1_text', 'Zoning and farmland tax enrollment change from one sample area to the next.') !!}</span>
         </li>
         <li>
           <strong>{!! $t('intent_note_2_title', 'Well and perc') !!}</strong>
@@ -210,14 +210,14 @@
               src="{{ get_theme_file_uri('public/images/tour-step-township.jpg') }}"
               width="1200"
               height="800"
-              alt="Country road past a white farmhouse and red barn in a rural Pennsylvania township"
+              alt="Country road past a white farmhouse and red barn in a rural township"
               loading="lazy"
               decoding="async"
             >
           </figure>
           <div class="step-copy">
             <h3>Filter the township</h3>
-            <p>Start with the township so zoning and Clean and Green are not compared across Oak Hollow land and a North Ridge house.</p>
+            <p>Start with the area so zoning and farmland-tax rules are not compared across Oak Hollow land and a North Ridge house.</p>
           </div>
         </li>
         <li class="step">
@@ -293,7 +293,7 @@
   <section class="section" aria-labelledby="market-heading">
     <div class="wrap">
       <header class="section-head reveal">
-        <p class="eyebrow">Adams County market</p>
+        <p class="eyebrow">Sample market</p>
         <h2 id="market-heading">Pulse at a glance</h2>
         <p>A sample snapshot of how this inventory would read in a listing conversation — not a live CMA or MLS feed.</p>
       </header>
@@ -383,10 +383,10 @@
     <div class="wrap">
       <div class="seo-block reveal">
         <div>
-          <p class="eyebrow">Adams County notes</p>
-          <h2 id="seo-heading">Buying a home, farm, or land in Adams County</h2>
+          <p class="eyebrow">Rural market notes</p>
+          <h2 id="seo-heading">Buying a home, farm, or land</h2>
           <div class="prose-tight">
-            <p>Rural Adams County is orchard and farm country: fruit on the ridges, tillable ground in the valleys, and older houses that still rely on a private well. Compare listings the way a local agent would — township first, then the utilities and access that change value.</p>
+            <p>This sample market is orchard and farm country: fruit on the ridges, tillable ground in the valleys, and older houses that still rely on a private well. Compare listings the way a land agent would — area first, then the utilities and access that change value. Rename the county in the Customizer.</p>
             <h3>When you are buying a house</h3>
             <p>Start with price, bedrooms, and the commute. Acreage matters when you want a shop or barn; it does not replace water, septic, and a lane you can use in January. Confirm well or public water before you schedule a second visit.</p>
             <h3>When you are buying land</h3>
@@ -416,7 +416,7 @@
               <li>Usable acres, not only deed acres</li>
               <li>Perc and septic status</li>
               <li>Road frontage and driveway</li>
-              <li>Clean and Green rollback risk</li>
+              <li>Farmland-tax enrollment and rollback risk</li>
             </ul>
           </article>
           <article class="scan-card">

@@ -1,15 +1,10 @@
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ home_url('/') }}">Home</a></li>
-    <li><span aria-current="page">Blog</span></li>
-  </ol>
-</nav>
+@include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
   'heroBrand' => $copy['hero_brand'] ?? 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?? 'Guide',
   'heroTitle' => $copy['hero_title'] ?? 'Realtor notes you can publish',
-  'heroText' => $copy['hero_text'] ?? 'Showings, buyer checklists, and land vs home search — short posts you can adapt for local Adams County SEO.',
+  'heroText' => $copy['hero_text'] ?? 'Showings, buyer checklists, and land vs home search — short posts you can adapt for local SEO.',
   'heroActions' => [
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
     ['href' => home_url('/guide'), 'label' => 'Buyer tools', 'class' => 'btn btn-outline light'],
@@ -20,7 +15,7 @@
   <div class="wrap">
     <header class="section-head left reveal">
       <p class="eyebrow">What these notes cover</p>
-      <h2 id="blog-help-heading">Short reads you can adapt for Adams County</h2>
+      <h2 id="blog-help-heading">Short reads you can adapt for your market</h2>
       <p>Showings, first-time checklists, and land vs home search — the three posts buyers actually ask for. Use them as local SEO starters, then link back to listings and the booking form.</p>
     </header>
     <div class="scan-grid cols-3 reveal">

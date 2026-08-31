@@ -12,7 +12,7 @@
     "office_phone": "(555) 010-0455",
     "years_experience": "28",
     "specialties": "Farms, acreage, orchards, agricultural easements",
-    "service_areas": "Franklin, Menallen, Tyrone, Butler Townships",
+    "service_areas": "Oak Hollow, Grain Country, Orchard Belt",
     "languages": "English",
     "designations": "ALC, GRI",
     "mls_id": "DK461",
@@ -20,7 +20,7 @@
     "initials": "DK",
     "avatar_color": "var(--accent)",
     "featured": "1",
-    "bio": "28 years walking Sample County fence lines. If it has acreage, Dale has probably sold a piece of it — from Tyrone Township grain farms to Menallen orchards. He handles perc, easements and clean-and-green day in, day out."
+    "bio": "28 years walking Sample County fence lines. If it has acreage, Dale has probably sold a piece of it — from Grain Country farms to Orchard Belt fruit ground. He handles perc, easements and use-value tax enrollment day in, day out."
   },
   {
     "slug": "renee-musselman",
@@ -35,7 +35,7 @@
     "office_phone": "(555) 010-0455",
     "years_experience": "14",
     "specialties": "Historic homes, in-town residences, first-time buyers",
-    "service_areas": "Cumberland Township, Gettysburg borough, Franklin Township",
+    "service_areas": "North Ridge, Sample Borough, Oak Hollow",
     "languages": "English",
     "designations": "ABR, CRS",
     "mls_id": "RM468",
@@ -43,7 +43,7 @@
     "initials": "RM",
     "avatar_color": "var(--ink)",
     "featured": "1",
-    "bio": "Specializes in century farmhouses and in-town historic homes near the battlefield district. Renee knows stone foundations, log cores and the honest cost of restoring a Franklin Township homestead."
+    "bio": "Specializes in century farmhouses and in-town historic homes near the square. Renee knows stone foundations, log cores and the honest cost of restoring an Oak Hollow homestead."
   },
   {
     "slug": "trey-bushey",
@@ -58,7 +58,7 @@
     "office_phone": "(555) 010-0455",
     "years_experience": "7",
     "specialties": "Raw land, first-time land buyers, wells and septic",
-    "service_areas": "Straban, Liberty, Hamiltonban Townships",
+    "service_areas": "Mill Creek, Border Farms, Hill Country",
     "languages": "English",
     "designations": "ABR",
     "mls_id": "TB473",
@@ -66,6 +66,6 @@
     "initials": "TB",
     "avatar_color": "var(--success)",
     "featured": "1",
-    "bio": "Grew up on a Straban Township dairy farm — now helps first-time land buyers ask the right questions about wells, septic and access before they fall in love with a view."
+    "bio": "Grew up on a Mill Creek dairy farm — now helps first-time land buyers ask the right questions about wells, septic and access before they fall in love with a view."
   }
 ]

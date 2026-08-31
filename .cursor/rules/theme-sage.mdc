@@ -10,7 +10,7 @@ Stack: Blade + Acorn + Tailwind v4 + Vite 8. Design CSS is `resources/css/keysto
 
 ## Custom post types
 
-Registered in `app/post-types.php`. Constants: `Catalog::LISTING` (`listing`), `Catalog::BOOKING` (`booking`), `Catalog::AGENT` (`agent`). ThemeForest / WP.org would move this to a companion plugin — see `marketplace.mdc`. Do not extract CPTs unless Matt asks to package for a store.
+Constants: `Catalog::LISTING` (`listing`), `Catalog::BOOKING` (`booking`), `Catalog::AGENT` (`agent`). **Keystone Core** (`plugins/keystone-core`) is the store-correct registrar. Theme `app/post-types.php` is the concept fallback when the plugin is not loaded. Store zips set `KS_DISABLE_THEME_CPTS`. See `marketplace.mdc`.
 
 - Rewrites: `/listing/{slug}/`, `/agent/{slug}/`. Bookings are not public. CPT `query_var` is false so `?listing=` is not a WP query var.
 - Booking preselect: `?listing_id={post_id}` (composer also reads legacy `?listing=`). Never use `?listing=` as a public query — it 404s `/book/` when the CPT query var is registered.

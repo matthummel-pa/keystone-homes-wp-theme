@@ -1,0 +1,72 @@
+# Copyright (C) 2026 Ridges & Valleys Studio
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Keystone Real Estate 1.0.0\n"
+"Report-Msgid-Bugs-To: https://github.com/matthummel-pa/keystone-homes-wp-theme/issues\n"
+"POT-Creation-Date: 2026-08-31 00:00+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Domain: keystone-homes\n"
+
+msgid "Keystone Real Estate"
+msgstr ""
+
+msgid "Concept demo"
+msgstr ""
+
+msgid "Book a showing"
+msgstr ""
+
+msgid "Primary Navigation"
+msgstr ""
+
+msgid "Footer Navigation"
+msgstr ""
+
+msgid "Identity"
+msgstr ""
+
+msgid "Colors"
+msgstr ""
+
+msgid "Social links"
+msgstr ""
+
+msgid "Typography"
+msgstr ""
+
+msgid "Keystone Setup"
+msgstr ""
+
+msgid "Skip to main content"
+msgstr ""
+
+msgid "Home"
+msgstr ""
+
+msgid "Listings"
+msgstr ""
+
+msgid "Areas"
+msgstr ""
+
+msgid "Guide"
+msgstr ""
+
+msgid "Blog"
+msgstr ""
+
+msgid "Agents"
+msgstr ""
+
+msgid "Contact"
+msgstr ""
+
+msgid "Breadcrumb"
+msgstr ""
