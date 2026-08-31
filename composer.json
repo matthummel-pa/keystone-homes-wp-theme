@@ -1,10 +1,14 @@
 {
-  "name": "ridgesandvalleys/keystone-homes",
+  "name": "matthummel/keystone-homes",
   "type": "wordpress-theme",
   "license": "MIT",
   "description": "Acreline — Sage 11 WordPress theme for rural listings, agents, and showing requests",
   "homepage": "https://roots.io/sage/",
   "authors": [
+    {
+      "name": "Matt Hummel",
+      "homepage": "https://matthummel.com/"
+    },
     {
       "name": "Ben Word",
       "email": "ben@benword.com",

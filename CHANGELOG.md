@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.2
+
+- Theme Author and Author URI are Matt Hummel / https://matthummel.com/ for ThemeForest and WordPress.org
+- Footer credit default, child theme, and Keystone Core plugin header match
+
 ## 1.0.1
 
 - Theme Name is **Acreline** (what buyers see in Appearance → Themes)
@@ -16,4 +21,4 @@
 - Keystone Core companion plugin for listings / agents / bookings
 - Child theme starter and Envato-style pack script
 - `readme.txt`, `CREDITS.md`, text domain `keystone-homes`
-- Footer copyright is the site name; studio line is optional and `rel="nofollow"`
+- Footer copyright is the site name; author line is optional and `rel="nofollow"`

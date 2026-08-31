@@ -7,7 +7,7 @@ alwaysApply: true
 
 Sage 11 WordPress **theme only** (`wp-content/themes/keystone-homes`). **Theme Name:** Acreline. Repo: `matthummel-pa/keystone-homes-wp-theme`. WordPress core is not in this repo. The sample brokerage in the preview stays Keystone Real Estate until Identity is changed.
 
-Matt is the owner (marketer). Prefer working in code. Keep copy editorial — rural farms, historic homes, and acreage in a **sample county** a buyer can rename — not generic luxury-broker voice and not a Gettysburg / Adams County-only brand story. Township filter **values** stay `Cumberland` / `Straban` / `Franklin`; labels are North Ridge / Mill Creek / Oak Hollow.
+Matt Hummel is the owner (marketer) and theme Author (`style.css` Author / Author URI: https://matthummel.com/). Prefer working in code. Keep copy editorial — rural farms, historic homes, and acreage in a **sample county** a buyer can rename — not generic luxury-broker voice and not a Gettysburg / Adams County-only brand story. Township filter **values** stay `Cumberland` / `Straban` / `Franklin`; labels are North Ridge / Mill Creek / Oak Hollow.
 
 ## Fiction only
 

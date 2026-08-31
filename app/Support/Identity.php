@@ -71,7 +71,7 @@ class Identity
             return $blurb;
         }
 
-        return __('Concept realtor site by Ridges & Valleys Studio. Fiction only — not a licensed brokerage or live MLS feed.', 'keystone-homes');
+        return __('Concept realtor site by Matt Hummel. Fiction only — not a licensed brokerage or live MLS feed.', 'keystone-homes');
     }
 
     public static function ctaLabel(): string
@@ -107,12 +107,12 @@ class Identity
     {
         $text = trim((string) get_theme_mod('ks_credit_text', ''));
 
-        return $text !== '' ? $text : __('Concept by Ridges & Valleys Studio', 'keystone-homes');
+        return $text !== '' ? $text : __('Concept by Matt Hummel', 'keystone-homes');
     }
 
     public static function creditUrl(): string
     {
-        return trim((string) get_theme_mod('ks_credit_url', 'https://ridgesandvalleys.com'));
+        return trim((string) get_theme_mod('ks_credit_url', 'https://matthummel.com'));
     }
 
     public static function accent(): string

@@ -69,7 +69,7 @@ function render_setup_page(): void
         : esc_html__('Install Keystone Core (in the marketplace pack) so custom post types are not theme-only. This concept site still registers them in the theme as a fallback.', 'keystone-homes');
     echo '</li>';
     echo '</ol>';
-    echo '<p class="description" style="max-width:70ch">'.esc_html__('Turn off the concept demo banner and studio credit under Customize → Identity before you show this to a client.', 'keystone-homes').'</p>';
+    echo '<p class="description" style="max-width:70ch">'.esc_html__('Turn off the concept demo banner and author credit under Customize → Identity before you show this to a client.', 'keystone-homes').'</p>';
     echo '</div>';
 }
 

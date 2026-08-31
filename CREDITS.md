@@ -4,7 +4,7 @@ Everything in a store zip must be GPL-compatible. This list is the Theme Check /
 
 ## Theme
 
-- Acreline theme code — Ridges & Valleys Studio — [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+- Acreline theme code — Matt Hummel — [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
 - Sage 11 / Acorn — Roots Software LLC — [MIT](https://opensource.org/licenses/MIT) (see `LICENSE.md`)
 
 MIT is GPL-compatible. The distributed theme is offered under GPLv2 or later.
@@ -29,4 +29,4 @@ No font files are vendored in the zip.
 
 ## Companion plugin
 
-- Keystone Core — Ridges & Valleys Studio — GPLv2 or later (`plugins/keystone-core`)
+- Keystone Core — Matt Hummel — GPLv2 or later (`plugins/keystone-core`)
