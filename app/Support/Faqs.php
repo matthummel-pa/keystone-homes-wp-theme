@@ -40,7 +40,7 @@ class Faqs
             ],
             [
                 'q' => 'Is Keystone Real Estate a live brokerage?',
-                'a' => 'No. This is a concept site by Ridges & Valleys Studio. Listings, phone numbers, and market figures are fictional. Use it to evaluate a modern realtor website, then replace the sample data with your own inventory.',
+                'a' => 'No. This is a concept site by Matt Hummel. Listings, phone numbers, and market figures are fictional. Use it to evaluate a modern realtor website, then replace the sample data with your own inventory.',
             ],
         ];
     }

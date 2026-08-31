@@ -77,7 +77,7 @@ Do not `{!! $untrusted !!}`. REST / JSON-LD: `esc_url` on URLs; emails via `@jso
 
 ## D. Footer, admin, and identity
 
-**8.8 Credit links.** Author / studio credit must be removable via **Appearance → Customize → Identity**. Use `rel="nofollow noopener"` on the URL. Front-end copyright is the **buyer’s site name + year**, not a locked studio line.
+**8.8 Credit links.** Author credit (Matt Hummel / matthummel.com) must be removable via **Appearance → Customize → Identity**. Use `rel="nofollow noopener"` on the URL. Front-end copyright is the **buyer’s site name + year**, not a locked author line.
 
 **8.9 No admin upsells.** No dashboard nags, banner ads, Freemius, Envato, or third-party product chrome.
 

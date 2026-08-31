@@ -24,8 +24,8 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'ks_email' => [__('Email', 'keystone-homes'), 'hello@keystone-concept.test'],
         'ks_cta_label' => [__('Header button label', 'keystone-homes'), 'Book a showing'],
         'ks_cta_url' => [__('Header button URL', 'keystone-homes'), ''],
-        'ks_credit_text' => [__('Footer credit text', 'keystone-homes'), 'Concept by Ridges & Valleys Studio'],
-        'ks_credit_url' => [__('Footer credit URL', 'keystone-homes'), 'https://ridgesandvalleys.com'],
+        'ks_credit_text' => [__('Footer credit text', 'keystone-homes'), 'Concept by Matt Hummel'],
+        'ks_credit_url' => [__('Footer credit URL', 'keystone-homes'), 'https://matthummel.com'],
     ];
 
     foreach ($text as $id => [$label, $default]) {
@@ -78,7 +78,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
     ]);
     $wp_customize->add_control('ks_show_demo_chrome', [
-        'label' => __('Show concept demo banner and studio badge', 'keystone-homes'),
+        'label' => __('Show concept demo banner and author badge', 'keystone-homes'),
         'section' => 'ks_identity',
         'type' => 'checkbox',
     ]);
@@ -88,7 +88,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
     ]);
     $wp_customize->add_control('ks_show_credit', [
-        'label' => __('Show removable studio credit in the footer', 'keystone-homes'),
+        'label' => __('Show removable author credit in the footer', 'keystone-homes'),
         'section' => 'ks_identity',
         'type' => 'checkbox',
     ]);

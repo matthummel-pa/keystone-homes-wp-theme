@@ -1,9 +1,9 @@
 === Acreline ===
-Contributors: ridgesandvalleys
+Contributors: matthummel
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 8.3
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
@@ -18,7 +18,7 @@ The sample office in the preview is named Keystone Real Estate — replace it un
 
 = Features =
 
-* Customizer identity: brand, phone, email, address, hours, header button, removable studio credit
+* Customizer identity: brand, phone, email, address, hours, header button, removable author credit
 * Accent color and Inter-based typography
 * WordPress menus (Primary + Footer) with a concept-page fallback
 * Footer widget area
@@ -50,7 +50,7 @@ Appearance → Customize → Identity.
 
 = How do I hide the concept demo banner? =
 
-Customize → Identity → uncheck “Show concept demo banner and studio badge.” Uncheck the credit box to drop the footer studio line (WordPress.org requires the buyer’s copyright only).
+Customize → Identity → uncheck “Show concept demo banner and author badge.” Uncheck the credit box to drop the footer author line (WordPress.org requires the buyer’s copyright only).
 
 = Where do listings live? =
 
@@ -62,13 +62,16 @@ Yes. The marketplace pack includes `keystone-homes-child`.
 
 == Changelog ==
 
+= 1.0.2 =
+* Author credit is Matt Hummel (matthummel.com) for theme shops and WordPress.org.
+
 = 1.0.1 =
 * Theme Name is now Acreline. Sample office in the demo stays Keystone Real Estate until you change Identity.
 
 = 1.0.0 =
 * Marketplace layer: Customizer identity/colors/social, WP menus, breadcrumbs, setup checklist, companion plugin, child theme, readme.txt
 * Text domain is `keystone-homes` (install folder)
-* Footer copyright is the site name; studio credit is optional and nofollow
+* Footer copyright is the site name; author credit is optional and nofollow
 
 == Resources ==
 
@@ -78,5 +81,5 @@ Yes. The marketplace pack includes `keystone-homes-child`.
 * Manrope, Google Fonts, SIL OFL
 * Montserrat, Google Fonts, SIL OFL
 * Sage / Acorn, Roots, MIT, https://roots.io/sage/
-* Theme placeholders and SVG marks, Ridges & Valleys Studio, GPLv2 or later
+* Theme placeholders and SVG marks, Matt Hummel, GPLv2 or later
 * Unsplash photographs used as hotlinked concept images only — not bundled in the theme zip

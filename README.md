@@ -1,6 +1,6 @@
 # Acreline
 
-Sage 11 WordPress theme — **Acreline** — rural listings, agents, and showing requests. The sample office in the preview is Keystone Real Estate (change it in the Customizer). By [Ridges & Valleys Studio](https://ridgesandvalleys.com).
+Sage 11 WordPress theme — **Acreline** — rural listings, agents, and showing requests. The sample office in the preview is Keystone Real Estate (change it in the Customizer). Created by [Matt Hummel](https://matthummel.com/).
 
 Ported from the static concept:
 
