@@ -59,7 +59,7 @@ Theme shop and own-site buyers: **do not clone this repo onto the host.** The st
 4. Optional: upload `acreline-child.zip`, then `acreline-core.zip`.
 5. **Appearance → Acreline Setup** for the checklist. **Tools → Seed Acreline demo** if you want the preview pages and sample inventory.
 
-Walkthrough, branding, sources, changelog, and ThemeForest form fields: open [`docs/marketplace/index.html`](docs/marketplace/index.html). WordPress.org-style parser file: [`readme.txt`](readme.txt).
+Walkthrough, branding, sources, changelog, and ThemeForest form fields: open [`docs/marketplace/index.html`](docs/marketplace/index.html). Paste-ready store listing: [`docs/marketplace/themeforest-listing.md`](docs/marketplace/themeforest-listing.md). WordPress.org-style parser file: [`readme.txt`](readme.txt). WP.org upload notes: [`docs/marketplace/wordpress-org.md`](docs/marketplace/wordpress-org.md).
 
 ## Who it is for
 
@@ -96,8 +96,13 @@ Realtors and marketers who sell **acreage, working farms, and historic homes** a
 | [`docs/marketplace/support.html`](docs/marketplace/support.html) | Buyer help | Pack `Documentation/` |
 | [`docs/marketplace/sources.html`](docs/marketplace/sources.html) | Fonts, Sage, SVG marks, what is not bundled | Pack `Documentation/` |
 | [`docs/marketplace/changelog.html`](docs/marketplace/changelog.html) | User-facing history | Pack `Documentation/` |
+| [`docs/marketplace/customizer.html`](docs/marketplace/customizer.html) | Customizer field map | Pack `Documentation/` |
+| [`docs/marketplace/listings.html`](docs/marketplace/listings.html) | Listings, agents, bookings | Pack `Documentation/` |
 | [`docs/marketplace/screenshots/`](docs/marketplace/screenshots/) | Extra item images (homepage → book) | Pack `Documentation/screenshots/` |
+| [`docs/marketplace/themeforest-listing.md`](docs/marketplace/themeforest-listing.md) | **You only** — paste-ready store copy | Git only |
+| [`docs/marketplace/wordpress-org.md`](docs/marketplace/wordpress-org.md) | **You only** — WP.org upload + Theme Check | Git only |
 | [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md) | **You only** — channels, price band, WP.org limits | Repo + `dist-marketplace/`, **not** the buyer zip |
+| [`license.txt`](license.txt) | GPLv2 (Theme Check) | Theme zip + pack `Licensing/` |
 | [`AGENTS.md`](AGENTS.md) | Cursor / local VM | Git only |
 | [`.cursor/rules/`](.cursor/rules/) | Agent rules (`.mdc`) | Git only |
 
@@ -191,4 +196,4 @@ Design tokens and layout CSS live in `resources/css/keystone.css`. Card chrome i
 
 ## License
 
-GPLv2 or later. See `LICENSE.md` and `CREDITS.md`.
+GPLv2 or later. See `license.txt`, `LICENSE.md`, and `CREDITS.md`. Sage / Acorn remain MIT.

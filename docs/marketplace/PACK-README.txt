@@ -8,16 +8,23 @@ Extract this zip first. Do not upload this whole file into WordPress.
   acreline-core.zip     Optional — listings survive a theme switch
   Documentation/        Theme shop docs — open index.html
   Demos/                Seed notes (+ WXR if exported)
-  Licensing/            CREDITS.md, LICENSE.md
+  Licensing/            CREDITS.md, LICENSE.md, license.txt (GPLv2)
 
 Documentation (start here)
 --------------------------
   Documentation/index.html         Contents + screenshots (ThemeForest hub)
   Documentation/buyer-guide.html   Install, Customizer, fields, menus, FAQ
   Documentation/branding.html      Logos, Forest palette, fair housing
+  Documentation/customizer.html    Identity, colors, header, typography
+  Documentation/templates.html     Page template map
+  Documentation/listings.html      Listings, agents, bookings, listing_id
+  Documentation/child-theme.html   Child theme
+  Documentation/translation.html   Text domain acreline
+  Documentation/faq.html           FAQ
   Documentation/requirements.html  Host needs + ThemeForest / TemplateMonster fields
   Documentation/support.html       Help
   Documentation/sources.html       Fonts, Sage, SVG marks, what is not bundled
+  Documentation/credits.html       Credits (same as sources, Theme Check list)
   Documentation/changelog.html     History
   Documentation/screenshots/       Extra item images (01–07)
   Documentation/assets/            House mark + wordmark SVG + docs CSS/JS

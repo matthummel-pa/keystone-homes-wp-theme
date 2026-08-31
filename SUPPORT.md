@@ -17,9 +17,12 @@ Open **`Documentation/index.html`** in the seller pack first. That hub is what T
 | Pack support page | [support.html](docs/marketplace/support.html) |
 | Sources and credits | [sources.html](docs/marketplace/sources.html) |
 | Changelog | [changelog.html](docs/marketplace/changelog.html) |
+| Customizer | [customizer.html](docs/marketplace/customizer.html) |
+| Listings & bookings | [listings.html](docs/marketplace/listings.html) |
 | How the public site looks | [Concept demo](https://keystonehomes.ridgesandvalleys.com/) |
 | Theme bugs | [GitHub issues](https://github.com/matthummel-pa/wp-acreline/issues) |
 | Author | [matthummel.com](https://matthummel.com/) |
+| Concept office form (demo only) | [Contact on the demo](https://keystonehomes.ridgesandvalleys.com/contact/) |
 
 There is no ticket desk or live chat in the theme. Envato item support follows that marketplace’s channel. Demo phones are `555` numbers (office `(555) 010-0455`). Demo emails use `@acreline-concept.test` and do not reach a real inbox.
 
@@ -48,7 +51,7 @@ Identity, colors, header, typography, and logo: **Appearance → Customize**. Pa
 
 ## Marketplace buyers
 
-If you bought a pack (theme + child + Acreline Core), start with **Documentation/index.html**. ThemeForest purchase questions go through that marketplace’s support channel; GitHub issues are still welcome for reproducible theme bugs.
+If you bought a pack (theme + child + Acreline Core), start with **Documentation/index.html**. ThemeForest / own-site purchase questions go through that marketplace’s support channel; GitHub issues are still welcome for reproducible theme bugs.
 
 ## Security
 

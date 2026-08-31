@@ -78,6 +78,14 @@ In the `listing` post type. Acreline Core owns registration on a store install. 
 
 Yes. The marketplace pack includes `acreline-child`.
 
+= How do I book a showing for one listing? =
+
+Link to the Book a showing page with `?listing_id=123` (the listing post ID). Do not use `?listing=` as a public query.
+
+= Does this theme sync a live MLS? =
+
+No. Sample inventory is concept data. There is no IDX/RETS feed.
+
 = How do I update from GitHub? =
 
 Appearance → Update Theme. Fine-grained PAT: Contents: Read. Add Actions: Read and write only to trigger rebuilds. Repo: matthummel-pa/wp-acreline.
@@ -161,6 +169,11 @@ GitHub: README.md, SUPPORT.md, docs/marketplace/.
 * DM Sans, Google Fonts, SIL OFL
 * Manrope, Google Fonts, SIL OFL
 * Montserrat, Google Fonts, SIL OFL
+* Poppins, Google Fonts, SIL OFL
+* Source Sans 3, Google Fonts, SIL OFL
+* Nunito Sans, Google Fonts, SIL OFL
+* Outfit, Google Fonts, SIL OFL
+* Lato, Google Fonts, SIL OFL
 * Sage / Acorn, Roots, MIT, https://roots.io/sage/
 * Acreline house mark and lockup SVG, Matt Hummel, GPLv2 or later
 * Theme placeholders and SVG marks, Matt Hummel, GPLv2 or later

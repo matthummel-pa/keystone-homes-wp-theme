@@ -157,7 +157,7 @@ Also:
 
 ## 6. Copy you can paste on the store listing
 
-Use `docs/marketplace/requirements.html` as the source of truth for ThemeForest / TemplateMonster form fields (software version, browsers, Gutenberg optimized = **No**, WooCommerce/WPML/RTL = No, demo URL, support URL, license, long description). Short description lives there too. Screenshots for extra item images: `docs/marketplace/screenshots/`. Sources: `docs/marketplace/sources.html`. Do not invent a second set of versions in README that disagrees with `style.css` / `readme.txt`.
+Use `docs/marketplace/themeforest-listing.md` and `requirements.html` as the source of truth for ThemeForest / TemplateMonster form fields (software version, browsers, Gutenberg optimized = **No**, WooCommerce/WPML/RTL = No, demo URL, support URL, license). Short description lives there too. Screenshots for extra item images: `docs/marketplace/screenshots/`. Sources: `docs/marketplace/sources.html`. WordPress.org upload rules: `docs/marketplace/wordpress-org.md`. Buyer HTML starts at `docs/marketplace/index.html`. Do not invent a second set of versions in README that disagrees with `style.css` / `readme.txt`.
 
 ## Do not
 

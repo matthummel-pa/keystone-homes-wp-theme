@@ -58,9 +58,15 @@ cp -a "$THEME_DIR/docs/marketplace/PACK-README.txt" "$PACK_ROOT/README.txt"
 cp -a "$THEME_ZIP" "$PACK_ROOT/acreline.zip"
 cp -a "$STAGE/acreline-child.zip" "$PACK_ROOT/"
 cp -a "$STAGE/acreline-core.zip" "$PACK_ROOT/"
+# Buyer HTML hub. Seller-only markdown (SELLING.md, themeforest-listing.md,
+# wordpress-org.md) stays out of this zip.
 DOCS="$THEME_DIR/docs/marketplace"
-for html in index.html buyer-guide.html branding.html requirements.html support.html changelog.html sources.html; do
-  cp -a "$DOCS/$html" "$PACK_ROOT/Documentation/"
+for html in index.html buyer-guide.html branding.html requirements.html support.html \
+           changelog.html sources.html customizer.html templates.html listings.html \
+           child-theme.html translation.html faq.html credits.html; do
+  if [ -f "$DOCS/$html" ]; then
+    cp -a "$DOCS/$html" "$PACK_ROOT/Documentation/"
+  fi
 done
 cp -a "$DOCS/assets/." "$PACK_ROOT/Documentation/assets/"
 if [ -d "$DOCS/screenshots" ]; then
@@ -71,6 +77,7 @@ cp -a "$THEME_DIR/readme.txt" "$PACK_ROOT/Documentation/"
 cp -a "$THEME_DIR/docs/marketplace/Demos/README.txt" "$PACK_ROOT/Demos/"
 cp -a "$THEME_DIR/CREDITS.md" "$PACK_ROOT/Licensing/"
 cp -a "$THEME_DIR/LICENSE.md" "$PACK_ROOT/Licensing/" 2>/dev/null || true
+cp -a "$THEME_DIR/license.txt" "$PACK_ROOT/Licensing/" 2>/dev/null || true
 
 if [ -d "$HOME/wp" ] && command -v wp >/dev/null 2>&1; then
   echo "==> Exporting WXR from local WP (if available)"

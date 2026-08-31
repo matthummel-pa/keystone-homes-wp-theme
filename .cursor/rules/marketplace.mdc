@@ -100,16 +100,17 @@ Identity (phone, email, address, hours, CTA, accent, social, demo banner) comes 
 | `style.css` headers | Theme Name, URI, Author, Description, Version, Requires at least, Tested up to, Requires PHP, License (GPLv2+), License URI, Text Domain `acreline`, Tags |
 | `readme.txt` | WP.org / ThemeForest parser format |
 | `screenshot.png` | 1200×900, 4:3, not an ad |
+| `license.txt` | GPLv2 notice + full GPLv2 text (Theme Check) |
 | `languages/acreline.pot` | Translation-ready |
 | `CREDITS.md` | Third-party licenses |
 | `child-theme/` | ThemeForest buyer expectation |
-| `docs/marketplace/` | Buyer install + seller channel notes. Pack copies `index.html` (hub), buyer-guide, branding, requirements, support, sources, changelog, `assets/`, `screenshots/` into `Documentation/`. |
+| `docs/marketplace/` | Buyer HTML hub (`index.html`) + seller briefs (`SELLING.md`, `themeforest-listing.md`, `wordpress-org.md`). Pack copies the hub, branding, screenshots, Customizer/listings pages, `assets/` into `Documentation/`. |
 
 **8.12 Pack, don’t pollute the theme zip.**
 
 - Theme zip (`bin/build-theme-zip.sh`): theme runtime only. No `.git`, no plugin zips, no `.sh` inside the theme folder. This is what buyers upload in Appearance → Themes.
 - General seller pack (`bin/build-install-pack.sh`): outer `acreline-*.zip` with the theme zip + child + Core + `Documentation/` (open `index.html`). Buyers extract the outer zip; they do not upload it to WordPress.
-- Marketplace folder (`bin/build-marketplace-pack.sh`) copies that pack and adds `SELLING.md` beside it for Matt. Do not put `SELLING.md` inside the buyer zip.
+- Marketplace folder (`bin/build-marketplace-pack.sh`) copies that pack and adds `SELLING.md` beside it for Matt. Do not put `SELLING.md`, `themeforest-listing.md`, or `wordpress-org.md` inside the buyer zip.
 - `KS_DISABLE_THEME_CPTS` is for a future WP.org-only zip, not the general install pack (buyers need listings without the plugin).
 
 ## Do not
