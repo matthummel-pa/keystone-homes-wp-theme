@@ -17,13 +17,15 @@ Ported from the static concept:
 ## Features
 
 - Homepage search → listings with type / price / acreage / area filters
-- `listing`, `booking`, and `agent` custom post types (custom fields only — no blocks)
+- Customizer identity (brand, phone, email, address, hours, CTA, accent, removable credit)
+- WordPress Primary + Footer menus, custom logo, footer widgets, breadcrumbs
+- `listing`, `booking`, and `agent` types via Keystone Core (theme fallback for this concept site)
 - Grid + map listing views fed by the Listings CPT, payment estimate modal
 - House-showing scheduler writes Bookings posts (Requested → Confirmed → Completed)
 - Agents page and singles from the Agents CPT (license, MLS/NRDS, specialties, contact)
 - Each marketing page has its own Blade template and field group
 - Areas, land-buyer guide, and contact pages
-- SEO-ready blog with sample posts
+- Native SEO (title, description, OG, Twitter) plus a translation-ready `keystone-homes` text domain
 
 ## Local development
 
@@ -46,11 +48,14 @@ npm run dev            # Vite HMR alongside wp server
 ./vendor/bin/pint      # PHP style
 ```
 
-## Package for a host
+## Package for a host or a marketplace
 
 ```bash
-bin/build-theme-zip.sh   # -> dist-theme/keystone-homes.zip
+bin/build-theme-zip.sh            # -> dist-theme/keystone-homes.zip
+bin/build-marketplace-pack.sh     # theme + child + Keystone Core + docs
 ```
+
+Buyer install and Customizer notes: `docs/marketplace/buyer-guide.html`. Seller channels (Envato, own site, WordPress.org limits): `docs/marketplace/SELLING.md`.
 
 Install via WP Admin → Appearance → Themes → Upload Theme, or:
 

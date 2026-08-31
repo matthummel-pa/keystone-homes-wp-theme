@@ -112,7 +112,7 @@ function updater_dispatch(): array
     $r = updater_repo();
     $token = github_token();
     if ($token === '') {
-        return [false, __('No GitHub token is set. Paste one on this page (or under Appearance → Customize → GitHub) first.', 'sage')];
+        return [false, __('No GitHub token is set. Paste one on this page (or under Appearance → Customize → GitHub) first.', 'keystone-homes')];
     }
     $url = 'https://api.github.com/repos/'.rawurlencode($r['owner']).'/'.rawurlencode($r['repo'])
         .'/actions/workflows/'.rawurlencode($r['workflow']).'/dispatches';
@@ -120,17 +120,17 @@ function updater_dispatch(): array
     [$code, $data] = updater_api_post($url, ['ref' => $r['ref']]);
 
     if ($code === 204) {
-        return [true, __('GitHub is building a new zip. Wait a minute, refresh this page, then install it.', 'sage')];
+        return [true, __('GitHub is building a new zip. Wait a minute, refresh this page, then install it.', 'keystone-homes')];
     }
 
-    $msg = isset($data['message']) ? (string) $data['message'] : __('Unknown error.', 'sage');
+    $msg = isset($data['message']) ? (string) $data['message'] : __('Unknown error.', 'keystone-homes');
     if ($code === 401 || $code === 403) {
-        $msg .= ' '.__('The token likely lacks “Actions: Read and write” on this repository.', 'sage');
+        $msg .= ' '.__('The token likely lacks “Actions: Read and write” on this repository.', 'keystone-homes');
     } elseif ($code === 404) {
-        $msg .= ' '.__('Check the repo name and that the workflow exists on the default branch.', 'sage');
+        $msg .= ' '.__('Check the repo name and that the workflow exists on the default branch.', 'keystone-homes');
     }
 
-    return [false, sprintf(__('GitHub returned %1$d: %2$s', 'sage'), $code, $msg)];
+    return [false, sprintf(__('GitHub returned %1$d: %2$s', 'keystone-homes'), $code, $msg)];
 }
 
 /**
@@ -142,18 +142,18 @@ function updater_pull(): array
 {
     $token = github_token();
     if ($token === '') {
-        return [false, __('No GitHub token is set. Paste one on this page first. It needs Contents: Read on this repo.', 'sage')];
+        return [false, __('No GitHub token is set. Paste one on this page first. It needs Contents: Read on this repo.', 'keystone-homes')];
     }
 
     $release = updater_latest_release();
     if (! $release) {
-        return [false, __('No theme-latest release yet. Push main (or click “Rebuild zip on GitHub”) and wait for Actions to finish.', 'sage')];
+        return [false, __('No theme-latest release yet. Push main (or click “Rebuild zip on GitHub”) and wait for Actions to finish.', 'keystone-homes')];
     }
 
     $asset = updater_release_zip_asset($release);
     $apiUrl = is_array($asset) ? (string) ($asset['url'] ?? '') : '';
     if ($apiUrl === '') {
-        return [false, __('The latest release has no zip asset.', 'sage')];
+        return [false, __('The latest release has no zip asset.', 'keystone-homes')];
     }
 
     require_once ABSPATH.'wp-admin/includes/file.php';
@@ -162,7 +162,7 @@ function updater_pull(): array
 
     $tmp = wp_tempnam((string) ($asset['name'] ?? 'keystone-homes.zip'));
     if (! is_string($tmp) || $tmp === '') {
-        return [false, __('Could not create a temp file for the download.', 'sage')];
+        return [false, __('Could not create a temp file for the download.', 'keystone-homes')];
     }
 
     $res = wp_remote_get($apiUrl, [
@@ -192,23 +192,23 @@ function updater_pull(): array
         if ($code !== 200) {
             wp_delete_file($tmp);
 
-            return [false, sprintf(__('GitHub returned %d while downloading the zip. Contents: Read on the token?', 'sage'), $code)];
+            return [false, sprintf(__('GitHub returned %d while downloading the zip. Contents: Read on the token?', 'keystone-homes'), $code)];
         }
         if (file_put_contents($tmp, (string) wp_remote_retrieve_body($res)) === false) {
-            return [false, __('Could not write the downloaded zip to disk.', 'sage')];
+            return [false, __('Could not write the downloaded zip to disk.', 'keystone-homes')];
         }
     }
 
     if (! is_readable($tmp) || (int) filesize($tmp) < 1000) {
         wp_delete_file($tmp);
 
-        return [false, __('The downloaded zip was empty.', 'sage')];
+        return [false, __('The downloaded zip was empty.', 'keystone-homes')];
     }
 
     if (! WP_Filesystem()) {
         wp_delete_file($tmp);
 
-        return [false, __('WordPress could not write to the themes folder.', 'sage')];
+        return [false, __('WordPress could not write to the themes folder.', 'keystone-homes')];
     }
 
     $skin = new \Automatic_Upgrader_Skin;
@@ -224,7 +224,7 @@ function updater_pull(): array
     }
     if ($result === false) {
         $msgs = method_exists($skin, 'get_upgrade_messages') ? $skin->get_upgrade_messages() : [];
-        $msg = is_array($msgs) && $msgs !== [] ? implode(' ', array_map('strval', $msgs)) : __('Theme install failed.', 'sage');
+        $msg = is_array($msgs) && $msgs !== [] ? implode(' ', array_map('strval', $msgs)) : __('Theme install failed.', 'keystone-homes');
 
         return [false, $msg];
     }
@@ -237,7 +237,7 @@ function updater_pull(): array
     $when = (string) ($release['published_at'] ?? '');
 
     return [true, sprintf(
-        __('Installed theme-latest%s%s. Theme files only — pages, posts, and uploads were not changed.', 'sage'),
+        __('Installed theme-latest%s%s. Theme files only — pages, posts, and uploads were not changed.', 'keystone-homes'),
         $sha !== '' ? ' ('.$sha.')' : '',
         $when !== '' ? ' · '.$when : ''
     )];
@@ -245,8 +245,8 @@ function updater_pull(): array
 
 add_action('admin_menu', function () {
     add_theme_page(
-        __('Update Theme', 'sage'),
-        __('Update Theme', 'sage'),
+        __('Update Theme', 'keystone-homes'),
+        __('Update Theme', 'keystone-homes'),
         'update_themes',
         'ks-theme-update',
         __NAMESPACE__.'\\render_theme_updater_page'
@@ -255,8 +255,8 @@ add_action('admin_menu', function () {
 
 add_action('customize_register', function (\WP_Customize_Manager $wp): void {
     $wp->add_section('ks_github', [
-        'title' => __('GitHub', 'sage'),
-        'description' => __('Token used by Appearance → Update Theme to download the built zip from GitHub.', 'sage'),
+        'title' => __('GitHub', 'keystone-homes'),
+        'description' => __('Token used by Appearance → Update Theme to download the built zip from GitHub.', 'keystone-homes'),
         'priority' => 33,
     ]);
     $wp->add_setting('ks_gh_token', [
@@ -264,8 +264,8 @@ add_action('customize_register', function (\WP_Customize_Manager $wp): void {
         'sanitize_callback' => 'sanitize_text_field',
     ]);
     $wp->add_control('ks_gh_token', [
-        'label' => __('Access token', 'sage'),
-        'description' => __('Fine-grained PAT for theme updates. Contents: Read. Add Actions read/write only if you trigger rebuilds from the Update Theme screen.', 'sage'),
+        'label' => __('Access token', 'keystone-homes'),
+        'description' => __('Fine-grained PAT for theme updates. Contents: Read. Add Actions read/write only if you trigger rebuilds from the Update Theme screen.', 'keystone-homes'),
         'section' => 'ks_github',
         'type' => 'password',
     ]);
@@ -274,7 +274,7 @@ add_action('customize_register', function (\WP_Customize_Manager $wp): void {
 function render_theme_updater_page(): void
 {
     if (! current_user_can('update_themes') && ! current_user_can('edit_theme_options')) {
-        wp_die(esc_html__('You do not have permission to update the theme.', 'sage'));
+        wp_die(esc_html__('You do not have permission to update the theme.', 'keystone-homes'));
     }
 
     $notice = null;
@@ -284,10 +284,10 @@ function render_theme_updater_page(): void
             check_admin_referer('ks_theme_token', 'ks_updater_save_nonce');
             $incoming = sanitize_text_field(wp_unslash((string) ($_POST['ks_gh_token'] ?? '')));
             if ($incoming === '') {
-                $notice = ['notice-error', __('Paste a token before saving.', 'sage')];
+                $notice = ['notice-error', __('Paste a token before saving.', 'keystone-homes')];
             } else {
                 set_theme_mod('ks_gh_token', $incoming);
-                $notice = ['notice-success', __('GitHub token saved.', 'sage')];
+                $notice = ['notice-success', __('GitHub token saved.', 'keystone-homes')];
             }
         } elseif (isset($_POST['ks_updater_reset_nonce'])) {
             check_admin_referer('ks_theme_token_reset', 'ks_updater_reset_nonce');
@@ -309,8 +309,8 @@ function render_theme_updater_page(): void
     $self = admin_url('themes.php?page=ks-theme-update');
 
     echo '<div class="wrap">';
-    echo '<h1>'.esc_html__('Update Theme', 'sage').'</h1>';
-    echo '<p style="max-width:70ch">'.esc_html__('Install the built theme over HTTPS from GitHub (a zip with vendor and Vite assets). This does not touch your database, posts, or uploads.', 'sage').'</p>';
+    echo '<h1>'.esc_html__('Update Theme', 'keystone-homes').'</h1>';
+    echo '<p style="max-width:70ch">'.esc_html__('Install the built theme over HTTPS from GitHub (a zip with vendor and Vite assets). This does not touch your database, posts, or uploads.', 'keystone-homes').'</p>';
 
     if ($notice) {
         printf('<div class="notice %1$s is-dismissible"><p>%2$s</p></div>', esc_attr($notice[0]), esc_html($notice[1]));
@@ -318,31 +318,31 @@ function render_theme_updater_page(): void
 
     if ($release && $asset) {
         $when = ! empty($release['published_at'])
-            ? esc_html(human_time_diff(strtotime((string) $release['published_at'])).' '.__('ago', 'sage'))
+            ? esc_html(human_time_diff(strtotime((string) $release['published_at'])).' '.__('ago', 'keystone-homes'))
             : '';
         $size = size_format((int) ($asset['size'] ?? 0));
         printf(
             '<div class="notice notice-info inline"><p>%1$s <span class="description">%2$s · %3$s</span> — <a href="%4$s" target="_blank" rel="noopener">%5$s</a></p></div>',
-            esc_html__('Latest GitHub zip is ready.', 'sage'),
+            esc_html__('Latest GitHub zip is ready.', 'keystone-homes'),
             esc_html($size ?: ''),
             $when,
             esc_url((string) ($release['html_url'] ?? '')),
-            esc_html__('view release', 'sage')
+            esc_html__('view release', 'keystone-homes')
         );
     }
 
     if ($run) {
         if ($run['status'] !== 'completed') {
-            $label = esc_html__('A GitHub build is running now…', 'sage');
+            $label = esc_html__('A GitHub build is running now…', 'keystone-homes');
             $cls = 'notice-warning';
         } elseif ($run['conclusion'] === 'success') {
-            $label = esc_html__('✓ Last GitHub build succeeded.', 'sage');
+            $label = esc_html__('✓ Last GitHub build succeeded.', 'keystone-homes');
             $cls = 'notice-success';
         } else {
-            $label = esc_html(sprintf(__('Last GitHub build: %s.', 'sage'), $run['conclusion'] ?: 'unknown'));
+            $label = esc_html(sprintf(__('Last GitHub build: %s.', 'keystone-homes'), $run['conclusion'] ?: 'unknown'));
             $cls = 'notice-error';
         }
-        $when = $run['created_at'] ? esc_html(human_time_diff(strtotime($run['created_at'])).' '.__('ago', 'sage')) : '';
+        $when = $run['created_at'] ? esc_html(human_time_diff(strtotime($run['created_at'])).' '.__('ago', 'keystone-homes')) : '';
         printf(
             '<div class="notice %1$s inline"><p>%2$s <span class="description">#%3$d · %4$s · %5$s</span> — <a href="%6$s" target="_blank" rel="noopener">%7$s</a></p></div>',
             esc_attr($cls),
@@ -351,24 +351,24 @@ function render_theme_updater_page(): void
             esc_html($run['event']),
             $when,
             esc_url($run['html_url']),
-            esc_html__('view run on GitHub', 'sage')
+            esc_html__('view run on GitHub', 'keystone-homes')
         );
     }
 
     echo '<hr />';
 
     if (! $hasToken) {
-        echo '<h2>'.esc_html__('Token setup (one time)', 'sage').'</h2>';
+        echo '<h2>'.esc_html__('Token setup (one time)', 'keystone-homes').'</h2>';
         echo '<ol style="max-width:70ch">';
-        echo '<li>'.wp_kses_post(__('Create a <strong>fine-grained personal access token</strong> at GitHub → Settings → Developer settings → Fine-grained tokens, scoped only to <code>keystone-homes-wp-theme</code>.', 'sage')).'</li>';
-        echo '<li>'.wp_kses_post(__('Give it <strong>Contents: Read</strong> to install the zip. Add <strong>Actions: Read and write</strong> only if you want this screen to trigger a rebuild.', 'sage')).'</li>';
-        echo '<li>'.esc_html__('Paste it below and save. You can also set KS_GITHUB_TOKEN (or MH_GITHUB_TOKEN) in wp-config.php.', 'sage').'</li>';
+        echo '<li>'.wp_kses_post(__('Create a <strong>fine-grained personal access token</strong> at GitHub → Settings → Developer settings → Fine-grained tokens, scoped only to <code>keystone-homes-wp-theme</code>.', 'keystone-homes')).'</li>';
+        echo '<li>'.wp_kses_post(__('Give it <strong>Contents: Read</strong> to install the zip. Add <strong>Actions: Read and write</strong> only if you want this screen to trigger a rebuild.', 'keystone-homes')).'</li>';
+        echo '<li>'.esc_html__('Paste it below and save. You can also set KS_GITHUB_TOKEN (or MH_GITHUB_TOKEN) in wp-config.php.', 'keystone-homes').'</li>';
         echo '</ol>';
         echo '<form method="post" action="">';
         wp_nonce_field('ks_theme_token', 'ks_updater_save_nonce');
-        echo '<p><label for="ks_gh_token"><strong>'.esc_html__('GitHub access token', 'sage').'</strong></label><br />';
+        echo '<p><label for="ks_gh_token"><strong>'.esc_html__('GitHub access token', 'keystone-homes').'</strong></label><br />';
         echo '<input type="password" class="regular-text" id="ks_gh_token" name="ks_gh_token" autocomplete="off" /></p>';
-        printf('<p><button type="submit" class="button">%s</button></p>', esc_html__('Save token', 'sage'));
+        printf('<p><button type="submit" class="button">%s</button></p>', esc_html__('Save token', 'keystone-homes'));
         echo '</form>';
     } else {
         echo '<form method="post" action="" style="margin-bottom:1.5rem">';
@@ -377,11 +377,11 @@ function render_theme_updater_page(): void
         printf(
             '<p><button type="submit" class="button button-primary button-hero"%s>%s</button></p>',
             $asset ? '' : ' disabled',
-            esc_html__('Install latest zip from GitHub', 'sage')
+            esc_html__('Install latest zip from GitHub', 'keystone-homes')
         );
         printf(
             '<p class="description">%s</p>',
-            esc_html__('WordPress downloads the zip over HTTPS and overwrites this theme folder. No FTP.', 'sage')
+            esc_html__('WordPress downloads the zip over HTTPS and overwrites this theme folder. No FTP.', 'keystone-homes')
         );
         echo '</form>';
 
@@ -390,33 +390,33 @@ function render_theme_updater_page(): void
         echo '<input type="hidden" name="ks_updater_action" value="build" />';
         printf(
             '<p><button type="submit" class="button">%s</button></p>',
-            esc_html__('Rebuild zip on GitHub', 'sage')
+            esc_html__('Rebuild zip on GitHub', 'keystone-homes')
         );
         printf(
             '<p class="description">%s</p>',
             esc_html(sprintf(
-                __('Runs %1$s@%2$s. When it finishes, come back and install the zip.', 'sage'),
+                __('Runs %1$s@%2$s. When it finishes, come back and install the zip.', 'keystone-homes'),
                 $r['owner'].'/'.$r['repo'],
                 $r['ref']
             ))
         );
         echo '</form>';
-        echo '<p style="margin-top:1rem"><a class="button" href="'.esc_url($self).'">'.esc_html__('Refresh status', 'sage').'</a></p>';
+        echo '<p style="margin-top:1rem"><a class="button" href="'.esc_url($self).'">'.esc_html__('Refresh status', 'keystone-homes').'</a></p>';
 
         echo '<hr />';
-        echo '<h2>'.esc_html__('Access token', 'sage').'</h2>';
+        echo '<h2>'.esc_html__('Access token', 'keystone-homes').'</h2>';
         if (github_token_from_constant()) {
-            echo '<p class="description" style="max-width:70ch">'.esc_html__('This site is using KS_GITHUB_TOKEN or MH_GITHUB_TOKEN from wp-config.php. Remove that constant to reset the token.', 'sage').'</p>';
+            echo '<p class="description" style="max-width:70ch">'.esc_html__('This site is using KS_GITHUB_TOKEN or MH_GITHUB_TOKEN from wp-config.php. Remove that constant to reset the token.', 'keystone-homes').'</p>';
         } else {
             echo '<form method="post" action="">';
             wp_nonce_field('ks_theme_token_reset', 'ks_updater_reset_nonce');
             printf(
                 '<p><button type="submit" class="button">%s</button></p>',
-                esc_html__('Reset access token', 'sage')
+                esc_html__('Reset access token', 'keystone-homes')
             );
             printf(
                 '<p class="description">%s</p>',
-                esc_html__('Clears the saved GitHub token from this site. You will need to paste a new one before installing or rebuilding.', 'sage')
+                esc_html__('Clears the saved GitHub token from this site. You will need to paste a new one before installing or rebuilding.', 'keystone-homes')
             );
             echo '</form>';
         }

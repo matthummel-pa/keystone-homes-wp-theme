@@ -16,7 +16,7 @@ Tokens live in `resources/css/keystone.css` `:root`:
 - Contrast, focus rings, 44px targets, semantics, reduced motion: see `accessibility.mdc`.
 - Labels, input types, button states, `aria-live`: see `conversion-ux.mdc`.
 
-Shared chrome: `resources/views/sections/` (header/footer) and `partials/chat.blade.php`. Header nav is hardcoded URLs, not a WP menu.
+Shared chrome: `resources/views/sections/` (header/footer) and `partials/chat.blade.php`. Header / footer nav use assigned WordPress menus (`App\Support\Navigation`) with the concept page list as fallback. Identity (phone, brand, CTA) comes from Customizer via `App\Support\Identity`.
 
 Fonts are Customizer-driven (`app/customizer.php`, default Inter). Do not hard-code a display serif unless Matt asks.
 

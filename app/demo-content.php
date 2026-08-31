@@ -29,16 +29,16 @@ add_action('admin_notices', function () {
         return;
     }
     $url = admin_url('tools.php?page=ks-seed-demo');
-    echo '<div class="notice notice-warning"><p>';
-    echo esc_html__('Keystone demo pages and listings are missing, so nav links 404 and the homepage has no inventory.', 'sage');
-    echo ' <a href="'.esc_url($url).'">'.esc_html__('Load demo content', 'sage').'</a>';
+    echo '<div class="notice notice-warning is-dismissible"><p>';
+    echo esc_html__('Keystone demo pages and listings are missing, so nav links 404 and the homepage has no inventory.', 'keystone-homes');
+    echo ' <a href="'.esc_url($url).'">'.esc_html__('Load demo content', 'keystone-homes').'</a>';
     echo '</p></div>';
 });
 
 add_action('admin_menu', function () {
     add_management_page(
-        __('Seed Keystone demo', 'sage'),
-        __('Seed Keystone demo', 'sage'),
+        __('Seed Keystone demo', 'keystone-homes'),
+        __('Seed Keystone demo', 'keystone-homes'),
         'manage_options',
         'ks-seed-demo',
         __NAMESPACE__.'\\render_demo_seed_page'
@@ -48,7 +48,7 @@ add_action('admin_menu', function () {
 function render_demo_seed_page(): void
 {
     if (! current_user_can('manage_options')) {
-        wp_die(esc_html__('You do not have permission to seed demo content.', 'sage'));
+        wp_die(esc_html__('You do not have permission to seed demo content.', 'keystone-homes'));
     }
 
     $notice = null;
@@ -56,18 +56,18 @@ function render_demo_seed_page(): void
         check_admin_referer('ks_seed_demo', 'ks_seed_nonce');
         DemoContent::seed();
         update_option(DemoContent::OPTION, '1');
-        $notice = __('Demo pages, listings, agents, and blog posts were loaded. Theme files were not changed.', 'sage');
+        $notice = __('Demo pages, listings, agents, and blog posts were loaded. Theme files were not changed.', 'keystone-homes');
     }
 
     echo '<div class="wrap">';
-    echo '<h1>'.esc_html__('Seed Keystone demo', 'sage').'</h1>';
+    echo '<h1>'.esc_html__('Seed Keystone demo', 'keystone-homes').'</h1>';
     if ($notice) {
         printf('<div class="notice notice-success is-dismissible"><p>%s</p></div>', esc_html($notice));
     }
-    echo '<p style="max-width:70ch">'.esc_html__('Creates the marketing pages, eight sample listings, three agents, blog posts, and sets Home / Blog as the front page. Safe to run again — existing slugs are updated, not duplicated.', 'sage').'</p>';
+    echo '<p style="max-width:70ch">'.esc_html__('Creates the marketing pages, eight sample listings, three agents, blog posts, and sets Home / Blog as the front page. Safe to run again — existing slugs are updated, not duplicated.', 'keystone-homes').'</p>';
     echo '<form method="post">';
     wp_nonce_field('ks_seed_demo', 'ks_seed_nonce');
-    printf('<p><button type="submit" class="button button-primary">%s</button></p>', esc_html__('Load demo content', 'sage'));
+    printf('<p><button type="submit" class="button button-primary">%s</button></p>', esc_html__('Load demo content', 'keystone-homes'));
     echo '</form>';
     echo '</div>';
 }

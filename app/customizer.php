@@ -1,18 +1,141 @@
 <?php
 
 /**
- * Theme Customizer — typography for every text role.
+ * Theme Customizer — identity, colors, typography.
  */
 
 namespace App;
 
 use App\Support\Typography;
+use WP_Customize_Color_Control;
 use WP_Customize_Manager;
 
 add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
+    $wp_customize->add_section('ks_identity', [
+        'title' => __('Identity', 'keystone-homes'),
+        'description' => __('Office name, phone, and chrome buyers change first. Concept defaults stay until you overwrite them.', 'keystone-homes'),
+        'priority' => 30,
+    ]);
+
+    $text = [
+        'ks_brand_name' => [__('Brand name', 'keystone-homes'), 'Keystone Real Estate'],
+        'ks_tagline' => [__('Header tagline', 'keystone-homes'), 'Concept demo'],
+        'ks_phone' => [__('Phone', 'keystone-homes'), '(555) 010-0455'],
+        'ks_email' => [__('Email', 'keystone-homes'), 'hello@keystone-concept.test'],
+        'ks_cta_label' => [__('Header button label', 'keystone-homes'), 'Book a showing'],
+        'ks_cta_url' => [__('Header button URL', 'keystone-homes'), ''],
+        'ks_credit_text' => [__('Footer credit text', 'keystone-homes'), 'Concept by Ridges & Valleys Studio'],
+        'ks_credit_url' => [__('Footer credit URL', 'keystone-homes'), 'https://ridgesandvalleys.com'],
+    ];
+
+    foreach ($text as $id => [$label, $default]) {
+        $sanitize = str_contains($id, 'url') ? 'esc_url_raw' : (str_contains($id, 'email') ? 'sanitize_email' : 'sanitize_text_field');
+        $wp_customize->add_setting($id, [
+            'default' => $default,
+            'sanitize_callback' => $sanitize,
+            'transport' => 'refresh',
+        ]);
+        $wp_customize->add_control($id, [
+            'label' => $label,
+            'section' => 'ks_identity',
+            'type' => 'text',
+        ]);
+    }
+
+    $wp_customize->add_setting('ks_address', [
+        'default' => "100 Concept Way\nSample Borough, PA 00000",
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+    $wp_customize->add_control('ks_address', [
+        'label' => __('Address', 'keystone-homes'),
+        'section' => 'ks_identity',
+        'type' => 'textarea',
+    ]);
+
+    $wp_customize->add_setting('ks_hours', [
+        'default' => "Mon–Fri 9:00–5:00\nSat by appointment\nSun closed (demo)",
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+    $wp_customize->add_control('ks_hours', [
+        'label' => __('Hours', 'keystone-homes'),
+        'section' => 'ks_identity',
+        'type' => 'textarea',
+    ]);
+
+    $wp_customize->add_setting('ks_footer_blurb', [
+        'default' => '',
+        'sanitize_callback' => 'sanitize_textarea_field',
+    ]);
+    $wp_customize->add_control('ks_footer_blurb', [
+        'label' => __('Footer blurb', 'keystone-homes'),
+        'description' => __('Leave empty for the concept sentence.', 'keystone-homes'),
+        'section' => 'ks_identity',
+        'type' => 'textarea',
+    ]);
+
+    $wp_customize->add_setting('ks_show_demo_chrome', [
+        'default' => true,
+        'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
+    ]);
+    $wp_customize->add_control('ks_show_demo_chrome', [
+        'label' => __('Show concept demo banner and studio badge', 'keystone-homes'),
+        'section' => 'ks_identity',
+        'type' => 'checkbox',
+    ]);
+
+    $wp_customize->add_setting('ks_show_credit', [
+        'default' => true,
+        'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
+    ]);
+    $wp_customize->add_control('ks_show_credit', [
+        'label' => __('Show removable studio credit in the footer', 'keystone-homes'),
+        'section' => 'ks_identity',
+        'type' => 'checkbox',
+    ]);
+
+    $wp_customize->add_section('ks_colors', [
+        'title' => __('Colors', 'keystone-homes'),
+        'description' => __('Forest accent used on buttons, focus rings, and kickers. Keep contrast on cream paper.', 'keystone-homes'),
+        'priority' => 35,
+    ]);
+
+    $wp_customize->add_setting('ks_accent', [
+        'default' => '#1f6b4a',
+        'sanitize_callback' => 'sanitize_hex_color',
+        'transport' => 'refresh',
+    ]);
+    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'ks_accent', [
+        'label' => __('Accent', 'keystone-homes'),
+        'section' => 'ks_colors',
+    ]));
+
+    $wp_customize->add_section('ks_social', [
+        'title' => __('Social links', 'keystone-homes'),
+        'priority' => 36,
+    ]);
+
+    foreach ([
+        'facebook' => __('Facebook URL', 'keystone-homes'),
+        'instagram' => __('Instagram URL', 'keystone-homes'),
+        'youtube' => __('YouTube URL', 'keystone-homes'),
+        'linkedin' => __('LinkedIn URL', 'keystone-homes'),
+        'x' => __('X / Twitter URL', 'keystone-homes'),
+    ] as $key => $label) {
+        $id = 'ks_social_'.$key;
+        $wp_customize->add_setting($id, [
+            'default' => '',
+            'sanitize_callback' => 'esc_url_raw',
+        ]);
+        $wp_customize->add_control($id, [
+            'label' => $label,
+            'section' => 'ks_social',
+            'type' => 'url',
+        ]);
+    }
+
     $wp_customize->add_section('ks_typography', [
-        'title' => __('Typography', 'sage'),
-        'description' => __('Sans-serif fonts used on modern realtor sites. Inter is the default for headings and body.', 'sage'),
+        'title' => __('Typography', 'keystone-homes'),
+        'description' => __('Sans-serif fonts used on modern realtor sites. Inter is the default for headings and body.', 'keystone-homes'),
         'priority' => 40,
     ]);
 
@@ -44,7 +167,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'transport' => 'postMessage',
     ]);
     $wp_customize->add_control('ks_font_size', [
-        'label' => __('Base text size (px)', 'sage'),
+        'label' => __('Base text size (px)', 'keystone-homes'),
         'section' => 'ks_typography',
         'type' => 'number',
         'input_attrs' => ['min' => 14, 'max' => 20, 'step' => 1],
@@ -60,13 +183,13 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'transport' => 'postMessage',
     ]);
     $wp_customize->add_control('ks_heading_weight', [
-        'label' => __('Heading weight', 'sage'),
+        'label' => __('Heading weight', 'keystone-homes'),
         'section' => 'ks_typography',
         'type' => 'select',
         'choices' => [
-            500 => __('Medium (500)', 'sage'),
-            600 => __('Semibold (600)', 'sage'),
-            700 => __('Bold (700)', 'sage'),
+            500 => __('Medium (500)', 'keystone-homes'),
+            600 => __('Semibold (600)', 'keystone-homes'),
+            700 => __('Bold (700)', 'keystone-homes'),
         ],
     ]);
 });
@@ -76,6 +199,11 @@ function sanitize_font_key($value): string
     $value = sanitize_key((string) $value);
 
     return array_key_exists($value, Typography::fonts()) ? $value : 'inter';
+}
+
+function sanitize_checkbox($value): bool
+{
+    return (bool) $value;
 }
 
 add_action('wp_enqueue_scripts', function () {

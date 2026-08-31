@@ -47,7 +47,7 @@ function github_token_from_constant(): bool
 function github_reset_token(): array
 {
     if (github_token_from_constant()) {
-        return [false, __('The token is set in wp-config.php (KS_GITHUB_TOKEN or MH_GITHUB_TOKEN). Remove that constant to reset it.', 'sage')];
+        return [false, __('The token is set in wp-config.php (KS_GITHUB_TOKEN or MH_GITHUB_TOKEN). Remove that constant to reset it.', 'keystone-homes')];
     }
 
     if (function_exists('remove_theme_mod')) {
@@ -55,7 +55,7 @@ function github_reset_token(): array
         remove_theme_mod('mh_gh_token');
     }
 
-    return [true, __('GitHub access token reset. Paste a new one to use Appearance → Update Theme.', 'sage')];
+    return [true, __('GitHub access token reset. Paste a new one to use Appearance → Update Theme.', 'keystone-homes')];
 }
 
 /**

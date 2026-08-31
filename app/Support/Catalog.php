@@ -176,6 +176,10 @@ class Catalog
      */
     public static function listings(): array
     {
+        if (! post_type_exists(self::LISTING)) {
+            return self::listingsFromSeed();
+        }
+
         $query = new WP_Query([
             'post_type' => self::LISTING,
             'post_status' => 'publish',
@@ -225,6 +229,10 @@ class Catalog
      */
     public static function agents(): array
     {
+        if (! post_type_exists(self::AGENT)) {
+            return self::agentsFromSeed();
+        }
+
         $query = new WP_Query([
             'post_type' => self::AGENT,
             'post_status' => 'publish',

@@ -1,3 +1,10 @@
+Sage / Acorn (vendor) remain MIT. Theme-specific code in this repository
+is also offered under the GNU General Public License v2 or later so the
+distributed WordPress theme can ship as GPLv2-or-later (see `style.css`
+and `readme.txt`). MIT is GPL-compatible.
+
+---
+
 Copyright (c) Roots Software LLC
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of

@@ -1,13 +1,16 @@
 /*
 Theme Name:         Keystone Real Estate
-Theme URI:          https://github.com/matthummel-pa/keystone-homes-wp-theme
-Description:        Sage 11 WordPress theme for Keystone Real Estate — a Gettysburg land & farms realtor concept by Ridges & Valleys Studio. Ported from the static concept at realtor-keystone-homes-and-land-theme. Blade + Tailwind + Vite, with listing filters, showing booking, and SEO blog tools.
-Version:            0.1.0
+Theme URI:          https://keystonehomes.ridgesandvalleys.com/
+Description:        Land-and-farms realtor theme for rural listings, agents, and showing requests. Concept demo defaults — change identity in the Customizer. Blade + Tailwind + Vite (Sage 11).
+Version:            1.0.0
 Author:             Ridges & Valleys Studio
 Author URI:         https://ridgesandvalleys.com/
-Text Domain:        sage
-License:            MIT License
-License URI:        https://opensource.org/licenses/MIT
+Text Domain:        keystone-homes
+Domain Path:        /languages
+License:            GNU General Public License v2 or later
+License URI:        https://www.gnu.org/licenses/gpl-2.0.html
 Requires PHP:       8.3
 Requires at least:  6.6
+Tested up to:       6.8
+Tags:               blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready, sticky-post
 */
