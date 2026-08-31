@@ -1,7 +1,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?? 'Guide',
   'heroTitle' => $copy['hero_title'] ?? 'Realtor notes you can publish',
   'heroText' => $copy['hero_text'] ?? 'Showings, buyer checklists, and land vs home search — short posts you can adapt for local SEO.',

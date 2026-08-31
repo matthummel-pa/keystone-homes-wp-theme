@@ -5,7 +5,7 @@
   sizes="100vw"
   width="1600"
   height="900"
-  alt="{{ $hero_image_alt ?? 'Keystone Real Estate featured property' }}"
+  alt="{{ $hero_image_alt ?? 'Acreline featured property' }}"
   fetchpriority="high"
   loading="eager"
   decoding="async"

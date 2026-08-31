@@ -14,7 +14,7 @@ Price band for a niche land/farms theme: **$39–$69** on ThemeForest, **$49–$
 | --- | --- | --- |
 | **Own site** | Full pack from `bin/build-marketplace-pack.sh` | Nothing. Best margin. |
 | **ThemeForest / Creative Market** | Same pack + live preview URL | “#1 realtor theme.” Show the sample-county land/farms concept honestly. |
-| **WordPress.org** | Theme zip only. No plugin inside the theme. CPTs off (`KS_DISABLE_THEME_CPTS`). `readme.txt` + 1200×900 screenshot | “Approved” or “in the picker” until a reviewer says so. Sage + Acorn + Gutenberg-off is a common rejection. Use WP.org later as a **lite** traffic listing, or list **Keystone Core** as a free plugin and sell setup. |
+| **WordPress.org** | Theme zip only. No plugin inside the theme. CPTs off (`KS_DISABLE_THEME_CPTS`). `readme.txt` + 1200×900 screenshot | “Approved” or “in the picker” until a reviewer says so. Sage + Acorn + Gutenberg-off is a common rejection. Use WP.org later as a **lite** traffic listing, or list **Acreline Core** as a free plugin and sell setup. |
 
 WordPress.org is **not** a cash register. It is distribution. Money there is services (install, copy, listing import) or a paid add-on — never an in-theme upgrade nag.
 
@@ -27,24 +27,24 @@ bin/build-marketplace-pack.sh     # same files + this brief copied beside them
 
 Creates `dist-install/`:
 
-- `acreline-1.1.0.zip` / `acreline.zip` — **upload this to ThemeForest / Gumroad**
-- `acreline/keystone-homes.zip` — what the buyer uploads in Appearance → Themes
-- `acreline/keystone-homes-child.zip`
-- `acreline/keystone-core.zip`
-- `acreline/Documentation/requirements.html` — host needs + listing fields to paste
-- `acreline/Documentation/buyer-guide.html`
-- `acreline/Documentation/support.html`
-- `acreline/Demos/README.txt`
-- `acreline/Licensing/CREDITS.md`
+- `acreline-1.2.0.zip` — **upload this to ThemeForest / Gumroad** (folder inside: `acreline-pack/`)
+- `acreline-pack/acreline.zip` — what the buyer uploads in Appearance → Themes
+- `acreline-pack/acreline-child.zip`
+- `acreline-pack/acreline-core.zip`
+- `acreline-pack/Documentation/requirements.html` — host needs + listing fields to paste
+- `acreline-pack/Documentation/buyer-guide.html`
+- `acreline-pack/Documentation/support.html`
+- `acreline-pack/Demos/README.txt`
+- `acreline-pack/Licensing/CREDITS.md`
 
 `SELLING.md` stays in the repo and in `dist-marketplace/SELLING.md` only. It is **not** inside the buyer zip.
 
-Upload the **outer** `acreline-*.zip` to Envato (“All files & documentation”). Buyers extract it, then upload `keystone-homes.zip`. Upload **only** `keystone-homes.zip` if you try WordPress.org.
+Upload the **outer** `acreline-*.zip` to Envato (“All files & documentation”). Buyers extract it, then upload `acreline.zip`. Upload **only** `acreline.zip` if you try WordPress.org.
 
 ## Before you submit anywhere
 
 1. Live preview with demo chrome **on** (concept honesty) and a second screenshot with chrome **off** (buyer fantasy).
-2. Customize → Identity filled with 555 / `@keystone-concept.test` only.
+2. Customize → Identity filled with 555 / `@acreline-concept.test` only.
 3. No Unsplash files inside the theme zip.
 4. No Freemius, Envato banners, or “Pro” admin ads.
 5. Footer credit is optional and `rel="nofollow"`.
@@ -57,7 +57,7 @@ Upload the **outer** `acreline-*.zip` to Envato (“All files & documentation”
 - PHP 8.3+ and a compiled Vite manifest
 - Listings are plugin territory — Core must be a **separate** WP.org plugin if you go that route
 
-A future “Keystone Lite” without Acorn would have a real shot at the picker. This repo is the premium / Envato / own-site product.
+A future “Acreline Lite” without Acorn would have a real shot at the picker. This repo is the premium / Envato / own-site product.
 
 ## GitHub repo About (paste in Settings → General)
 

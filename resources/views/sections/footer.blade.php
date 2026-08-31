@@ -2,8 +2,8 @@
   $bookUrl = $identity['bookUrl'] ?? home_url('/book/');
   $phone = $identity['phone'] ?? '(555) 010-0455';
   $phoneHref = $identity['phoneHref'] ?? 'tel:+15550100455';
-  $email = $identity['email'] ?? 'hello@keystone-concept.test';
-  $brand = $identity['brand'] ?? 'Keystone Real Estate';
+  $email = $identity['email'] ?? 'hello@acreline-concept.test';
+  $brand = $identity['brand'] ?? 'Acreline';
   $cta = $identity['ctaLabel'] ?? 'Book a showing';
   $explore = $footerNav ?? [];
 @endphp
@@ -12,13 +12,13 @@
   <div class="wrap">
     <div class="footer-cta">
       <div>
-        <p class="eyebrow">{{ __('Next step', 'keystone-homes') }}</p>
-        <h2>{{ __('Tour a sample home', 'keystone-homes') }}</h2>
-        <p>{{ __('Pick a listing, choose a slot, and see how a modern realtor booking flow feels.', 'keystone-homes') }}</p>
+        <p class="eyebrow">{{ __('Next step', 'acreline') }}</p>
+        <h2>{{ __('Tour a sample home', 'acreline') }}</h2>
+        <p>{{ __('Pick a listing, choose a slot, and see how a modern realtor booking flow feels.', 'acreline') }}</p>
       </div>
       <div class="footer-cta-actions">
         <a class="btn btn-primary" href="{{ esc_url($bookUrl) }}">{{ $cta }}</a>
-        <a class="btn btn-outline light" href="{{ esc_url($phoneHref) }}">{{ __('Call the office', 'keystone-homes') }}</a>
+        <a class="btn btn-outline light" href="{{ esc_url($phoneHref) }}">{{ __('Call the office', 'acreline') }}</a>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
         @include('partials.social-links')
       </div>
       <div>
-        <h2 class="footer-heading">{{ __('Office', 'keystone-homes') }}</h2>
+        <h2 class="footer-heading">{{ __('Office', 'acreline') }}</h2>
         <address>
           {!! nl2br(esc_html($identity['address'] ?? '')) !!}<br>
           <a href="{{ esc_url($phoneHref) }}">{{ $phone }}</a><br>
@@ -44,11 +44,11 @@
         </address>
       </div>
       <div>
-        <h2 class="footer-heading">{{ __('Hours', 'keystone-homes') }}</h2>
+        <h2 class="footer-heading">{{ __('Hours', 'acreline') }}</h2>
         <p>{!! nl2br(esc_html($identity['hours'] ?? '')) !!}</p>
       </div>
       <nav aria-labelledby="footer-links-heading">
-        <h2 class="footer-heading" id="footer-links-heading">{{ __('Explore', 'keystone-homes') }}</h2>
+        <h2 class="footer-heading" id="footer-links-heading">{{ __('Explore', 'acreline') }}</h2>
         <ul class="footer-links">
           @foreach ($explore as $item)
             <li><a href="{{ esc_url($item['url']) }}" @if(! empty($item['active'])) aria-current="page" @endif>{{ $item['label'] }}</a></li>
@@ -63,11 +63,11 @@
       </div>
     @endif
 
-    <p class="footer-service-area">{{ __('Serving a fictional Sample County market for design demonstration purposes.', 'keystone-homes') }}</p>
+    <p class="footer-service-area">{{ __('Serving a fictional Sample County market for design demonstration purposes.', 'acreline') }}</p>
     <div class="footer-bottom">
       <div class="equal-housing">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/><path d="M9 21v-6h6v6"/></svg>
-        <span>{{ __('Equal Housing Opportunity (concept)', 'keystone-homes') }}</span>
+        <span>{{ __('Equal Housing Opportunity (concept)', 'acreline') }}</span>
       </div>
       <p>
         &copy; <span data-year>{{ date('Y') }}</span> {{ $brand }}

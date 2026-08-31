@@ -4,11 +4,11 @@ Theme URI:    https://keystonehomes.ridgesandvalleys.com/
 Description:  Child theme for Acreline. Edit this file (or functions.php) so parent updates do not wipe your CSS.
 Author:       Matt Hummel
 Author URI:   https://matthummel.com/
-Template:     keystone-homes
+Template:     acreline
 Version:      1.0.0
 License:      GNU General Public License v2 or later
 License URI:  https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain:  keystone-homes-child
+Text Domain:  acreline-child
 */
 
 /* Add buyer overrides below. Parent styles load from the compiled Sage assets. */

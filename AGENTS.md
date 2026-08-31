@@ -21,7 +21,7 @@ Edit those files when an agent repeats a mistake. Use `.mdc` only (plain `.md` i
 ## Cursor Cloud specific instructions
 
 ### What this repo is
-This repository is only the **theme** (`wp-content/themes/keystone-homes`). WordPress core is not part of the repo — a throwaway local WordPress install is created outside the repo to run/test the theme.
+This repository is only the **theme** (`wp-content/themes/acreline`). WordPress core is not part of the repo — a throwaway local WordPress install is created outside the repo to run/test the theme.
 
 ### System prerequisites (installed during initial VM setup)
 PHP 8.3+ (with `mbstring xml curl zip gd intl sqlite3 bcmath`), Composer 2, WP-CLI (`wp`), and Node 20+/22+. The startup update script only refreshes the theme's own dependencies (`composer install`, `npm install`); it intentionally does **not** install system packages, build assets, or start services.
@@ -50,16 +50,16 @@ Then browse `http://localhost:8080/` (homepage), `/listings`, `/areas`, `/guide`
 - **You must build assets** (`npm run build`) or every page dies with a "Vite manifest not found" error. Build artifacts live in `public/build/` and are git-ignored.
 - **Do not symlink `vendor/` to another git worktree.** Composer maps `App\\` to that tree's `app/`. Blade is loaded from this theme folder. A mismatch 500s the homepage (`Undefined array key "intent_eyebrow"`). Run `composer install` in the theme directory you symlink into `~/wp`.
 - **Blade template changes are cached by Acorn.** After editing `.blade.php` files, if you don't see changes, clear the cache: `wp acorn view:clear --path="$HOME/wp" --allow-root` (or `wp acorn optimize:clear`).
-- **Vite `base` path is hard-coded** in `vite.config.js` to `/wp-content/themes/keystone-homes/public/build/`. If the theme is installed under a different folder name, update it or built asset URLs will 404.
+- **Vite `base` path is hard-coded** in `vite.config.js` to `/wp-content/themes/acreline/public/build/`. If the theme is installed under a different folder name, update it or built asset URLs will 404.
 - Every marketing page has a named Blade template (`Template Name`) plus slug fallback. `App\Support\DemoContent` creates the pages, assigns `_wp_page_template`, and seeds listings / agents / bookings / blog posts. `bin/setup-wp.sh` and `wp ks seed` both call that. The first public request on a fresh install also auto-seeds once (`ks_demo_content_v1`).
 - The block editor and patterns are disabled. Edit pages, listings, agents, bookings, and posts through custom-field metaboxes only.
 - Showing requests POST to `keystone/v1/bookings` and create Booking posts. Advance status from WP Admin → Bookings.
-- Listing inventory is the `listing` CPT (JS reads `window.KEYSTONE.listings`). Fallback sample data remains in `resources/js/listings.js`.
+- Listing inventory is the `listing` CPT (JS reads `window.ACRELINE.listings`). Fallback sample data remains in `resources/js/listings.js`.
 - Shared chrome lives in `resources/views/sections/` and `partials/chat.blade.php`.
 
 ### Packaging & deploying the theme
 - This is a WordPress theme — it ships as an installable theme package to a WordPress host.
-- Theme zip (regular Appearance → Upload Theme): `bin/build-theme-zip.sh` → `dist-theme/keystone-homes.zip`. Ships compiled `public/build` and production `vendor/` so the host needs no composer/npm.
-- Seller pack (ThemeForest / Gumroad / own site): `bin/build-install-pack.sh` → `dist-install/acreline-*.zip`. Buyers extract it, then upload the inner `keystone-homes.zip`. Includes child theme, Keystone Core, and `Documentation/requirements.html` (host needs + listing fields). Do not upload the outer zip into WordPress.
+- Theme zip (regular Appearance → Upload Theme): `bin/build-theme-zip.sh` → `dist-theme/acreline.zip`. Ships compiled `public/build` and production `vendor/` so the host needs no composer/npm.
+- Seller pack (ThemeForest / Gumroad / own site): `bin/build-install-pack.sh` → `dist-install/acreline-*.zip`. Buyers extract it, then upload the inner `acreline.zip`. Includes child theme, Acreline Core, and `Documentation/requirements.html` (host needs + listing fields). Do not upload the outer zip into WordPress.
 - Hosts can also update in place from **Appearance → Update Theme**. `.github/workflows/deploy.yml` publishes both zips on the `theme-latest` GitHub release. Token: Customizer → GitHub, the updater screen, or `KS_GITHUB_TOKEN`.
 - `bin/build-marketplace-pack.sh` copies the install pack to `dist-marketplace/` and adds `SELLING.md` for Matt only. WordPress.org is a later lite path — Sage + Gutenberg-off will not sail through first review. See `docs/marketplace/SELLING.md` and `.cursor/rules/marketplace.mdc`.

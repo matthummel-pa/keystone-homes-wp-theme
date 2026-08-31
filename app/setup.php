@@ -71,13 +71,32 @@ add_filter('should_load_separate_core_block_assets', '__return_false');
  *
  * @return void
  */
+add_action('after_switch_theme', function (): void {
+    if (get_template() !== 'acreline') {
+        return;
+    }
+
+    $fresh = get_option('theme_mods_acreline');
+    $brand = is_array($fresh) ? trim((string) ($fresh['ks_brand_name'] ?? '')) : '';
+    if ($brand !== '') {
+        return;
+    }
+
+    $legacy = get_option('theme_mods_keystone-homes');
+    if (! is_array($legacy) || $legacy === []) {
+        return;
+    }
+
+    update_option('theme_mods_acreline', array_merge($legacy, is_array($fresh) ? $fresh : []));
+});
+
 add_action('after_setup_theme', function () {
     global $content_width;
     if (! isset($content_width)) {
         $content_width = 1200;
     }
 
-    load_theme_textdomain('keystone-homes', get_template_directory().'/languages');
+    load_theme_textdomain('acreline', get_template_directory().'/languages');
 
     /**
      * Disable full-site editing support.
@@ -92,8 +111,8 @@ add_action('after_setup_theme', function () {
      * @link https://developer.wordpress.org/reference/functions/register_nav_menus/
      */
     register_nav_menus([
-        'primary_navigation' => __('Primary Navigation', 'keystone-homes'),
-        'footer_navigation' => __('Footer Navigation', 'keystone-homes'),
+        'primary_navigation' => __('Primary Navigation', 'acreline'),
+        'footer_navigation' => __('Footer Navigation', 'acreline'),
     ]);
 
     add_theme_support('automatic-feed-links');
@@ -199,12 +218,12 @@ add_action('widgets_init', function () {
     ];
 
     register_sidebar([
-        'name' => __('Primary', 'keystone-homes'),
+        'name' => __('Primary', 'acreline'),
         'id' => 'sidebar-primary',
     ] + $config);
 
     register_sidebar([
-        'name' => __('Footer', 'keystone-homes'),
+        'name' => __('Footer', 'acreline'),
         'id' => 'sidebar-footer',
     ] + $config);
 });

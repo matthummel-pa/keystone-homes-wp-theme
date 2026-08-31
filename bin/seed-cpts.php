@@ -11,5 +11,5 @@ use App\Support\DemoContent;
 DemoContent::cpts();
 
 if (defined('WP_CLI') && WP_CLI) {
-    WP_CLI::success('Keystone listings, agents, and bookings seeded.');
+    WP_CLI::success('Acreline listings, agents, and bookings seeded.');
 }

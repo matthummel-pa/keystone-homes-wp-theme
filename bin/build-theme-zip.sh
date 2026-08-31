@@ -1,18 +1,18 @@
 #!/usr/bin/env bash
 #
-# Build an installable WordPress theme package (keystone-homes.zip).
+# Build an installable WordPress theme package (acreline.zip).
 #
 # Sage ships compiled assets (public/build) and a production Composer
 # autoloader so the target host needs no composer/npm.
 #
 # Usage:
-#   bin/build-theme-zip.sh            # -> dist-theme/keystone-homes.zip
+#   bin/build-theme-zip.sh            # -> dist-theme/acreline.zip
 #   OUT=/tmp/pkg bin/build-theme-zip.sh
 #
 set -euo pipefail
 
 THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-SLUG="keystone-homes"
+SLUG="acreline"
 OUT_DIR="${OUT:-$THEME_DIR/dist-theme}"
 STAGE_PARENT="$(mktemp -d)"
 STAGE="$STAGE_PARENT/$SLUG"

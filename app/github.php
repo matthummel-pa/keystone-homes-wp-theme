@@ -47,7 +47,7 @@ function github_token_from_constant(): bool
 function github_reset_token(): array
 {
     if (github_token_from_constant()) {
-        return [false, __('The token is set in wp-config.php (KS_GITHUB_TOKEN or MH_GITHUB_TOKEN). Remove that constant to reset it.', 'keystone-homes')];
+        return [false, __('The token is set in wp-config.php (KS_GITHUB_TOKEN or MH_GITHUB_TOKEN). Remove that constant to reset it.', 'acreline')];
     }
 
     if (function_exists('remove_theme_mod')) {
@@ -55,7 +55,7 @@ function github_reset_token(): array
         remove_theme_mod('mh_gh_token');
     }
 
-    return [true, __('GitHub access token reset. Paste a new one to use Appearance → Update Theme.', 'keystone-homes')];
+    return [true, __('GitHub access token reset. Paste a new one to use Appearance → Update Theme.', 'acreline')];
 }
 
 /**
@@ -66,7 +66,7 @@ function github_headers(): array
     $headers = [
         'Accept' => 'application/vnd.github+json',
         'X-GitHub-Api-Version' => '2022-11-28',
-        'User-Agent' => 'keystone-homes-theme/'.(function_exists('wp_get_theme') ? (string) wp_get_theme()->get('Version') : '0.1')
+        'User-Agent' => 'acreline-theme/'.(function_exists('wp_get_theme') ? (string) wp_get_theme()->get('Version') : '0.1')
             .' (+'.(function_exists('home_url') ? home_url('/') : 'https://github.com/matthummel-pa/keystone-homes-wp-theme').')',
     ];
     $token = github_token();

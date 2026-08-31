@@ -8,7 +8,7 @@
   @while(have_posts()) @php(the_post())
     @include('partials.breadcrumbs')
     @include('partials.page-hero', [
-      'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
+      'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
       'heroEyebrow' => $copy['hero_eyebrow'] ?? '',
       'heroTitle' => $copy['hero_title'] ?: get_the_title(),
       'heroText' => $copy['hero_text'] ?? '',

@@ -10,7 +10,7 @@ class Breadcrumbs
     public static function items(): array
     {
         $home = [
-            'label' => __('Home', 'keystone-homes'),
+            'label' => __('Home', 'acreline'),
             'url' => home_url('/'),
         ];
 
@@ -21,20 +21,20 @@ class Breadcrumbs
         $trail = [$home];
 
         if (is_home()) {
-            $trail[] = ['label' => __('Blog', 'keystone-homes'), 'url' => ''];
+            $trail[] = ['label' => __('Blog', 'acreline'), 'url' => ''];
 
             return $trail;
         }
 
         if (is_singular('listing')) {
-            $trail[] = ['label' => __('Listings', 'keystone-homes'), 'url' => Navigation::pageUrl('listings')];
+            $trail[] = ['label' => __('Listings', 'acreline'), 'url' => Navigation::pageUrl('listings')];
             $trail[] = ['label' => self::plainTitle(), 'url' => ''];
 
             return $trail;
         }
 
         if (is_singular('agent')) {
-            $trail[] = ['label' => __('Agents', 'keystone-homes'), 'url' => Navigation::pageUrl('agents')];
+            $trail[] = ['label' => __('Agents', 'acreline'), 'url' => Navigation::pageUrl('agents')];
             $trail[] = ['label' => self::plainTitle(), 'url' => ''];
 
             return $trail;
@@ -43,7 +43,7 @@ class Breadcrumbs
         if (is_singular('post')) {
             $blog = get_option('page_for_posts');
             $blogUrl = $blog ? (string) get_permalink((int) $blog) : Navigation::pageUrl('blog', '/blog');
-            $trail[] = ['label' => __('Blog', 'keystone-homes'), 'url' => $blogUrl];
+            $trail[] = ['label' => __('Blog', 'acreline'), 'url' => $blogUrl];
             $trail[] = ['label' => self::plainTitle(), 'url' => ''];
 
             return $trail;
@@ -63,13 +63,13 @@ class Breadcrumbs
         }
 
         if (is_search()) {
-            $trail[] = ['label' => __('Search', 'keystone-homes'), 'url' => ''];
+            $trail[] = ['label' => __('Search', 'acreline'), 'url' => ''];
 
             return $trail;
         }
 
         if (is_404()) {
-            $trail[] = ['label' => __('Not found', 'keystone-homes'), 'url' => ''];
+            $trail[] = ['label' => __('Not found', 'acreline'), 'url' => ''];
 
             return $trail;
         }

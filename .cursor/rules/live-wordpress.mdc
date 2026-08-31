@@ -9,7 +9,7 @@ Use when Matt asks to add/fix **content** on https://keystonehomes.ridgesandvall
 
 ## What the live site is
 
-- Theme slug `keystone-homes`. Connected via WPVibe (`vibe-ai`).
+- Theme slug `acreline`. Connected via WPVibe (`vibe-ai`).
 - Content is already seeded: Home `#12`, marketing pages, 8 listings, 3 agents, 3 posts. Front page = page 12, posts page = Blog.
 - Installing a new theme zip does **not** recreate posts. Missing fields → empty headings unless Blade has `?:` fallbacks.
 

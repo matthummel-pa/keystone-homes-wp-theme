@@ -2,7 +2,7 @@
 # This file is distributed under the GNU General Public License v2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: Acreline 1.1.0\n"
+"Project-Id-Version: Acreline 1.2.0\n"
 "Report-Msgid-Bugs-To: https://github.com/matthummel-pa/keystone-homes-wp-theme/issues\n"
 "POT-Creation-Date: 2026-08-31 00:00+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -12,9 +12,9 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Domain: keystone-homes\n"
+"X-Domain: acreline\n"
 
-msgid "Keystone Real Estate"
+msgid "Acreline"
 msgstr ""
 
 msgid "Concept demo"

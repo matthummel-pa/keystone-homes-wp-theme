@@ -3,9 +3,9 @@ description: Project identity, fiction-only constraints, and how theme vs live W
 alwaysApply: true
 ---
 
-# Acreline (theme) · Keystone Real Estate (demo office)
+# Acreline WordPress theme
 
-Sage 11 WordPress **theme only** (`wp-content/themes/keystone-homes`). **Theme Name:** Acreline. Repo: `matthummel-pa/keystone-homes-wp-theme`. WordPress core is not in this repo. The sample brokerage in the preview stays Keystone Real Estate until Identity is changed.
+Sage 11 WordPress **theme only** (`wp-content/themes/acreline`). **Theme Name:** Acreline. Repo: `matthummel-pa/keystone-homes-wp-theme`. WordPress core is not in this repo. The sample brokerage in the preview stays Acreline until Identity is changed.
 
 Matt Hummel is the owner (marketer) and theme Author (`style.css` Author / Author URI: https://matthummel.com/). Prefer working in code. Keep copy editorial — rural farms, historic homes, and acreage in a **sample county** a buyer can rename — not generic luxury-broker voice and not a Gettysburg / Adams County-only brand story. Township filter **values** stay `Cumberland` / `Straban` / `Franklin`; labels are North Ridge / Mill Creek / Oak Hollow.
 
@@ -14,7 +14,7 @@ Matt Hummel is the owner (marketer) and theme Author (`style.css` Author / Autho
 Listings, agents, phones, emails, appointments, and market stats are **sample / concept**. Not a live MLS, licensed brokerage, or booking system.
 
 - Phones: `555` numbers (office `(555) 010-0455`)
-- Emails: `@keystone-concept.test`
+- Emails: `@acreline-concept.test`
 - ZIPs / street numbers: fake (`00000`, Concept Way)
 - Keep the site-wide “concept demo · fiction only” disclaimer
 - Do not invent real people, real listings, or real licensed-agent claims

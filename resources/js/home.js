@@ -21,7 +21,7 @@
         if(v && v !== "all") params.set(map[id], v);
       });
       var qs = params.toString();
-      var listingsUrl = (window.KEYSTONE && window.KEYSTONE.listingsUrl) || "/listings";
+      var listingsUrl = (window.ACRELINE && window.ACRELINE.listingsUrl) || "/listings";
       window.location.href = listingsUrl + (qs ? "?" + qs : "");
     });
   }
@@ -117,7 +117,7 @@
       var submitBtn = showingForm.querySelector("button[type=submit]");
       if(submitBtn) submitBtn.disabled = true;
 
-      var endpoint = window.KEYSTONE && window.KEYSTONE.restUrl ? window.KEYSTONE.restUrl + "bookings" : "";
+      var endpoint = window.ACRELINE && window.ACRELINE.restUrl ? window.ACRELINE.restUrl + "bookings" : "";
       var payload = {
         listing_id: listingId,
         date: showDate ? showDate.value : "",
@@ -155,7 +155,7 @@
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          "X-WP-Nonce": (window.KEYSTONE && window.KEYSTONE.nonce) || ""
+          "X-WP-Nonce": (window.ACRELINE && window.ACRELINE.nonce) || ""
         },
         body: JSON.stringify(payload)
       }).then(function(res){

@@ -7,7 +7,7 @@
   var toggle = root.querySelector(".style-switcher-toggle");
   var panel = root.querySelector(".style-switcher-panel");
   var buttons = root.querySelectorAll("[data-scheme]");
-  var schemes = (window.KEYSTONE && window.KEYSTONE.schemes) || {};
+  var schemes = (window.ACRELINE && window.ACRELINE.schemes) || {};
   var storageKey = "ks-color-scheme";
 
   function applyScheme(key) {

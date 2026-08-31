@@ -27,14 +27,14 @@ function keystone_core_create_booking_request(WP_REST_Request $request)
     $key = 'ks_book_'.md5((string) $ip);
     $hits = (int) get_transient($key);
     if ($hits >= 8) {
-        return new WP_Error('ks_rate_limited', __('Too many showing requests. Try again later.', 'keystone-core'), ['status' => 429]);
+        return new WP_Error('ks_rate_limited', __('Too many showing requests. Try again later.', 'acreline-core'), ['status' => 429]);
     }
     set_transient($key, $hits + 1, HOUR_IN_SECONDS);
 
     $listingId = (int) $request->get_param('listing_id');
     $listing = get_post($listingId);
     if (! $listing instanceof WP_Post || $listing->post_type !== 'listing' || $listing->post_status !== 'publish') {
-        return new WP_Error('ks_bad_listing', __('Choose a listing to tour.', 'keystone-core'), ['status' => 400]);
+        return new WP_Error('ks_bad_listing', __('Choose a listing to tour.', 'acreline-core'), ['status' => 400]);
     }
 
     $date = sanitize_text_field((string) $request->get_param('date'));
@@ -46,10 +46,10 @@ function keystone_core_create_booking_request(WP_REST_Request $request)
     $notes = sanitize_textarea_field((string) $request->get_param('notes'));
 
     if ($date === '' || strtotime($date.' 23:59:59') < time()) {
-        return new WP_Error('ks_bad_date', __('Pick a future date for the showing.', 'keystone-core'), ['status' => 400]);
+        return new WP_Error('ks_bad_date', __('Pick a future date for the showing.', 'acreline-core'), ['status' => 400]);
     }
     if ($time === '' || $name === '' || $phone === '' || ! is_email($email)) {
-        return new WP_Error('ks_bad_fields', __('Name, phone, email, date and time are required.', 'keystone-core'), ['status' => 400]);
+        return new WP_Error('ks_bad_fields', __('Name, phone, email, date and time are required.', 'acreline-core'), ['status' => 400]);
     }
 
     $allowed = ['in-person', 'preview', 'virtual'];
@@ -86,7 +86,7 @@ function keystone_core_create_booking_request(WP_REST_Request $request)
         'status' => 'requested',
         'message' => sprintf(
             /* translators: 1: client name, 2: listing title, 3: date, 4: time */
-            __('Showing requested for %1$s at %2$s on %3$s · %4$s. The request is now in Bookings (Requested).', 'keystone-core'),
+            __('Showing requested for %1$s at %2$s on %3$s · %4$s. The request is now in Bookings (Requested).', 'acreline-core'),
             $name,
             get_the_title($listing),
             $date,

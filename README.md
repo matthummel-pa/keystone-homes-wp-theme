@@ -2,16 +2,16 @@
 
 **Acreline** is a WordPress real estate theme for rural offices: searchable listings, agents, and showing requests — built for land, farms, and older houses, not a generic luxury brokerage skin.
 
-The sample office in the preview is named Keystone Real Estate. Change the brand, phone, email, and colors in **Appearance → Customize → Identity**. Created by [Matt Hummel](https://matthummel.com/).
+The sample office in the preview is named Acreline. Change the brand, phone, email, and colors in **Appearance → Customize → Identity**. Created by [Matt Hummel](https://matthummel.com/).
 
 | | |
 | --- | --- |
 | **Live concept demo** | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) |
 | **Support** | [SUPPORT.md](SUPPORT.md) |
 | **Author** | [matthummel.com](https://matthummel.com/) |
-| **Install folder** | `keystone-homes` (leave this name — Vite asset URLs depend on it) |
+| **Install folder** | `acreline` (leave this name — Vite asset URLs depend on it) |
 
-> **Fiction only.** Listings, market stats, contact details, and appointments are sample / concept data. Not a live MLS, licensed brokerage, or booking system. Demo phones use the `555` exchange; emails use `@keystone-concept.test`.
+> **Fiction only.** Listings, market stats, contact details, and appointments are sample / concept data. Not a live MLS, licensed brokerage, or booking system. Demo phones use the `555` exchange; emails use `@acreline-concept.test`.
 
 Ported from the static concept: [live HTML demo](https://matthummel-pa.github.io/realtor-keystone-homes-and-land-theme/) · [source](https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme).
 
@@ -33,13 +33,13 @@ It drops into a [Bedrock](https://roots.io/bedrock/) `web/app/themes/` directory
 - Header size and sticky toggle; Inter-based typography
 - WordPress Primary + Footer menus, custom logo, footer widgets, breadcrumbs
 - Native title, description, Open Graph, and Twitter tags (yields to Yoast / Rank Math / SEOPress / AIOSEO)
-- Translation-ready `keystone-homes` text domain
+- Translation-ready `acreline` text domain
 
-Listings, agents, and bookings are registered by **Keystone Core** (companion plugin) or in-theme as a fallback so this concept site keeps working without the plugin.
+Listings, agents, and bookings are registered by **Acreline Core** (companion plugin) or in-theme as a fallback so this concept site keeps working without the plugin.
 
 ## Requirements
 
-WordPress 6.6+, PHP 8.3+. Built assets (`npm run build`) must exist — the theme loads Vite’s manifest. The install folder must stay `keystone-homes`.
+WordPress 6.6+, PHP 8.3+. Built assets (`npm run build`) must exist — the theme loads Vite’s manifest. The install folder must stay `acreline`.
 
 ## Local development
 
@@ -65,28 +65,28 @@ npm run dev            # Vite HMR alongside wp server
 ## Package for a host or a marketplace
 
 ```bash
-bin/build-theme-zip.sh            # -> dist-theme/keystone-homes.zip (WP upload)
-bin/build-install-pack.sh         # -> dist-install/acreline-1.1.0.zip (seller pack)
+bin/build-theme-zip.sh            # -> dist-theme/acreline.zip (WP upload)
+bin/build-install-pack.sh         # -> dist-install/acreline-1.2.0.zip (seller pack)
 bin/build-marketplace-pack.sh     # same pack, plus SELLING.md for you
 ```
 
-**Regular WordPress install:** extract `acreline-*.zip`, then **Appearance → Themes → Upload Theme** and choose the inner `keystone-homes.zip`. Do not upload the outer pack to WordPress.
+**Regular WordPress install:** extract `acreline-*.zip`, then **Appearance → Themes → Upload Theme** and choose the inner `acreline.zip`. Do not upload the outer pack to WordPress.
 
 Host needs and ThemeForest / own-site listing fields: [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html). Buyer walkthrough: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html). Seller channels: [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md). Support: [`SUPPORT.md`](SUPPORT.md).
 
 Theme-only install (no child / plugin / docs):
 
 ```bash
-wp theme install dist-theme/keystone-homes.zip --activate
+wp theme install dist-theme/acreline.zip --activate
 ```
 
-If the theme folder is not `keystone-homes`, update `base` in `vite.config.js` and rebuild.
+If the theme folder is not `acreline`, update `base` in `vite.config.js` and rebuild.
 
 ## Update from GitHub
 
 CI publishes a built zip on the `theme-latest` release. WordPress installs it over HTTPS (same pattern as [matthummel-theme](https://github.com/matthummel-pa/matthummel-theme)).
 
-1. Push `main` (or use **Appearance → Update Theme → Rebuild zip on GitHub**) so Actions builds `keystone-homes.zip`.
+1. Push `main` (or use **Appearance → Update Theme → Rebuild zip on GitHub**) so Actions builds `acreline.zip`.
 2. In wp-admin go to **Appearance → Update Theme**.
 3. Paste a fine-grained PAT with **Contents: Read** (add **Actions: Read and write** only to trigger rebuilds). Or set `KS_GITHUB_TOKEN` / `MH_GITHUB_TOKEN` in `wp-config.php`, or **Appearance → Customize → GitHub**.
 4. Click **Install latest zip from GitHub**. Theme files only — pages, posts, and uploads stay put.

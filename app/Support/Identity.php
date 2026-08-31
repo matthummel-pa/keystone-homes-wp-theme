@@ -16,7 +16,7 @@ class Identity
 
         $name = (string) get_bloginfo('name', 'display');
 
-        return $name !== '' ? $name : 'Keystone Real Estate';
+        return $name !== '' ? $name : 'Acreline';
     }
 
     public static function tagline(): string
@@ -28,7 +28,7 @@ class Identity
 
         $desc = (string) get_bloginfo('description', 'display');
 
-        return $desc !== '' ? $desc : __('Concept demo', 'keystone-homes');
+        return $desc !== '' ? $desc : __('Concept demo', 'acreline');
     }
 
     public static function phone(): string
@@ -45,9 +45,9 @@ class Identity
 
     public static function email(): string
     {
-        $email = sanitize_email((string) get_theme_mod('ks_email', 'hello@keystone-concept.test'));
+        $email = sanitize_email((string) get_theme_mod('ks_email', 'hello@acreline-concept.test'));
 
-        return $email !== '' ? $email : 'hello@keystone-concept.test';
+        return $email !== '' ? $email : 'hello@acreline-concept.test';
     }
 
     public static function address(): string
@@ -71,14 +71,14 @@ class Identity
             return $blurb;
         }
 
-        return __('Concept realtor site by Matt Hummel. Fiction only — not a licensed brokerage or live MLS feed.', 'keystone-homes');
+        return __('Concept realtor site by Matt Hummel. Fiction only — not a licensed brokerage or live MLS feed.', 'acreline');
     }
 
     public static function ctaLabel(): string
     {
         $label = trim((string) get_theme_mod('ks_cta_label', ''));
 
-        return $label !== '' ? $label : __('Book a showing', 'keystone-homes');
+        return $label !== '' ? $label : __('Book a showing', 'acreline');
     }
 
     public static function bookUrl(): string
@@ -107,7 +107,7 @@ class Identity
     {
         $text = trim((string) get_theme_mod('ks_credit_text', ''));
 
-        return $text !== '' ? $text : __('Concept by Matt Hummel', 'keystone-homes');
+        return $text !== '' ? $text : __('Concept by Matt Hummel', 'acreline');
     }
 
     public static function creditUrl(): string

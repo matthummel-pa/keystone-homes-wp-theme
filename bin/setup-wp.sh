@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Bootstrap a local WordPress dev environment for the Acreline theme (folder: keystone-homes).
+# Bootstrap a local WordPress dev environment for the Acreline theme (folder: acreline).
 #
 # Stands up a throwaway WordPress install (SQLite, no MySQL required) OUTSIDE
 # the repo, symlinks this theme into it, seeds concept pages + blog posts,
@@ -23,7 +23,7 @@ set -euo pipefail
 THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 WP_PATH="${WP_PATH:-$HOME/wp}"
 SITE_URL="${SITE_URL:-http://localhost:8080}"
-THEME_SLUG="keystone-homes"
+THEME_SLUG="acreline"
 WP="wp --path=$WP_PATH --allow-root"
 
 echo "==> Theme dir : $THEME_DIR"
@@ -70,14 +70,18 @@ if ! $WP core is-installed 2>/dev/null; then
   echo "==> Installing WordPress"
   $WP core install \
     --url="$SITE_URL" \
-    --title="Keystone Real Estate" \
+    --title="Acreline" \
     --admin_user=admin \
     --admin_password=admin123 \
-    --admin_email=admin@keystone-concept.test \
+    --admin_email=admin@acreline-concept.test \
     --skip-email
   $WP rewrite structure '/%postname%/' --hard
 fi
 
+if [ -L "$WP_PATH/wp-content/themes/keystone-homes" ] || [ -d "$WP_PATH/wp-content/themes/keystone-homes" ]; then
+  echo "==> Removing old keystone-homes theme folder (now acreline)"
+  rm -f "$WP_PATH/wp-content/themes/keystone-homes"
+fi
 ln -sfn "$THEME_DIR" "$WP_PATH/wp-content/themes/$THEME_SLUG"
 $WP theme activate "$THEME_SLUG"
 

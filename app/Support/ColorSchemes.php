@@ -14,49 +14,49 @@ class ColorSchemes
     {
         return [
             'forest' => [
-                'label' => __('Forest', 'keystone-homes'),
+                'label' => __('Forest', 'acreline'),
                 'accent' => '#1f6b4a',
                 'paper' => '#f5f4f1',
                 'ink' => '#141210',
             ],
             'clay' => [
-                'label' => __('Clay', 'keystone-homes'),
+                'label' => __('Clay', 'acreline'),
                 'accent' => '#9a4324',
                 'paper' => '#f6f1ea',
                 'ink' => '#1c1612',
             ],
             'navy' => [
-                'label' => __('Navy', 'keystone-homes'),
+                'label' => __('Navy', 'acreline'),
                 'accent' => '#1e3a5f',
                 'paper' => '#f3f2ee',
                 'ink' => '#12151a',
             ],
             'burgundy' => [
-                'label' => __('Burgundy', 'keystone-homes'),
+                'label' => __('Burgundy', 'acreline'),
                 'accent' => '#722f37',
                 'paper' => '#f6f1ee',
                 'ink' => '#1a1214',
             ],
             'harvest' => [
-                'label' => __('Harvest', 'keystone-homes'),
+                'label' => __('Harvest', 'acreline'),
                 'accent' => '#7a5b14',
                 'paper' => '#f7f3e8',
                 'ink' => '#1a160c',
             ],
             'lake' => [
-                'label' => __('Lake', 'keystone-homes'),
+                'label' => __('Lake', 'acreline'),
                 'accent' => '#0e5f5c',
                 'paper' => '#f0f4f3',
                 'ink' => '#101716',
             ],
             'orchard' => [
-                'label' => __('Orchard', 'keystone-homes'),
+                'label' => __('Orchard', 'acreline'),
                 'accent' => '#5c3d6e',
                 'paper' => '#f5f1f4',
                 'ink' => '#161218',
             ],
             'charcoal' => [
-                'label' => __('Charcoal', 'keystone-homes'),
+                'label' => __('Charcoal', 'acreline'),
                 'accent' => '#2c2a28',
                 'paper' => '#f4f2ee',
                 'ink' => '#141210',

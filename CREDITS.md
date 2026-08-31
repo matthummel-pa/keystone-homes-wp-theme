@@ -25,8 +25,8 @@ No font files are vendored in the zip.
 
 - House mark SVGs in the header/footer — original, GPLv2 or later
 - `screenshot.png` — capture of the concept homepage; Unsplash photo is hotlinked on the live demo, not copied into `public/`
-- Listing / blog Unsplash URLs — preview only. **Do not** bundle those binaries in `keystone-homes.zip`
+- Listing / blog Unsplash URLs — preview only. **Do not** bundle those binaries in `acreline.zip`
 
 ## Companion plugin
 
-- Keystone Core — Matt Hummel — GPLv2 or later (`plugins/keystone-core`)
+- Acreline Core — Matt Hummel — GPLv2 or later (`plugins/acreline-core`)

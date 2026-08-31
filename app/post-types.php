@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Keystone custom post types: listings, bookings, agents.
+ * Acreline custom post types: listings, bookings, agents.
  *
- * Store-correct home is the Keystone Core plugin. This file is the
+ * Store-correct home is the Acreline Core plugin. This file is the
  * concept-site fallback so the live demo keeps working without the plugin.
  */
 
@@ -21,12 +21,12 @@ if (defined('KEYSTONE_CORE_VERSION') || (defined('KS_DISABLE_THEME_CPTS') && KS_
 add_action('init', function () {
     register_post_type(Catalog::LISTING, [
         'labels' => [
-            'name' => __('Listings', 'keystone-homes'),
-            'singular_name' => __('Listing', 'keystone-homes'),
-            'add_new_item' => __('Add Listing', 'keystone-homes'),
-            'edit_item' => __('Edit Listing', 'keystone-homes'),
-            'search_items' => __('Search Listings', 'keystone-homes'),
-            'not_found' => __('No listings found.', 'keystone-homes'),
+            'name' => __('Listings', 'acreline'),
+            'singular_name' => __('Listing', 'acreline'),
+            'add_new_item' => __('Add Listing', 'acreline'),
+            'edit_item' => __('Edit Listing', 'acreline'),
+            'search_items' => __('Search Listings', 'acreline'),
+            'not_found' => __('No listings found.', 'acreline'),
         ],
         'public' => true,
         'has_archive' => false,
@@ -43,12 +43,12 @@ add_action('init', function () {
 
     register_post_type(Catalog::BOOKING, [
         'labels' => [
-            'name' => __('Bookings', 'keystone-homes'),
-            'singular_name' => __('Booking', 'keystone-homes'),
-            'add_new_item' => __('Add Booking', 'keystone-homes'),
-            'edit_item' => __('Edit Booking', 'keystone-homes'),
-            'search_items' => __('Search Bookings', 'keystone-homes'),
-            'not_found' => __('No bookings found.', 'keystone-homes'),
+            'name' => __('Bookings', 'acreline'),
+            'singular_name' => __('Booking', 'acreline'),
+            'add_new_item' => __('Add Booking', 'acreline'),
+            'edit_item' => __('Edit Booking', 'acreline'),
+            'search_items' => __('Search Bookings', 'acreline'),
+            'not_found' => __('No bookings found.', 'acreline'),
         ],
         'public' => false,
         'show_ui' => true,
@@ -64,12 +64,12 @@ add_action('init', function () {
 
     register_post_type(Catalog::AGENT, [
         'labels' => [
-            'name' => __('Agents', 'keystone-homes'),
-            'singular_name' => __('Agent', 'keystone-homes'),
-            'add_new_item' => __('Add Agent', 'keystone-homes'),
-            'edit_item' => __('Edit Agent', 'keystone-homes'),
-            'search_items' => __('Search Agents', 'keystone-homes'),
-            'not_found' => __('No agents found.', 'keystone-homes'),
+            'name' => __('Agents', 'acreline'),
+            'singular_name' => __('Agent', 'acreline'),
+            'add_new_item' => __('Add Agent', 'acreline'),
+            'edit_item' => __('Edit Agent', 'acreline'),
+            'search_items' => __('Search Agents', 'acreline'),
+            'not_found' => __('No agents found.', 'acreline'),
         ],
         'public' => true,
         'has_archive' => false,
@@ -127,14 +127,14 @@ function create_booking_request(WP_REST_Request $request): WP_REST_Response|WP_E
     $key = 'ks_book_'.md5((string) $ip);
     $hits = (int) get_transient($key);
     if ($hits >= 8) {
-        return new WP_Error('ks_rate_limited', __('Too many showing requests. Try again later.', 'keystone-homes'), ['status' => 429]);
+        return new WP_Error('ks_rate_limited', __('Too many showing requests. Try again later.', 'acreline'), ['status' => 429]);
     }
     set_transient($key, $hits + 1, HOUR_IN_SECONDS);
 
     $listingId = (int) $request->get_param('listing_id');
     $listing = Catalog::listing($listingId);
     if (! $listing) {
-        return new WP_Error('ks_bad_listing', __('Choose a sample listing to tour.', 'keystone-homes'), ['status' => 400]);
+        return new WP_Error('ks_bad_listing', __('Choose a sample listing to tour.', 'acreline'), ['status' => 400]);
     }
 
     $date = sanitize_text_field((string) $request->get_param('date'));
@@ -146,10 +146,10 @@ function create_booking_request(WP_REST_Request $request): WP_REST_Response|WP_E
     $notes = sanitize_textarea_field((string) $request->get_param('notes'));
 
     if ($date === '' || strtotime($date.' 23:59:59') < time()) {
-        return new WP_Error('ks_bad_date', __('Pick a future date for the showing.', 'keystone-homes'), ['status' => 400]);
+        return new WP_Error('ks_bad_date', __('Pick a future date for the showing.', 'acreline'), ['status' => 400]);
     }
     if ($time === '' || $name === '' || $phone === '' || ! is_email($email)) {
-        return new WP_Error('ks_bad_fields', __('Name, phone, email, date and time are required.', 'keystone-homes'), ['status' => 400]);
+        return new WP_Error('ks_bad_fields', __('Name, phone, email, date and time are required.', 'acreline'), ['status' => 400]);
     }
 
     if (! array_key_exists($type, Catalog::SHOWING_TYPES)) {
@@ -185,7 +185,7 @@ function create_booking_request(WP_REST_Request $request): WP_REST_Response|WP_E
         'status' => 'requested',
         'message' => sprintf(
             /* translators: 1: client name, 2: listing title, 3: date, 4: time */
-            __('Showing requested for %1$s at %2$s on %3$s · %4$s. The request is now in Bookings (Requested).', 'keystone-homes'),
+            __('Showing requested for %1$s at %2$s on %3$s · %4$s. The request is now in Bookings (Requested).', 'acreline'),
             $name,
             $listing['title'],
             $date,

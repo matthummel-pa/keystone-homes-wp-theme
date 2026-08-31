@@ -8,7 +8,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample inventory',
   'heroTitle' => $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>',
   'heroText' => $copy['hero_text'] ?: 'Farms, historic houses, and acreage across three sample areas. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',

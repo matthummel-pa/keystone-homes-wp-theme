@@ -9,7 +9,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Buyer tools',
   'heroTitle' => $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>',
   'heroText' => $copy['hero_text'] ?: 'Wells, septic, and access change what acreage is worth. Short guides and demo calculators — then book a showing if you want to walk a sample parcel.',

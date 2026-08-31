@@ -24,7 +24,7 @@ Fonts are Customizer-driven (`app/customizer.php`, default Inter). Do not hard-c
 
 `npm run build` is required. Manifest is `public/build/` and **gitignored**. Missing manifest = white-screen “Vite manifest not found.”
 
-`vite.config.js` `base` is `/wp-content/themes/keystone-homes/public/build/`. If the folder slug changes, update `base` and rebuild.
+`vite.config.js` `base` is `/wp-content/themes/acreline/public/build/`. If the folder slug changes, update `base` and rebuild.
 
 ## Homepage search
 
@@ -33,7 +33,7 @@ Fonts are Customizer-driven (`app/customizer.php`, default Inter). Do not hard-c
 - Listings page reads those params in `resources/js/listings.js` (`fType`, `fPrice`, …)
 - Township option **values** are CPT meta (`Cumberland`, `Straban`, `Franklin`); labels are concept towns (North Ridge, Mill Creek, Oak Hollow)
 
-`window.KEYSTONE` is composed in `app/View/Composers/App.php` (listings URL, REST, nonce, listing payload). Prefer that over hardcoded `/listings`.
+`window.ACRELINE` is composed in `app/View/Composers/App.php` (listings URL, REST, nonce, listing payload). Prefer that over hardcoded `/listings`.
 
 Booking preselect is `?listing_id=` (not `?listing=` — that 404s `/book/` against the listing CPT).
 

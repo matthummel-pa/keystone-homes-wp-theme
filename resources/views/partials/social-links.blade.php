@@ -9,7 +9,7 @@
   ];
 @endphp
 @if ($social !== [])
-  <nav class="social-row" aria-label="{{ esc_attr__('Social', 'keystone-homes') }}">
+  <nav class="social-row" aria-label="{{ esc_attr__('Social', 'acreline') }}">
     @foreach ($social as $network => $url)
       <a href="{{ esc_url($url) }}" rel="noopener noreferrer" target="_blank">
         <span class="visually-hidden">{{ ucfirst($network) }}</span>

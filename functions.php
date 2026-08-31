@@ -15,7 +15,7 @@ use Roots\Acorn\Application;
 */
 
 if (! file_exists($composer = __DIR__.'/vendor/autoload.php')) {
-    wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'keystone-homes'));
+    wp_die(__('Error locating autoloader. Please run <code>composer install</code>.', 'acreline'));
 }
 
 require $composer;
@@ -55,7 +55,7 @@ collect(['setup', 'filters', 'post-types', 'admin', 'customizer', 'github', 'the
         if (! locate_template($file = "app/{$file}.php", true, true)) {
             wp_die(
                 /* translators: %s is replaced with the relative file path */
-                sprintf(__('Error locating <code>%s</code> for inclusion.', 'keystone-homes'), $file)
+                sprintf(__('Error locating <code>%s</code> for inclusion.', 'acreline'), $file)
             );
         }
     });

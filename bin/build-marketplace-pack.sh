@@ -19,13 +19,12 @@ OUT="$INSTALL_OUT" "$THEME_DIR/bin/build-install-pack.sh"
 echo "==> Copying to dist-marketplace (unzipped + seller brief)"
 rm -rf "$MARKET_OUT"
 mkdir -p "$MARKET_OUT"
-cp -a "$INSTALL_OUT/acreline/." "$MARKET_OUT/"
+cp -a "$INSTALL_OUT/acreline-pack/." "$MARKET_OUT/"
 cp -a "$THEME_DIR/docs/marketplace/SELLING.md" "$MARKET_OUT/SELLING.md"
 
 # Mirror the seller-upload zip next to the unpacked tree
 if ls "$INSTALL_OUT"/acreline-*.zip >/dev/null 2>&1; then
   cp -a "$INSTALL_OUT"/acreline-*.zip "$MARKET_OUT/"
-  cp -a "$INSTALL_OUT/acreline.zip" "$MARKET_OUT/"
 fi
 
 echo "==> Marketplace folder ready: $MARKET_OUT"

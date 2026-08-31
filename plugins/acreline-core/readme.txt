@@ -1,4 +1,4 @@
-=== Keystone Core ===
+=== Acreline Core ===
 Contributors: matthummel
 Requires at least: 6.6
 Tested up to: 7.0.1
@@ -11,7 +11,7 @@ Listings, agents, and showing bookings for the Acreline theme.
 
 == Description ==
 
-Keystone Core registers the `listing`, `agent`, and `booking` post types and the public `keystone/v1/bookings` REST route.
+Acreline Core registers the `listing`, `agent`, and `booking` post types and the public `keystone/v1/bookings` REST route.
 
 Switching themes leaves those posts and `ks_*` meta in the database. Acreline displays them; this plugin owns them.
 
@@ -19,8 +19,8 @@ This is sample / concept inventory — not a live MLS.
 
 == Installation ==
 
-1. Upload the `keystone-core` folder to `wp-content/plugins/`.
-2. Activate Keystone Core.
+1. Upload the `acreline-core` folder to `wp-content/plugins/`.
+2. Activate Acreline Core.
 3. Activate the Acreline theme.
 4. Use Tools → Seed Acreline demo, or add listings from wp-admin.
 
