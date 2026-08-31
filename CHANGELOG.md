@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.2.1
+
+- Inner marketing pages (listings, areas, guide, agents, book, contact, blog) share a taller photo hero, brand pill, and two-column lead
+- Areas use numbered cards; guide and agents use a five- and three-card topic grid instead of a wall of prose
+- Stored Keystone Real Estate / Adams County page fields fall back to Acreline sample-market copy
+- Empty CTA fields now pick up the page defaults (PHP `+` was keeping a blank title)
+- Agent emails still on `@keystone-concept.test` rewrite to `@acreline-concept.test`
+
 ## 1.2.0
 
 - Theme folder, text domain, and Appearance → Upload Theme zip are **acreline** (not keystone-homes)

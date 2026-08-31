@@ -356,8 +356,8 @@ class Catalog
             'license_state' => (string) self::getMeta($post->ID, 'license_state', 'PA'),
             'phone' => (string) self::getMeta($post->ID, 'phone', ''),
             'mobile' => (string) self::getMeta($post->ID, 'mobile', ''),
-            'email' => (string) self::getMeta($post->ID, 'email', ''),
-            'office' => (string) self::getMeta($post->ID, 'office', 'Acreline'),
+            'email' => self::conceptEmail((string) self::getMeta($post->ID, 'email', '')),
+            'office' => self::conceptOffice((string) self::getMeta($post->ID, 'office', 'Acreline')),
             'office_phone' => (string) self::getMeta($post->ID, 'office_phone', '(555) 010-0455'),
             'years_experience' => (string) self::getMeta($post->ID, 'years_experience', ''),
             'specialties' => (string) self::getMeta($post->ID, 'specialties', ''),
@@ -517,8 +517,8 @@ class Catalog
             'license_state' => (string) ($item['license_state'] ?? 'PA'),
             'phone' => (string) ($item['phone'] ?? ''),
             'mobile' => (string) ($item['mobile'] ?? ''),
-            'email' => (string) ($item['email'] ?? ''),
-            'office' => (string) ($item['office'] ?? 'Acreline'),
+            'email' => self::conceptEmail((string) ($item['email'] ?? '')),
+            'office' => self::conceptOffice((string) ($item['office'] ?? 'Acreline')),
             'office_phone' => (string) ($item['office_phone'] ?? '(555) 010-0455'),
             'years_experience' => (string) ($item['years_experience'] ?? ''),
             'specialties' => (string) ($item['specialties'] ?? ''),
@@ -537,5 +537,25 @@ class Catalog
             'photo' => '',
             'featured' => ! empty($item['featured']) && (string) $item['featured'] !== '0',
         ];
+    }
+
+    private static function conceptEmail(string $email): string
+    {
+        if ($email === '' || ! Identity::isRetiredBrand($email)) {
+            return $email;
+        }
+
+        $user = strstr($email, '@', true);
+
+        return ($user !== false && $user !== '' ? $user : 'hello').'@acreline-concept.test';
+    }
+
+    private static function conceptOffice(string $office): string
+    {
+        if ($office === '' || Identity::isRetiredBrand($office)) {
+            return 'Acreline';
+        }
+
+        return $office;
     }
 }

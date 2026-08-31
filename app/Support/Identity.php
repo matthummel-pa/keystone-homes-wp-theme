@@ -10,13 +10,16 @@ class Identity
     public static function brandName(): string
     {
         $mod = trim((string) get_theme_mod('ks_brand_name', ''));
-        if ($mod !== '') {
+        if ($mod !== '' && ! self::isRetiredBrand($mod)) {
             return $mod;
         }
 
         $name = (string) get_bloginfo('name', 'display');
+        if ($name !== '' && ! self::isRetiredBrand($name)) {
+            return $name;
+        }
 
-        return $name !== '' ? $name : 'Acreline';
+        return 'Acreline';
     }
 
     public static function tagline(): string
@@ -46,8 +49,11 @@ class Identity
     public static function email(): string
     {
         $email = sanitize_email((string) get_theme_mod('ks_email', 'hello@acreline-concept.test'));
+        if ($email === '' || self::isRetiredBrand($email)) {
+            return 'hello@acreline-concept.test';
+        }
 
-        return $email !== '' ? $email : 'hello@acreline-concept.test';
+        return $email;
     }
 
     public static function address(): string
@@ -208,6 +214,14 @@ class Identity
             'headerClass' => implode(' ', self::headerClasses()),
             'colorScheme' => ColorSchemes::currentKey(),
         ];
+    }
+
+    public static function isRetiredBrand(string $value): bool
+    {
+        $hay = strtolower($value);
+
+        return str_contains($hay, 'keystone')
+            || str_contains($hay, 'keystone-concept.test');
     }
 
     public static function cssVariables(): string

@@ -67,15 +67,15 @@ class PageCopy
                 'book_title' => ['label' => 'Booking title', 'type' => 'text', 'default' => 'Book a house showing'],
                 'book_text' => ['label' => 'Booking intro', 'type' => 'textarea', 'default' => 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.'],
             ],
-            'listings' => $hero('Sample inventory', 'Sample homes &amp; land <em>for demo tours</em>', 'Eight fictional properties for layout and filter testing. Switch grid or map — nothing here is a live MLS feed.') + [
+            'listings' => array_merge($hero('Sample inventory', 'Sample homes &amp; land <em>for demo tours</em>', 'Eight fictional properties for layout and filter testing. Switch grid or map — nothing here is a live MLS feed.'), [
                 'intro_title' => ['label' => 'Local note title', 'type' => 'text', 'default' => 'Buying rural property'],
                 'intro_text' => ['label' => 'Local note', 'type' => 'textarea', 'default' => 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk. Replace this inventory with your own market.'],
-            ] + $cta + [
+            ], $cta, [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'See a property you like?'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Book a walkthrough with a sample agent, or run the numbers first with the land-loan and pre-qualification tools.'],
                 'cta_secondary' => ['label' => 'Secondary CTA label', 'type' => 'text', 'default' => 'Financing tools'],
-            ],
-            'areas' => $hero('Sample markets', 'Areas we <em>demo</em>', 'Fictional North Ridge, Mill Creek, and Oak Hollow profiles — written so you can swap in your own counties.') + [
+            ]),
+            'areas' => array_merge($hero('Sample markets', 'Areas we <em>demo</em>', 'Fictional North Ridge, Mill Creek, and Oak Hollow profiles — written so you can swap in your own counties.'), [
                 'intro_title' => ['label' => 'Intro title', 'type' => 'text', 'default' => 'Land, farms &amp; homesteads in a sample market'],
                 'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'The office sits at 100 Concept Way in Sample Borough. Ridges hold orchards, valley floors hold tillable ground, and the six area cards below show how a land office talks about its territory. Replace the names with yours.'],
                 'grid_eyebrow' => ['label' => 'Grid eyebrow', 'type' => 'text', 'default' => 'Area by area'],
@@ -99,31 +99,31 @@ class PageCopy
                 'area_6_meta' => ['label' => 'Area 6 meta', 'type' => 'text', 'default' => 'South line · small farms and commute'],
                 'area_6_title' => ['label' => 'Area 6 title', 'type' => 'text', 'default' => 'Border Farms'],
                 'area_6_body' => ['label' => 'Area 6 body', 'type' => 'textarea', 'default' => 'Small farms, pasture, and wooded homesteads with an easier drive to jobs and grocery stores. Good first-land-buyer ground.'],
-            ] + $cta + [
+            ], $cta, [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Walk an area with us'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Tell us which kind of ground you want to understand, and we\'ll match you with the sample agent who talks that language.'],
-            ],
-            'guide' => $hero('Buyer tools', 'A clearer path to <em>buying land or a home</em>', 'Short guides and demo calculators. Use with the showing scheduler for a full agent workflow.') + [
+            ]),
+            'guide' => array_merge($hero('Buyer tools', 'A clearer path to <em>buying land or a home</em>', 'Short guides and demo calculators. Use with the showing scheduler for a full agent workflow.'), [
                 'intro_title' => ['label' => 'Intro title', 'type' => 'text', 'default' => 'What\'s different about buying land'],
                 'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.'],
                 'tools_eyebrow' => ['label' => 'Tools eyebrow', 'type' => 'text', 'default' => 'Run Your Numbers'],
                 'tools_title' => ['label' => 'Tools title', 'type' => 'text', 'default' => 'Land-loan &amp; pre-qualification tools'],
                 'tools_text' => ['label' => 'Tools intro', 'type' => 'textarea', 'default' => 'Friendly estimates to help you plan — not loan offers. A licensed lender will verify everything with full documentation.'],
-            ] + $cta + [
+            ], $cta, [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Ready to walk a sample parcel?'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Book a demo showing or browse the sample inventory.'],
                 'cta_secondary' => ['label' => 'Secondary CTA label', 'type' => 'text', 'default' => 'Browse listings'],
-            ],
-            'agents' => $hero('Sample team', 'Agents who know the <em>demo ground</em>', 'Team profiles are Agent posts. Contact numbers are fictional 555 lines.') + [
+            ]),
+            'agents' => array_merge($hero('Sample team', 'Agents who know the <em>demo ground</em>', 'Team profiles are Agent posts. Contact numbers are fictional 555 lines.'), [
                 'intro_title' => ['label' => 'Intro title', 'type' => 'text', 'default' => 'A small, local team by design'],
                 'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'This sample office is built around a simple idea: rural property deserves an agent who understands rural property. Farms, orchards, raw land, and century homesteads all come with questions a typical residential agent rarely faces.'],
                 'how_eyebrow' => ['label' => 'How-we-work eyebrow', 'type' => 'text', 'default' => 'How We Work'],
                 'how_title' => ['label' => 'How-we-work title', 'type' => 'text', 'default' => 'What working with this office looks like'],
                 'how_text' => ['label' => 'How-we-work intro', 'type' => 'textarea', 'default' => 'No pressure, no jargon, and a straight answer about the ground under your feet.'],
-            ] + $cta + [
+            ], $cta, [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Talk to a sample agent'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Reach the office at (555) 010-0455, or book a no-pressure showing and we\'ll match you with the sample agent who knows that kind of ground.'],
-            ],
+            ]),
             'contact' => $hero('Concept office', 'Get in touch <em>(demo only)</em>', 'Fictional address and phone. Prefer booking a sample showing for the full appointment UX.') + [
                 'office_title' => ['label' => 'Office heading', 'type' => 'text', 'default' => ''],
                 'office_address' => ['label' => 'Address', 'type' => 'textarea', 'default' => "100 Concept Way\nSample Borough, PA 00000"],
@@ -136,11 +136,11 @@ class PageCopy
             'book' => $hero('Appointments', 'Book a house showing', 'Pick a listing, date and time. The request is saved as a Booking in Requested status — nothing is emailed.') + [
                 'book_note' => ['label' => 'Form note', 'type' => 'text', 'default' => 'Demo only — no emails, texts or calendar invites are sent. Staff can advance the booking in WP Admin → Bookings.'],
             ],
-            'blog' => $hero('Guide', 'Realtor notes you can publish', 'Sample posts for showings, buyer checklists, and land vs home search — ready to adapt for local SEO.') + $cta + [
+            'blog' => array_merge($hero('Guide', 'Realtor notes you can publish', 'Sample posts for showings, buyer checklists, and land vs home search — ready to adapt for local SEO.'), $cta, [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Ready to tour a sample home?'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Use the showing scheduler — property, date and time in one flow.'],
                 'cta_secondary' => ['label' => 'Secondary CTA label', 'type' => 'text', 'default' => 'Browse samples'],
-            ],
+            ]),
             'simple' => $hero('', '', '') + [
                 'body' => ['label' => 'Page body', 'type' => 'textarea', 'default' => ''],
             ],
@@ -228,6 +228,7 @@ class PageCopy
         $id = $postId ?: (int) (get_queried_object_id() ?: get_the_ID());
         $stored = $id ? get_post_meta($id, Catalog::metaKey($key), true) : '';
         $value = ($stored === '' || $stored === false) ? $default : $stored;
+        $value = self::dropLegacyCopy((string) $value, $default);
 
         return wp_kses((string) $value, [
             'em' => [],
@@ -284,5 +285,42 @@ class PageCopy
         }
 
         return $cards;
+    }
+
+    /**
+     * Live demo still stores Keystone / Adams County strings from early seeds.
+     * Prefer the current sample-market default so marketing pages stay Acreline.
+     */
+    private static function dropLegacyCopy(string $value, string $default): string
+    {
+        if ($value === '' || $value === $default) {
+            return $value === '' ? $default : $value;
+        }
+
+        $hay = strtolower(wp_strip_all_tags($value));
+        $needles = [
+            'keystone',
+            'keystone-concept.test',
+            'gettysburg',
+            'adams county',
+            'menallen',
+            'hamiltonban',
+            'biglerville',
+            'michaux',
+            'idaville',
+            'bendersville',
+            'franklin township',
+            'butler township',
+            'tyrone township',
+            'liberty township',
+            'northwest of gettysburg',
+        ];
+        foreach ($needles as $needle) {
+            if (str_contains($hay, $needle)) {
+                return $default;
+            }
+        }
+
+        return $value;
     }
 }
