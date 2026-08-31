@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acreline — Requirements (buyer + seller)</title>
+  <style>
+    :root { color-scheme: light; }
+    body { margin: 0 auto; max-width: 46rem; padding: 2rem 1.25rem 4rem; font: 17px/1.6 system-ui, sans-serif; color: #141210; background: #f5f4f1; }
+    h1, h2, h3 { line-height: 1.2; letter-spacing: -.02em; }
+    h1 { font-size: 2rem; }
+    h2 { margin-top: 2.2rem; font-size: 1.35rem; }
+    h3 { margin-top: 1.4rem; font-size: 1.05rem; }
+    code, kbd { font-size: .9em; background: #fff; padding: .1em .35em; border-radius: 4px; }
+    a { color: #155539; }
+    table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid #d6d0c6; border-radius: 12px; overflow: hidden; }
+    th, td { text-align: left; padding: .65rem .85rem; border-top: 1px solid #e8e4dc; vertical-align: top; }
+    th { background: #efece6; font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; width: 38%; }
+    .note { background: #fff; border: 1px solid #d6d0c6; border-radius: 12px; padding: 1rem 1.1rem; }
+    ul { padding-left: 1.2rem; }
+    footer { margin-top: 3rem; font-size: .85rem; color: #7a7368; }
+    .copy { font-family: ui-monospace, monospace; font-size: .88rem; background: #fff; border: 1px dashed #c9c2b6; border-radius: 8px; padding: .75rem .9rem; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <p><strong>Acreline</strong> · Requirements</p>
+  <h1>Host needs and seller listing fields</h1>
+  <p>This pack is for a <strong>regular WordPress install</strong>: Appearance → Themes → Add New → Upload Theme. The file to upload is <code>keystone-homes.zip</code>. Leave the folder name <code>keystone-homes</code>.</p>
+
+  <div class="note">
+    Acreline is a land-and-farms realtor <em>concept</em> theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
+    Created by <a href="https://matthummel.com/">Matt Hummel</a>.
+  </div>
+
+  <h2>1. Buyer — what the host must have</h2>
+  <table>
+    <tbody>
+      <tr><th>WordPress</th><td>6.6 or newer (tested through 7.0.1)</td></tr>
+      <tr><th>PHP</th><td>8.3 or newer (8.4 is fine)</td></tr>
+      <tr><th>PHP extensions</th><td><code>mbstring</code>, <code>xml</code>, <code>curl</code>, <code>zip</code>, <code>intl</code>, <code>json</code>, plus <code>gd</code> or Imagick for media</td></tr>
+      <tr><th>Memory</th><td>128&nbsp;MB minimum; 256&nbsp;MB recommended (Sage / Acorn)</td></tr>
+      <tr><th>HTTPS</th><td>Recommended on any public site</td></tr>
+      <tr><th>Install folder</th><td>Must stay <code>keystone-homes</code> (compiled asset URLs use that path)</td></tr>
+      <tr><th>Composer / npm on the host</th><td>Not required. Store zips already include <code>vendor/</code> and <code>public/build/</code></td></tr>
+      <tr><th>Block editor</th><td>Not used. Edit pages, listings, and agents through custom fields</td></tr>
+      <tr><th>Page builder</th><td>None required (not an Elementor / Gutenberg theme)</td></tr>
+      <tr><th>Database</th><td>MySQL / MariaDB as WordPress expects. SQLite is only for this repo’s local demo helper</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Optional, not required</h3>
+  <ul>
+    <li><strong>Keystone Core</strong> (<code>keystone-core.zip</code>) — keeps listings, agents, and bookings if the buyer later switches themes. The parent theme still registers those types when the plugin is off, so a regular install works with the theme zip alone.</li>
+    <li><strong>Acreline Child</strong> (<code>keystone-homes-child.zip</code>) — CSS that survives parent updates.</li>
+    <li>Yoast, Rank Math, SEOPress, or AIOSEO — the theme yields native title / OG tags when one of these is active.</li>
+  </ul>
+
+  <h3>This theme does not include</h3>
+  <ul>
+    <li>A live MLS / IDX feed or payment processor</li>
+    <li>Gutenberg patterns or a page-builder kit</li>
+    <li>Bundled Unsplash image files (concept photos are hotlinks; replace them on a client site)</li>
+    <li>A license lock, Freemius, or Envato purchase-code nag</li>
+  </ul>
+
+  <h2>2. Regular install (two minutes)</h2>
+  <ol>
+    <li>WordPress 6.6+ and PHP 8.3+ on the host.</li>
+    <li>Appearance → Themes → Add New → Upload Theme → <code>keystone-homes.zip</code> → Activate <strong>Acreline</strong>.</li>
+    <li>Optional: upload and activate the child theme, then Keystone Core.</li>
+    <li>Appearance → Customize → Identity (brand, 555-style phone, email, colors).</li>
+    <li>Tools → Seed Acreline demo if you want the preview pages and sample inventory.</li>
+  </ol>
+  <p>Full walkthrough: <a href="buyer-guide.html">buyer-guide.html</a>. Help: <a href="support.html">support.html</a>.</p>
+
+  <h2>3. Seller — paste these on the store listing</h2>
+  <p>Use this block on ThemeForest, Creative Market, TemplateMonster, Gumroad, or your own product page. Do not claim WordPress.org approval, a live MLS, or “#1 realtor theme.”</p>
+
+  <h3>Short description</h3>
+  <p class="copy">Acreline is a WordPress theme for farms, land, and historic homes — searchable listings, agents, and showing requests. Customizer identity, eight color styles. Classic (non-block). Concept demo by Matt Hummel.</p>
+
+  <h3>Item attributes (WordPress theme form)</h3>
+  <table>
+    <tbody>
+      <tr><th>Software version</th><td>WordPress 6.6, 6.7, 6.8, 7.0 (tested up to 7.0.1)</td></tr>
+      <tr><th>Compatible browsers</th><td>Chrome, Firefox, Safari, Edge (current two versions)</td></tr>
+      <tr><th>Compatible with</th><td>No page builder required. Optional: Yoast, Rank Math, SEOPress, AIOSEO</td></tr>
+      <tr><th>Files included</th><td>PHP, CSS, JS (compiled Vite assets + production Composer vendor)</td></tr>
+      <tr><th>Documentation</th><td>Well documented (this folder)</td></tr>
+      <tr><th>Layout</th><td>Responsive</td></tr>
+      <tr><th>Columns</th><td>4+</td></tr>
+      <tr><th>Gutenberg optimized</th><td>No — classic metaboxes on purpose</td></tr>
+      <tr><th>High resolution</th><td>Yes</td></tr>
+      <tr><th>Widget ready</th><td>Yes (footer widgets)</td></tr>
+      <tr><th>Tags</th><td>real estate, realtor, farm, land, acreage, listings, rural, sage</td></tr>
+      <tr><th>Demo URL</th><td>https://keystonehomes.ridgesandvalleys.com/</td></tr>
+      <tr><th>Support URL</th><td>https://github.com/matthummel-pa/keystone-homes-wp-theme/blob/main/SUPPORT.md</td></tr>
+      <tr><th>Author</th><td>Matt Hummel · https://matthummel.com/</td></tr>
+      <tr><th>License</th><td>GPLv2 or later (theme). Sage / Acorn remain MIT (GPL-compatible)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What to upload where</h3>
+  <table>
+    <tbody>
+      <tr><th>ThemeForest / Creative Market</th><td>This whole pack zip (“All files &amp; documentation”). Buyers extract it, then upload <code>keystone-homes.zip</code> in wp-admin.</td></tr>
+      <tr><th>Own site / Gumroad</th><td>Same pack zip. Lead the product page with the short description and the host table above.</td></tr>
+      <tr><th>WordPress.org</th><td>Upload <em>only</em> <code>keystone-homes.zip</code>. Do not claim approval while this is Sage + Gutenberg-off. See the seller brief in the repo, not this buyer pack.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Seller checklist before you submit</h3>
+  <ul>
+    <li>Live preview URL works; demo chrome on for honesty, one screenshot with chrome off.</li>
+    <li>Identity uses 555 numbers and <code>@keystone-concept.test</code> only.</li>
+    <li>No Unsplash <em>files</em> inside <code>keystone-homes.zip</code>.</li>
+    <li>No Freemius, Envato banners, or “upgrade to Pro” admin ads.</li>
+    <li>Footer author credit is removable (Customize → Identity) and <code>rel="nofollow"</code>.</li>
+    <li>Child theme and Keystone Core sit <em>beside</em> the theme zip, not inside it.</li>
+    <li>Theme Check on a stock WP install — Sage/vendor warnings are expected; do not hide them with a dummy license.</li>
+  </ul>
+
+  <footer>Fiction only · Equal Housing Opportunity (concept) · Theme license GPLv2 or later</footer>
+</body>
+</html>

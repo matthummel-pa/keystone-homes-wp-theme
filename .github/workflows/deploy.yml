@@ -42,6 +42,9 @@ jobs:
       - name: Pack WordPress theme zip
         run: bash bin/build-theme-zip.sh
 
+      - name: Pack general install zip (seller / regular host)
+        run: SKIP_THEME_BUILD=1 bash bin/build-install-pack.sh
+
       - name: Publish GitHub Release (theme-latest)
         uses: softprops/action-gh-release@v2
         with:
@@ -50,8 +53,12 @@ jobs:
           body: |
             Built Sage theme (Composer vendor + Vite `public/build`).
             Commit: ${{ github.sha }}
-            Install from wp-admin → Appearance → Update Theme, or unzip into `wp-content/themes/keystone-homes/`.
-          files: dist-theme/keystone-homes.zip
+
+            Regular WordPress install: download `acreline-*.zip`, extract it, then Appearance → Themes → Upload Theme and choose the inner `keystone-homes.zip`.
+            Host update: Appearance → Update Theme (theme zip only).
+          files: |
+            dist-theme/keystone-homes.zip
+            dist-install/acreline-*.zip
           fail_on_unmatched_files: true
           make_latest: true
           target_commitish: ${{ github.sha }}
