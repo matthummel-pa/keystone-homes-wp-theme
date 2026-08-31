@@ -4,8 +4,8 @@ Requires at least: 6.6
 Tested up to: 7.0.1
 Requires PHP: 8.3
 Stable tag: 1.2.2
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: Proprietary — All Rights Reserved
+License URI: LICENSE
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
 
 WordPress theme for farms, land, and historic homes — listings, agents, showing requests.
@@ -98,5 +98,5 @@ Yes. The marketplace pack includes `acreline-child`.
 * Manrope, Google Fonts, SIL OFL
 * Montserrat, Google Fonts, SIL OFL
 * Sage / Acorn, Roots, MIT, https://roots.io/sage/
-* Theme placeholders and SVG marks, Matt Hummel, GPLv2 or later
+* Theme placeholders and SVG marks, Matt Hummel, proprietary — all rights reserved
 * Unsplash photographs used as hotlinked concept images only — not bundled in the theme zip

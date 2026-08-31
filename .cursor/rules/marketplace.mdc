@@ -10,6 +10,8 @@ Matt asked to package this theme for sale. Follow 8.1–8.12 on marketplace work
 
 This repo is still a **concept Sage theme**. Listings stay in-theme as a fallback so the live demo keeps working. The **Acreline Core** companion plugin (`plugins/acreline-core`) is the store-correct home for CPTs and booking REST.
 
+Original Acreline work is **proprietary** (`LICENSE`). Do not advertise GPLv2. WordPress.org and ThemeForest require GPL — do not submit there unless Matt asks to relicense.
+
 ## Where the money is
 
 | Channel | What to ship | Honest limit |
@@ -97,7 +99,7 @@ Identity (phone, email, address, hours, CTA, accent, social, demo banner) comes 
 
 | File | Why |
 | --- | --- |
-| `style.css` headers | Theme Name, URI, Author, Description, Version, Requires at least, Tested up to, Requires PHP, License (GPLv2+), License URI, Text Domain `acreline`, Tags |
+| `style.css` headers | Theme Name, URI, Author, Description, Version, Requires at least, Tested up to, Requires PHP, License (proprietary), License URI, Text Domain `acreline`, Tags |
 | `readme.txt` | WP.org / ThemeForest parser format |
 | `screenshot.png` | 1200×900, 4:3, not an ad |
 | `languages/acreline.pot` | Translation-ready |

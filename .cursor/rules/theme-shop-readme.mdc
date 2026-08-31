@@ -66,8 +66,8 @@ Author:             Matt Hummel
 Author URI:         https://matthummel.com/
 Text Domain:        acreline
 Domain Path:        /languages
-License:            GNU General Public License v2 or later
-License URI:        https://www.gnu.org/licenses/gpl-2.0.html
+License:            Proprietary — All Rights Reserved
+License URI:        LICENSE
 Requires PHP:       8.3
 Requires at least:  6.6
 Tested up to:       7.0.1
@@ -85,7 +85,7 @@ Rules when editing this header:
 | Version | Must match `readme.txt` Stable tag. Bump only with a real shipping change |
 | Author / Author URI | Matt Hummel / https://matthummel.com/ (not `github.com/matthummel-pa`) |
 | Text Domain | **`acreline`** — same as install folder |
-| License | WordPress wording (`GNU General Public License v2 or later`), not SPDX `GPL-2.0-or-later` |
+| License | Proprietary — All Rights Reserved. Do not put GPLv2 on this product unless Matt asks to relicense for a store |
 | Requires PHP | **8.3** (Sage 11 / Acorn). Do not lower to 8.1 for a shop form |
 | Requires at least | **6.6** |
 | Tested up to | Keep in lockstep with `readme.txt` |
@@ -133,7 +133,7 @@ Keep this outline (see the file):
 7. Package scripts (`bin/build-theme-zip.sh`, `bin/build-install-pack.sh`) — versioned zip as `acreline-<version>.zip`, not a stale `1.2.0`
 8. GitHub `theme-latest` updater
 9. Template map
-10. License GPLv2+
+10. License: proprietary, all rights reserved
 
 Also:
 
@@ -146,7 +146,7 @@ Also:
 
 ## 5. readme.txt (WP.org / ThemeForest parser)
 
-`readme.txt` is the **store parser** file (Stable tag, Requires at least, Tested up to, Requires PHP, License GPLv2+, tags). Keep it in WP.org format even if we are not submitting yet.
+`readme.txt` is the **store parser** file (Stable tag, Requires at least, Tested up to, Requires PHP, tags). License on this product is proprietary. Do not switch it back to GPLv2+ unless Matt asks to submit to WordPress.org or ThemeForest (those stores require GPL).
 
 - Stable tag matches `style.css` Version
 - Description: land, farms, historic homes — not generic luxury brokerage

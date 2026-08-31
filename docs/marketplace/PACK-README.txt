@@ -29,7 +29,7 @@ Author:
   Matt Hummel  https://matthummel.com/
 
 License:
-  Licensing/  — GPLv2 or later (theme). Sage/Acorn MIT.
+  Licensing/  — Proprietary, all rights reserved (theme). Sage/Acorn MIT.
 
 Fiction only. Sample listings and 555 phones are concept data.
 Not a live MLS or licensed brokerage.

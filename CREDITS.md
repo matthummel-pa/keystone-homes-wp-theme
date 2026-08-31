@@ -1,13 +1,11 @@
 # Credits and licenses
 
-Everything in a store zip must be GPL-compatible. This list is the Theme Check / Envato “Resources” file.
+Original Acreline work is proprietary. Third-party packages keep their own licenses.
 
 ## Theme
 
-- Acreline theme code — Matt Hummel — [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html)
+- Acreline theme code, design, copy, and original SVG marks — Matt Hummel — proprietary, all rights reserved (see `LICENSE`)
 - Sage 11 / Acorn — Roots Software LLC — [MIT](https://opensource.org/licenses/MIT) (see `LICENSE.md`)
-
-MIT is GPL-compatible. The distributed theme is offered under GPLv2 or later.
 
 ## Fonts (loaded from Google Fonts when selected)
 
@@ -23,10 +21,10 @@ No font files are vendored in the zip.
 
 ## Images
 
-- House mark SVGs in the header/footer — original, GPLv2 or later
+- House mark SVGs in the header/footer — original, proprietary
 - `screenshot.png` — capture of the concept homepage; Unsplash photo is hotlinked on the live demo, not copied into `public/`
 - Listing / blog Unsplash URLs — preview only. **Do not** bundle those binaries in `acreline.zip`
 
 ## Companion plugin
 
-- Acreline Core — Matt Hummel — GPLv2 or later (`plugins/acreline-core`)
+- Acreline Core — Matt Hummel — proprietary, all rights reserved (`plugins/acreline-core`)
