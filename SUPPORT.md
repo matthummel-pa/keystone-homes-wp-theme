@@ -10,7 +10,7 @@ Created by [Matt Hummel](https://matthummel.com/).
 | --- | --- |
 | How the public site looks | [Concept demo](https://keystonehomes.ridgesandvalleys.com/) |
 | Install, Customizer, seed, child theme | [Buyer guide](docs/marketplace/buyer-guide.html) |
-| Theme bugs or docs gaps | [Open a GitHub issue](https://github.com/matthummel-pa/keystone-homes-wp-theme/issues) |
+| Theme bugs or docs gaps | [Open a GitHub issue](https://github.com/matthummel-pa/wp-acreline/issues) |
 | Author / other work | [matthummel.com](https://matthummel.com/) |
 | Concept office form (demo only) | [Contact on the demo](https://keystonehomes.ridgesandvalleys.com/contact/) |
 
