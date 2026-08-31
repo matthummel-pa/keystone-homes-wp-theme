@@ -8,11 +8,11 @@ License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
 
-Rural listings, agents, and showing requests.
+WordPress theme for farms, land, and historic homes — listings, agents, showing requests.
 
 == Description ==
 
-Acreline is a classic (non-block) Sage 11 theme for land, farms, and historic-home inventory. Buyers set office identity, accent color, menus, and logo from the Customizer. Demo pages and sample listings load from Tools → Seed Acreline demo.
+Acreline is a classic (non-block) Sage 11 WordPress theme for land, farms, and historic-home inventory: searchable listings, agents, and showing requests. Buyers set office identity, color style, menus, and logo from the Customizer. Demo pages and sample listings load from Tools → Seed Acreline demo. Support: https://github.com/matthummel-pa/keystone-homes-wp-theme/blob/main/SUPPORT.md
 
 The sample office in the preview is named Keystone Real Estate — replace it under Customize → Identity. This is a concept theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
 

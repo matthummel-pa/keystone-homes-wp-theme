@@ -30,6 +30,8 @@ Creates `dist-marketplace/`:
 - `keystone-homes-child.zip`
 - `keystone-core.zip`
 - `Documentation/buyer-guide.html`
+- `Documentation/support.html`
+- `Documentation/SUPPORT.md`
 - `Demos/README.txt`
 - `Licensing/CREDITS.md`
 
@@ -52,6 +54,26 @@ Upload the **pack** to Envato (“All files & documentation”). Upload **only**
 - Listings are plugin territory — Core must be a **separate** WP.org plugin if you go that route
 
 A future “Keystone Lite” without Acorn would have a real shot at the picker. This repo is the premium / Envato / own-site product.
+
+## GitHub repo About (paste in Settings → General)
+
+`gh` in this workspace cannot write repo metadata. After merge, paste these on https://github.com/matthummel-pa/keystone-homes-wp-theme/settings :
+
+**Description** (under 350 characters; this is the search snippet):
+
+```
+Acreline is a WordPress theme for farms, land, and historic homes — searchable listings, agents, and showing requests. Customizer identity, eight color styles, Sage 11. Demo and support by Matt Hummel.
+```
+
+**Website** (points at the support page, not only the demo):
+
+```
+https://github.com/matthummel-pa/keystone-homes-wp-theme/blob/main/SUPPORT.md
+```
+
+**Topics:** `wordpress-theme`, `wordpress`, `real-estate`, `realtor`, `farms`, `land`, `sage`, `acreline`
+
+Leave the demo URL in `style.css` Theme URI. The repo Website field is the support page so GitHub’s “About” sidebar sends people to help, not a second concept HTML demo.
 
 ## After a sale
 
