@@ -3,7 +3,7 @@ Contributors: matthummel
 Requires at least: 6.6
 Tested up to: 7.0.1
 Requires PHP: 8.3
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
@@ -64,6 +64,9 @@ In the `listing` post type. Acreline Core owns registration on a store install. 
 Yes. The marketplace pack includes `acreline-child`.
 
 == Changelog ==
+
+= 1.2.2 =
+* Fix a critical error on single blog posts (adjacent/related post data).
 
 = 1.2.1 =
 * Marketing pages: taller photo heroes, sample-market cards, and a scannable land-buying guide. Retired Keystone / Adams County strings fall back to Acreline copy.

@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2
+
+- Single blog posts no longer fatal: adjacent / related post data is passed as arrays, not invokable view variables
+
 ## 1.2.1
 
 - Inner marketing pages (listings, areas, guide, agents, book, contact, blog) share a taller photo hero, brand pill, and two-column lead
