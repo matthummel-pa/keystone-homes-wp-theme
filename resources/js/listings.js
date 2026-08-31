@@ -18,7 +18,7 @@
       township:"Cumberland", price:525000,
       beds:4, baths:2, sqft:2400, acres:8.2,
       grad:"linear-gradient(135deg,#155539,#1f6b4a)",
-      desc:"A handsome 1890s brick farmhouse with original hardwood floors, a wraparound porch, and a restored bank barn. Eight-plus acres of gently rolling pasture bordered by mature hedgerow, minutes from downtown Gettysburg.",
+      desc:"A handsome 1890s brick farmhouse with original hardwood floors, a wraparound porch, and a restored bank barn. Eight-plus acres of gently rolling pasture bordered by mature hedgerow, minutes from the county seat.",
       lat:28, lng:22
     },
     {
@@ -34,7 +34,7 @@
     {
       id:3, type:"farm", typeLabel:"Working Farm", status:"active",
       title:"Wheatland Farmhouse & Outbuildings",
-      address:"1420 Fairfield Rd, North Ridge, PA 00000",
+      address:"1420 Orchard Farm Rd, North Ridge, PA 00000",
       township:"Cumberland", price:649000,
       beds:4, baths:2.5, sqft:2850, acres:12.4,
       grad:"linear-gradient(135deg,#1f6b4a,#155539)",
@@ -43,12 +43,12 @@
     },
     {
       id:4, type:"home", typeLabel:"Home", status:"active",
-      title:"Seminary Ridge Cottage",
-      address:"980 Chambersburg Pike, North Ridge, PA 00000",
+      title:"Ridge Lane Cottage",
+      address:"980 Ridge Lane, North Ridge, PA 00000",
       township:"Cumberland", price:349900,
       beds:3, baths:2, sqft:1680, acres:0.6,
       grad:"linear-gradient(135deg,#3f3f46,#71717a)",
-      desc:"A move-in-ready cottage a short walk from Seminary Ridge, with an updated kitchen, screened porch, and a level, fenced back yard. Ideal starter home or in-town pied-a-terre.",
+      desc:"A move-in-ready cottage a short walk from the square, with an updated kitchen, screened porch, and a level, fenced back yard. Ideal starter home or in-town pied-a-terre.",
       lat:34, lng:18
     },
     {
@@ -68,7 +68,7 @@
       township:"Franklin", price:875000,
       beds:4, baths:3, sqft:3200, acres:60,
       grad:"linear-gradient(135deg,#d97706,#f59e0b)",
-      desc:"A sixty-acre producing apple and peach orchard with a renovated farmhouse, cold storage building, and roadside stand. A rare turn-key opportunity to continue an established Adams County orchard operation.",
+      desc:"A sixty-acre producing apple and peach orchard with a renovated farmhouse, cold storage building, and roadside stand. A rare turn-key opportunity to continue an established orchard operation.",
       lat:70, lng:30
     },
     {
@@ -78,7 +78,7 @@
       township:"Franklin", price:795000,
       beds:5, baths:3, sqft:3600, acres:22,
       grad:"linear-gradient(135deg,#0c0c0c,#27272a)",
-      desc:"A stone-and-frame homestead dating to 1852, lovingly maintained through six generations. Original summer kitchen, restored bank barn, twenty-two acres, and documented Civil War-era provenance.",
+      desc:"A stone-and-frame homestead dating to 1852, lovingly maintained through six generations. Original summer kitchen, restored bank barn, twenty-two acres, and documented 19th-century provenance.",
       lat:78, lng:44
     },
     {
@@ -88,7 +88,7 @@
       township:"Franklin", price:129000,
       beds:0, baths:0, sqft:0, acres:5.5,
       grad:"linear-gradient(135deg,#1f6b4a,#9fd5bb)",
-      desc:"A wooded 5.5-acre building lot with long-range views toward South Mountain. Perc-approved for a conventional septic system; electric at the road. A quiet, buildable spot minutes from Gettysburg.",
+      desc:"A wooded 5.5-acre building lot with long-range ridge views. Perc-approved for a conventional septic system; electric at the road. A quiet, buildable spot minutes from the county seat.",
       lat:86, lng:56
     }
   ];
@@ -115,6 +115,10 @@
   };
 
   var TYPE_COLOR = { home:"#1f6b4a", farm:"#059669", land:"#d97706", historic:"#3f3f46" };
+  var TOWNSHIP_LABELS = { Cumberland:"North Ridge", Straban:"Mill Creek", Franklin:"Oak Hollow" };
+  function townshipLabel(l){
+    return l.townshipLabel || TOWNSHIP_LABELS[l.township] || l.township;
+  }
 
   function specsHTML(l){
     var parts = [];
@@ -335,7 +339,7 @@
     lastFocused = document.activeElement;
 
     document.getElementById("modalGallery").innerHTML = galleryTiles(l);
-    document.getElementById("modalTag").textContent = l.typeLabel + " · " + l.township + " Township";
+    document.getElementById("modalTag").textContent = l.typeLabel + " · " + townshipLabel(l);
     document.getElementById("modalTitle").textContent = l.title;
     document.getElementById("modalAddress").querySelector("span").textContent = l.address;
     document.getElementById("modalPrice").textContent = currency(l.price);

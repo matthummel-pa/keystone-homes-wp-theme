@@ -59,7 +59,7 @@
           <ul>
             <li>{{ $readingMinutes }} min read</li>
             <li>Published {{ get_the_date() }}</li>
-            <li>Adams County concept copy</li>
+            <li>Sample-market concept copy</li>
           </ul>
         </div>
       </aside>

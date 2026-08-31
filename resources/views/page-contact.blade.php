@@ -45,17 +45,17 @@
             </div>
             <div>
               <dt>Directions</dt>
-              <dd>About a mile north of Lincoln Square. From US-15, take the Gettysburg exits toward town; from US-30, head north on Old Harrisburg Road. Visitor parking on site.</dd>
+              <dd>About a mile north of the square. From the highway, take the town exits toward the courthouse; visitor parking on site. Replace these directions in the page fields.</dd>
             </div>
           </dl>
 
-          <div class="map-embed" role="img" aria-label="Illustrative map showing the Keystone Real Estate office north of downtown Gettysburg, PA">
+          <div class="map-embed" role="img" aria-label="Illustrative map showing the Keystone Real Estate office north of a sample county seat">
             <div class="map-roads"></div>
             <div class="map-road-3"></div>
             <span class="pin-static">
               <svg viewBox="0 0 24 24"><path fill="#1f6b4a" stroke="#fffcf7" stroke-width="1.5" d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8z"/><circle cx="12" cy="10" r="3" fill="#fffcf7"/></svg>
             </span>
-            <div class="map-legend"><span>455 Old Harrisburg Rd · Concept demo</span></div>
+            <div class="map-legend"><span>100 Concept Way · Concept demo</span></div>
           </div>
         </div>
 
@@ -89,7 +89,7 @@
                 </div>
                 <div class="field field-span">
                   <label for="cMessage">Message</label>
-                  <textarea id="cMessage" rows="4" placeholder="e.g. Looking for 10+ acres near Franklin Township with a well already in."></textarea>
+                  <textarea id="cMessage" rows="4" placeholder="e.g. Looking for 10+ acres near Oak Hollow with a well already in."></textarea>
                 </div>
                 <div class="field field-span">
                   <button type="submit" class="btn btn-primary btn-block">Send Message</button>
@@ -113,9 +113,9 @@
         <div class="sell-copy">
           <p class="eyebrow">Thinking Of Selling</p>
           <h2>What's your farm or land worth right now?</h2>
-          <p>Ground values around Adams County have moved in the last two years. Get a free, no-obligation estimate before you list — we'll factor in acreage, tillable ground, outbuildings and recent township sales.</p>
+          <p>Ground values in this sample market have moved in the last two years. Get a free, no-obligation estimate before you list — we'll factor in acreage, tillable ground, outbuildings and recent area sales.</p>
           <ul>
-            <li><svg viewBox="0 0 24 24" stroke-width="2" fill="none"><path d="M20 6L9 17l-5-5"/></svg>Local comps from actual Adams County closings</li>
+            <li><svg viewBox="0 0 24 24" stroke-width="2" fill="none"><path d="M20 6L9 17l-5-5"/></svg>Local comps from recent sample-market closings</li>
             <li><svg viewBox="0 0 24 24" stroke-width="2" fill="none"><path d="M20 6L9 17l-5-5"/></svg>Guidance on ag preservation &amp; easements</li>
             <li><svg viewBox="0 0 24 24" stroke-width="2" fill="none"><path d="M20 6L9 17l-5-5"/></svg>No pressure — just numbers you can trust</li>
           </ul>
@@ -145,14 +145,9 @@
               <div class="field">
                 <label for="valTownship">Township</label>
                 <select id="valTownship">
-                  <option value="Cumberland">Cumberland Twp</option>
-                  <option value="Straban">Straban Twp</option>
-                  <option value="Franklin">Franklin Twp</option>
-                  <option value="Menallen">Menallen Twp</option>
-                  <option value="Butler">Butler Twp</option>
-                  <option value="Tyrone">Tyrone Twp</option>
-                  <option value="Hamiltonban">Hamiltonban Twp</option>
-                  <option value="Liberty">Liberty Twp</option>
+                  <option value="Cumberland">North Ridge</option>
+                  <option value="Straban">Mill Creek</option>
+                  <option value="Franklin">Oak Hollow</option>
                 </select>
               </div>
               <div class="field field-span">

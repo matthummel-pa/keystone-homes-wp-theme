@@ -470,11 +470,7 @@ class DemoContent
         }
 
         foreach (PageCopy::schemaForPost($id) as $key => $def) {
-            $meta = Catalog::metaKey($key);
-            $current = get_post_meta($id, $meta, true);
-            if ($current === '' || $current === false) {
-                update_post_meta($id, $meta, $def['default'] ?? '');
-            }
+            update_post_meta($id, Catalog::metaKey($key), $def['default'] ?? '');
         }
     }
 }

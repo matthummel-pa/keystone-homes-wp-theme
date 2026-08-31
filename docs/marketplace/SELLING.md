@@ -13,7 +13,7 @@ Price band for a niche land/farms theme: **$39–$69** on ThemeForest, **$49–$
 | Channel | Ship | Do not claim |
 | --- | --- | --- |
 | **Own site** | Full pack from `bin/build-marketplace-pack.sh` | Nothing. Best margin. |
-| **ThemeForest / Creative Market** | Same pack + live preview URL | “#1 realtor theme.” Show the Adams County concept honestly. |
+| **ThemeForest / Creative Market** | Same pack + live preview URL | “#1 realtor theme.” Show the sample-county land/farms concept honestly. |
 | **WordPress.org** | Theme zip only. No plugin inside the theme. CPTs off (`KS_DISABLE_THEME_CPTS`). `readme.txt` + 1200×900 screenshot | “Approved” or “in the picker” until a reviewer says so. Sage + Acorn + Gutenberg-off is a common rejection. Use WP.org later as a **lite** traffic listing, or list **Keystone Core** as a free plugin and sell setup. |
 
 WordPress.org is **not** a cash register. It is distribution. Money there is services (install, copy, listing import) or a paid add-on — never an in-theme upgrade nag.

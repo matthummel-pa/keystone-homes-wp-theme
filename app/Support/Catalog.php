@@ -40,6 +40,18 @@ class Catalog
         'virtual' => 'Virtual walk-through',
     ];
 
+    /** Filter values stay stable; labels are the sample-market names buyers see. */
+    public const TOWNSHIP_LABELS = [
+        'Cumberland' => 'North Ridge',
+        'Straban' => 'Mill Creek',
+        'Franklin' => 'Oak Hollow',
+    ];
+
+    public static function townshipLabel(string $township): string
+    {
+        return self::TOWNSHIP_LABELS[$township] ?? $township;
+    }
+
     /**
      * Listing meta keys stored on the listing CPT (no leading underscore so WP-CLI can set them easily).
      *
@@ -309,6 +321,7 @@ class Catalog
             'state' => (string) self::getMeta($post->ID, 'state', 'PA'),
             'zip' => (string) self::getMeta($post->ID, 'zip', ''),
             'township' => (string) self::getMeta($post->ID, 'township', ''),
+            'townshipLabel' => self::townshipLabel((string) self::getMeta($post->ID, 'township', '')),
             'price' => (int) self::getMeta($post->ID, 'price', 0),
             'beds' => (float) self::getMeta($post->ID, 'beds', 0),
             'baths' => (float) self::getMeta($post->ID, 'baths', 0),
@@ -465,6 +478,7 @@ class Catalog
             'state' => (string) ($item['state'] ?? 'PA'),
             'zip' => (string) ($item['zip'] ?? ''),
             'township' => (string) ($item['township'] ?? ''),
+            'townshipLabel' => self::townshipLabel((string) ($item['township'] ?? '')),
             'price' => (int) ($item['price'] ?? 0),
             'beds' => (float) ($item['beds'] ?? 0),
             'baths' => (float) ($item['baths'] ?? 0),

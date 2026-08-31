@@ -12,7 +12,7 @@
   'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample markets',
   'heroTitle' => $copy['hero_title'] ?: 'Areas we <em>demo</em>',
-  'heroText' => $copy['hero_text'] ?: 'Township-by-township reads of rural Adams County — orchards, farms, and wooded lots from Franklin to Liberty. Fictional profiles for a scannable area page.',
+  'heroText' => $copy['hero_text'] ?: 'Fictional North Ridge, Mill Creek, and Oak Hollow profiles — written so you can swap in your own counties.',
   'heroActions' => [
     ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-primary'],
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-outline light'],
@@ -23,8 +23,8 @@
   <!-- ============================= INTRO PROSE ============================= -->
   <section class="section">
     <div class="wrap prose reveal">
-      <h2>{!! $copy['intro_title'] ?? 'Land, farms &amp; homesteads across Adams County' !!}</h2>
-      <p>{!! $copy['intro_text'] ?? 'Our office sits at 100 Concept Way on the north edge of Gettysburg. The townships below are where we spend most of our boot leather.' !!}</p>
+      <h2>{!! $copy['intro_title'] ?? 'Land, farms &amp; homesteads in a sample market' !!}</h2>
+      <p>{!! $copy['intro_text'] ?? 'The office sits at 100 Concept Way in Sample Borough. Ridges hold orchards, valley floors hold tillable ground, and the six area cards below show how a land office talks about its territory. Replace the names with yours.' !!}</p>
     </div>
   </section>
 
@@ -32,9 +32,9 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="section-head left reveal">
-        <p class="eyebrow">{{ $copy['grid_eyebrow'] ?? 'Township by Township' }}</p>
-        <h2>{!! $copy['grid_title'] ?? 'Where we work' !!}</h2>
-        <p>{!! $copy['grid_text'] ?? 'A quick, honest read on six rural townships — what the ground is like and what a buyer should watch for.' !!}</p>
+        <p class="eyebrow">{{ $copy['grid_eyebrow'] ?? 'Area by area' }}</p>
+        <h2>{!! $copy['grid_title'] ?? 'Where the sample office works' !!}</h2>
+        <p>{!! $copy['grid_text'] ?? 'A quick read on six rural area types — what the ground is like, what tends to list, and what a buyer should watch for.' !!}</p>
       </div>
 
       <div class="area-grid">
@@ -54,32 +54,32 @@
     <div class="wrap">
       <div class="section-head left reveal">
         <p class="eyebrow">Nearby Land Markets</p>
-        <h2>Towns &amp; markets just beyond the townships</h2>
-        <p>We also list and sell property in the boroughs and market towns that ring rural Adams County — each an easy drive from our Gettysburg office.</p>
+        <h2>Towns &amp; markets just beyond the sample areas</h2>
+        <p>We also list and sell property in the boroughs and market towns that ring the sample county — each an easy drive from the Concept Way office. Rename these for your market.</p>
       </div>
       <div class="nearby-grid reveal">
         <div class="nearby-card">
-          <h4>Biglerville</h4>
-          <p>The capital of the fruit belt, 9 miles north on US-15/PA-34. Orchard farms, packing houses and in-town homes near the National Apple Museum.</p>
+          <h4>North Ridge</h4>
+          <p>The fruit-belt hub north of the square. Orchard farms, packing houses, and in-town homes a short drive from the ridgeline listings.</p>
         </div>
         <div class="nearby-card">
-          <h4>Cashtown</h4>
-          <p>Historic crossroads west on US-30 at the foot of the mountain. Country homes, small acreage and the landmark Cashtown Inn nearby.</p>
+          <h4>West Hollow</h4>
+          <p>Historic crossroads west on the old pike at the foot of the mountain. Country homes, small acreage, and a quieter commute than the north end.</p>
         </div>
         <div class="nearby-card">
-          <h4>Fairfield</h4>
-          <p>A walkable mountain borough 8 miles southwest on PA-116. Gateway to Carroll Valley, ski country and wooded recreational land.</p>
+          <h4>South Fork</h4>
+          <p>A walkable mountain borough southwest of the seat. Gateway to timber, ski country, and wooded recreational land.</p>
         </div>
         <div class="nearby-card">
-          <h4>New Oxford</h4>
-          <p>Antiques town 8 miles east on US-30. Farmland and family homes with quick access toward Hanover and York.</p>
+          <h4>East Creek</h4>
+          <p>Market town east toward the highway. Farmland and family homes with a quicker weekday drive to jobs and grocery stores.</p>
         </div>
         <div class="nearby-card">
-          <h4>Littlestown</h4>
-          <p>Southeast on PA-97 toward the Maryland line. Open farm ground, newer subdivisions and value per acre for commuting buyers.</p>
+          <h4>Mill Crossing</h4>
+          <p>Southeast toward the next county line. Open farm ground, newer subdivisions, and value per acre for commuting buyers.</p>
         </div>
         <div class="nearby-card">
-          <h4>McSherrystown &amp; Hanover</h4>
+          <h4>Orchard Ridge</h4>
           <p>The county's busier eastern edge. Denser boroughs with nearby farmland — handy for buyers who want acreage close to services and employers.</p>
         </div>
       </div>
@@ -90,9 +90,9 @@
   <section class="section section-alt">
     <div class="wrap prose reveal">
       <h2>Getting here &amp; getting around</h2>
-      <p>Gettysburg is the hub of it all. Our office at 100 Concept Way is about a mile north of Lincoln Square — from US-15, take the Gettysburg exits and head toward town; from US-30, you're minutes away whether you're coming from Chambersburg to the west or York to the east. Downtown parking is easiest in the lots off Race Horse Alley and along Stratton Street, and most of the historic district around Steinwehr Avenue, Baltimore Street and the David Wills House is walkable once you're in.</p>
-      <p>Even buyers hunting pure farmland like to know what's close, so here's the short list: the Gettysburg National Military Park and its landmarks — Seminary Ridge, Little Round Top, the Eternal Light Peace Memorial — sit right at the edge of town; Sachs Covered Bridge spans Marsh Creek down toward Liberty Township; and the orchards, wineries and farm stands of the fruit belt spread north toward Biglerville. When we show you a parcel, we'll tell you honestly how far it really is from a grocery store, a school and a hospital — not just how pretty the view is.</p>
-      <p>Ready to narrow it down? Browse our <a href="{{ home_url('/listings') }}">current listings</a>, read the <a href="{{ home_url('/guide') }}">Land Buyer's Guide</a>, or <a href="{{ home_url('/contact') }}">reach out to the office</a> and we'll point you toward the townships that fit what you're after.</p>
+      <p>The county seat is the hub. The sample office at 100 Concept Way sits about a mile north of the square — from the highway, take the town exits and head toward the courthouse. Downtown parking is easiest in the lots off the alley behind Main, and most of the older district is walkable once you are in. Swap these directions for your own market in the page fields.</p>
+      <p>Even buyers hunting pure farmland like to know what's close, so here's the short list: a historic district and Saturday market sit at the edge of town; a covered bridge spans the creek toward Border Farms; and the orchards, wineries, and farm stands of the fruit belt spread north toward North Ridge. When we show you a parcel, we'll tell you honestly how far it really is from a grocery store, a school, and a hospital — not just how pretty the view is.</p>
+      <p>Ready to narrow it down? Browse our <a href="{{ home_url('/listings') }}">current listings</a>, read the <a href="{{ home_url('/guide') }}">Land Buyer's Guide</a>, or <a href="{{ home_url('/contact') }}">reach out to the office</a> and we'll point you toward the areas that fit what you're after.</p>
     </div>
   </section>
 

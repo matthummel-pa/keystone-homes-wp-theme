@@ -17,8 +17,8 @@ class HeroImage
      * @var array<string, string>
      */
     public const BUNDLED_ALTS = [
-        'listings' => 'Gravel lane to a Pennsylvania farmhouse and bank barn',
-        'areas' => 'Apple orchard rows on an Adams County ridge',
+        'listings' => 'Gravel lane to a white farmhouse and bank barn',
+        'areas' => 'Apple orchard rows on a rural ridge',
         'guide' => 'Farm table with a township map beside a pasture window',
         'agents' => 'Small-town brick office porch on a quiet street',
         'contact' => 'Modest brick office and steps on a tree-lined street',
