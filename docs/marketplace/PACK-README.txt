@@ -20,7 +20,7 @@ Install walkthrough:
 
 Support:
   Documentation/support.html
-  https://github.com/matthummel-pa/keystone-homes-wp-theme/blob/main/SUPPORT.md
+  https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md
 
 Demo:
   https://keystonehomes.ridgesandvalleys.com/

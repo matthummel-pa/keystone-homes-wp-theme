@@ -61,7 +61,7 @@ A future “Acreline Lite” without Acorn would have a real shot at the picker.
 
 ## GitHub repo About (paste in Settings → General)
 
-`gh` in this workspace cannot write repo metadata. After merge, paste these on https://github.com/matthummel-pa/keystone-homes-wp-theme/settings :
+Rename the GitHub repository to **`wp-acreline`** (Settings → General → Repository name) if it still says `keystone-homes-wp-theme`. GitHub keeps redirects from the old name. Then paste these on https://github.com/matthummel-pa/wp-acreline/settings :
 
 **Description** (under 350 characters; this is the search snippet):
 
@@ -72,7 +72,7 @@ Acreline is a WordPress theme for farms, land, and historic homes — searchable
 **Website** (points at the support page, not only the demo):
 
 ```
-https://github.com/matthummel-pa/keystone-homes-wp-theme/blob/main/SUPPORT.md
+https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md
 ```
 
 **Topics:** `wordpress-theme`, `wordpress`, `real-estate`, `realtor`, `farms`, `land`, `sage`, `acreline`

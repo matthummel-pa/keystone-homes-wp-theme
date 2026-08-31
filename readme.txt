@@ -3,7 +3,7 @@ Contributors: matthummel
 Requires at least: 6.6
 Tested up to: 7.0.1
 Requires PHP: 8.3
-Stable tag: 1.2.1
+Stable tag: 1.2.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
@@ -12,7 +12,7 @@ WordPress theme for farms, land, and historic homes — listings, agents, showin
 
 == Description ==
 
-Acreline is a classic (non-block) Sage 11 WordPress theme for land, farms, and historic-home inventory: searchable listings, agents, and showing requests. Buyers set office identity, color style, menus, and logo from the Customizer. Demo pages and sample listings load from Tools → Seed Acreline demo. Support: https://github.com/matthummel-pa/keystone-homes-wp-theme/blob/main/SUPPORT.md
+Acreline is a classic (non-block) Sage 11 WordPress theme for land, farms, and historic-home inventory: searchable listings, agents, and showing requests. Buyers set office identity, color style, menus, and logo from the Customizer. Demo pages and sample listings load from Tools → Seed Acreline demo. Support: https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md
 
 The sample office in the preview is named Acreline — replace it under Customize → Identity. This is a concept theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
 
@@ -64,6 +64,9 @@ In the `listing` post type. Acreline Core owns registration on a store install. 
 Yes. The marketplace pack includes `acreline-child`.
 
 == Changelog ==
+
+= 1.2.2 =
+* GitHub repo, updater, and support links use `matthummel-pa/wp-acreline`.
 
 = 1.2.1 =
 * Marketing pages: taller photo heroes, sample-market cards, and a scannable land-buying guide. Retired Keystone / Adams County strings fall back to Acreline copy.

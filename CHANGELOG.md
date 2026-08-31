@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.2
+
+- GitHub repository, updater, support links, and Composer package name are `matthummel-pa/wp-acreline`
+
 ## 1.2.1
 
 - Inner marketing pages (listings, areas, guide, agents, book, contact, blog) share a taller photo hero, brand pill, and two-column lead

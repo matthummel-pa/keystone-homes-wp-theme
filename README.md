@@ -7,6 +7,7 @@ The sample office in the preview is named Acreline. Change the brand, phone, ema
 | | |
 | --- | --- |
 | **Live concept demo** | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) |
+| **GitHub** | [`matthummel-pa/wp-acreline`](https://github.com/matthummel-pa/wp-acreline) |
 | **Support** | [SUPPORT.md](SUPPORT.md) |
 | **Author** | [matthummel.com](https://matthummel.com/) |
 | **Install folder** | **`acreline`** (leave this name — Vite asset URLs depend on it) |

@@ -8,7 +8,7 @@
  * rebuilds that zip.
  *
  * Auth: Appearance → Customize → GitHub, this screen, KS_GITHUB_TOKEN, or MH_GITHUB_TOKEN.
- * Fine-grained PAT on acreline-wp-theme:
+ * Fine-grained PAT on wp-acreline:
  *   - Contents: Read (install the zip)
  *   - Actions: Read and write (only if you trigger a rebuild)
  */
@@ -22,7 +22,7 @@ function updater_repo(): array
 {
     return [
         'owner' => (string) apply_filters('ks/updater_owner', 'matthummel-pa'),
-        'repo' => (string) apply_filters('ks/updater_repo', 'acreline-wp-theme'),
+        'repo' => (string) apply_filters('ks/updater_repo', 'wp-acreline'),
         'workflow' => (string) apply_filters('ks/updater_workflow', 'deploy.yml'),
         'ref' => (string) apply_filters('ks/updater_ref', 'main'),
         'tag' => (string) apply_filters('ks/updater_release_tag', 'theme-latest'),
@@ -375,7 +375,7 @@ function render_theme_updater_page(): void
     if (! $hasToken) {
         echo '<h2>'.esc_html__('Token setup (one time)', 'acreline').'</h2>';
         echo '<ol style="max-width:70ch">';
-        echo '<li>'.wp_kses_post(__('Create a <strong>fine-grained personal access token</strong> at GitHub → Settings → Developer settings → Fine-grained tokens, scoped only to <code>acreline-wp-theme</code>.', 'acreline')).'</li>';
+        echo '<li>'.wp_kses_post(__('Create a <strong>fine-grained personal access token</strong> at GitHub → Settings → Developer settings → Fine-grained tokens, scoped only to <code>wp-acreline</code>.', 'acreline')).'</li>';
         echo '<li>'.wp_kses_post(__('Give it <strong>Contents: Read</strong> to install the zip. Add <strong>Actions: Read and write</strong> only if you want this screen to trigger a rebuild.', 'acreline')).'</li>';
         echo '<li>'.esc_html__('Paste it below and save. You can also set KS_GITHUB_TOKEN (or MH_GITHUB_TOKEN) in wp-config.php.', 'acreline').'</li>';
         echo '</ol>';
