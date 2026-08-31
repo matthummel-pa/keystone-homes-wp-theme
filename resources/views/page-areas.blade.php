@@ -123,8 +123,8 @@
   <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] ?? 'Walk a township with us' !!}</h2>
-        <p>{!! $copy['cta_text'] ?? 'Tell us which corner you want to understand, and we\'ll match you with the agent who knows that ground.' !!}</p>
+        <h2>{!! ($copy['cta_title'] ?? '') ?: 'Walk an area with us' !!}</h2>
+        <p>{!! ($copy['cta_text'] ?? '') ?: 'Tell us which kind of ground you want to understand, and we\'ll match you with the sample agent who talks that language.' !!}</p>
         <div class="cta-actions">
           <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse Listings</a>

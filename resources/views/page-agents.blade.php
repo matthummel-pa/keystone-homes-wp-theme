@@ -97,8 +97,8 @@
   <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] ?? 'Talk to a sample agent' !!}</h2>
-        <p>{!! $copy['cta_text'] ?? 'Reach the office at (555) 010-0455, or book a no-pressure showing.' !!}</p>
+        <h2>{!! ($copy['cta_title'] ?? '') ?: 'Talk to a sample agent' !!}</h2>
+        <p>{!! ($copy['cta_text'] ?? '') ?: 'Reach the office at (555) 010-0455, or book a no-pressure showing and we\'ll match you with the sample agent who knows that kind of ground.' !!}</p>
         <div class="cta-actions">
           <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/contact') }}">Contact the Office</a>

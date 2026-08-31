@@ -242,8 +242,8 @@
   <section class="section section-alt">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] ?? 'Ready to walk a sample parcel?' !!}</h2>
-        <p>{!! $copy['cta_text'] ?? 'Book a demo showing or browse the sample inventory.' !!}</p>
+        <h2>{!! ($copy['cta_title'] ?? '') ?: 'Ready to walk a sample parcel?' !!}</h2>
+        <p>{!! ($copy['cta_text'] ?? '') ?: 'Book a demo showing or browse the sample inventory.' !!}</p>
         <div class="cta-actions">
           <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/listings') }}">Browse Listings</a>

@@ -156,8 +156,8 @@
   <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] ?? 'See a property you like?' !!}</h2>
-        <p>{!! $copy['cta_text'] ?? 'Book a walkthrough with a sample agent, or run the numbers first with the land-loan and pre-qualification tools.' !!}</p>
+        <h2>{!! ($copy['cta_title'] ?? '') ?: 'See a property you like?' !!}</h2>
+        <p>{!! ($copy['cta_text'] ?? '') ?: 'Book a walkthrough with a sample agent, or run the numbers first with the land-loan and pre-qualification tools.' !!}</p>
         <div class="cta-actions">
           <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/guide') }}">Financing Tools</a>
