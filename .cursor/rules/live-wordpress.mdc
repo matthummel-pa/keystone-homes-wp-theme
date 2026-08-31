@@ -20,6 +20,7 @@ Use when Matt asks to add/fix **content** on https://keystonehomes.ridgesandvall
 - `post update` does **not** support `--meta_input`.
 - REST `POST /wp/v2/listing/{id}` ignores unregistered `meta`. Use CLI meta updates.
 - Avoid `&` in CLI strings when a write fails (site title, Unsplash query strings). Use `and` or a URL without query params.
+- Quote any value that contains spaces (`post update 26 --post_title="Ridge Road Brick Farmhouse"`). Unquoted titles/addresses truncate at the first space. Prefer REST `POST /wp/v2/listing/{id}` for titles.
 - `post delete` without `--force` trash is fine; `--force` needs browser approval.
 - Do not install plugins unless Matt asks.
 
