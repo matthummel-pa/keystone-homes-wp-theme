@@ -33,7 +33,7 @@ Ink square, forest roof, cream door. Do not stretch the mark or recolor off the 
 ## Forest sample palette (default)
 
 | Token | Hex | Use |
-| --- | --- |
+| --- | --- | --- |
 | Ink | `#141210` | Body text, mark tile |
 | Paper | `#f5f4f1` | Page background |
 | Accent (Forest) | `#1f6b4a` | Buttons, links, roof |
