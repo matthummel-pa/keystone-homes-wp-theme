@@ -6,13 +6,13 @@ This is the seller brief — not buyer docs. Buyer HTML is `buyer-guide.html`.
 
 Realtor themes on Envato move when the demo looks like a working office: search → listings → agent → book a showing. You already have that. Buyers pay for **identity Customizer, menus, a child theme, and a plugin that keeps listings after they switch themes** — not for another “luxury brokerage” skin.
 
-Price band for a niche land/farms theme: **$39–$69** on ThemeForest, **$49–$79** on your own checkout (Gumroad / Lemon Squeezy). Keep the own-site price higher; Envato takes a large cut.
+Price band for a niche land/farms theme: **$39–$69** on ThemeForest, **$79** on your own checkout ([matthummel.com/product/acreline/](https://matthummel.com/product/acreline/)). Product landing / ads: [matthummel.com/concept/acreline/](https://matthummel.com/concept/acreline/). Keep the own-site price higher; Envato takes a large cut.
 
 ## Channel by channel
 
 | Channel | Ship | Do not claim |
 | --- | --- | --- |
-| **Own site** | Full pack from `bin/build-marketplace-pack.sh` | Nothing. Best margin. |
+| **Own site** | Full pack + WooCommerce on matthummel.com | Nothing. Best margin. Landing: `/concept/acreline/`. |
 | **ThemeForest / Creative Market** | Same pack + live preview URL | “#1 realtor theme.” Show the sample-county land/farms concept honestly. |
 | **WordPress.org** | Theme zip only. No plugin inside the theme. CPTs off (`KS_DISABLE_THEME_CPTS`). `readme.txt` + 1200×900 screenshot | “Approved” or “in the picker” until a reviewer says so. Sage + Acorn + Gutenberg-off is a common rejection. Use WP.org later as a **lite** traffic listing, or list **Acreline Core** as a free plugin and sell setup. |
 
@@ -69,15 +69,15 @@ GitHub repo is **`matthummel-pa/wp-acreline`**. Paste these on https://github.co
 Acreline is a WordPress theme for farms, land, and historic homes — searchable listings, agents, and showing requests. Customizer identity, eight color styles, Sage 11. Demo and support by Matt Hummel.
 ```
 
-**Website** (points at the support page, not only the demo):
+**Website** (product landing + support):
 
 ```
-https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md
+https://matthummel.com/concept/acreline/
 ```
 
 **Topics:** `wordpress-theme`, `wordpress`, `real-estate`, `realtor`, `farms`, `land`, `sage`, `acreline`
 
-Leave the demo URL in `style.css` Theme URI. The repo Website field is the support page so GitHub’s “About” sidebar sends people to help, not a second concept HTML demo.
+Leave the live demo URL in `style.css` Theme URI. Brand kit for screenshots and ads: [`BRAND.md`](../../BRAND.md).
 
 ## After a sale
 
