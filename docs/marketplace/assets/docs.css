@@ -83,6 +83,13 @@ figure img {
   display: block; width: 100%; height: auto;
   border: 1px solid var(--line); border-radius: 12px; background: #fff;
 }
+figure img.lockup {
+  width: 320px;
+  max-width: 100%;
+  border: none;
+  background: transparent;
+  border-radius: 0;
+}
 figcaption { font-size: .85rem; color: var(--ink-faint); margin-top: .45rem; }
 .copy {
   font-family: ui-monospace, monospace; font-size: .88rem;
