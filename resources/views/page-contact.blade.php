@@ -8,7 +8,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Concept office',
   'heroTitle' => $copy['hero_title'] ?: 'Get in touch <em>(demo only)</em>',
   'heroText' => $copy['hero_text'] ?: '100 Concept Way, Sample Borough. Call (555) 010-0455 or send a message. Prefer the full appointment flow? Book a sample showing.',
@@ -25,7 +25,7 @@
       <div class="contact-grid">
         <div class="contact-info reveal">
           <p class="eyebrow">Our Office</p>
-          <h2>{!! ($copy['office_title'] ?? '') !== '' ? $copy['office_title'] : ($identity['brand'] ?? 'Keystone Real Estate') !!}</h2>
+          <h2>{!! ($copy['office_title'] ?? '') !== '' ? $copy['office_title'] : ($identity['brand'] ?? 'Acreline') !!}</h2>
           <dl>
             <div>
               <dt>Address</dt>
@@ -37,7 +37,7 @@
             </div>
             <div>
               <dt>Email</dt>
-              <dd><a href="mailto:{{ $copy['office_email'] ?? 'hello@keystone-concept.test' }}">{{ $copy['office_email'] ?? 'hello@keystone-concept.test' }}</a></dd>
+              <dd><a href="mailto:{{ $copy['office_email'] ?? 'hello@acreline-concept.test' }}">{{ $copy['office_email'] ?? 'hello@acreline-concept.test' }}</a></dd>
             </div>
             <div>
               <dt>Hours</dt>
@@ -75,7 +75,7 @@
                 </div>
                 <div class="field">
                   <label for="cEmail">Email</label>
-                  <input type="email" id="cEmail" required placeholder="{{ 'you@keystone-concept.test' }}">
+                  <input type="email" id="cEmail" required placeholder="{{ 'you@acreline-concept.test' }}">
                 </div>
                 <div class="field">
                   <label for="cTopic">I'm interested in</label>

@@ -6,12 +6,12 @@ function keystone_core_register_post_types(): void
 {
     register_post_type('listing', [
         'labels' => [
-            'name' => __('Listings', 'keystone-core'),
-            'singular_name' => __('Listing', 'keystone-core'),
-            'add_new_item' => __('Add Listing', 'keystone-core'),
-            'edit_item' => __('Edit Listing', 'keystone-core'),
-            'search_items' => __('Search Listings', 'keystone-core'),
-            'not_found' => __('No listings found.', 'keystone-core'),
+            'name' => __('Listings', 'acreline-core'),
+            'singular_name' => __('Listing', 'acreline-core'),
+            'add_new_item' => __('Add Listing', 'acreline-core'),
+            'edit_item' => __('Edit Listing', 'acreline-core'),
+            'search_items' => __('Search Listings', 'acreline-core'),
+            'not_found' => __('No listings found.', 'acreline-core'),
         ],
         'public' => true,
         'has_archive' => false,
@@ -26,12 +26,12 @@ function keystone_core_register_post_types(): void
 
     register_post_type('booking', [
         'labels' => [
-            'name' => __('Bookings', 'keystone-core'),
-            'singular_name' => __('Booking', 'keystone-core'),
-            'add_new_item' => __('Add Booking', 'keystone-core'),
-            'edit_item' => __('Edit Booking', 'keystone-core'),
-            'search_items' => __('Search Bookings', 'keystone-core'),
-            'not_found' => __('No bookings found.', 'keystone-core'),
+            'name' => __('Bookings', 'acreline-core'),
+            'singular_name' => __('Booking', 'acreline-core'),
+            'add_new_item' => __('Add Booking', 'acreline-core'),
+            'edit_item' => __('Edit Booking', 'acreline-core'),
+            'search_items' => __('Search Bookings', 'acreline-core'),
+            'not_found' => __('No bookings found.', 'acreline-core'),
         ],
         'public' => false,
         'show_ui' => true,
@@ -47,12 +47,12 @@ function keystone_core_register_post_types(): void
 
     register_post_type('agent', [
         'labels' => [
-            'name' => __('Agents', 'keystone-core'),
-            'singular_name' => __('Agent', 'keystone-core'),
-            'add_new_item' => __('Add Agent', 'keystone-core'),
-            'edit_item' => __('Edit Agent', 'keystone-core'),
-            'search_items' => __('Search Agents', 'keystone-core'),
-            'not_found' => __('No agents found.', 'keystone-core'),
+            'name' => __('Agents', 'acreline-core'),
+            'singular_name' => __('Agent', 'acreline-core'),
+            'add_new_item' => __('Add Agent', 'acreline-core'),
+            'edit_item' => __('Edit Agent', 'acreline-core'),
+            'search_items' => __('Search Agents', 'acreline-core'),
+            'not_found' => __('No agents found.', 'acreline-core'),
         ],
         'public' => true,
         'has_archive' => false,

@@ -1,5 +1,5 @@
 /* =========================================================================
-   Keystone Real Estate — LISTINGS page tools
+   Acreline — LISTINGS page tools
    - Listing data, filters, sort, grid render
    - Grid / map toggle + pins
    - Save hearts, detail modal
@@ -93,8 +93,8 @@
     }
   ];
 
-  if(window.KEYSTONE && Array.isArray(window.KEYSTONE.listings) && window.KEYSTONE.listings.length){
-    LISTINGS = window.KEYSTONE.listings;
+  if(window.ACRELINE && Array.isArray(window.ACRELINE.listings) && window.ACRELINE.listings.length){
+    LISTINGS = window.ACRELINE.listings;
   }
 
   if(!document.getElementById("listingGrid")) return; /* not the listings page */
@@ -361,7 +361,7 @@
 
     document.getElementById("calcPrice").value = l.price;
     overlay.dataset.listingId = String(l.id);
-    var book = (window.KEYSTONE && window.KEYSTONE.bookUrl) || "/book/";
+    var book = (window.ACRELINE && window.ACRELINE.bookUrl) || "/book/";
     document.getElementById("modalScheduleBtn").setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing_id=" + l.id);
     recalcMortgage();
 
@@ -387,7 +387,7 @@
     var href = this.getAttribute("href") || "";
     if(pinnedId || overlay.dataset.listingId){
       var id = overlay.dataset.listingId || pinnedId;
-      var book = (window.KEYSTONE && window.KEYSTONE.bookUrl) || "/book/";
+      var book = (window.ACRELINE && window.ACRELINE.bookUrl) || "/book/";
       this.setAttribute("href", book + (book.indexOf("?") >= 0 ? "&" : "?") + "listing_id=" + id);
     }
     closeModal();

@@ -9,11 +9,11 @@
   {
     "@@context":"https://schema.org",
     "@@type":"RealEstateAgent",
-    "name":"{{ ($identity['brand'] ?? 'Keystone Real Estate') }} (Concept Demo)",
+    "name":"{{ ($identity['brand'] ?? 'Acreline') }} (Concept Demo)",
     "description":"Fictional concept brokerage for design demonstration. Not a live MLS or licensed office.",
     "url":"{{ home_url('/') }}",
     "telephone":"+1-555-010-0455",
-    "email":@json('hello@keystone-concept.test'),
+    "email":@json('hello@acreline-concept.test'),
     "priceRange":"$$",
     "address":{
       "@@type":"PostalAddress",
@@ -358,7 +358,7 @@
           <form class="form-grid two" id="alertForm">
             <div class="field field-span">
               <label for="aEmail">Email</label>
-              <input id="aEmail" type="email" autocomplete="email" placeholder="{{ 'you@keystone-concept.test' }}" required>
+              <input id="aEmail" type="email" autocomplete="email" placeholder="{{ 'you@acreline-concept.test' }}" required>
             </div>
             <div class="field">
               <label for="aType">Looking for</label>

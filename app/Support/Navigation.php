@@ -53,13 +53,13 @@ class Navigation
         $isListings = str_starts_with($req, 'listings') || is_singular('listing');
 
         return [
-            ['label' => __('Home', 'keystone-homes'), 'url' => home_url('/'), 'active' => $isHome],
-            ['label' => __('Listings', 'keystone-homes'), 'url' => self::pageUrl('listings'), 'active' => $isListings],
-            ['label' => __('Areas', 'keystone-homes'), 'url' => self::pageUrl('areas'), 'active' => $isAreas],
-            ['label' => __('Guide', 'keystone-homes'), 'url' => self::pageUrl('guide'), 'active' => $isGuide],
-            ['label' => __('Blog', 'keystone-homes'), 'url' => self::pageUrl('blog', '/blog'), 'active' => $isBlog],
-            ['label' => __('Agents', 'keystone-homes'), 'url' => self::pageUrl('agents'), 'active' => $isAgents],
-            ['label' => __('Contact', 'keystone-homes'), 'url' => self::pageUrl('contact'), 'active' => $isContact],
+            ['label' => __('Home', 'acreline'), 'url' => home_url('/'), 'active' => $isHome],
+            ['label' => __('Listings', 'acreline'), 'url' => self::pageUrl('listings'), 'active' => $isListings],
+            ['label' => __('Areas', 'acreline'), 'url' => self::pageUrl('areas'), 'active' => $isAreas],
+            ['label' => __('Guide', 'acreline'), 'url' => self::pageUrl('guide'), 'active' => $isGuide],
+            ['label' => __('Blog', 'acreline'), 'url' => self::pageUrl('blog', '/blog'), 'active' => $isBlog],
+            ['label' => __('Agents', 'acreline'), 'url' => self::pageUrl('agents'), 'active' => $isAgents],
+            ['label' => __('Contact', 'acreline'), 'url' => self::pageUrl('contact'), 'active' => $isContact],
         ];
     }
 
@@ -71,12 +71,12 @@ class Navigation
         $req = trim($GLOBALS['wp']->request ?? '', '/');
 
         return [
-            ['label' => __('Listings', 'keystone-homes'), 'url' => self::pageUrl('listings'), 'active' => str_starts_with($req, 'listings') || is_singular('listing')],
-            ['label' => __('Areas', 'keystone-homes'), 'url' => self::pageUrl('areas'), 'active' => str_starts_with($req, 'areas')],
-            ['label' => __('Book a showing', 'keystone-homes'), 'url' => Identity::bookUrl(), 'active' => str_starts_with($req, 'book')],
-            ['label' => __('Buyer guide', 'keystone-homes'), 'url' => self::pageUrl('guide'), 'active' => str_starts_with($req, 'guide')],
-            ['label' => __('Agents', 'keystone-homes'), 'url' => self::pageUrl('agents'), 'active' => str_starts_with($req, 'agents') || is_singular('agent')],
-            ['label' => __('Contact', 'keystone-homes'), 'url' => self::pageUrl('contact'), 'active' => str_starts_with($req, 'contact')],
+            ['label' => __('Listings', 'acreline'), 'url' => self::pageUrl('listings'), 'active' => str_starts_with($req, 'listings') || is_singular('listing')],
+            ['label' => __('Areas', 'acreline'), 'url' => self::pageUrl('areas'), 'active' => str_starts_with($req, 'areas')],
+            ['label' => __('Book a showing', 'acreline'), 'url' => Identity::bookUrl(), 'active' => str_starts_with($req, 'book')],
+            ['label' => __('Buyer guide', 'acreline'), 'url' => self::pageUrl('guide'), 'active' => str_starts_with($req, 'guide')],
+            ['label' => __('Agents', 'acreline'), 'url' => self::pageUrl('agents'), 'active' => str_starts_with($req, 'agents') || is_singular('agent')],
+            ['label' => __('Contact', 'acreline'), 'url' => self::pageUrl('contact'), 'active' => str_starts_with($req, 'contact')],
         ];
     }
 

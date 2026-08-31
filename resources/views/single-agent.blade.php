@@ -10,7 +10,7 @@
 
 
 @include('partials.page-hero', [
-  'heroBrand' => $identity['brand'] ?? 'Keystone Real Estate',
+  'heroBrand' => $identity['brand'] ?? 'Acreline',
   'heroEyebrow' => $agent['job_title'],
   'heroTitle' => $agent['name'],
   'heroText' => trim($agent['office'].($agent['years_experience'] ? ' · '.$agent['years_experience'].' years' : '')),

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Plugin Name:       Keystone Core
+ * Plugin Name:       Acreline Core
  * Plugin URI:        https://github.com/matthummel-pa/keystone-homes-wp-theme
  * Description:       Listings, agents, and showing bookings for the Acreline theme. Keeps inventory in the database when you switch themes.
  * Version:           1.0.0
@@ -11,12 +11,14 @@
  * Author URI:        https://matthummel.com/
  * License:           GPL-2.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       keystone-core
+ * Text Domain:       acreline-core
  */
 defined('ABSPATH') || exit;
 
-define('KEYSTONE_CORE_VERSION', '1.0.0');
-define('KEYSTONE_CORE_FILE', __FILE__);
+define('ACRELINE_CORE_VERSION', '1.0.0');
+define('ACRELINE_CORE_FILE', __FILE__);
+define('KEYSTONE_CORE_VERSION', ACRELINE_CORE_VERSION);
+define('KEYSTONE_CORE_FILE', ACRELINE_CORE_FILE);
 
 require_once __DIR__.'/includes/post-types.php';
 require_once __DIR__.'/includes/bookings.php';

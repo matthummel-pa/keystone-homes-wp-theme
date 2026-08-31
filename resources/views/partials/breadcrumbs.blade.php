@@ -1,5 +1,5 @@
 @if (! is_front_page() && ! empty($breadcrumbs) && count($breadcrumbs) > 1)
-  <nav class="breadcrumb" aria-label="{{ esc_attr__('Breadcrumb', 'keystone-homes') }}">
+  <nav class="breadcrumb" aria-label="{{ esc_attr__('Breadcrumb', 'acreline') }}">
     <ol>
       @foreach ($breadcrumbs as $crumb)
         <li>

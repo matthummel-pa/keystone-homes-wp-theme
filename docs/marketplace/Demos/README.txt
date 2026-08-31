@@ -14,7 +14,7 @@ Manual import
 
 If you need Tools → Import → WordPress (WXR):
 
-  1. Activate Acreline (and Keystone Core if you use the plugin).
+  1. Activate Acreline (and Acreline Core if you use the plugin).
   2. Install the official WordPress Importer from wordpress.org if asked.
   3. Import a WXR you export from a seeded site:
        wp export --path="$HOME/wp" --dir=./Demos

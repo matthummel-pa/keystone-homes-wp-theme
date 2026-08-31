@@ -5,7 +5,7 @@
 
   @if (! have_posts())
     <x-alert type="warning">
-      {!! __('Sorry, no results were found.', 'keystone-homes') !!}
+      {!! __('Sorry, no results were found.', 'acreline') !!}
     </x-alert>
 
     {!! get_search_form(false) !!}

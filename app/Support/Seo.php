@@ -8,7 +8,7 @@ namespace App\Support;
  */
 class Seo
 {
-    public const SITE = 'Keystone Real Estate';
+    public const SITE = 'Acreline';
 
     public const FALLBACK = 'Farms, historic houses, and acreage in a sample rural market. Filter listings by area and book a showing with a sample agent.';
 

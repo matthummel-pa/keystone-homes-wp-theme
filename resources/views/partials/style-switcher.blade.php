@@ -4,10 +4,10 @@
 @endphp
 <aside class="style-switcher" id="styleSwitcher">
   <button type="button" class="style-switcher-toggle" aria-expanded="false" aria-controls="styleSwitcherPanel">
-    {{ __('Colors', 'keystone-homes') }}
+    {{ __('Colors', 'acreline') }}
   </button>
   <div class="style-switcher-panel" id="styleSwitcherPanel" hidden>
-    <p class="style-switcher-label" id="styleSwitcherLabel">{{ __('Try a color style', 'keystone-homes') }}</p>
+    <p class="style-switcher-label" id="styleSwitcherLabel">{{ __('Try a color style', 'acreline') }}</p>
     <div class="style-switcher-swatches" role="group" aria-labelledby="styleSwitcherLabel">
       @foreach ($schemes as $key => $scheme)
         <button
@@ -22,6 +22,6 @@
         </button>
       @endforeach
     </div>
-    <p class="style-switcher-hint">{{ __('Buyers set a style under Customize → Colors.', 'keystone-homes') }}</p>
+    <p class="style-switcher-hint">{{ __('Buyers set a style under Customize → Colors.', 'acreline') }}</p>
   </div>
 </aside>

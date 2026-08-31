@@ -1,10 +1,10 @@
-/* global wp, KEYSTONE_FONTS */
+/* global wp, ACRELINE_FONTS */
 (function () {
-  if (!wp || !wp.customize || !window.KEYSTONE_FONTS) return;
+  if (!wp || !wp.customize || !window.ACRELINE_FONTS) return;
 
-  var stacks = KEYSTONE_FONTS.stacks || {};
-  var google = KEYSTONE_FONTS.google || {};
-  var roles = KEYSTONE_FONTS.roles || {};
+  var stacks = ACRELINE_FONTS.stacks || {};
+  var google = ACRELINE_FONTS.google || {};
+  var roles = ACRELINE_FONTS.roles || {};
 
   function loadGoogleFont(key) {
     var family = google[key];

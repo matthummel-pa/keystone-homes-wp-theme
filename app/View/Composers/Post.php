@@ -32,7 +32,7 @@ class Post extends Composer
                 return get_the_title($home);
             }
 
-            return __('Latest Posts', 'keystone-homes');
+            return __('Latest Posts', 'acreline');
         }
 
         if (is_archive()) {
@@ -42,13 +42,13 @@ class Post extends Composer
         if (is_search()) {
             return sprintf(
                 /* translators: %s is replaced with the search query */
-                __('Search Results for %s', 'keystone-homes'),
+                __('Search Results for %s', 'acreline'),
                 get_search_query()
             );
         }
 
         if (is_404()) {
-            return __('Not Found', 'keystone-homes');
+            return __('Not Found', 'acreline');
         }
 
         return get_the_title();
@@ -61,7 +61,7 @@ class Post extends Composer
     {
         return wp_link_pages([
             'echo' => 0,
-            'before' => '<p>'.__('Pages:', 'keystone-homes'),
+            'before' => '<p>'.__('Pages:', 'acreline'),
             'after' => '</p>',
         ]);
     }

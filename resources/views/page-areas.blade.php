@@ -9,7 +9,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample markets',
   'heroTitle' => $copy['hero_title'] ?: 'Areas we <em>demo</em>',
   'heroText' => $copy['hero_text'] ?: 'Fictional North Ridge, Mill Creek, and Oak Hollow profiles — written so you can swap in your own counties.',

@@ -25,7 +25,7 @@
 <body>
   <p><strong>Acreline</strong> · Requirements</p>
   <h1>Host needs and seller listing fields</h1>
-  <p>This pack is for a <strong>regular WordPress install</strong>: Appearance → Themes → Add New → Upload Theme. The file to upload is <code>keystone-homes.zip</code>. Leave the folder name <code>keystone-homes</code>.</p>
+  <p>This pack is for a <strong>regular WordPress install</strong>: Appearance → Themes → Add New → Upload Theme. The file to upload is <code>acreline.zip</code>. Leave the folder name <code>acreline</code>.</p>
 
   <div class="note">
     Acreline is a land-and-farms realtor <em>concept</em> theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
@@ -40,7 +40,7 @@
       <tr><th>PHP extensions</th><td><code>mbstring</code>, <code>xml</code>, <code>curl</code>, <code>zip</code>, <code>intl</code>, <code>json</code>, plus <code>gd</code> or Imagick for media</td></tr>
       <tr><th>Memory</th><td>128&nbsp;MB minimum; 256&nbsp;MB recommended (Sage / Acorn)</td></tr>
       <tr><th>HTTPS</th><td>Recommended on any public site</td></tr>
-      <tr><th>Install folder</th><td>Must stay <code>keystone-homes</code> (compiled asset URLs use that path)</td></tr>
+      <tr><th>Install folder</th><td>Must stay <code>acreline</code> (compiled asset URLs use that path)</td></tr>
       <tr><th>Composer / npm on the host</th><td>Not required. Store zips already include <code>vendor/</code> and <code>public/build/</code></td></tr>
       <tr><th>Block editor</th><td>Not used. Edit pages, listings, and agents through custom fields</td></tr>
       <tr><th>Page builder</th><td>None required (not an Elementor / Gutenberg theme)</td></tr>
@@ -50,8 +50,8 @@
 
   <h3>Optional, not required</h3>
   <ul>
-    <li><strong>Keystone Core</strong> (<code>keystone-core.zip</code>) — keeps listings, agents, and bookings if the buyer later switches themes. The parent theme still registers those types when the plugin is off, so a regular install works with the theme zip alone.</li>
-    <li><strong>Acreline Child</strong> (<code>keystone-homes-child.zip</code>) — CSS that survives parent updates.</li>
+    <li><strong>Acreline Core</strong> (<code>acreline-core.zip</code>) — keeps listings, agents, and bookings if the buyer later switches themes. The parent theme still registers those types when the plugin is off, so a regular install works with the theme zip alone.</li>
+    <li><strong>Acreline Child</strong> (<code>acreline-child.zip</code>) — CSS that survives parent updates.</li>
     <li>Yoast, Rank Math, SEOPress, or AIOSEO — the theme yields native title / OG tags when one of these is active.</li>
   </ul>
 
@@ -66,8 +66,8 @@
   <h2>2. Regular install (two minutes)</h2>
   <ol>
     <li>WordPress 6.6+ and PHP 8.3+ on the host.</li>
-    <li>Appearance → Themes → Add New → Upload Theme → <code>keystone-homes.zip</code> → Activate <strong>Acreline</strong>.</li>
-    <li>Optional: upload and activate the child theme, then Keystone Core.</li>
+    <li>Appearance → Themes → Add New → Upload Theme → <code>acreline.zip</code> → Activate <strong>Acreline</strong>.</li>
+    <li>Optional: upload and activate the child theme, then Acreline Core.</li>
     <li>Appearance → Customize → Identity (brand, 555-style phone, email, colors).</li>
     <li>Tools → Seed Acreline demo if you want the preview pages and sample inventory.</li>
   </ol>
@@ -103,20 +103,20 @@
   <h3>What to upload where</h3>
   <table>
     <tbody>
-      <tr><th>ThemeForest / Creative Market</th><td>This whole pack zip (“All files &amp; documentation”). Buyers extract it, then upload <code>keystone-homes.zip</code> in wp-admin.</td></tr>
+      <tr><th>ThemeForest / Creative Market</th><td>This whole pack zip (“All files &amp; documentation”). Buyers extract it, then upload <code>acreline.zip</code> in wp-admin.</td></tr>
       <tr><th>Own site / Gumroad</th><td>Same pack zip. Lead the product page with the short description and the host table above.</td></tr>
-      <tr><th>WordPress.org</th><td>Upload <em>only</em> <code>keystone-homes.zip</code>. Do not claim approval while this is Sage + Gutenberg-off. See the seller brief in the repo, not this buyer pack.</td></tr>
+      <tr><th>WordPress.org</th><td>Upload <em>only</em> <code>acreline.zip</code>. Do not claim approval while this is Sage + Gutenberg-off. See the seller brief in the repo, not this buyer pack.</td></tr>
     </tbody>
   </table>
 
   <h3>Seller checklist before you submit</h3>
   <ul>
     <li>Live preview URL works; demo chrome on for honesty, one screenshot with chrome off.</li>
-    <li>Identity uses 555 numbers and <code>@keystone-concept.test</code> only.</li>
-    <li>No Unsplash <em>files</em> inside <code>keystone-homes.zip</code>.</li>
+    <li>Identity uses 555 numbers and <code>@acreline-concept.test</code> only.</li>
+    <li>No Unsplash <em>files</em> inside <code>acreline.zip</code>.</li>
     <li>No Freemius, Envato banners, or “upgrade to Pro” admin ads.</li>
     <li>Footer author credit is removable (Customize → Identity) and <code>rel="nofollow"</code>.</li>
-    <li>Child theme and Keystone Core sit <em>beside</em> the theme zip, not inside it.</li>
+    <li>Child theme and Acreline Core sit <em>beside</em> the theme zip, not inside it.</li>
     <li>Theme Check on a stock WP install — Sage/vendor warnings are expected; do not hide them with a dummy license.</li>
   </ul>
 

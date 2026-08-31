@@ -2,8 +2,8 @@
 #
 # General install pack for a regular WordPress host (Appearance → Upload Theme).
 #
-# Buyers extract this zip, then upload the inner keystone-homes.zip.
-# Also ships child theme, Keystone Core, and seller/buyer requirements docs.
+# Buyers extract this zip, then upload the inner acreline.zip.
+# Also ships child theme, Acreline Core, and seller/buyer requirements docs.
 # Does not include the internal seller brief (SELLING.md).
 #
 # Usage:
@@ -15,7 +15,7 @@ set -euo pipefail
 THEME_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 OUT_DIR="${OUT:-$THEME_DIR/dist-install}"
 STAGE="$(mktemp -d)"
-PACK_ROOT="$STAGE/acreline"
+PACK_ROOT="$STAGE/acreline-pack"
 
 cleanup() { rm -rf "$STAGE"; }
 trap cleanup EXIT
@@ -30,7 +30,7 @@ if [ -z "$VERSION" ]; then
   exit 1
 fi
 
-THEME_ZIP="$THEME_DIR/dist-theme/keystone-homes.zip"
+THEME_ZIP="$THEME_DIR/dist-theme/acreline.zip"
 if [ "${SKIP_THEME_BUILD:-}" = "1" ] && [ -f "$THEME_ZIP" ]; then
   echo "==> Reusing existing theme zip ($THEME_ZIP)"
 else
@@ -43,21 +43,21 @@ if [ ! -f "$THEME_ZIP" ]; then
 fi
 
 echo "==> Child theme zip"
-mkdir -p "$STAGE/keystone-homes-child"
-cp -a "$THEME_DIR/child-theme/." "$STAGE/keystone-homes-child/"
-( cd "$STAGE" && zip -rqX keystone-homes-child.zip keystone-homes-child -x '*.DS_Store' )
+mkdir -p "$STAGE/acreline-child"
+cp -a "$THEME_DIR/child-theme/." "$STAGE/acreline-child/"
+( cd "$STAGE" && zip -rqX acreline-child.zip acreline-child -x '*.DS_Store' )
 
-echo "==> Keystone Core zip"
-mkdir -p "$STAGE/keystone-core"
-cp -a "$THEME_DIR/plugins/keystone-core/." "$STAGE/keystone-core/"
-( cd "$STAGE" && zip -rqX keystone-core.zip keystone-core -x '*.DS_Store' )
+echo "==> Acreline Core zip"
+mkdir -p "$STAGE/acreline-core"
+cp -a "$THEME_DIR/plugins/acreline-core/." "$STAGE/acreline-core/"
+( cd "$STAGE" && zip -rqX acreline-core.zip acreline-core -x '*.DS_Store' )
 
-echo "==> Assembling acreline/ pack"
+echo "==> Assembling acreline-pack/"
 mkdir -p "$PACK_ROOT/Documentation" "$PACK_ROOT/Demos" "$PACK_ROOT/Licensing"
 cp -a "$THEME_DIR/docs/marketplace/PACK-README.txt" "$PACK_ROOT/README.txt"
-cp -a "$THEME_ZIP" "$PACK_ROOT/keystone-homes.zip"
-cp -a "$STAGE/keystone-homes-child.zip" "$PACK_ROOT/"
-cp -a "$STAGE/keystone-core.zip" "$PACK_ROOT/"
+cp -a "$THEME_ZIP" "$PACK_ROOT/acreline.zip"
+cp -a "$STAGE/acreline-child.zip" "$PACK_ROOT/"
+cp -a "$STAGE/acreline-core.zip" "$PACK_ROOT/"
 cp -a "$THEME_DIR/docs/marketplace/requirements.html" "$PACK_ROOT/Documentation/"
 cp -a "$THEME_DIR/docs/marketplace/buyer-guide.html" "$PACK_ROOT/Documentation/"
 cp -a "$THEME_DIR/docs/marketplace/support.html" "$PACK_ROOT/Documentation/"
@@ -76,17 +76,14 @@ echo "==> Writing pack zip"
 rm -rf "$OUT_DIR"
 mkdir -p "$OUT_DIR"
 ZIP_VERSIONED="$OUT_DIR/acreline-$VERSION.zip"
-ZIP_STABLE="$OUT_DIR/acreline.zip"
-rm -f "$ZIP_VERSIONED" "$ZIP_STABLE"
-( cd "$STAGE" && zip -rqX "$ZIP_VERSIONED" acreline -x '*.DS_Store' )
-cp -a "$ZIP_VERSIONED" "$ZIP_STABLE"
+rm -f "$ZIP_VERSIONED"
+( cd "$STAGE" && zip -rqX "$ZIP_VERSIONED" acreline-pack -x '*.DS_Store' )
 
 # Unzipped tree for inspection (same files as inside the zip)
-cp -a "$PACK_ROOT" "$OUT_DIR/acreline"
+cp -a "$PACK_ROOT" "$OUT_DIR/acreline-pack"
 
 echo "==> Pack ready"
-echo "    Regular WP upload:  acreline/keystone-homes.zip  (inside the pack)"
+echo "    Regular WP upload:  acreline-pack/acreline.zip  (inside the pack)"
 echo "    Seller upload:      $ZIP_VERSIONED"
-echo "    Also copied as:     $ZIP_STABLE"
-du -h "$ZIP_VERSIONED" "$PACK_ROOT/keystone-homes.zip" | sed 's/^/    /'
-find "$OUT_DIR/acreline" -type f | sort
+du -h "$ZIP_VERSIONED" "$PACK_ROOT/acreline.zip" | sed 's/^/    /'
+find "$OUT_DIR/acreline-pack" -type f | sort

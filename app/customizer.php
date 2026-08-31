@@ -13,20 +13,20 @@ use WP_Customize_Manager;
 
 add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     $wp_customize->add_section('ks_identity', [
-        'title' => __('Identity', 'keystone-homes'),
-        'description' => __('Office name, phone, and chrome buyers change first. Concept defaults stay until you overwrite them.', 'keystone-homes'),
+        'title' => __('Identity', 'acreline'),
+        'description' => __('Office name, phone, and chrome buyers change first. Concept defaults stay until you overwrite them.', 'acreline'),
         'priority' => 30,
     ]);
 
     $text = [
-        'ks_brand_name' => [__('Brand name', 'keystone-homes'), 'Keystone Real Estate'],
-        'ks_tagline' => [__('Header tagline', 'keystone-homes'), 'Concept demo'],
-        'ks_phone' => [__('Phone', 'keystone-homes'), '(555) 010-0455'],
-        'ks_email' => [__('Email', 'keystone-homes'), 'hello@keystone-concept.test'],
-        'ks_cta_label' => [__('Header button label', 'keystone-homes'), 'Book a showing'],
-        'ks_cta_url' => [__('Header button URL', 'keystone-homes'), ''],
-        'ks_credit_text' => [__('Footer credit text', 'keystone-homes'), 'Concept by Matt Hummel'],
-        'ks_credit_url' => [__('Footer credit URL', 'keystone-homes'), 'https://matthummel.com'],
+        'ks_brand_name' => [__('Brand name', 'acreline'), 'Acreline'],
+        'ks_tagline' => [__('Header tagline', 'acreline'), 'Concept demo'],
+        'ks_phone' => [__('Phone', 'acreline'), '(555) 010-0455'],
+        'ks_email' => [__('Email', 'acreline'), 'hello@acreline-concept.test'],
+        'ks_cta_label' => [__('Header button label', 'acreline'), 'Book a showing'],
+        'ks_cta_url' => [__('Header button URL', 'acreline'), ''],
+        'ks_credit_text' => [__('Footer credit text', 'acreline'), 'Concept by Matt Hummel'],
+        'ks_credit_url' => [__('Footer credit URL', 'acreline'), 'https://matthummel.com'],
     ];
 
     foreach ($text as $id => [$label, $default]) {
@@ -48,7 +48,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => 'sanitize_textarea_field',
     ]);
     $wp_customize->add_control('ks_address', [
-        'label' => __('Address', 'keystone-homes'),
+        'label' => __('Address', 'acreline'),
         'section' => 'ks_identity',
         'type' => 'textarea',
     ]);
@@ -58,7 +58,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => 'sanitize_textarea_field',
     ]);
     $wp_customize->add_control('ks_hours', [
-        'label' => __('Hours', 'keystone-homes'),
+        'label' => __('Hours', 'acreline'),
         'section' => 'ks_identity',
         'type' => 'textarea',
     ]);
@@ -68,8 +68,8 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => 'sanitize_textarea_field',
     ]);
     $wp_customize->add_control('ks_footer_blurb', [
-        'label' => __('Footer blurb', 'keystone-homes'),
-        'description' => __('Leave empty for the concept sentence.', 'keystone-homes'),
+        'label' => __('Footer blurb', 'acreline'),
+        'description' => __('Leave empty for the concept sentence.', 'acreline'),
         'section' => 'ks_identity',
         'type' => 'textarea',
     ]);
@@ -79,7 +79,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
     ]);
     $wp_customize->add_control('ks_show_demo_chrome', [
-        'label' => __('Show concept demo banner and author badge', 'keystone-homes'),
+        'label' => __('Show concept demo banner and author badge', 'acreline'),
         'section' => 'ks_identity',
         'type' => 'checkbox',
     ]);
@@ -89,7 +89,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
     ]);
     $wp_customize->add_control('ks_show_credit', [
-        'label' => __('Show removable author credit in the footer', 'keystone-homes'),
+        'label' => __('Show removable author credit in the footer', 'acreline'),
         'section' => 'ks_identity',
         'type' => 'checkbox',
     ]);
@@ -100,8 +100,8 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     }
 
     $wp_customize->add_section('ks_colors', [
-        'title' => __('Colors', 'keystone-homes'),
-        'description' => __('Eight named styles. Pick a style, then tweak accent, paper, or ink. Keep body text dark on a light page.', 'keystone-homes'),
+        'title' => __('Colors', 'acreline'),
+        'description' => __('Eight named styles. Pick a style, then tweak accent, paper, or ink. Keep body text dark on a light page.', 'acreline'),
         'priority' => 35,
     ]);
 
@@ -111,7 +111,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'transport' => 'refresh',
     ]);
     $wp_customize->add_control('ks_color_scheme', [
-        'label' => __('Color style', 'keystone-homes'),
+        'label' => __('Color style', 'acreline'),
         'section' => 'ks_colors',
         'type' => 'select',
         'choices' => $schemeChoices,
@@ -119,9 +119,9 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
 
     $forest = ColorSchemes::all()['forest'];
     foreach ([
-        'ks_accent' => [__('Accent', 'keystone-homes'), $forest['accent']],
-        'ks_paper' => [__('Paper (page background)', 'keystone-homes'), $forest['paper']],
-        'ks_ink' => [__('Ink (text)', 'keystone-homes'), $forest['ink']],
+        'ks_accent' => [__('Accent', 'acreline'), $forest['accent']],
+        'ks_paper' => [__('Paper (page background)', 'acreline'), $forest['paper']],
+        'ks_ink' => [__('Ink (text)', 'acreline'), $forest['ink']],
     ] as $id => [$label, $default]) {
         $wp_customize->add_setting($id, [
             'default' => $default,
@@ -135,8 +135,8 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     }
 
     $wp_customize->add_section('ks_header', [
-        'title' => __('Header', 'keystone-homes'),
-        'description' => __('Sticky bar is the default. Compact shortens the bar on listing-heavy pages.', 'keystone-homes'),
+        'title' => __('Header', 'acreline'),
+        'description' => __('Sticky bar is the default. Compact shortens the bar on listing-heavy pages.', 'acreline'),
         'priority' => 34,
     ]);
 
@@ -149,12 +149,12 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         },
     ]);
     $wp_customize->add_control('ks_header_style', [
-        'label' => __('Header size', 'keystone-homes'),
+        'label' => __('Header size', 'acreline'),
         'section' => 'ks_header',
         'type' => 'select',
         'choices' => [
-            'standard' => __('Standard', 'keystone-homes'),
-            'compact' => __('Compact', 'keystone-homes'),
+            'standard' => __('Standard', 'acreline'),
+            'compact' => __('Compact', 'acreline'),
         ],
     ]);
 
@@ -163,22 +163,22 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
     ]);
     $wp_customize->add_control('ks_header_sticky', [
-        'label' => __('Stick the header while scrolling', 'keystone-homes'),
+        'label' => __('Stick the header while scrolling', 'acreline'),
         'section' => 'ks_header',
         'type' => 'checkbox',
     ]);
 
     $wp_customize->add_section('ks_social', [
-        'title' => __('Social links', 'keystone-homes'),
+        'title' => __('Social links', 'acreline'),
         'priority' => 36,
     ]);
 
     foreach ([
-        'facebook' => __('Facebook URL', 'keystone-homes'),
-        'instagram' => __('Instagram URL', 'keystone-homes'),
-        'youtube' => __('YouTube URL', 'keystone-homes'),
-        'linkedin' => __('LinkedIn URL', 'keystone-homes'),
-        'x' => __('X / Twitter URL', 'keystone-homes'),
+        'facebook' => __('Facebook URL', 'acreline'),
+        'instagram' => __('Instagram URL', 'acreline'),
+        'youtube' => __('YouTube URL', 'acreline'),
+        'linkedin' => __('LinkedIn URL', 'acreline'),
+        'x' => __('X / Twitter URL', 'acreline'),
     ] as $key => $label) {
         $id = 'ks_social_'.$key;
         $wp_customize->add_setting($id, [
@@ -193,8 +193,8 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
     }
 
     $wp_customize->add_section('ks_typography', [
-        'title' => __('Typography', 'keystone-homes'),
-        'description' => __('Sans-serif fonts used on modern realtor sites. Inter is the default for headings and body.', 'keystone-homes'),
+        'title' => __('Typography', 'acreline'),
+        'description' => __('Sans-serif fonts used on modern realtor sites. Inter is the default for headings and body.', 'acreline'),
         'priority' => 40,
     ]);
 
@@ -226,7 +226,7 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'transport' => 'postMessage',
     ]);
     $wp_customize->add_control('ks_font_size', [
-        'label' => __('Base text size (px)', 'keystone-homes'),
+        'label' => __('Base text size (px)', 'acreline'),
         'section' => 'ks_typography',
         'type' => 'number',
         'input_attrs' => ['min' => 14, 'max' => 20, 'step' => 1],
@@ -242,13 +242,13 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'transport' => 'postMessage',
     ]);
     $wp_customize->add_control('ks_heading_weight', [
-        'label' => __('Heading weight', 'keystone-homes'),
+        'label' => __('Heading weight', 'acreline'),
         'section' => 'ks_typography',
         'type' => 'select',
         'choices' => [
-            500 => __('Medium (500)', 'keystone-homes'),
-            600 => __('Semibold (600)', 'keystone-homes'),
-            700 => __('Bold (700)', 'keystone-homes'),
+            500 => __('Medium (500)', 'acreline'),
+            600 => __('Semibold (600)', 'acreline'),
+            700 => __('Bold (700)', 'acreline'),
         ],
     ]);
 });
@@ -299,7 +299,7 @@ add_action('customize_controls_enqueue_scripts', function () {
         file_exists($path) ? (string) filemtime($path) : wp_get_theme()->get('Version'),
         true
     );
-    wp_localize_script('keystone-customizer-controls', 'KEYSTONE_SCHEMES', ColorSchemes::forJs());
+    wp_localize_script('keystone-customizer-controls', 'ACRELINE_SCHEMES', ColorSchemes::forJs());
 });
 
 add_action('customize_preview_init', function () {
@@ -313,7 +313,7 @@ add_action('customize_preview_init', function () {
         file_exists($path) ? (string) filemtime($path) : wp_get_theme()->get('Version'),
         true
     );
-    wp_localize_script('keystone-customizer-preview', 'KEYSTONE_FONTS', [
+    wp_localize_script('keystone-customizer-preview', 'ACRELINE_FONTS', [
         'stacks' => Typography::stacksForJs(),
         'google' => array_map(fn ($font) => $font['google'], Typography::fonts()),
         'roles' => array_map(fn ($def) => $def['css'], Typography::roles()),

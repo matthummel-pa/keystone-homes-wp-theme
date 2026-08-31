@@ -14,16 +14,16 @@ Created by [Matt Hummel](https://matthummel.com/).
 | Author / other work | [matthummel.com](https://matthummel.com/) |
 | Concept office form (demo only) | [Contact on the demo](https://keystonehomes.ridgesandvalleys.com/contact/) |
 
-There is no ticket desk or live chat for this theme. Demo phones are `555` numbers (office `(555) 010-0455`). Demo emails use `@keystone-concept.test` and do not reach a real inbox.
+There is no ticket desk or live chat for this theme. Demo phones are `555` numbers (office `(555) 010-0455`). Demo emails use `@acreline-concept.test` and do not reach a real inbox.
 
 ## Before you file an issue
 
-1. Confirm the theme folder is still `keystone-homes` and you ran `npm run build` (or installed a zip that already includes `public/build`).
+1. Confirm the theme folder is still `acreline` and you ran `npm run build` (or installed a zip that already includes `public/build`).
 2. After Blade edits, clear Acorn views: `wp acorn view:clear`.
 3. Identity, colors, and the header live under **Appearance → Customize** — not in page content.
 4. Listings and agents are WordPress posts. Editing theme files does not change live copy unless you re-seed.
 
-Include the WordPress version, PHP version, theme version (Appearance → Themes), and whether Keystone Core is active.
+Include the WordPress version, PHP version, theme version (Appearance → Themes), and whether Acreline Core is active.
 
 ## What this theme does not do
 
@@ -34,7 +34,7 @@ Include the WordPress version, PHP version, theme version (Appearance → Themes
 
 ## Marketplace buyers
 
-If you bought a pack (theme + child + Keystone Core), start with the **Documentation** folder in that zip (`buyer-guide.html` and `support.html`). ThemeForest / own-site purchase questions go through that marketplace’s support channel; GitHub issues are still welcome for reproducible theme bugs.
+If you bought a pack (theme + child + Acreline Core), start with the **Documentation** folder in that zip (`buyer-guide.html` and `support.html`). ThemeForest / own-site purchase questions go through that marketplace’s support channel; GitHub issues are still welcome for reproducible theme bugs.
 
 ## Security
 

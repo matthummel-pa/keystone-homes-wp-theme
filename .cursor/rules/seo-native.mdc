@@ -12,13 +12,13 @@ You are implementing SEO in this Sage theme only. **Do not install Yoast, Rank M
 
 | Tag | Rule |
 | --- | --- |
-| `<title>` | Prefer `{Page Title} \| Keystone Real Estate`. Keep the visible title ≤ 60 characters — shorten the page title, not the brand, if it overflows. WordPress already prints `<title>` via `wp_head()`; set it with `document_title_parts` / `pre_get_document_title`, do not echo a second `<title>`. |
+| `<title>` | Prefer `{Page Title} \| Acreline`. Keep the visible title ≤ 60 characters — shorten the page title, not the brand, if it overflows. WordPress already prints `<title>` via `wp_head()`; set it with `document_title_parts` / `pre_get_document_title`, do not echo a second `<title>`. |
 | `<meta name="description">` | 150–160 characters. Unique per template. |
 | `<link rel="canonical">` | Absolute HTTPS URL of this view. |
 | Open Graph | `og:title`, `og:description`, `og:image`, `og:url`, `og:type` |
 | Twitter | `twitter:card` = `summary_large_image`, plus `twitter:title`, `twitter:description` (and `twitter:image` when `og:image` exists) |
 
-Also set `og:locale` / `og:site_name` when easy (`en_US`, `Keystone Real Estate`).
+Also set `og:locale` / `og:site_name` when easy (`en_US`, `Acreline`).
 
 ## Where it lives
 
@@ -38,14 +38,14 @@ Put one native generator in the theme — prefer `App\Support\Seo` hooked from `
 4. **Image** — featured image → listing `ks_image` → page `ks_hero_image` → a theme default under `public/` or the homepage Unsplash farmhouse. Absolute URL. `og:image` should be large (`summary_large_image`).
 5. **og:type** — `website` on home/archives; `article` on posts; `og:type` `website` is fine for listings/agents unless you add RealEstate structured data separately.
 
-JSON-LD already on the home template (`RealEstateAgent`) stays native in Blade. Do not add plugin schema. Keep `hello@keystone-concept.test` valid JSON (`@json(...)`), never `hello@@`.
+JSON-LD already on the home template (`RealEstateAgent`) stays native in Blade. Do not add plugin schema. Keep `hello@acreline-concept.test` valid JSON (`@json(...)`), never `hello@@`.
 
 ## Do not
 
 - Leave description as WordPress’s empty excerpt on marketing pages (they are field-driven).
 - Output duplicate canonical / description if a tag already exists — one writer owns the head.
 - Ship Rank Math / Yoast “just for now.” If a buyer later activates one, native tags must yield (see `marketplace.mdc` 8.2).
-- Use the luxury-broker fallback from generic snippets. Default something like: `Sample farms, historic houses, and acreage. Filter listings and book a fictional showing — Keystone Real Estate concept demo.`
+- Use the luxury-broker fallback from generic snippets. Default something like: `Sample farms, historic houses, and acreage. Filter listings and book a fictional showing — Acreline concept demo.`
 
 ## When implementing
 

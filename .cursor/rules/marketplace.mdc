@@ -8,7 +8,7 @@ alwaysApply: false
 
 Matt asked to package this theme for sale. Follow 8.1–8.12 on marketplace work.
 
-This repo is still a **concept Sage theme**. Listings stay in-theme as a fallback so the live demo keeps working. The **Keystone Core** companion plugin (`plugins/keystone-core`) is the store-correct home for CPTs and booking REST.
+This repo is still a **concept Sage theme**. Listings stay in-theme as a fallback so the live demo keeps working. The **Acreline Core** companion plugin (`plugins/acreline-core`) is the store-correct home for CPTs and booking REST.
 
 ## Where the money is
 
@@ -23,9 +23,9 @@ Do **not** add Freemius, Envato banners, affiliate chrome, or “upgrade to Pro�
 
 ## A. Plugin territory and content
 
-**8.1 Custom post types live in Keystone Core.** `listing`, `booking`, and `agent` must not be the only thing registered in a store zip.
+**8.1 Custom post types live in Acreline Core.** `listing`, `booking`, and `agent` must not be the only thing registered in a store zip.
 
-- Companion plugin: `plugins/keystone-core`. It defines `KEYSTONE_CORE_VERSION` and owns CPT + `keystone/v1/bookings`.
+- Companion plugin: `plugins/acreline-core`. It defines `KEYSTONE_CORE_VERSION` and owns CPT + `keystone/v1/bookings`.
 - Theme `app/post-types.php` registers the same types **only when the plugin is not loaded** (concept / live demo fallback).
 - WP.org / store theme zip: define `KS_DISABLE_THEME_CPTS` (the marketplace pack script does this) so the theme is presentation-only.
 - Switching themes must leave listing / agent / booking posts and `ks_*` meta in the database.
@@ -54,9 +54,9 @@ Do not `{!! $untrusted !!}`. REST / JSON-LD: `esc_url` on URLs; emails via `@jso
 
 **8.4 Prefix and text domain.** Functions, hooks, constants, image sizes, and script/style handles: `keystone_`, `ks_`, `KS_`, or Acorn `App\`. Enqueue handles: `keystone-*` or `ks-*`.
 
-- **Text domain is `keystone-homes`** (theme slug). Sage leftovers in `vendor/` may still say `sage` — that is the one allowed extra domain (framework).
-- `load_theme_textdomain( 'keystone-homes', get_template_directory() . '/languages' )`.
-- Gettext calls in theme PHP / Blade must use the literal `'keystone-homes'` string (no PHP constant — Theme Check).
+- **Text domain is `acreline`** (theme slug). Sage leftovers in `vendor/` may still say `sage` — that is the one allowed extra domain (framework).
+- `load_theme_textdomain( 'acreline', get_template_directory() . '/languages' )`.
+- Gettext calls in theme PHP / Blade must use the literal `'acreline'` string (no PHP constant — Theme Check).
 
 **8.5 Zero notices.** With `WP_DEBUG` true: no PHP notices/warnings, no JS `console.error` on the public site. Guard empty meta, missing query objects, and undefined JS nodes. Do not set `is_page` / `is_singular` without a real `WP_Post` (Sage 500).
 
@@ -64,7 +64,7 @@ Do not `{!! $untrusted !!}`. REST / JSON-LD: `esc_url` on URLs; emails via `@jso
 
 **8.6 GPL-compatible assets.** Bundled JS, icons, and fonts must be GPL-compatible (MIT, Apache 2.0, SIL OFL).
 
-- **Do not** ship Unsplash (or other stock) **files** inside `keystone-homes.zip` unless redistribution is licensed.
+- **Do not** ship Unsplash (or other stock) **files** inside `acreline.zip` unless redistribution is licensed.
 - Hotlinked Unsplash (`HeroImage::DEFAULT`, blog teasers) is fine for this concept demo; for a store zip use SVG / `public/` placeholders or public-domain stills.
 - Inter via Customizer / Google Fonts is OK; do not vendor a non-OFL font.
 - List every bundled resource in `CREDITS.md` / `readme.txt` Resources.
@@ -97,10 +97,10 @@ Identity (phone, email, address, hours, CTA, accent, social, demo banner) comes 
 
 | File | Why |
 | --- | --- |
-| `style.css` headers | Theme Name, URI, Author, Description, Version, Requires at least, Tested up to, Requires PHP, License (GPLv2+), License URI, Text Domain `keystone-homes`, Tags |
+| `style.css` headers | Theme Name, URI, Author, Description, Version, Requires at least, Tested up to, Requires PHP, License (GPLv2+), License URI, Text Domain `acreline`, Tags |
 | `readme.txt` | WP.org / ThemeForest parser format |
 | `screenshot.png` | 1200×900, 4:3, not an ad |
-| `languages/keystone-homes.pot` | Translation-ready |
+| `languages/acreline.pot` | Translation-ready |
 | `CREDITS.md` | Third-party licenses |
 | `child-theme/` | ThemeForest buyer expectation |
 | `docs/marketplace/` | Buyer install + seller channel notes |
@@ -115,7 +115,7 @@ Identity (phone, email, address, hours, CTA, accent, social, demo banner) comes 
 ## Do not
 
 - Register CPTs in a WP.org theme zip (`KS_DISABLE_THEME_CPTS`)
-- Bundle Unsplash binaries in `dist-theme/keystone-homes.zip`
+- Bundle Unsplash binaries in `dist-theme/acreline.zip`
 - Add theme GA / SEO metaboxes
 - Leave `{!! $raw !!}` or unprefixed global functions
 - Add TGMPA / Freemius / Envato admin banners

@@ -9,7 +9,7 @@ if (! process.env.APP_URL) {
 }
 
 export default defineConfig({
-  base: '/wp-content/themes/keystone-homes/public/build/',
+  base: '/wp-content/themes/acreline/public/build/',
   plugins: [
     tailwindcss(),
     laravel({

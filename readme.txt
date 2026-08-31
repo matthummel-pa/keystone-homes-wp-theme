@@ -3,7 +3,7 @@ Contributors: matthummel
 Requires at least: 6.6
 Tested up to: 7.0.1
 Requires PHP: 8.3
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
@@ -14,7 +14,7 @@ WordPress theme for farms, land, and historic homes — listings, agents, showin
 
 Acreline is a classic (non-block) Sage 11 WordPress theme for land, farms, and historic-home inventory: searchable listings, agents, and showing requests. Buyers set office identity, color style, menus, and logo from the Customizer. Demo pages and sample listings load from Tools → Seed Acreline demo. Support: https://github.com/matthummel-pa/keystone-homes-wp-theme/blob/main/SUPPORT.md
 
-The sample office in the preview is named Keystone Real Estate — replace it under Customize → Identity. This is a concept theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
+The sample office in the preview is named Acreline — replace it under Customize → Identity. This is a concept theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
 
 = Features =
 
@@ -25,10 +25,10 @@ The sample office in the preview is named Keystone Real Estate — replace it un
 * Inter-based typography with font choices
 * WordPress menus (Primary + Footer) with a concept-page fallback
 * Footer widget area
-* Listing, agent, and booking templates (types registered by Keystone Core, or in-theme as a concept fallback)
+* Listing, agent, and booking templates (types registered by Acreline Core, or in-theme as a concept fallback)
 * Native title, description, Open Graph, and Twitter tags (yields to Yoast / Rank Math / SEOPress / AIOSEO)
 * Breadcrumbs with BreadcrumbList JSON-LD
-* Translation-ready (`keystone-homes`)
+* Translation-ready (`acreline`)
 
 = WordPress.org note =
 
@@ -36,14 +36,14 @@ This theme ships compiled Vite assets and an Acorn/Sage vendor tree. The directo
 
 == Installation ==
 
-1. Upload `keystone-homes` to `/wp-content/themes/` (or use the zip from Appearance → Themes → Add New).
+1. Upload `acreline` to `/wp-content/themes/` (or use the zip from Appearance → Themes → Add New).
 2. Activate Acreline.
-3. Optional: install and activate Keystone Core from the marketplace pack so listings survive a theme switch.
+3. Optional: install and activate Acreline Core from the marketplace pack so listings survive a theme switch.
 4. Go to Appearance → Acreline Setup and walk the checklist.
 5. Appearance → Customize → Identity to replace concept phone and address.
 6. Tools → Seed Acreline demo if you want the preview pages and sample inventory.
 
-The theme folder must stay `keystone-homes` (Vite `base` path). After a source checkout run `npm run build` and `composer install --no-dev`. Store zips already include `public/build` and `vendor`.
+The theme folder must stay `acreline` (Vite `base` path). After a source checkout run `npm run build` and `composer install --no-dev`. Store zips already include `public/build` and `vendor`.
 
 == Frequently Asked Questions ==
 
@@ -57,13 +57,17 @@ Customize → Identity → uncheck “Show concept demo banner and author badge.
 
 = Where do listings live? =
 
-In the `listing` post type. Keystone Core owns registration on a store install. This repo still registers the types in the theme when the plugin is missing so the live concept site keeps working.
+In the `listing` post type. Acreline Core owns registration on a store install. This repo still registers the types in the theme when the plugin is missing so the live concept site keeps working.
 
 = Can I use a child theme? =
 
-Yes. The marketplace pack includes `keystone-homes-child`.
+Yes. The marketplace pack includes `acreline-child`.
 
 == Changelog ==
+
+= 1.2.0 =
+* Install folder, text domain, and theme zip are `acreline`. Child theme `acreline-child`. Companion plugin is Acreline Core.
+* Sample office default is Acreline. Concept emails use `@acreline-concept.test`.
 
 = 1.1.0 =
 * Eight named color styles, paper/ink pickers, header size, and a demo style switcher.
@@ -73,11 +77,11 @@ Yes. The marketplace pack includes `keystone-homes-child`.
 * Author credit is Matt Hummel (matthummel.com) for theme shops and WordPress.org.
 
 = 1.0.1 =
-* Theme Name is now Acreline. Sample office in the demo stays Keystone Real Estate until you change Identity.
+* Theme Name is now Acreline. Sample office in the demo stays Acreline until you change Identity.
 
 = 1.0.0 =
 * Marketplace layer: Customizer identity/colors/social, WP menus, breadcrumbs, setup checklist, companion plugin, child theme, readme.txt
-* Text domain is `keystone-homes` (install folder)
+* Text domain is `acreline` (install folder)
 * Footer copyright is the site name; author credit is optional and nofollow
 
 == Resources ==

@@ -11,7 +11,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script>
-      window.KEYSTONE = @json($keystone);
+      window.ACRELINE = @json($keystone);
+      window.KEYSTONE = window.ACRELINE;
     </script>
   </head>
 
@@ -19,7 +20,7 @@
     @php(wp_body_open())
 
     @if (! empty($identity['showDemoChrome']))
-      <p class="demo-banner"><strong>{{ __('Concept demo', 'keystone-homes') }}</strong> · {{ __('Fiction only', 'keystone-homes') }} · {{ __('Not a live MLS, brokerage or booking system', 'keystone-homes') }}</p>
+      <p class="demo-banner"><strong>{{ __('Concept demo', 'acreline') }}</strong> · {{ __('Fiction only', 'acreline') }} · {{ __('Not a live MLS, brokerage or booking system', 'acreline') }}</p>
     @endif
 
     @include('sections.header')
