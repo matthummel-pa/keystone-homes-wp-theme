@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Acreline — Translation</title>
+  <link rel="stylesheet" href="css/docs.css">
+</head>
+<body>
+  <a class="skip" href="#doc">Skip to content</a>
+  <div class="frame">
+<aside class="nav" aria-label="Documentation">
+  <a class="brand" href="index.html">Acreline <span>Documentation</span></a>
+  <p class="meta">Version 1.2.2 · GPLv2 or later</p>
+  <div class="group">Start</div>
+  <ul>
+    <li><a class="item" href="index.html">Overview</a></li>
+    <li><a class="item" href="buyer-guide.html">Install</a></li>
+    <li><a class="item" href="requirements.html">Requirements</a></li>
+  </ul>
+  <div class="group">Theme</div>
+  <ul>
+    <li><a class="item" href="customizer.html">Customizer</a></li>
+    <li><a class="item" href="templates.html">Templates</a></li>
+    <li><a class="item" href="listings.html">Listings &amp; bookings</a></li>
+    <li><a class="item" href="child-theme.html">Child theme</a></li>
+    <li><a class="item" href="translation.html" aria-current="page">Translation</a></li>
+  </ul>
+  <div class="group">Reference</div>
+  <ul>
+    <li><a class="item" href="faq.html">FAQ</a></li>
+    <li><a class="item" href="changelog.html">Changelog</a></li>
+    <li><a class="item" href="credits.html">Credits</a></li>
+    <li><a class="item" href="support.html">Support</a></li>
+  </ul>
+</aside>
+    <main id="doc" class="doc">
+      <p class="kicker">Acreline · Translation</p>
+      <h1>Text domain acreline</h1>
+      <p>The theme is translation-ready. Text domain and install folder are both <code>acreline</code>. Domain path: <code>/languages</code>.</p>
+      <h2>Files</h2>
+      <ul>
+        <li><code>languages/acreline.pot</code> — template for translators.</li>
+        <li>Load: <code>load_theme_textdomain( 'acreline', get_template_directory() . '/languages' )</code>.</li>
+        <li>Sage leftovers in <code>vendor/</code> may still use the <code>sage</code> domain. That is the framework, not theme copy.</li>
+      </ul>
+      <h2>Create a language pack</h2>
+      <ol>
+        <li>Copy <code>acreline.pot</code> to <code>acreline-xx_XX.po</code> (example: <code>acreline-es_ES.po</code>).</li>
+        <li>Translate with Poedit or Loco Translate.</li>
+        <li>Place the compiled <code>.mo</code> next to the <code>.po</code> in <code>languages/</code>, or use a languages plugin so updates do not overwrite your file.</li>
+      </ol>
+      <p>A child theme can ship its own <code>languages/</code> folder with text domain <code>acreline-child</code> for strings you add in the child.</p>
+      <h2>What is not translated by gettext</h2>
+      <p>Seeded page copy, listing descriptions, and Customizer Identity values live in the database. Edit those in wp-admin (or re-seed) for another language. Only PHP / Blade <code>__()</code> strings use the POT.</p>
+
+      <footer>Fiction only · Equal Housing Opportunity (concept) · Theme license GPLv2 or later · Created by <a href="https://matthummel.com/">Matt Hummel</a></footer>
+    </main>
+  </div>
+</body>
+</html>

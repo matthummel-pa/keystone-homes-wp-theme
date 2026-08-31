@@ -9,7 +9,7 @@ Created by [Matt Hummel](https://matthummel.com/).
 | Need | Go here |
 | --- | --- |
 | How the public site looks | [Concept demo](https://keystonehomes.ridgesandvalleys.com/) |
-| Install, Customizer, seed, child theme | [Buyer guide](docs/marketplace/buyer-guide.html) |
+| Install, Customizer, seed, child theme | [Documentation hub](docs/marketplace/index.html) · [Buyer guide](docs/marketplace/buyer-guide.html) |
 | Theme bugs or docs gaps | [Open a GitHub issue](https://github.com/matthummel-pa/wp-acreline/issues) |
 | Author / other work | [matthummel.com](https://matthummel.com/) |
 | Concept office form (demo only) | [Contact on the demo](https://keystonehomes.ridgesandvalleys.com/contact/) |
@@ -34,7 +34,7 @@ Include the WordPress version, PHP version, theme version (Appearance → Themes
 
 ## Marketplace buyers
 
-If you bought a pack (theme + child + Acreline Core), start with the **Documentation** folder in that zip (`buyer-guide.html` and `support.html`). ThemeForest / own-site purchase questions go through that marketplace’s support channel; GitHub issues are still welcome for reproducible theme bugs.
+If you bought a pack (theme + child + Acreline Core), start with the **Documentation** folder in that zip (`index.html`). ThemeForest / own-site purchase questions go through that marketplace’s support channel; GitHub issues are still welcome for reproducible theme bugs.
 
 ## Security
 

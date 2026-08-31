@@ -28,7 +28,7 @@ Theme shop and own-site buyers: **do not clone this repo onto the host.** The st
 4. Optional: upload `acreline-child.zip`, then `acreline-core.zip` (listings survive a theme switch).
 5. **Tools → Seed Acreline demo** if you want the preview pages and sample inventory.
 
-Walkthrough and ThemeForest form fields: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html) and [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html). WordPress.org-style parser file: [`readme.txt`](readme.txt).
+Walkthrough and ThemeForest form fields: [`docs/marketplace/index.html`](docs/marketplace/index.html) (documentation hub), [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html), and [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html). Paste-ready store listing: [`docs/marketplace/themeforest-listing.md`](docs/marketplace/themeforest-listing.md). WordPress.org-style parser file: [`readme.txt`](readme.txt). WP.org upload notes: [`docs/marketplace/wordpress-org.md`](docs/marketplace/wordpress-org.md).
 
 ## Who it is for
 
@@ -123,4 +123,4 @@ Design tokens and layout CSS live in `resources/css/keystone.css`. Card chrome i
 
 ## License
 
-GPLv2 or later. See `LICENSE.md` and `CREDITS.md`.
+GPLv2 or later. See `license.txt`, `LICENSE.md`, and `CREDITS.md`. Sage / Acorn remain MIT.

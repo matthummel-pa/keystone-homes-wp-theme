@@ -18,6 +18,11 @@ MIT is GPL-compatible. The distributed theme is offered under GPLv2 or later.
 | DM Sans | SIL OFL | https://fonts.google.com/specimen/DM+Sans |
 | Manrope | SIL OFL | https://fonts.google.com/specimen/Manrope |
 | Montserrat | SIL OFL | https://fonts.google.com/specimen/Montserrat |
+| Poppins | SIL OFL | https://fonts.google.com/specimen/Poppins |
+| Source Sans 3 | SIL OFL | https://fonts.google.com/specimen/Source+Sans+3 |
+| Nunito Sans | SIL OFL | https://fonts.google.com/specimen/Nunito+Sans |
+| Outfit | SIL OFL | https://fonts.google.com/specimen/Outfit |
+| Lato | SIL OFL | https://fonts.google.com/specimen/Lato |
 
 No font files are vendored in the zip.
 

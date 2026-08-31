@@ -27,19 +27,21 @@ bin/build-marketplace-pack.sh     # same files + this brief copied beside them
 
 Creates `dist-install/`:
 
-- `acreline-1.2.0.zip` — **upload this to ThemeForest / Gumroad** (folder inside: `acreline-pack/`)
+- `acreline-1.2.2.zip` — **upload this to ThemeForest / Gumroad** (folder inside: `acreline-pack/`)
 - `acreline-pack/acreline.zip` — what the buyer uploads in Appearance → Themes
 - `acreline-pack/acreline-child.zip`
 - `acreline-pack/acreline-core.zip`
-- `acreline-pack/Documentation/requirements.html` — host needs + listing fields to paste
-- `acreline-pack/Documentation/buyer-guide.html`
-- `acreline-pack/Documentation/support.html`
+- `acreline-pack/Documentation/index.html` — Envato-style docs hub (open this first)
+- `acreline-pack/Documentation/buyer-guide.html`, `requirements.html`, `customizer.html`, `templates.html`, `listings.html`, `child-theme.html`, `translation.html`, `faq.html`, `changelog.html`, `credits.html`, `support.html`
+- `acreline-pack/Documentation/css/docs.css`
 - `acreline-pack/Demos/README.txt`
-- `acreline-pack/Licensing/CREDITS.md`
+- `acreline-pack/Licensing/CREDITS.md`, `LICENSE.md`, `license.txt`
 
-`SELLING.md` stays in the repo and in `dist-marketplace/SELLING.md` only. It is **not** inside the buyer zip.
+`SELLING.md`, `themeforest-listing.md`, and `wordpress-org.md` stay in the repo (and `SELLING.md` is copied beside the pack in `dist-marketplace/`). They are **not** inside the buyer zip.
 
 Upload the **outer** `acreline-*.zip` to Envato (“All files & documentation”). Buyers extract it, then upload `acreline.zip`. Upload **only** `acreline.zip` if you try WordPress.org.
+
+Paste-ready ThemeForest title, excerpt, long description, and attributes: `docs/marketplace/themeforest-listing.md`. WP.org upload rules and Theme Check blockers: `docs/marketplace/wordpress-org.md`.
 
 ## Before you submit anywhere
 
