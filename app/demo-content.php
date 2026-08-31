@@ -30,15 +30,15 @@ add_action('admin_notices', function () {
     }
     $url = admin_url('tools.php?page=ks-seed-demo');
     echo '<div class="notice notice-warning is-dismissible"><p>';
-    echo esc_html__('Keystone demo pages and listings are missing, so nav links 404 and the homepage has no inventory.', 'keystone-homes');
+    echo esc_html__('Acreline demo pages and listings are missing, so nav links 404 and the homepage has no inventory.', 'keystone-homes');
     echo ' <a href="'.esc_url($url).'">'.esc_html__('Load demo content', 'keystone-homes').'</a>';
     echo '</p></div>';
 });
 
 add_action('admin_menu', function () {
     add_management_page(
-        __('Seed Keystone demo', 'keystone-homes'),
-        __('Seed Keystone demo', 'keystone-homes'),
+        __('Seed Acreline demo', 'keystone-homes'),
+        __('Seed Acreline demo', 'keystone-homes'),
         'manage_options',
         'ks-seed-demo',
         __NAMESPACE__.'\\render_demo_seed_page'
@@ -60,7 +60,7 @@ function render_demo_seed_page(): void
     }
 
     echo '<div class="wrap">';
-    echo '<h1>'.esc_html__('Seed Keystone demo', 'keystone-homes').'</h1>';
+    echo '<h1>'.esc_html__('Seed Acreline demo', 'keystone-homes').'</h1>';
     if ($notice) {
         printf('<div class="notice notice-success is-dismissible"><p>%s</p></div>', esc_html($notice));
     }
@@ -76,6 +76,6 @@ if (defined('WP_CLI') && WP_CLI) {
     \WP_CLI::add_command('ks seed', function (): void {
         DemoContent::seed();
         update_option(DemoContent::OPTION, '1');
-        \WP_CLI::success('Keystone demo content loaded.');
+        \WP_CLI::success('Acreline demo content loaded.');
     });
 }

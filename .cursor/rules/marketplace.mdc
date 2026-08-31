@@ -71,7 +71,7 @@ Do not `{!! $untrusted !!}`. REST / JSON-LD: `esc_url` on URLs; emails via `@jso
 
 **8.7 Demo import.** ThemeForest packs should let a buyer match the preview.
 
-- **Preferred (this theme):** Tools → Seed Keystone demo / `wp ks seed`. Keep it.
+- **Preferred (this theme):** Tools → Seed Acreline demo / `wp ks seed`. Keep it.
 - **Also ship:** `Demos/` notes + optional WXR for Tools → Import. Do **not** bundle the OCDI plugin zip inside the *theme* folder (WP.org forbids zip-in-theme). The marketplace *pack* may include XML beside the theme zip.
 - Do not auto-install plugins.
 
@@ -84,9 +84,9 @@ Do not `{!! $untrusted !!}`. REST / JSON-LD: `esc_url` on URLs; emails via `@jso
 Allowed first-party admin (not an upsell):
 
 - Appearance → Customize (identity, colors, typography, menus)
-- Appearance → Keystone Setup (checklist of Customizer / menus / seed — dismissible)
+- Appearance → Acreline Setup (checklist of Customizer / menus / seed — dismissible)
 - Appearance → Update Theme (GitHub zip)
-- Tools → Seed Keystone demo + the missing-content notice (`is-dismissible`)
+- Tools → Seed Acreline demo + the missing-content notice (`is-dismissible`)
 - Booking “advanced” confirmation notice
 
 **8.10 WordPress menus and chrome.** Header / footer nav must use `register_nav_menus` + assigned menus when present. Hardcoded concept slugs are the **fallback** only (fresh install before seed). Buyers change menus under Appearance → Menus.

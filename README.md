@@ -1,6 +1,6 @@
-# Keystone Real Estate
+# Acreline
 
-Sage 11 WordPress theme for **Keystone Real Estate** — a land-and-farms realtor concept by [Ridges & Valleys Studio](https://ridgesandvalleys.com).
+Sage 11 WordPress theme — **Acreline** — rural listings, agents, and showing requests. The sample office in the preview is Keystone Real Estate (change it in the Customizer). By [Ridges & Valleys Studio](https://ridgesandvalleys.com).
 
 Ported from the static concept:
 
@@ -36,7 +36,7 @@ wp server --path="$HOME/wp" --host=0.0.0.0 --port=8080 --allow-root
 
 Admin: `http://localhost:8080/wp-admin` — user `admin`, password `admin123`.
 
-On a fresh WordPress install the theme loads demo pages, eight listings, three agents, and sample blog posts on the first public request. Re-run anytime from **Tools → Seed Keystone demo** or:
+On a fresh WordPress install the theme loads demo pages, eight listings, three agents, and sample blog posts on the first public request. Re-run anytime from **Tools → Seed Acreline demo** or:
 
 ```bash
 wp ks seed --path="$HOME/wp" --allow-root

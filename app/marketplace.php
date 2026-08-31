@@ -27,8 +27,8 @@ add_filter('nav_menu_link_attributes', function (array $atts, $item): array {
 
 add_action('admin_menu', function (): void {
     add_theme_page(
-        __('Keystone Setup', 'keystone-homes'),
-        __('Keystone Setup', 'keystone-homes'),
+        __('Acreline Setup', 'keystone-homes'),
+        __('Acreline Setup', 'keystone-homes'),
         'edit_theme_options',
         'keystone-setup',
         __NAMESPACE__.'\\render_setup_page'
@@ -51,8 +51,8 @@ function render_setup_page(): void
     $colorUrl = add_query_arg('autofocus[section]', 'ks_colors', $customizer);
 
     echo '<div class="wrap">';
-    echo '<h1>'.esc_html__('Keystone Setup', 'keystone-homes').'</h1>';
-    echo '<p style="max-width:70ch">'.esc_html__('Buyer checklist — presentation only. No upsells. Walk these once after you activate the theme.', 'keystone-homes').'</p>';
+    echo '<h1>'.esc_html__('Acreline Setup', 'keystone-homes').'</h1>';
+    echo '<p style="max-width:70ch">'.esc_html__('Buyer checklist — presentation only. No upsells. Walk these once after you activate Acreline.', 'keystone-homes').'</p>';
     echo '<ol style="max-width:70ch;line-height:1.7">';
     echo '<li><a href="'.esc_url($identityUrl).'">'.esc_html__('Identity', 'keystone-homes').'</a> — '.esc_html__('Brand name, phone, email, address, hours, and header button.', 'keystone-homes').'</li>';
     echo '<li><a href="'.esc_url($colorUrl).'">'.esc_html__('Colors', 'keystone-homes').'</a> — '.esc_html__('Accent (forest by default).', 'keystone-homes').'</li>';
