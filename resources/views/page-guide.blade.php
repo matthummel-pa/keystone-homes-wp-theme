@@ -20,26 +20,42 @@
 ])
 
 
-  <!-- ============================= GUIDE PROSE ============================= -->
   <section class="section">
-    <div class="wrap prose reveal">
-      <h2>{!! $copy['intro_title'] ?? 'What\'s different about buying land' !!}</h2>
-      <p>{!! $copy['intro_text'] ?? 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself.' !!}</p>
-
-      <h3>Water: wells &amp; yield</h3>
-      <p>Most rural property is served by a private well rather than public water. Two things matter: whether a well already exists and produces enough water, and — if the lot is raw — whether a new well is likely to hit a good yield. In rockier hill country, yields can vary well to well. For an existing well we recommend a flow test and a potability test; for raw land we look at neighboring wells as a guide.</p>
-
-      <h3>Waste: septic &amp; the perc test</h3>
-      <p>No public sewer usually means an on-lot septic system, and that means a percolation ("perc") test through the township or county health office. A perc test tells you whether — and where — the soil will absorb effluent, which in turn dictates where a house can sit. A parcel advertised as "perc-approved" with a valid soils report is worth more and closes faster than one where the test is still an unknown. We help you read an existing perc report or schedule a new one as an inspection contingency.</p>
-
-      <h3>Access &amp; easements</h3>
-      <p>Every buildable parcel needs legal, recorded access to a public road — a surprising number of back-lot tracts rely on a handshake lane across a neighbor's field. We confirm access in writing and flag utility easements, agricultural-security areas, right-of-way and any deed restrictions before you're committed.</p>
-
-      <h3>Taxes: use-value / preferential farmland programs</h3>
-      <p>A lot of farm and orchard ground is enrolled in a use-value or "clean and green" tax program, which taxes it at agricultural use instead of market value — a real annual savings. But changing the use or subdividing can trigger a rollback tax of several years. If a parcel is enrolled, we make sure you understand what you're inheriting. Rename this section for the program in your state.</p>
-
-      <h3>Financing: land loans</h3>
-      <p>Raw land and working farms often don't fit a standard 30-year mortgage. Local banks and farm-credit lenders offer land loans, construction-to-permanent loans and ag loans, typically with a larger down payment and a slightly higher rate than a home mortgage. The estimator below gives you a friendly ballpark; a lender will give you the real terms.</p>
+    <div class="wrap mkt-lead reveal">
+      <p class="eyebrow">Buying land</p>
+      <div>
+        <h2>{!! $copy['intro_title'] ?? 'What\'s different about buying land' !!}</h2>
+        <p class="lede">{!! $copy['intro_text'] ?? 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.' !!}</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="topic-grid">
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">01</p>
+          <h3>Water: wells and yield</h3>
+          <p>Most rural parcels run on a private well. Ask whether one exists, what it yields, and whether a new hole is likely to hit water. Flow-test and potability-test an existing well; read neighboring wells on raw land.</p>
+        </article>
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">02</p>
+          <h3>Waste: septic and perc</h3>
+          <p>No public sewer means an on-lot system and a perc test. The soils report decides where a house can sit. A valid perc is worth more — and closes faster — than a “we’ll figure it out later.”</p>
+        </article>
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">03</p>
+          <h3>Access and easements</h3>
+          <p>Every buildable parcel needs recorded access to a public road. Handshake lanes across a neighbor’s field fail at closing. Flag utility easements, ag-security areas, and deed restrictions before you write.</p>
+        </article>
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">04</p>
+          <h3>Farmland tax programs</h3>
+          <p>Use-value or “clean and green” enrollment lowers the annual bill. Subdivide or change use and you can trigger a rollback. Rename this card for the program your state actually uses.</p>
+        </article>
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">05</p>
+          <h3>Land loans</h3>
+          <p>Raw land and working farms rarely fit a standard 30-year mortgage. Expect a larger down payment. The estimators below are planning math — a lender writes the real terms.</p>
+        </article>
+      </div>
     </div>
   </section>
 

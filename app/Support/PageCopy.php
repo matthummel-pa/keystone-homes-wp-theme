@@ -228,6 +228,7 @@ class PageCopy
         $id = $postId ?: (int) (get_queried_object_id() ?: get_the_ID());
         $stored = $id ? get_post_meta($id, Catalog::metaKey($key), true) : '';
         $value = ($stored === '' || $stored === false) ? $default : $stored;
+        $value = self::dropLegacyCopy((string) $value, $default);
 
         return wp_kses((string) $value, [
             'em' => [],
@@ -284,5 +285,42 @@ class PageCopy
         }
 
         return $cards;
+    }
+
+    /**
+     * Live demo still stores Keystone / Adams County strings from early seeds.
+     * Prefer the current sample-market default so marketing pages stay Acreline.
+     */
+    private static function dropLegacyCopy(string $value, string $default): string
+    {
+        if ($value === '' || $value === $default) {
+            return $value === '' ? $default : $value;
+        }
+
+        $hay = strtolower(wp_strip_all_tags($value));
+        $needles = [
+            'keystone',
+            'keystone-concept.test',
+            'gettysburg',
+            'adams county',
+            'menallen',
+            'hamiltonban',
+            'biglerville',
+            'michaux',
+            'idaville',
+            'bendersville',
+            'franklin township',
+            'butler township',
+            'tyrone township',
+            'liberty township',
+            'northwest of gettysburg',
+        ];
+        foreach ($needles as $needle) {
+            if (str_contains($hay, $needle)) {
+                return $default;
+            }
+        }
+
+        return $value;
     }
 }

@@ -20,10 +20,12 @@
 
 <section class="section section-alt" id="book-showing" aria-labelledby="book-heading">
   <div class="wrap">
-    <header class="section-head left reveal">
+    <header class="mkt-lead reveal">
       <p class="eyebrow">{{ $copy['book_eyebrow'] ?? 'Appointments' }}</p>
-      <h2 id="book-heading">{!! $copy['book_title'] ?? 'Pick a listing and a time' !!}</h2>
-      <p>{!! $copy['book_text'] ?? 'Choose a sample address, a date, and a slot. The request is saved for the listing agent — this demo does not send email.' !!}</p>
+      <div>
+        <h2 id="book-heading">{!! $copy['book_title'] ?? 'Pick a listing and a time' !!}</h2>
+        <p class="lede">{!! $copy['book_text'] ?? 'Choose a sample address, a date, and a slot. The request is saved for the listing agent — this demo does not send email.' !!}</p>
+      </div>
     </header>
     <div class="booking-shell reveal">
       @include('partials.booking-form')
@@ -34,10 +36,12 @@
 
 <section class="section" aria-labelledby="showing-help-heading">
   <div class="wrap">
-    <header class="section-head left reveal">
+    <header class="mkt-lead reveal">
       <p class="eyebrow">Before you go</p>
-      <h2 id="showing-help-heading">What a rural showing is actually for</h2>
-      <p>The photo sells the house. The walk answers water, access, and whether the barn still works. Scan this, then send the request.</p>
+      <div>
+        <h2 id="showing-help-heading">What a rural showing is actually for</h2>
+        <p class="lede">The photo sells the house. The walk answers water, access, and whether the barn still works. Scan this, then send the request.</p>
+      </div>
     </header>
     <div class="scan-grid cols-3 reveal">
       <article class="scan-card">

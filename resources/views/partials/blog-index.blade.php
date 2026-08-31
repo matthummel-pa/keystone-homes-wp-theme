@@ -13,10 +13,12 @@
 
 <section class="section">
   <div class="wrap">
-    <header class="section-head left reveal">
+    <header class="mkt-lead reveal">
       <p class="eyebrow">What these notes cover</p>
-      <h2 id="blog-help-heading">Short reads you can adapt for your market</h2>
-      <p>Showings, first-time checklists, and land vs home search — the three posts buyers actually ask for. Use them as local SEO starters, then link back to listings and the booking form.</p>
+      <div>
+        <h2 id="blog-help-heading">Short reads you can adapt for your market</h2>
+        <p class="lede">Showings, first-time checklists, and land vs home search — the three posts buyers actually ask for. Use them as local SEO starters, then link back to listings and the booking form.</p>
+      </div>
     </header>
     <div class="scan-grid cols-3 reveal">
       <article class="scan-card">

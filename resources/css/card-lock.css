@@ -27,7 +27,10 @@
 .faq-item,
 .booking-shell,
 .listing-agent-card,
-.nearby-card{
+.topic-card,
+.nearby-card,
+.contact-info,
+.listings-toolbar{
   background:var(--card-bg, #fff);
   border:1px solid var(--line);
   box-shadow:var(--shadow-rest, 0 6px 22px rgba(12,12,12,.06));
@@ -78,6 +81,9 @@
 .card:hover,
 .teaser:hover,
 .review-card:hover,
-.testi:hover{
+.testi:hover,
+.topic-card:hover,
+.area-card:hover,
+.nearby-card:hover{
   box-shadow:var(--shadow-lg);
 }

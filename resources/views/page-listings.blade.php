@@ -116,12 +116,14 @@
   </section>
 
   <section class="section" aria-labelledby="listing-help-heading">
-    <div class="wrap">
-      <header class="section-head left reveal">
-        <p class="eyebrow">How to read a card</p>
+    <div class="wrap mkt-lead reveal">
+      <p class="eyebrow">How to read a card</p>
+      <div>
         <h2 id="listing-help-heading">{!! $copy['intro_title'] ?? 'Buying rural property' !!}</h2>
-        <p>{!! $copy['intro_text'] ?? 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk. Replace this inventory with your own market.' !!}</p>
-      </header>
+        <p class="lede">{!! $copy['intro_text'] ?? 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk. Replace this inventory with your own market.' !!}</p>
+      </div>
+    </div>
+    <div class="wrap">
       <div class="scan-grid cols-3 reveal">
         <article class="scan-card">
           <span class="num">1</span>

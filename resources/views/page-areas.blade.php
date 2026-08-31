@@ -20,11 +20,13 @@
 ])
 
 
-  <!-- ============================= INTRO PROSE ============================= -->
   <section class="section">
-    <div class="wrap prose reveal">
-      <h2>{!! $copy['intro_title'] ?? 'Land, farms &amp; homesteads in a sample market' !!}</h2>
-      <p>{!! $copy['intro_text'] ?? 'The office sits at 100 Concept Way in Sample Borough. Ridges hold orchards, valley floors hold tillable ground, and the six area cards below show how a land office talks about its territory. Replace the names with yours.' !!}</p>
+    <div class="wrap mkt-lead reveal">
+      <p class="eyebrow">The sample market</p>
+      <div>
+        <h2>{!! $copy['intro_title'] ?? 'Land, farms &amp; homesteads in a sample market' !!}</h2>
+        <p class="lede">{!! $copy['intro_text'] ?? 'The office sits at 100 Concept Way in Sample Borough. Ridges hold orchards, valley floors hold tillable ground, and the six area cards below show how a land office talks about its territory. Replace the names with yours.' !!}</p>
+      </div>
     </div>
   </section>
 
@@ -39,11 +41,12 @@
 
       <div class="area-grid">
         @foreach ($areaCards as $area)
-          <div class="area-card reveal">
+          <article class="area-card reveal">
+            <p class="area-index" aria-hidden="true">{{ sprintf('%02d', $loop->iteration) }}</p>
             <p class="area-meta">{!! $area['meta'] !!}</p>
             <h3><span class="pin"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></span>{!! $area['title'] !!}</h3>
             <p>{!! $area['body'] !!}</p>
-          </div>
+          </article>
         @endforeach
       </div>
     </div>
@@ -88,11 +91,31 @@
 
   <!-- ============================= COUNTY SEAT ============================= -->
   <section class="section section-alt">
-    <div class="wrap prose reveal">
-      <h2>Getting here &amp; getting around</h2>
-      <p>The county seat is the hub. The sample office at 100 Concept Way sits about a mile north of the square — from the highway, take the town exits and head toward the courthouse. Downtown parking is easiest in the lots off the alley behind Main, and most of the older district is walkable once you are in. Swap these directions for your own market in the page fields.</p>
-      <p>Even buyers hunting pure farmland like to know what's close, so here's the short list: a historic district and Saturday market sit at the edge of town; a covered bridge spans the creek toward Border Farms; and the orchards, wineries, and farm stands of the fruit belt spread north toward North Ridge. When we show you a parcel, we'll tell you honestly how far it really is from a grocery store, a school, and a hospital — not just how pretty the view is.</p>
-      <p>Ready to narrow it down? Browse our <a href="{{ home_url('/listings') }}">current listings</a>, read the <a href="{{ home_url('/guide') }}">Land Buyer's Guide</a>, or <a href="{{ home_url('/contact') }}">reach out to the office</a> and we'll point you toward the areas that fit what you're after.</p>
+    <div class="wrap">
+      <div class="mkt-lead reveal">
+        <p class="eyebrow">Getting around</p>
+        <div>
+          <h2>Getting here &amp; getting around</h2>
+          <p class="lede">The sample office at 100 Concept Way sits about a mile north of the square. Swap these notes for your own market in the page fields.</p>
+        </div>
+      </div>
+      <div class="topic-grid">
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">01</p>
+          <h3>The county seat</h3>
+          <p>From the highway, take the town exits toward the courthouse. Parking is easiest in the lots off the alley behind Main. The older district is walkable once you are in.</p>
+        </article>
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">02</p>
+          <h3>What sits close</h3>
+          <p>A Saturday market at the edge of town, a covered bridge toward Border Farms, and the fruit-belt stands north toward North Ridge. We say how far a grocery, school, and hospital really are — not just how pretty the view is.</p>
+        </article>
+        <article class="topic-card reveal">
+          <p class="topic-num" aria-hidden="true">03</p>
+          <h3>Narrow it down</h3>
+          <p>Browse <a href="{{ home_url('/listings') }}">sample listings</a>, read the <a href="{{ home_url('/guide') }}">land buyer’s guide</a>, or <a href="{{ home_url('/contact') }}">reach the office</a> and we’ll point you toward the ground that fits.</p>
+        </article>
+      </div>
     </div>
   </section>
 
