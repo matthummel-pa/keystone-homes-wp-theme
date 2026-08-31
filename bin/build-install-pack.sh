@@ -53,14 +53,19 @@ cp -a "$THEME_DIR/plugins/acreline-core/." "$STAGE/acreline-core/"
 ( cd "$STAGE" && zip -rqX acreline-core.zip acreline-core -x '*.DS_Store' )
 
 echo "==> Assembling acreline-pack/"
-mkdir -p "$PACK_ROOT/Documentation" "$PACK_ROOT/Demos" "$PACK_ROOT/Licensing"
+mkdir -p "$PACK_ROOT/Documentation/assets" "$PACK_ROOT/Documentation/screenshots" "$PACK_ROOT/Demos" "$PACK_ROOT/Licensing"
 cp -a "$THEME_DIR/docs/marketplace/PACK-README.txt" "$PACK_ROOT/README.txt"
 cp -a "$THEME_ZIP" "$PACK_ROOT/acreline.zip"
 cp -a "$STAGE/acreline-child.zip" "$PACK_ROOT/"
 cp -a "$STAGE/acreline-core.zip" "$PACK_ROOT/"
-cp -a "$THEME_DIR/docs/marketplace/requirements.html" "$PACK_ROOT/Documentation/"
-cp -a "$THEME_DIR/docs/marketplace/buyer-guide.html" "$PACK_ROOT/Documentation/"
-cp -a "$THEME_DIR/docs/marketplace/support.html" "$PACK_ROOT/Documentation/"
+DOCS="$THEME_DIR/docs/marketplace"
+for html in index.html buyer-guide.html branding.html requirements.html support.html changelog.html sources.html; do
+  cp -a "$DOCS/$html" "$PACK_ROOT/Documentation/"
+done
+cp -a "$DOCS/assets/." "$PACK_ROOT/Documentation/assets/"
+if [ -d "$DOCS/screenshots" ]; then
+  cp -a "$DOCS/screenshots/." "$PACK_ROOT/Documentation/screenshots/"
+fi
 cp -a "$THEME_DIR/SUPPORT.md" "$PACK_ROOT/Documentation/"
 cp -a "$THEME_DIR/readme.txt" "$PACK_ROOT/Documentation/"
 cp -a "$THEME_DIR/docs/marketplace/Demos/README.txt" "$PACK_ROOT/Demos/"

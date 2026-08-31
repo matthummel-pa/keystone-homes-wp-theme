@@ -2,6 +2,8 @@
 
 **Acreline** is a WordPress real estate theme for rural offices: searchable listings, agents, and showing requests — built for land, farms, and older houses, not a generic luxury brokerage skin.
 
+It is meant to **set up with almost no plugins**. The theme zip alone runs the office: identity, colors, menus, listings, agents, and showing requests. You do **not** need Advanced Custom Fields, Elementor, a Gutenberg kit, or an IDX plugin. Copy and inventory live in **Customizer + custom-field metaboxes**, so you change headlines, prices, and photos without touching Blade or CSS.
+
 The sample office in the preview is named Acreline. Change the brand, phone, email, and colors in **Appearance → Customize → Identity**. Created by [Matt Hummel](https://matthummel.com/).
 
 | | |
@@ -18,6 +20,35 @@ Ported from the static concept: [live HTML demo](https://matthummel-pa.github.io
 
 Sage 11 stack: Blade, Tailwind CSS v4, Vite 8, Acorn. Classic (non-block) editor. Not Gutenberg-optimized, not Elementor, not an IDX/MLS feed.
 
+## Little plugin stack
+
+| Need | What you install |
+| --- | --- |
+| Public site | **Theme zip only.** Listings, agents, and bookings still register in the theme so the concept demo works. |
+| Listings that survive a theme switch | Optional **Acreline Core** (`acreline-core.zip`) — the store-correct home for those post types |
+| CSS that survives parent updates | Optional **Acreline Child** (`acreline-child.zip`) |
+| SEO plugin | Optional. Native title / description / OG / Twitter are already in the theme. If Yoast, Rank Math, SEOPress, or AIOSEO is active, native tags **yield** |
+
+Do **not** add ACF, a page builder, or an MLS plugin “to make the fields work.” The fields are already there.
+
+## Custom fields — do not edit the design to change copy
+
+Layout stays in Blade (`resources/views/`). Tokens stay in `resources/css/keystone.css`. Card chrome is locked in `resources/css/card-lock.css`. For day-to-day office copy:
+
+| What to change | Where |
+| --- | --- |
+| Brand, phone, email, address, hours, header button, demo banner, author credit | **Customize → Identity** |
+| Color style (Forest, Clay, Navy, …), accent, paper, ink | **Customize → Colors** |
+| Header sticky / compact | **Customize → Header** |
+| Logo | **Customize → Site Identity** |
+| Nav | **Appearance → Menus** (Primary + Footer) |
+| Page headlines, leads, CTAs | The page’s **Page fields** metabox (not the block editor) |
+| Listing price, acres, beds, township, gallery | The listing’s **Listing details** metabox |
+| Agent bio, license, specialties | The agent’s **Agent details** metabox |
+| Blog kicker / SEO fallback | The post’s **Post fields** metabox |
+
+Editing a theme file does **not** change live posts. Re-seed only when you want the sample inventory reset (`Tools → Seed Acreline demo`).
+
 ## Install from a marketplace zip
 
 Theme shop and own-site buyers: **do not clone this repo onto the host.** The store pack is already built. The host needs WordPress 6.6+ and PHP 8.3+ — not Composer or npm.
@@ -25,10 +56,10 @@ Theme shop and own-site buyers: **do not clone this repo onto the host.** The st
 1. Extract the outer `acreline-*.zip`. Do not upload that outer file in wp-admin.
 2. **Appearance → Themes → Add New → Upload Theme** → inner **`acreline.zip`**. Activate Acreline. The folder must stay **`acreline`**.
 3. **Appearance → Customize → Identity** for brand, phone, email, address, hours, and the header button. Upload a logo under Site Identity.
-4. Optional: upload `acreline-child.zip`, then `acreline-core.zip` (listings survive a theme switch).
-5. **Tools → Seed Acreline demo** if you want the preview pages and sample inventory.
+4. Optional: upload `acreline-child.zip`, then `acreline-core.zip`.
+5. **Appearance → Acreline Setup** for the checklist. **Tools → Seed Acreline demo** if you want the preview pages and sample inventory.
 
-Walkthrough and ThemeForest form fields: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html) and [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html). WordPress.org-style parser file: [`readme.txt`](readme.txt).
+Walkthrough, branding, sources, changelog, and ThemeForest form fields: open [`docs/marketplace/index.html`](docs/marketplace/index.html). WordPress.org-style parser file: [`readme.txt`](readme.txt).
 
 ## Who it is for
 
@@ -47,8 +78,45 @@ Realtors and marketers who sell **acreage, working farms, and historic homes** a
 - WordPress Primary + Footer menus, custom logo, footer widgets, breadcrumbs
 - Native title, description, Open Graph, and Twitter tags (yields to Yoast / Rank Math / SEOPress / AIOSEO)
 - Translation-ready `acreline` text domain
+- Demo **Colors** switcher on the concept preview (mid-right). Buyers set a style in Customizer; the floating control is demo chrome only
 
-Listings, agents, and bookings are registered by **Acreline Core** (companion plugin) or in-theme as a fallback so this concept site keeps working without the plugin.
+## Documentation (keep this map)
+
+| File | Who it is for | Ships in |
+| --- | --- | --- |
+| **This README.md** | You, GitHub, Sage developers | Git only |
+| [`readme.txt`](readme.txt) | WordPress / ThemeForest parser | Theme zip |
+| [`SUPPORT.md`](SUPPORT.md) | Support links | Seller pack `Documentation/` |
+| [`CHANGELOG.md`](CHANGELOG.md) | User-facing history | Theme zip |
+| [`CREDITS.md`](CREDITS.md) / [`LICENSE.md`](LICENSE.md) | Fonts, GPL | Theme zip + pack `Licensing/` |
+| [`docs/marketplace/index.html`](docs/marketplace/index.html) | ThemeForest docs hub (start here) | Pack `Documentation/` |
+| [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html) | Buyer install, Customizer, fields, FAQ | Pack `Documentation/` |
+| [`docs/marketplace/branding.html`](docs/marketplace/branding.html) | Logos, Forest palette, fair housing | Pack `Documentation/` |
+| [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html) | Host needs + store listing fields to paste | Pack `Documentation/` |
+| [`docs/marketplace/support.html`](docs/marketplace/support.html) | Buyer help | Pack `Documentation/` |
+| [`docs/marketplace/sources.html`](docs/marketplace/sources.html) | Fonts, Sage, SVG marks, what is not bundled | Pack `Documentation/` |
+| [`docs/marketplace/changelog.html`](docs/marketplace/changelog.html) | User-facing history | Pack `Documentation/` |
+| [`docs/marketplace/screenshots/`](docs/marketplace/screenshots/) | Extra item images (homepage → book) | Pack `Documentation/screenshots/` |
+| [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md) | **You only** — channels, price band, WP.org limits | Repo + `dist-marketplace/`, **not** the buyer zip |
+| [`AGENTS.md`](AGENTS.md) | Cursor / local VM | Git only |
+| [`.cursor/rules/`](.cursor/rules/) | Agent rules (`.mdc`) | Git only |
+
+Do not paste `SELLING.md` into a ThemeForest zip. Do not tell a shop buyer to `composer install` on the host.
+
+## Notes for future theme updates (Matt)
+
+Theme files and WordPress **content** are separate. Merging to `main` does **not** rewrite live pages, listings, or uploads. CI does **not** FTP to the host.
+
+1. Bump **Version** in `style.css`, **Stable tag** in `readme.txt`, and a short user-facing note in `CHANGELOG.md` / `readme.txt` changelog together. Do not ship a zip whose versions disagree.
+2. Leave the install folder, text domain, and Vite `base` as **`acreline`**. Leave `ks_*` post meta and the `keystone/v1` REST namespace — renaming them blanks live posts.
+3. GitHub repo for the updater is **`matthummel-pa/wp-acreline`** (not `acreline-wp-theme`, not `keystone-homes-wp-theme`). Fine-grained PAT: **Contents: Read** to install the zip. Add **Actions: Read and write** only to trigger **Rebuild zip on GitHub**.
+4. Merge to `main`. Wait for Actions **Deploy theme zip**. Assets: [acreline.zip](https://github.com/matthummel-pa/wp-acreline/releases/download/theme-latest/acreline.zip) and `acreline-<version>.zip` on the `theme-latest` release.
+5. Host: **Appearance → Update Theme → Install latest zip from GitHub**. Theme files only. If that screen 404s, the running PHP still has the old repo slug — upload inner `acreline.zip` once, then the updater works.
+6. After Blade edits locally: `wp acorn view:clear --path="$HOME/wp" --allow-root`. After CSS/JS: `npm run build` (or `npm run dev`). Missing `public/build/manifest.json` whitescreens every page.
+7. Do not delete `resources/css/card-lock.css`. Do not enable the block editor to “pass” a shop checklist. Keep 555 phones and `@acreline-concept.test` in sample copy.
+8. Live demo cache (nginx `x-proxy-cache`) can keep an old `/`. Check `/?fresh=1` or purge Site Tools → Speed → Caching. `wp cache purge` is only the object cache.
+
+Token lives in Customizer → GitHub, the Update Theme screen, or `KS_GITHUB_TOKEN` — never in this repo.
 
 ## Local development (this git repo)
 
@@ -75,6 +143,8 @@ npm run dev            # Vite HMR alongside wp server
 
 If the theme folder is not `acreline`, update `base` in `vite.config.js` and rebuild.
 
+**Do not symlink `vendor/` from another worktree.** Composer maps `App\` to that tree’s `app/`; Blade loads from this folder. A mismatch 500s the homepage.
+
 ## Package for a host or a marketplace
 
 ```bash
@@ -84,8 +154,6 @@ bin/build-marketplace-pack.sh     # same pack, plus SELLING.md for you
 ```
 
 **Regular WordPress install:** extract `acreline-*.zip`, then **Appearance → Themes → Upload Theme** and choose the inner `acreline.zip`.
-
-Seller channels: [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md). Support: [`SUPPORT.md`](SUPPORT.md).
 
 Theme-only install (no child / plugin / docs):
 
