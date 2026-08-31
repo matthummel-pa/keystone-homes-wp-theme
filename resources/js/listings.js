@@ -13,8 +13,8 @@
   var LISTINGS = [
     {
       id:1, type:"historic", typeLabel:"Historic Home", status:"active",
-      title:"Baltimore Pike Brick Farmhouse (c.1890)",
-      address:"1755 Baltimore Pike, North Ridge, PA 00000",
+      title:"Ridge Road Brick Farmhouse (c.1890)",
+      address:"1755 Ridge Road, North Ridge, PA 00000",
       township:"Cumberland", price:525000,
       beds:4, baths:2, sqft:2400, acres:8.2,
       grad:"linear-gradient(135deg,#155539,#1f6b4a)",
@@ -23,12 +23,12 @@
     },
     {
       id:2, type:"land", typeLabel:"Land / Acreage", status:"active",
-      title:"Marsh Creek Land Parcel",
-      address:"62 Marsh Creek Rd, Mill Creek, PA 00000",
+      title:"Mill Run Land Parcel",
+      address:"62 Mill Run Rd, Mill Creek, PA 00000",
       township:"Straban", price:215000,
       beds:0, baths:0, sqft:0, acres:38,
       grad:"linear-gradient(135deg,#059669,#34d399)",
-      desc:"Thirty-eight acres of mostly tillable ground along Marsh Creek, currently leased for row crops. Road frontage, public water available at the road, and a soil map on file showing strong Class II farmland.",
+      desc:"Thirty-eight acres of mostly tillable ground along Mill Run, currently leased for row crops. Road frontage, public water available at the road, and a soil map on file showing strong Class II farmland.",
       lat:52, lng:62
     },
     {
@@ -53,18 +53,18 @@
     },
     {
       id:5, type:"land", typeLabel:"Land / Acreage", status:"active",
-      title:"Rock Creek Grazing Land",
-      address:"215 Rock Creek Church Rd, Mill Creek, PA 00000",
+      title:"Creek Bottom Grazing Land",
+      address:"215 Creek Bottom Rd, Mill Creek, PA 00000",
       township:"Straban", price:180000,
       beds:0, baths:0, sqft:0, acres:45,
       grad:"linear-gradient(135deg,#047857,#059669)",
-      desc:"Forty-five acres of fenced pasture along Rock Creek with a run-in shed and gravity-fed water. Long history as grazing ground for a beef cattle herd; also suitable for hay or a future homesite.",
+      desc:"Forty-five acres of fenced pasture along the creek with a run-in shed and gravity-fed water. Long history as grazing ground for a beef cattle herd; also suitable for hay or a future homesite.",
       lat:58, lng:74
     },
     {
       id:6, type:"farm", typeLabel:"Working Farm", status:"pending",
       title:"Oak Ridge Orchard Farm",
-      address:"4110 York Rd, Oak Hollow, PA 00000",
+      address:"4110 Orchard Lane, Oak Hollow, PA 00000",
       township:"Franklin", price:875000,
       beds:4, baths:3, sqft:3200, acres:60,
       grad:"linear-gradient(135deg,#d97706,#f59e0b)",
@@ -73,8 +73,8 @@
     },
     {
       id:7, type:"historic", typeLabel:"Historic Home", status:"active",
-      title:"The Herr Homestead (c.1852)",
-      address:"310 Herr's Ridge Rd, Oak Hollow, PA 00000",
+      title:"The Stone Homestead (c.1852)",
+      address:"310 Orchard Ridge Rd, Oak Hollow, PA 00000",
       township:"Franklin", price:795000,
       beds:5, baths:3, sqft:3600, acres:22,
       grad:"linear-gradient(135deg,#0c0c0c,#27272a)",
@@ -83,8 +83,8 @@
     },
     {
       id:8, type:"land", typeLabel:"Land / Acreage", status:"new",
-      title:"Table Rock View Lot",
-      address:"0 Table Rock Rd, Oak Hollow, PA 00000",
+      title:"Hill View Lot",
+      address:"0 Hill View Rd, Oak Hollow, PA 00000",
       township:"Franklin", price:129000,
       beds:0, baths:0, sqft:0, acres:5.5,
       grad:"linear-gradient(135deg,#1f6b4a,#9fd5bb)",

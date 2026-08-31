@@ -10,7 +10,7 @@
 
 <!-- ============================= PAGE HERO ============================= -->
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample team',
   'heroTitle' => $copy['hero_title'] ?: 'Agents who know the <em>demo ground</em>',
   'heroText' => $copy['hero_text'] ?: 'A small local team for farms, orchards, and century houses. Profiles are Agent posts. Phones are fictional 555 lines.',
@@ -65,7 +65,7 @@
     <div class="wrap">
       <div class="section-head left reveal">
         <p class="eyebrow">{{ $copy['how_eyebrow'] ?? 'How We Work' }}</p>
-        <h2>{!! $copy['how_title'] ?? 'What working with Keystone looks like' !!}</h2>
+        <h2>{!! $copy['how_title'] ?? 'What working with this office looks like' !!}</h2>
         <p>{!! $copy['how_text'] ?? 'No pressure, no jargon, and a straight answer about the ground under your feet.' !!}</p>
       </div>
       <div class="why-list reveal" style="max-width:820px;">
@@ -89,7 +89,7 @@
   <section class="section">
     <div class="wrap">
       <div class="cta-band reveal">
-        <h2>{!! $copy['cta_title'] ?? 'Talk to a Keystone agent' !!}</h2>
+        <h2>{!! $copy['cta_title'] ?? 'Talk to a sample agent' !!}</h2>
         <p>{!! $copy['cta_text'] ?? 'Reach the office at (555) 010-0455, or book a no-pressure showing.' !!}</p>
         <div class="cta-actions">
           <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>

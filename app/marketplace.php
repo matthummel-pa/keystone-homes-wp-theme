@@ -55,7 +55,8 @@ function render_setup_page(): void
     echo '<p style="max-width:70ch">'.esc_html__('Buyer checklist — presentation only. No upsells. Walk these once after you activate Acreline.', 'keystone-homes').'</p>';
     echo '<ol style="max-width:70ch;line-height:1.7">';
     echo '<li><a href="'.esc_url($identityUrl).'">'.esc_html__('Identity', 'keystone-homes').'</a> — '.esc_html__('Brand name, phone, email, address, hours, and header button.', 'keystone-homes').'</li>';
-    echo '<li><a href="'.esc_url($colorUrl).'">'.esc_html__('Colors', 'keystone-homes').'</a> — '.esc_html__('Accent (forest by default).', 'keystone-homes').'</li>';
+    echo '<li><a href="'.esc_url($colorUrl).'">'.esc_html__('Colors', 'keystone-homes').'</a> — '.esc_html__('Eight styles (Forest, Clay, Navy, Burgundy, Harvest, Lake, Orchard, Charcoal) plus accent, paper, and ink.', 'keystone-homes').'</li>';
+    echo '<li><a href="'.esc_url(add_query_arg('autofocus[section]', 'ks_header', $customizer)).'">'.esc_html__('Header', 'keystone-homes').'</a> — '.esc_html__('Sticky or static, standard or compact.', 'keystone-homes').'</li>';
     echo '<li><a href="'.esc_url($customizer).'">'.esc_html__('Site Identity / Logo', 'keystone-homes').'</a> — '.esc_html__('Upload a logo under Site Identity. Header falls back to the house mark.', 'keystone-homes').'</li>';
     echo '<li><a href="'.esc_url($menusUrl).'">'.esc_html__('Menus', 'keystone-homes').'</a> — ';
     echo $hasPrimary
