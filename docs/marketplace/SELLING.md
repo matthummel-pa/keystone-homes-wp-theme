@@ -61,7 +61,7 @@ A future “Acreline Lite” without Acorn would have a real shot at the picker.
 
 ## GitHub repo About (paste in Settings → General)
 
-Rename the GitHub repository to **`wp-acreline`** (Settings → General → Repository name) if it still says `keystone-homes-wp-theme`. GitHub keeps redirects from the old name. Then paste these on https://github.com/matthummel-pa/wp-acreline/settings :
+GitHub repo is **`matthummel-pa/wp-acreline`**. Paste these on https://github.com/matthummel-pa/wp-acreline/settings :
 
 **Description** (under 350 characters; this is the search snippet):
 

@@ -142,7 +142,14 @@ function updater_dispatch(): array
     if ($code === 401 || $code === 403) {
         $msg .= ' '.__('The token likely lacks “Actions: Read and write” on this repository.', 'acreline');
     } elseif ($code === 404) {
-        $msg .= ' '.__('Check the repo name and that the workflow exists on the default branch.', 'acreline');
+        $msg .= ' '.sprintf(
+            /* translators: 1: GitHub owner, 2: repo slug, 3: workflow filename, 4: git branch */
+            __('Check the repo name (%1$s/%2$s) and that %3$s exists on the %4$s branch.', 'acreline'),
+            $r['owner'],
+            $r['repo'],
+            $r['workflow'],
+            $r['ref']
+        );
     }
 
     return [false, sprintf(__('GitHub returned %1$d: %2$s', 'acreline'), $code, $msg)];

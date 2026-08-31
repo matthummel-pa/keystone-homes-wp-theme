@@ -11,7 +11,6 @@ The sample office in the preview is named Acreline. Change the brand, phone, ema
 | **Support** | [SUPPORT.md](SUPPORT.md) |
 | **Author** | [matthummel.com](https://matthummel.com/) |
 | **Install folder** | **`acreline`** (leave this name — Vite asset URLs depend on it) |
-| **Source** | [github.com/matthummel-pa/wp-acreline](https://github.com/matthummel-pa/wp-acreline) |
 
 > **Fiction only.** Listings, market stats, contact details, and appointments are sample / concept data. Not a live MLS, licensed brokerage, or booking system. Demo phones use the `555` exchange; emails use `@acreline-concept.test`.
 
