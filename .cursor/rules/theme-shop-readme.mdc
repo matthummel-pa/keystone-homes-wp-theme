@@ -1,0 +1,91 @@
+---
+description: Prep README / readme.txt / SUPPORT for ThemeForest, TemplateMonster, and own-site theme shops — Sage 11 zip vs git, gitignore, listing copy
+globs: README.md,readme.txt,SUPPORT.md,.gitignore,docs/marketplace/**,bin/build-*.sh,composer.json,package.json
+alwaysApply: false
+---
+
+# Theme-shop README and Sage distribution
+
+When prepping **README.md**, **readme.txt**, **SUPPORT.md**, or the marketplace pack for ThemeForest, TemplateMonster, Creative Market, Gumroad, or a direct sale: treat this as a **Sage 11 + Acorn + Blade + Vite 8** theme (not Bud, not a block/Gutenberg kit). Product name is **Acreline**. Install folder and text domain stay **`acreline`**. GitHub repo slug is **`wp-acreline`**.
+
+Plugin territory, WPCS, credits, and zip contents: also follow `marketplace.mdc`.
+
+## 1. Repository vs production zip
+
+Git is the Sage **source**. Market buyers get a **built zip**. Do not tell a ThemeForest buyer to run `composer install` / `npm run build` on the host.
+
+| Surface | What lives there |
+| --- | --- |
+| Git (`main`) | Blade, PHP, `resources/`, lockfiles. **No** `vendor/`, **no** `public/build/` |
+| `acreline.zip` (`bin/build-theme-zip.sh`) | Runtime only: compiled `public/build`, production `vendor/` (`composer install --no-dev`), `style.css`, `readme.txt`, `screenshot.png` |
+| Outer `acreline-*.zip` (`bin/build-install-pack.sh`) | Inner theme zip + child + Acreline Core + Documentation. Buyers extract this; they upload **inner** `acreline.zip` in wp-admin |
+
+CI (`.github/workflows/deploy.yml`) publishes those zips on the `theme-latest` GitHub release. Do not commit compiled assets to git “so the zip has them.”
+
+### `.gitignore` (keep this split)
+
+Never commit `node_modules/` or `vendor/`. Never commit Vite output (`public/build` is covered by `/public/*` plus keep `public/images`). Dist folders stay ignored — they are build products.
+
+Current intent (edit `.gitignore` if an agent re-opens this):
+
+```gitignore
+/node_modules
+/vendor
+/public/*
+!/public/.gitkeep
+!/public/images/
+!/public/images/**
+.env
+.env.*
+.cache/
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.log
+/dist-theme
+/dist-marketplace
+/dist-install
+```
+
+`/public/hot` and `/public/storage` are already excluded by `/public/*`. Do **not** add `!/public/build/` to git so market zips stay CI-built.
+
+## 2. README.md (GitHub + developers)
+
+GitHub README is for **Matt, agents, and Sage developers**. Theme-shop buyers should be sent to `docs/marketplace/buyer-guide.html` and `readme.txt`.
+
+When rewriting README for shops:
+
+- Lead with what the **buyer’s client** gets (search → listings → agent → showing), then Sage stack in one line
+- Install folder **`acreline`** in bold; Vite `base` path depends on it
+- Fiction only: 555 phones, `@acreline-concept.test`, not a live MLS
+- Author: Matt Hummel / https://matthummel.com/
+- Point packaging at `bin/build-theme-zip.sh` and `bin/build-install-pack.sh`
+- Host needs: WordPress 6.6+, PHP 8.3+, no Composer/npm on the host for store zips
+- Do **not** claim WordPress.org approval, Gutenberg-optimized, Elementor, or a live IDX/MLS
+- Do **not** paste Envato item IDs, dummy license keys, or “install via ThemeForest downloader” as the only path
+- Keep the concept demo URL: https://keystonehomes.ridgesandvalleys.com/
+- Support: `SUPPORT.md` and GitHub issues on `matthummel-pa/wp-acreline`
+
+## 3. readme.txt (WP.org / ThemeForest parser)
+
+`readme.txt` is the **store parser** file (Stable tag, Requires at least, Tested up to, Requires PHP, License GPLv2+, tags). Keep it in WP.org format even if we are not submitting yet.
+
+- Stable tag matches `style.css` Version
+- Description: land, farms, historic homes — not generic luxury brokerage
+- Installation: upload **`acreline.zip`**, folder name `acreline`, Customize → Identity, optional Seed + Core + child
+- FAQ: phone in Customizer; demo banner off; listings are a CPT (Core or theme fallback)
+- Changelog: user-facing, short; no agent jargon
+- Resources: fonts and licenses (see `CREDITS.md`)
+
+## 4. Copy you can paste on the store listing
+
+Use `docs/marketplace/requirements.html` as the source of truth for ThemeForest / TemplateMonster form fields (software version, browsers, Gutenberg optimized = **No**, demo URL, support URL, license). Short description lives there too. Do not invent a second set of versions in README that disagrees with `style.css` / `readme.txt`.
+
+## Do not
+
+- Commit `vendor/` or `public/build/` to git to “help ThemeForest”
+- Tell buyers this is a Bud or Sage 10 theme
+- Enable the block editor or Gutenberg patterns to pass a shop checklist
+- Put `SELLING.md` inside the buyer zip
+- Rename the install folder away from `acreline` in README “for branding”
