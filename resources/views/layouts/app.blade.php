@@ -37,6 +37,10 @@
     @include('sections.footer')
     @include('partials.chat')
 
+    @if (! empty($identity['showDemoChrome']))
+      @include('partials.style-switcher')
+    @endif
+
     @if (! empty($identity['showDemoChrome']) && ! empty($identity['creditUrl']))
       <a href="{{ esc_url($identity['creditUrl']) }}" class="concept-badge" rel="nofollow noopener">{{ $identity['creditText'] }}</a>
     @endif

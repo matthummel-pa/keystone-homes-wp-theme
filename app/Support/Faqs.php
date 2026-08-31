@@ -39,8 +39,8 @@ class Faqs
                 'a' => 'Yes for occupied homes and most working farms — lanes, livestock, and locked shops are common. Schedule a sample showing to see the flow: choose a listing, a date, and a time. Wear boots, and mention pets or if you are new to land.',
             ],
             [
-                'q' => 'Is Keystone Real Estate a live brokerage?',
-                'a' => 'No. This is a concept site by Matt Hummel. Listings, phone numbers, and market figures are fictional. Use it to evaluate a modern realtor website, then replace the sample data with your own inventory.',
+                'q' => 'Is this a live brokerage?',
+                'a' => 'No. This is a concept demo of the Acreline theme. Listings, phone numbers, and market figures are fictional. Use it to evaluate a modern realtor website, then replace the sample data with your own inventory.',
             ],
         ];
     }

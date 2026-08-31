@@ -117,9 +117,52 @@ class Identity
 
     public static function accent(): string
     {
-        $hex = sanitize_hex_color((string) get_theme_mod('ks_accent', '#1f6b4a'));
+        $scheme = ColorSchemes::current();
+        $hex = sanitize_hex_color((string) get_theme_mod('ks_accent', $scheme['accent']));
 
-        return $hex ?: '#1f6b4a';
+        return $hex ?: $scheme['accent'];
+    }
+
+    public static function paper(): string
+    {
+        $scheme = ColorSchemes::current();
+        $hex = sanitize_hex_color((string) get_theme_mod('ks_paper', $scheme['paper']));
+
+        return $hex ?: $scheme['paper'];
+    }
+
+    public static function ink(): string
+    {
+        $scheme = ColorSchemes::current();
+        $hex = sanitize_hex_color((string) get_theme_mod('ks_ink', $scheme['ink']));
+
+        return $hex ?: $scheme['ink'];
+    }
+
+    public static function headerSticky(): bool
+    {
+        return (bool) get_theme_mod('ks_header_sticky', true);
+    }
+
+    public static function headerStyle(): string
+    {
+        $style = sanitize_key((string) get_theme_mod('ks_header_style', 'standard'));
+
+        return in_array($style, ['standard', 'compact'], true) ? $style : 'standard';
+    }
+
+    /**
+     * @return list<string>
+     */
+    public static function headerClasses(): array
+    {
+        $classes = [];
+        $classes[] = self::headerSticky() ? 'is-sticky' : 'is-static';
+        if (self::headerStyle() === 'compact') {
+            $classes[] = 'is-compact';
+        }
+
+        return $classes;
     }
 
     /**
@@ -160,18 +203,42 @@ class Identity
             'creditUrl' => self::creditUrl(),
             'social' => self::social(),
             'hasLogo' => has_custom_logo(),
+            'headerSticky' => self::headerSticky(),
+            'headerStyle' => self::headerStyle(),
+            'headerClass' => implode(' ', self::headerClasses()),
+            'colorScheme' => ColorSchemes::currentKey(),
         ];
     }
 
     public static function cssVariables(): string
     {
-        $accent = self::accent();
-        $rgb = self::hexToRgb($accent);
-        $dark = self::shadeHex($accent, 0.82);
-        $soft = sprintf('rgba(%d,%d,%d,.16)', $rgb[0], $rgb[1], $rgb[2]);
-        $glow = sprintf('rgba(%d,%d,%d,.28)', $rgb[0], $rgb[1], $rgb[2]);
+        return self::cssFromPalette(self::accent(), self::paper(), self::ink());
+    }
 
-        return ':root{--accent:'.$accent.';--accent-dark:'.$dark.';--accent-soft:'.$soft.';--accent-glow:'.$glow.';--success:'.$accent.';}';
+    public static function cssFromPalette(string $accent, string $paper, string $ink): string
+    {
+        $accent = sanitize_hex_color($accent) ?: '#1f6b4a';
+        $paper = sanitize_hex_color($paper) ?: '#f5f4f1';
+        $ink = sanitize_hex_color($ink) ?: '#141210';
+
+        $a = self::hexToRgb($accent);
+        $p = self::hexToRgb($paper);
+        $i = self::hexToRgb($ink);
+
+        $dark = self::shadeHex($accent, 0.82);
+        $soft = sprintf('rgba(%d,%d,%d,.16)', $a[0], $a[1], $a[2]);
+        $glow = sprintf('rgba(%d,%d,%d,.28)', $a[0], $a[1], $a[2]);
+        $wash = sprintf('rgba(%d,%d,%d,.08)', $a[0], $a[1], $a[2]);
+        $paper2 = self::mixHex($paper, $ink, 0.06);
+        $paper3 = self::mixHex($paper, $ink, 0.12);
+        $line = self::mixHex($paper, $ink, 0.22);
+        $inkSoft = self::mixHex($ink, $paper, 0.28);
+        $inkFaint = self::mixHex($ink, $paper, 0.48);
+        $headerBg = sprintf('rgba(%d,%d,%d,.88)', min(255, $p[0] + 8), min(255, $p[1] + 8), min(255, $p[2] + 6));
+        $headerBgScrolled = sprintf('rgba(%d,%d,%d,.96)', min(255, $p[0] + 8), min(255, $p[1] + 8), min(255, $p[2] + 6));
+        $inkWash = sprintf('rgba(%d,%d,%d,.04)', $i[0], $i[1], $i[2]);
+
+        return ':root{--accent:'.$accent.';--accent-dark:'.$dark.';--accent-soft:'.$soft.';--accent-glow:'.$glow.';--accent-wash:'.$wash.';--success:'.$accent.';--paper:'.$paper.';--paper-2:'.$paper2.';--paper-3:'.$paper3.';--line:'.$line.';--ink:'.$ink.';--ink-soft:'.$inkSoft.';--ink-faint:'.$inkFaint.';--field-text:'.$ink.';--header-bg:'.$headerBg.';--header-bg-scrolled:'.$headerBgScrolled.';--ink-wash:'.$inkWash.';}';
     }
 
     /**
@@ -194,6 +261,17 @@ class Identity
         $r = max(0, min(255, (int) round($r * $factor)));
         $g = max(0, min(255, (int) round($g * $factor)));
         $b = max(0, min(255, (int) round($b * $factor)));
+
+        return sprintf('#%02x%02x%02x', $r, $g, $b);
+    }
+
+    private static function mixHex(string $from, string $toward, float $amount): string
+    {
+        [$r1, $g1, $b1] = self::hexToRgb($from);
+        [$r2, $g2, $b2] = self::hexToRgb($toward);
+        $r = max(0, min(255, (int) round($r1 + ($r2 - $r1) * $amount)));
+        $g = max(0, min(255, (int) round($g1 + ($g2 - $g1) * $amount)));
+        $b = max(0, min(255, (int) round($b1 + ($b2 - $b1) * $amount)));
 
         return sprintf('#%02x%02x%02x', $r, $g, $b);
     }

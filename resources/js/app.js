@@ -3,3 +3,4 @@ import './home.js';
 import './listings.js';
 import './guide.js';
 import './reviews.js';
+import './style-switcher.js';

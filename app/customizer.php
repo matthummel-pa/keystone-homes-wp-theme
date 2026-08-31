@@ -6,6 +6,7 @@
 
 namespace App;
 
+use App\Support\ColorSchemes;
 use App\Support\Typography;
 use WP_Customize_Color_Control;
 use WP_Customize_Manager;
@@ -93,21 +94,79 @@ add_action('customize_register', function (WP_Customize_Manager $wp_customize) {
         'type' => 'checkbox',
     ]);
 
+    $schemeChoices = [];
+    foreach (ColorSchemes::all() as $key => $scheme) {
+        $schemeChoices[$key] = $scheme['label'];
+    }
+
     $wp_customize->add_section('ks_colors', [
         'title' => __('Colors', 'keystone-homes'),
-        'description' => __('Forest accent used on buttons, focus rings, and kickers. Keep contrast on cream paper.', 'keystone-homes'),
+        'description' => __('Eight named styles. Pick a style, then tweak accent, paper, or ink. Keep body text dark on a light page.', 'keystone-homes'),
         'priority' => 35,
     ]);
 
-    $wp_customize->add_setting('ks_accent', [
-        'default' => '#1f6b4a',
-        'sanitize_callback' => 'sanitize_hex_color',
+    $wp_customize->add_setting('ks_color_scheme', [
+        'default' => ColorSchemes::defaultKey(),
+        'sanitize_callback' => [ColorSchemes::class, 'sanitizeKey'],
         'transport' => 'refresh',
     ]);
-    $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'ks_accent', [
-        'label' => __('Accent', 'keystone-homes'),
+    $wp_customize->add_control('ks_color_scheme', [
+        'label' => __('Color style', 'keystone-homes'),
         'section' => 'ks_colors',
-    ]));
+        'type' => 'select',
+        'choices' => $schemeChoices,
+    ]);
+
+    $forest = ColorSchemes::all()['forest'];
+    foreach ([
+        'ks_accent' => [__('Accent', 'keystone-homes'), $forest['accent']],
+        'ks_paper' => [__('Paper (page background)', 'keystone-homes'), $forest['paper']],
+        'ks_ink' => [__('Ink (text)', 'keystone-homes'), $forest['ink']],
+    ] as $id => [$label, $default]) {
+        $wp_customize->add_setting($id, [
+            'default' => $default,
+            'sanitize_callback' => 'sanitize_hex_color',
+            'transport' => 'refresh',
+        ]);
+        $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, $id, [
+            'label' => $label,
+            'section' => 'ks_colors',
+        ]));
+    }
+
+    $wp_customize->add_section('ks_header', [
+        'title' => __('Header', 'keystone-homes'),
+        'description' => __('Sticky bar is the default. Compact shortens the bar on listing-heavy pages.', 'keystone-homes'),
+        'priority' => 34,
+    ]);
+
+    $wp_customize->add_setting('ks_header_style', [
+        'default' => 'standard',
+        'sanitize_callback' => function ($value) {
+            $value = sanitize_key((string) $value);
+
+            return in_array($value, ['standard', 'compact'], true) ? $value : 'standard';
+        },
+    ]);
+    $wp_customize->add_control('ks_header_style', [
+        'label' => __('Header size', 'keystone-homes'),
+        'section' => 'ks_header',
+        'type' => 'select',
+        'choices' => [
+            'standard' => __('Standard', 'keystone-homes'),
+            'compact' => __('Compact', 'keystone-homes'),
+        ],
+    ]);
+
+    $wp_customize->add_setting('ks_header_sticky', [
+        'default' => true,
+        'sanitize_callback' => __NAMESPACE__.'\\sanitize_checkbox',
+    ]);
+    $wp_customize->add_control('ks_header_sticky', [
+        'label' => __('Stick the header while scrolling', 'keystone-homes'),
+        'section' => 'ks_header',
+        'type' => 'checkbox',
+    ]);
 
     $wp_customize->add_section('ks_social', [
         'title' => __('Social links', 'keystone-homes'),
@@ -228,6 +287,20 @@ add_filter('style_loader_tag', function (string $tag, string $handle) {
 add_action('wp_head', function () {
     echo '<style id="keystone-typography">'.Typography::cssVariables().'</style>'."\n";
 }, 20);
+
+add_action('customize_controls_enqueue_scripts', function () {
+    $rel = 'resources/js/customizer-controls.js';
+    $src = get_theme_file_uri($rel);
+    $path = get_theme_file_path($rel);
+    wp_enqueue_script(
+        'keystone-customizer-controls',
+        $src,
+        ['customize-controls', 'jquery'],
+        file_exists($path) ? (string) filemtime($path) : wp_get_theme()->get('Version'),
+        true
+    );
+    wp_localize_script('keystone-customizer-controls', 'KEYSTONE_SCHEMES', ColorSchemes::forJs());
+});
 
 add_action('customize_preview_init', function () {
     $rel = 'resources/js/customizer-preview.js';

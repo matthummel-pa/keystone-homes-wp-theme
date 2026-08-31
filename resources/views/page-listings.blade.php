@@ -8,7 +8,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample inventory',
   'heroTitle' => $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>',
   'heroText' => $copy['hero_text'] ?: 'Farms, historic houses, and acreage across three sample areas. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',
@@ -155,7 +155,7 @@
     <div class="wrap">
       <div class="cta-band reveal">
         <h2>{!! $copy['cta_title'] ?? 'See a property you like?' !!}</h2>
-        <p>{!! $copy['cta_text'] ?? 'Book a walkthrough with a local Keystone agent, or run the numbers first with our land-loan and pre-qualification tools.' !!}</p>
+        <p>{!! $copy['cta_text'] ?? 'Book a walkthrough with a sample agent, or run the numbers first with the land-loan and pre-qualification tools.' !!}</p>
         <div class="cta-actions">
           <a class="btn btn-gold" href="{{ home_url('/book/') }}">{{ $copy['cta_primary'] ?? 'Book a showing' }}</a>
           <a class="btn btn-outline light" href="{{ home_url('/guide') }}">Financing Tools</a>

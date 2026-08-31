@@ -10,7 +10,14 @@ class Seo
 {
     public const SITE = 'Keystone Real Estate';
 
-    public const FALLBACK = 'Farms, historic houses, and acreage in a sample rural market. Filter listings by area and book a showing with a Keystone Real Estate agent.';
+    public const FALLBACK = 'Farms, historic houses, and acreage in a sample rural market. Filter listings by area and book a showing with a sample agent.';
+
+    public static function siteName(): string
+    {
+        $name = Identity::brandName();
+
+        return $name !== '' ? $name : self::SITE;
+    }
 
     public static function boot(): void
     {
@@ -36,7 +43,7 @@ class Seo
     {
         if (is_front_page()) {
             return [
-                'title' => 'Keystone Real Estate | Homes, Farms & Land',
+                'title' => self::siteName().' | Homes, Farms & Land',
                 'tagline' => '',
                 'site' => '',
             ];
@@ -51,7 +58,7 @@ class Seo
             $parts['title'] = self::clip(self::plain($copy['hero_title']), 42);
         }
 
-        $parts['site'] = self::SITE;
+        $parts['site'] = self::siteName();
         unset($parts['tagline']);
 
         return $parts;
@@ -77,7 +84,7 @@ class Seo
         echo '<meta name="description" content="'.esc_attr($meta['description']).'">'."\n";
         echo '<link rel="canonical" href="'.esc_url($meta['url']).'">'."\n";
         echo '<meta property="og:locale" content="en_US">'."\n";
-        echo '<meta property="og:site_name" content="'.esc_attr(self::SITE).'">'."\n";
+        echo '<meta property="og:site_name" content="'.esc_attr(self::siteName()).'">'."\n";
         echo '<meta property="og:type" content="'.esc_attr($meta['type']).'">'."\n";
         echo '<meta property="og:title" content="'.esc_attr($meta['og_title']).'">'."\n";
         echo '<meta property="og:description" content="'.esc_attr($meta['description']).'">'."\n";
@@ -159,7 +166,7 @@ class Seo
             }
         }
         if (is_404()) {
-            return 'That page is not available. Browse sample listings, schedule a showing, or return home to continue on the Keystone Real Estate site.';
+            return 'That page is not available. Browse sample listings, schedule a showing, or return home.';
         }
 
         $fromCopy = self::plain($copy['hero_text'] ?? '');
@@ -179,16 +186,16 @@ class Seo
     public static function ogTitle(array $copy): string
     {
         if (is_front_page()) {
-            return 'Keystone Real Estate | Homes, Farms & Land';
+            return self::siteName().' | Homes, Farms & Land';
         }
         if (is_singular()) {
-            return self::clip(self::plain((string) get_the_title()).' | '.self::SITE, 70);
+            return self::clip(self::plain((string) get_the_title()).' | '.self::siteName(), 70);
         }
         if (! empty($copy['hero_title'])) {
-            return self::clip(self::plain($copy['hero_title']).' | '.self::SITE, 70);
+            return self::clip(self::plain($copy['hero_title']).' | '.self::siteName(), 70);
         }
 
-        return self::SITE;
+        return self::siteName();
     }
 
     /**
@@ -220,11 +227,11 @@ class Seo
                 'dateModified' => get_the_modified_date('c'),
                 'author' => [
                     '@type' => 'Organization',
-                    'name' => self::SITE,
+                    'name' => self::siteName(),
                 ],
                 'publisher' => [
                     '@type' => 'Organization',
-                    'name' => self::SITE,
+                    'name' => self::siteName(),
                     'url' => home_url('/'),
                 ],
             ];
@@ -238,7 +245,7 @@ class Seo
                 'image' => $hero['url'],
                 'isPartOf' => [
                     '@type' => 'WebSite',
-                    'name' => self::SITE,
+                    'name' => self::siteName(),
                     'url' => home_url('/'),
                 ],
             ];
@@ -328,12 +335,12 @@ class Seo
     public static function defaultDescriptions(): array
     {
         return [
-            'home' => 'Farms, historic houses, and acreage in a sample rural market. Filter by area, review sample listings, and book a showing with a Keystone Real Estate agent.',
-            'listings' => 'Browse sample farms, historic houses, and acreage. Filter by type, price, acres, and area, then schedule a showing with a Keystone agent.',
+            'home' => 'Farms, historic houses, and acreage in a sample rural market. Filter by area, review sample listings, and book a showing with a sample agent.',
+            'listings' => 'Browse sample farms, historic houses, and acreage. Filter by type, price, acres, and area, then schedule a showing.',
             'areas' => 'Sample-market notes: orchards, farms, and wooded lots from Oak Hollow to Border Farms. Context before you tour a listing — rename the areas for your county.',
             'guide' => 'Guidance on wells, septic, access, and land loans, plus calculators and a path to schedule a parcel showing.',
-            'agents' => 'Meet the Keystone team. Agents focused on farms, orchards, and historic houses across sample rural markets.',
-            'contact' => 'Contact Keystone Real Estate at 100 Concept Way, Sample Borough. Call (555) 010-0455 or book a house showing online.',
+            'agents' => 'Meet the sample team. Agents focused on farms, orchards, and historic houses across a rural demo market.',
+            'contact' => 'Contact the sample office at 100 Concept Way, Sample Borough. Call (555) 010-0455 or book a house showing online.',
             'book' => 'Choose a listing, date, and time. Showing requests are saved for the listing agent so you can review the booking flow.',
             'blog' => 'Notes on house showings, first-time buyer checklists, and land versus home search for rural buyers and sellers.',
             'simple' => self::FALLBACK,

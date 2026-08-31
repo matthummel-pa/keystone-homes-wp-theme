@@ -8,7 +8,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Concept office',
   'heroTitle' => $copy['hero_title'] ?: 'Get in touch <em>(demo only)</em>',
   'heroText' => $copy['hero_text'] ?: '100 Concept Way, Sample Borough. Call (555) 010-0455 or send a message. Prefer the full appointment flow? Book a sample showing.',
@@ -25,7 +25,7 @@
       <div class="contact-grid">
         <div class="contact-info reveal">
           <p class="eyebrow">Our Office</p>
-          <h2>{!! $copy['office_title'] ?? 'Keystone Real Estate' !!}</h2>
+          <h2>{!! ($copy['office_title'] ?? '') !== '' ? $copy['office_title'] : ($identity['brand'] ?? 'Keystone Real Estate') !!}</h2>
           <dl>
             <div>
               <dt>Address</dt>
@@ -49,7 +49,7 @@
             </div>
           </dl>
 
-          <div class="map-embed" role="img" aria-label="Illustrative map showing the Keystone Real Estate office north of a sample county seat">
+          <div class="map-embed" role="img" aria-label="Illustrative map showing the sample office north of a county seat">
             <div class="map-roads"></div>
             <div class="map-road-3"></div>
             <span class="pin-static">
@@ -98,7 +98,7 @@
             </form>
             <div class="confirm-msg" id="contactConfirm">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-              <span>Thanks! This is a concept demo — on your live site, this message would be emailed straight to the Keystone team.</span>
+              <span>Thanks! This is a concept demo — on your live site, this message would go to the listing office.</span>
             </div>
           </div>
         </div>
@@ -122,7 +122,7 @@
         </div>
         <div class="val-card">
           <h3>Free Land &amp; Farm Valuation</h3>
-          <p class="form-lede">Demo estimate — a Keystone agent will follow up with an accurate market analysis.</p>
+          <p class="form-lede">Demo estimate — a listing agent will follow up with an accurate market analysis.</p>
           <form id="valForm">
             <div class="val-grid">
               <div class="field">
@@ -158,7 +158,7 @@
           <div class="val-result" id="valResult">
             <span style="font-size:.78rem;color:var(--ink-soft);">Estimated market range</span>
             <strong id="valResultAmount">$0 – $0</strong>
-            <p style="margin:8px 0 0;font-size:.82rem;color:var(--ink-soft);">Based on recent township comps. A licensed Keystone agent will refine this with a full walkthrough.</p>
+            <p style="margin:8px 0 0;font-size:.82rem;color:var(--ink-soft);">Based on recent township comps. A licensed agent will refine this with a full walkthrough.</p>
           </div>
         </div>
       </div>

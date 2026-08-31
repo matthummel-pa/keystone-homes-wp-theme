@@ -3,7 +3,7 @@ Contributors: matthummel
 Requires at least: 6.6
 Tested up to: 6.8
 Requires PHP: 8.3
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
@@ -19,7 +19,10 @@ The sample office in the preview is named Keystone Real Estate — replace it un
 = Features =
 
 * Customizer identity: brand, phone, email, address, hours, header button, removable author credit
-* Accent color and Inter-based typography
+* Eight color styles (Forest, Clay, Navy, Burgundy, Harvest, Lake, Orchard, Charcoal) plus accent, paper, and ink
+* Header size and sticky toggle
+* Demo color switcher on the concept preview
+* Inter-based typography with font choices
 * WordPress menus (Primary + Footer) with a concept-page fallback
 * Footer widget area
 * Listing, agent, and booking templates (types registered by Keystone Core, or in-theme as a concept fallback)
@@ -61,6 +64,10 @@ In the `listing` post type. Keystone Core owns registration on a store install. 
 Yes. The marketplace pack includes `keystone-homes-child`.
 
 == Changelog ==
+
+= 1.1.0 =
+* Eight named color styles, paper/ink pickers, header size, and a demo style switcher.
+* Sample page and listing copy is generic market language for store previews.
 
 = 1.0.2 =
 * Author credit is Matt Hummel (matthummel.com) for theme shops and WordPress.org.

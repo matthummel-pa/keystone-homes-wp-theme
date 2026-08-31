@@ -10,7 +10,7 @@ class PageCopy
     public static function schemas(): array
     {
         $hero = fn (string $eyebrow, string $title, string $text) => [
-            'hero_brand' => ['label' => 'Hero brand', 'type' => 'text', 'default' => 'Keystone Real Estate'],
+            'hero_brand' => ['label' => 'Hero brand', 'type' => 'text', 'default' => ''],
             'hero_eyebrow' => ['label' => 'Hero eyebrow', 'type' => 'text', 'default' => $eyebrow],
             'hero_title' => ['label' => 'Hero title (use <em> for italics)', 'type' => 'text', 'default' => $title],
             'hero_text' => ['label' => 'Hero intro', 'type' => 'textarea', 'default' => $text],
@@ -72,7 +72,7 @@ class PageCopy
                 'intro_text' => ['label' => 'Local note', 'type' => 'textarea', 'default' => 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk. Replace this inventory with your own market.'],
             ] + $cta + [
                 'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'See a property you like?'],
-                'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Book a walkthrough with a local Keystone agent, or run the numbers first with our land-loan and pre-qualification tools.'],
+                'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Book a walkthrough with a sample agent, or run the numbers first with the land-loan and pre-qualification tools.'],
                 'cta_secondary' => ['label' => 'Secondary CTA label', 'type' => 'text', 'default' => 'Financing tools'],
             ],
             'areas' => $hero('Sample markets', 'Areas we <em>demo</em>', 'Fictional North Ridge, Mill Creek, and Oak Hollow profiles — written so you can swap in your own counties.') + [
@@ -116,16 +116,16 @@ class PageCopy
             ],
             'agents' => $hero('Sample team', 'Agents who know the <em>demo ground</em>', 'Team profiles are Agent posts. Contact numbers are fictional 555 lines.') + [
                 'intro_title' => ['label' => 'Intro title', 'type' => 'text', 'default' => 'A small, local team by design'],
-                'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'Keystone Real Estate is a sample office built around a simple idea: rural property deserves an agent who understands rural property. Farms, orchards, raw land, and century homesteads all come with questions a typical residential agent rarely faces.'],
+                'intro_text' => ['label' => 'Intro', 'type' => 'textarea', 'default' => 'This sample office is built around a simple idea: rural property deserves an agent who understands rural property. Farms, orchards, raw land, and century homesteads all come with questions a typical residential agent rarely faces.'],
                 'how_eyebrow' => ['label' => 'How-we-work eyebrow', 'type' => 'text', 'default' => 'How We Work'],
-                'how_title' => ['label' => 'How-we-work title', 'type' => 'text', 'default' => 'What working with Keystone looks like'],
+                'how_title' => ['label' => 'How-we-work title', 'type' => 'text', 'default' => 'What working with this office looks like'],
                 'how_text' => ['label' => 'How-we-work intro', 'type' => 'textarea', 'default' => 'No pressure, no jargon, and a straight answer about the ground under your feet.'],
             ] + $cta + [
-                'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Talk to a Keystone agent'],
+                'cta_title' => ['label' => 'Bottom CTA title', 'type' => 'text', 'default' => 'Talk to a sample agent'],
                 'cta_text' => ['label' => 'Bottom CTA text', 'type' => 'textarea', 'default' => 'Reach the office at (555) 010-0455, or book a no-pressure showing and we\'ll match you with the sample agent who knows that kind of ground.'],
             ],
             'contact' => $hero('Concept office', 'Get in touch <em>(demo only)</em>', 'Fictional address and phone. Prefer booking a sample showing for the full appointment UX.') + [
-                'office_title' => ['label' => 'Office heading', 'type' => 'text', 'default' => 'Keystone Real Estate'],
+                'office_title' => ['label' => 'Office heading', 'type' => 'text', 'default' => ''],
                 'office_address' => ['label' => 'Address', 'type' => 'textarea', 'default' => "100 Concept Way\nSample Borough, PA 00000"],
                 'office_phone' => ['label' => 'Phone', 'type' => 'text', 'default' => '(555) 010-0455'],
                 'office_email' => ['label' => 'Email', 'type' => 'text', 'default' => 'hello@keystone-concept.test'],

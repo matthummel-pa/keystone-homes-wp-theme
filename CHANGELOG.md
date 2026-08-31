@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.1.0
+
+- Eight color styles (Forest, Clay, Navy, Burgundy, Harvest, Lake, Orchard, Charcoal) plus accent, paper, and ink
+- Header: sticky/static and standard/compact
+- Front-end color switcher on the concept demo (Customize → Colors for buyers)
+- Sample page, FAQ, SEO, and listing copy is generic market language for store previews
+
 ## 1.0.2
 
 - Theme Author and Author URI are Matt Hummel / https://matthummel.com/ for ThemeForest and WordPress.org

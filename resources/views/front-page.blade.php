@@ -9,7 +9,7 @@
   {
     "@@context":"https://schema.org",
     "@@type":"RealEstateAgent",
-    "name":"Keystone Real Estate (Concept Demo)",
+    "name":"{{ ($identity['brand'] ?? 'Keystone Real Estate') }} (Concept Demo)",
     "description":"Fictional concept brokerage for design demonstration. Not a live MLS or licensed office.",
     "url":"{{ home_url('/') }}",
     "telephone":"+1-555-010-0455",
@@ -386,7 +386,7 @@
           <p class="eyebrow">Rural market notes</p>
           <h2 id="seo-heading">Buying a home, farm, or land</h2>
           <div class="prose-tight">
-            <p>This sample market is orchard and farm country: fruit on the ridges, tillable ground in the valleys, and older houses that still rely on a private well. Compare listings the way a land agent would — area first, then the utilities and access that change value. Rename the county in the Customizer.</p>
+            <p>This sample market is orchard and farm country: fruit on the ridges, tillable ground in the valleys, and older houses that still rely on a private well. Compare listings the way a land agent would — area first, then the utilities and access that change value. Replace names under Customize → Identity and the Areas page fields.</p>
             <h3>When you are buying a house</h3>
             <p>Start with price, bedrooms, and the commute. Acreage matters when you want a shop or barn; it does not replace water, septic, and a lane you can use in January. Confirm well or public water before you schedule a second visit.</p>
             <h3>When you are buying land</h3>

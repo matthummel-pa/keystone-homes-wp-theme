@@ -4,6 +4,7 @@ namespace App\View\Composers;
 
 use App\Support\Breadcrumbs;
 use App\Support\Catalog;
+use App\Support\ColorSchemes;
 use App\Support\Faqs;
 use App\Support\HeroImage;
 use App\Support\Identity;
@@ -58,6 +59,7 @@ class App extends Composer
                 'restUrl' => rest_url('keystone/v1/'),
                 'nonce' => wp_create_nonce('wp_rest'),
                 'listings' => Catalog::listings(),
+                'schemes' => ColorSchemes::forJs(),
             ],
         ];
     }

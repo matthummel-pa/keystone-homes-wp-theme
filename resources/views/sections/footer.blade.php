@@ -26,7 +26,7 @@
       <div class="footer-intro">
         <div class="footer-brand">
           <svg width="34" height="34" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <rect width="48" height="48" rx="12" fill="#1f6b4a"/>
+            <rect width="48" height="48" rx="12" fill="var(--accent)"/>
             <path d="M24 10 L40 22 V38 H8 V22 Z" fill="#141210"/>
             <rect x="20" y="26" width="8" height="12" fill="#fffcf7"/>
           </svg>

@@ -9,7 +9,7 @@
 @include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
-  'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',
+  'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Keystone Real Estate'),
   'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Buyer tools',
   'heroTitle' => $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>',
   'heroText' => $copy['hero_text'] ?: 'Wells, septic, and access change what acreage is worth. Short guides and demo calculators — then book a showing if you want to walk a sample parcel.',
@@ -173,7 +173,7 @@
           </form>
           <div class="confirm-msg" id="scheduleConfirm">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
-            <span>Thanks! This is a concept demo — on your live site, a Keystone agent would be notified instantly and confirm by text.</span>
+            <span>Thanks! This is a concept demo — on your live site, an agent would be notified instantly and confirm by text.</span>
           </div>
         </div>
 
