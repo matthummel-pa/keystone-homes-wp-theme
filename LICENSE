@@ -1,25 +1,20 @@
-Proprietary License — All Rights Reserved
+Acreline WordPress Theme
+Copyright (C) 2026 Matt Hummel
 
-Copyright (c) 2026 Matt Hummel. All rights reserved.
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation; either version 2 of the License, or
+(at your option) any later version.
 
-The Acreline WordPress theme, Acreline Child, Acreline Core, and all original
-PHP, Blade, CSS, JavaScript, images, copy, and design in this repository
-(together, the "Work") are the confidential and proprietary property of the
-copyright holder.
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
 
-No license is granted to any other person or company to copy, modify, merge,
-publish, distribute, sublicense, sell, or use the Work, or to use it as a
-starter or base for another site or product, except with prior written
-permission from the copyright holder.
+You should have received a copy of the GNU General Public License
+along with this program. If not, see:
 
-The copyright holder may run the Work on sites they operate, including
-development copies on localhost.
+https://www.gnu.org/licenses/gpl-2.0.html
 
-This file does not change the licenses of third-party code bundled with the
-Work. WordPress, Roots Sage / Acorn, Composer packages in vendor/, npm
-packages, and bundled fonts keep their own licenses. See LICENSE.md and
-CREDITS.md.
-
-THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT.
+Sage / Acorn and other bundled packages keep their own licenses.
+See LICENSE.md and CREDITS.md.

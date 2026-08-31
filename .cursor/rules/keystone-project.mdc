@@ -32,7 +32,7 @@ CI **does not FTP** to the host. Do not assume a theme PR is live until the zip 
 
 ## License
 
-This theme is **proprietary** (see `LICENSE`). Do not treat it as MIT or GPL. Do not copy it into another project. Do not publish it to WordPress.org or ThemeForest unless Matt explicitly asks to relicense.
+Acreline is **GPLv2 or later** so it can list on WordPress.org and ThemeForest. Sage / Acorn stay MIT (`LICENSE.md`). Do not switch this product to a proprietary license.
 
 ## CSS that must not disappear
 

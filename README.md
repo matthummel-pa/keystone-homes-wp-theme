@@ -123,9 +123,4 @@ Design tokens and layout CSS live in `resources/css/keystone.css`. Card chrome i
 
 ## License
 
-Proprietary — all rights reserved. Copyright © 2026 Matt Hummel.
-
-This theme is not open source. You may not copy, reuse, redistribute, or build
-another site from it without written permission. See `LICENSE`.
-
-Sage / Acorn and other bundled packages keep their own licenses (`LICENSE.md`, `CREDITS.md`).
+GPLv2 or later. See `LICENSE.md` and `CREDITS.md`.
