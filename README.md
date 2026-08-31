@@ -9,17 +9,30 @@ The sample office in the preview is named Acreline. Change the brand, phone, ema
 | **Live concept demo** | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) |
 | **Support** | [SUPPORT.md](SUPPORT.md) |
 | **Author** | [matthummel.com](https://matthummel.com/) |
-| **Install folder** | `acreline` (leave this name — Vite asset URLs depend on it) |
+| **Install folder** | **`acreline`** (leave this name — Vite asset URLs depend on it) |
+| **Source** | [github.com/matthummel-pa/wp-acreline](https://github.com/matthummel-pa/wp-acreline) |
 
 > **Fiction only.** Listings, market stats, contact details, and appointments are sample / concept data. Not a live MLS, licensed brokerage, or booking system. Demo phones use the `555` exchange; emails use `@acreline-concept.test`.
 
 Ported from the static concept: [live HTML demo](https://matthummel-pa.github.io/realtor-keystone-homes-and-land-theme/) · [source](https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme).
 
+Sage 11 stack: Blade, Tailwind CSS v4, Vite 8, Acorn. Classic (non-block) editor. Not Gutenberg-optimized, not Elementor, not an IDX/MLS feed.
+
+## Install from a marketplace zip
+
+Theme shop and own-site buyers: **do not clone this repo onto the host.** The store pack is already built. The host needs WordPress 6.6+ and PHP 8.3+ — not Composer or npm.
+
+1. Extract the outer `acreline-*.zip`. Do not upload that outer file in wp-admin.
+2. **Appearance → Themes → Add New → Upload Theme** → inner **`acreline.zip`**. Activate Acreline. The folder must stay **`acreline`**.
+3. **Appearance → Customize → Identity** for brand, phone, email, address, hours, and the header button. Upload a logo under Site Identity.
+4. Optional: upload `acreline-child.zip`, then `acreline-core.zip` (listings survive a theme switch).
+5. **Tools → Seed Acreline demo** if you want the preview pages and sample inventory.
+
+Walkthrough and ThemeForest form fields: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html) and [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html). WordPress.org-style parser file: [`readme.txt`](readme.txt).
+
 ## Who it is for
 
-Realtors and marketers who sell **acreage, working farms, and historic homes** and want a classic (non-block) WordPress site: search the inventory, open a listing, meet an agent, request a showing. Buyers set office identity from the Customizer. Developers who already like [Sage 11](https://roots.io/sage/) get Blade, Tailwind CSS v4, Vite 8, and Acorn.
-
-It drops into a [Bedrock](https://roots.io/bedrock/) `web/app/themes/` directory or a classic `wp-content/themes/` install.
+Realtors and marketers who sell **acreage, working farms, and historic homes** and want a classic WordPress site: search the inventory, open a listing, meet an agent, request a showing. Buyers set office identity from the Customizer. Developers who already like [Sage 11](https://roots.io/sage/) can drop it into [Bedrock](https://roots.io/bedrock/) `web/app/themes/` or a classic `wp-content/themes/` install.
 
 ## What you get
 
@@ -37,11 +50,9 @@ It drops into a [Bedrock](https://roots.io/bedrock/) `web/app/themes/` directory
 
 Listings, agents, and bookings are registered by **Acreline Core** (companion plugin) or in-theme as a fallback so this concept site keeps working without the plugin.
 
-## Requirements
+## Local development (this git repo)
 
-WordPress 6.6+, PHP 8.3+. Built assets (`npm run build`) must exist — the theme loads Vite’s manifest. The install folder must stay `acreline`.
-
-## Local development
+This repository is Sage **source**. `vendor/` and `public/build/` are not committed. After a clone you must build assets before any page will load.
 
 ```bash
 bin/setup-wp.sh
@@ -62,25 +73,25 @@ npm run dev            # Vite HMR alongside wp server
 ./vendor/bin/pint      # PHP style
 ```
 
+If the theme folder is not `acreline`, update `base` in `vite.config.js` and rebuild.
+
 ## Package for a host or a marketplace
 
 ```bash
 bin/build-theme-zip.sh            # -> dist-theme/acreline.zip (WP upload)
-bin/build-install-pack.sh         # -> dist-install/acreline-1.2.0.zip (seller pack)
+bin/build-install-pack.sh         # -> dist-install/acreline-<version>.zip (seller pack)
 bin/build-marketplace-pack.sh     # same pack, plus SELLING.md for you
 ```
 
-**Regular WordPress install:** extract `acreline-*.zip`, then **Appearance → Themes → Upload Theme** and choose the inner `acreline.zip`. Do not upload the outer pack to WordPress.
+**Regular WordPress install:** extract `acreline-*.zip`, then **Appearance → Themes → Upload Theme** and choose the inner `acreline.zip`.
 
-Host needs and ThemeForest / own-site listing fields: [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html). Buyer walkthrough: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html). Seller channels: [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md). Support: [`SUPPORT.md`](SUPPORT.md).
+Seller channels: [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md). Support: [`SUPPORT.md`](SUPPORT.md).
 
 Theme-only install (no child / plugin / docs):
 
 ```bash
 wp theme install dist-theme/acreline.zip --activate
 ```
-
-If the theme folder is not `acreline`, update `base` in `vite.config.js` and rebuild.
 
 ## Update from GitHub
 

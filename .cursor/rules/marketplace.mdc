@@ -6,7 +6,7 @@ alwaysApply: false
 
 # 8. Marketplace and distribution
 
-Matt asked to package this theme for sale. Follow 8.1–8.12 on marketplace work.
+Matt asked to package this theme for sale. Follow 8.1–8.12 on marketplace work. README / `readme.txt` / ThemeForest documentation copy: `.cursor/rules/theme-shop-readme.mdc`.
 
 This repo is still a **concept Sage theme**. Listings stay in-theme as a fallback so the live demo keeps working. The **Acreline Core** companion plugin (`plugins/acreline-core`) is the store-correct home for CPTs and booking REST.
 
