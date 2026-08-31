@@ -86,7 +86,7 @@
     </div>
   </section>
 
-  <!-- ============================= GETTYSBURG ANCHOR ============================= -->
+  <!-- ============================= COUNTY SEAT ============================= -->
   <section class="section section-alt">
     <div class="wrap prose reveal">
       <h2>Getting here &amp; getting around</h2>
