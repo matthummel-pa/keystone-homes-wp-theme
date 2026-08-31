@@ -4,126 +4,172 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Acreline — Requirements</title>
-  <link rel="stylesheet" href="css/docs.css">
+  <link rel="stylesheet" href="assets/docs.css">
 </head>
 <body>
-  <a class="skip" href="#doc">Skip to content</a>
-  <div class="frame">
-<aside class="nav" aria-label="Documentation">
-  <a class="brand" href="index.html">Acreline <span>Documentation</span></a>
-  <p class="meta">Version 1.2.2 · GPLv2 or later</p>
-  <div class="group">Start</div>
-  <ul>
-    <li><a class="item" href="index.html">Overview</a></li>
-    <li><a class="item" href="buyer-guide.html">Install</a></li>
-    <li><a class="item" href="requirements.html" aria-current="page">Requirements</a></li>
-  </ul>
-  <div class="group">Theme</div>
-  <ul>
-    <li><a class="item" href="customizer.html">Customizer</a></li>
-    <li><a class="item" href="templates.html">Templates</a></li>
-    <li><a class="item" href="listings.html">Listings &amp; bookings</a></li>
-    <li><a class="item" href="child-theme.html">Child theme</a></li>
-    <li><a class="item" href="translation.html">Translation</a></li>
-  </ul>
-  <div class="group">Reference</div>
-  <ul>
-    <li><a class="item" href="faq.html">FAQ</a></li>
-    <li><a class="item" href="changelog.html">Changelog</a></li>
-    <li><a class="item" href="credits.html">Credits</a></li>
-    <li><a class="item" href="support.html">Support</a></li>
-  </ul>
-</aside>
-    <main id="doc" class="doc">
-      <p class="kicker">Acreline · Requirements</p>
-      <h1>Host needs and seller listing fields</h1>
-      <p>This pack is for a <strong>regular WordPress install</strong>: Appearance → Themes → Add New → Upload Theme. The file to upload is <code>acreline.zip</code>. Leave the folder name <code>acreline</code>.</p>
-      <div class="note">
-        Acreline is a land-and-farms realtor <em>concept</em> theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
-        Created by <a href="https://matthummel.com/">Matt Hummel</a>.
-      </div>
-      <h2>1. Buyer — what the host must have</h2>
-      <table class="fields">
-        <tbody>
-          <tr><th>WordPress</th><td>6.6 or newer (tested through 7.0.1)</td></tr>
-          <tr><th>PHP</th><td>8.3 or newer (8.4 is fine)</td></tr>
-          <tr><th>PHP extensions</th><td><code>mbstring</code>, <code>xml</code>, <code>curl</code>, <code>zip</code>, <code>intl</code>, <code>json</code>, plus <code>gd</code> or Imagick for media</td></tr>
-          <tr><th>Memory</th><td>128&nbsp;MB minimum; 256&nbsp;MB recommended (Sage / Acorn)</td></tr>
-          <tr><th>HTTPS</th><td>Recommended on any public site</td></tr>
-          <tr><th>Install folder</th><td>Must stay <code>acreline</code> (compiled asset URLs use that path)</td></tr>
-          <tr><th>Composer / npm on the host</th><td>Not required. Store zips already include <code>vendor/</code> and <code>public/build/</code></td></tr>
-          <tr><th>Block editor</th><td>Not used. Edit pages, listings, and agents through custom fields</td></tr>
-          <tr><th>Page builder</th><td>None required (not an Elementor / Gutenberg theme)</td></tr>
-          <tr><th>Database</th><td>MySQL / MariaDB as WordPress expects. SQLite is only for this repo’s local demo helper</td></tr>
-        </tbody>
-      </table>
-      <h3>Optional, not required</h3>
-      <ul>
-        <li><strong>Acreline Core</strong> (<code>acreline-core.zip</code>) — keeps listings, agents, and bookings if the buyer later switches themes. The parent theme still registers those types when the plugin is off, so a regular install works with the theme zip alone.</li>
-        <li><strong>Acreline Child</strong> (<code>acreline-child.zip</code>) — CSS that survives parent updates.</li>
-        <li>Yoast, Rank Math, SEOPress, or AIOSEO — the theme yields native title / OG tags when one of these is active.</li>
-      </ul>
-      <h3>This theme does not include</h3>
-      <ul>
-        <li>A live MLS / IDX feed or payment processor</li>
-        <li>Gutenberg patterns or a page-builder kit</li>
-        <li>Bundled Unsplash image files (concept photos are hotlinks; replace them on a client site)</li>
-        <li>A license lock, Freemius, or Envato purchase-code nag</li>
-      </ul>
-      <h2>2. Regular install (two minutes)</h2>
-      <ol>
-        <li>WordPress 6.6+ and PHP 8.3+ on the host.</li>
-        <li>Appearance → Themes → Add New → Upload Theme → <code>acreline.zip</code> → Activate <strong>Acreline</strong>.</li>
-        <li>Optional: upload and activate the child theme, then Acreline Core.</li>
-        <li>Appearance → Customize → Identity (brand, 555-style phone, email, colors).</li>
-        <li>Tools → Seed Acreline demo if you want the preview pages and sample inventory.</li>
-      </ol>
-      <p>Full walkthrough: <a href="buyer-guide.html">buyer-guide.html</a>. Help: <a href="support.html">support.html</a>.</p>
-      <h2>3. Seller — paste these on the store listing</h2>
-      <p>Use this block on ThemeForest, Creative Market, TemplateMonster, Gumroad, or your own product page. Do not claim WordPress.org approval, a live MLS, or “#1 realtor theme.” Full paste-ready copy lives in the repo file <code>docs/marketplace/themeforest-listing.md</code> (not inside this buyer pack).</p>
-      <h3>Short description</h3>
-      <p class="copy">Acreline is a WordPress theme for farms, land, and historic homes — searchable listings, agents, and showing requests. Customizer identity, eight color styles. Classic (non-block). Concept demo by Matt Hummel.</p>
-      <h3>Item attributes (WordPress theme form)</h3>
-      <table class="fields">
-        <tbody>
-          <tr><th>Software version</th><td>WordPress 6.6, 6.7, 6.8, 7.0 (tested up to 7.0.1)</td></tr>
-          <tr><th>Compatible browsers</th><td>Chrome, Firefox, Safari, Edge (current two versions)</td></tr>
-          <tr><th>Compatible with</th><td>No page builder required. Optional: Yoast, Rank Math, SEOPress, AIOSEO</td></tr>
-          <tr><th>Files included</th><td>PHP, CSS, JS (compiled Vite assets + production Composer vendor)</td></tr>
-          <tr><th>Documentation</th><td>Well documented (this folder)</td></tr>
-          <tr><th>Layout</th><td>Responsive</td></tr>
-          <tr><th>Columns</th><td>4+</td></tr>
-          <tr><th>Gutenberg optimized</th><td>No — classic metaboxes on purpose</td></tr>
-          <tr><th>High resolution</th><td>Yes</td></tr>
-          <tr><th>Widget ready</th><td>Yes (footer widgets)</td></tr>
-          <tr><th>Tags</th><td>real estate, realtor, farm, land, acreage, listings, rural, sage</td></tr>
-          <tr><th>Demo URL</th><td>https://keystonehomes.ridgesandvalleys.com/</td></tr>
-          <tr><th>Support URL</th><td>https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md</td></tr>
-          <tr><th>Author</th><td>Matt Hummel · https://matthummel.com/</td></tr>
-          <tr><th>License</th><td>GPLv2 or later (theme). Sage / Acorn remain MIT (GPL-compatible)</td></tr>
-        </tbody>
-      </table>
-      <h3>What to upload where</h3>
-      <table class="fields">
-        <tbody>
-          <tr><th>ThemeForest / Creative Market</th><td>This whole pack zip (“All files &amp; documentation”). Buyers extract it, then upload <code>acreline.zip</code> in wp-admin.</td></tr>
-          <tr><th>Own site / Gumroad</th><td>Same pack zip. Lead the product page with the short description and the host table above.</td></tr>
-          <tr><th>WordPress.org</th><td>Upload <em>only</em> <code>acreline.zip</code>. Do not claim approval while this is Sage + Gutenberg-off.</td></tr>
-        </tbody>
-      </table>
-      <h3>Seller checklist before you submit</h3>
-      <ul>
-        <li>Live preview URL works; demo chrome on for honesty, one screenshot with chrome off.</li>
-        <li>Identity uses 555 numbers and <code>@acreline-concept.test</code> only.</li>
-        <li>No Unsplash <em>files</em> inside <code>acreline.zip</code>.</li>
-        <li>No Freemius, Envato banners, or “upgrade to Pro” admin ads.</li>
-        <li>Footer author credit is removable (Customize → Identity) and <code>rel="nofollow"</code>.</li>
-        <li>Child theme and Acreline Core sit <em>beside</em> the theme zip, not inside it.</li>
-        <li>Theme Check on a stock WP install — Sage/vendor warnings are expected; do not hide them with a dummy license.</li>
-      </ul>
+  <p class="site-bar">Acreline documentation · ThemeForest / own-site pack · Fiction only</p>
+  <header class="doc-head">
+    <div class="doc-head-inner">
+      <a class="brand-lockup" href="index.html">
+        <img src="assets/acreline-mark.svg" width="40" height="40" alt="">
+        <span><strong>Acreline</strong><span>Farms · land · historic homes</span></span>
+      </a>
+      <nav class="docs-nav" aria-label="Documentation">
+        <a href="index.html">Contents</a>
+        <a href="buyer-guide.html">Install &amp; setup</a>
+        <a href="branding.html">Branding</a>
+        <a href="customizer.html">Customizer</a>
+        <a href="listings.html">Listings</a>
+        <a href="support.html">Support</a>
+      </nav>
+    </div>
+  </header>
+  <main class="wrap">
+<h1>Host needs and seller listing fields</h1>
+  <p>This pack is for a <strong>regular WordPress install</strong>: Appearance → Themes → Add New → Upload Theme. The file to upload is <code>acreline.zip</code>. Leave the folder name <code>acreline</code>.</p>
 
-      <footer>Fiction only · Equal Housing Opportunity (concept) · Theme license GPLv2 or later · Created by <a href="https://matthummel.com/">Matt Hummel</a></footer>
-    </main>
+  <div class="note">
+    Acreline is a land-and-farms realtor <em>concept</em> theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
+    Created by <a href="https://matthummel.com/">Matt Hummel</a>.
   </div>
+
+  <h2>1. Buyer — what the host must have</h2>
+  <table>
+    <tbody>
+      <tr><th>WordPress</th><td>6.6 or newer (tested through 7.0.1)</td></tr>
+      <tr><th>PHP</th><td>8.3 or newer (8.4 is fine)</td></tr>
+      <tr><th>PHP extensions</th><td><code>mbstring</code>, <code>xml</code>, <code>curl</code>, <code>zip</code>, <code>intl</code>, <code>json</code>, plus <code>gd</code> or Imagick for media</td></tr>
+      <tr><th>Memory</th><td>128&nbsp;MB minimum; 256&nbsp;MB recommended (Sage / Acorn)</td></tr>
+      <tr><th>HTTPS</th><td>Recommended on any public site</td></tr>
+      <tr><th>Install folder</th><td>Must stay <code>acreline</code> (compiled asset URLs use that path)</td></tr>
+      <tr><th>Composer / npm on the host</th><td>Not required. Store zips already include <code>vendor/</code> and <code>public/build/</code></td></tr>
+      <tr><th>Block editor</th><td>Not used. Edit pages, listings, and agents through custom fields</td></tr>
+      <tr><th>Page builder</th><td>None required (not an Elementor / Gutenberg theme)</td></tr>
+      <tr><th>Database</th><td>MySQL / MariaDB as WordPress expects. SQLite is only for this repo’s local demo helper</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Optional, not required</h3>
+  <ul>
+    <li><strong>Acreline Core</strong> (<code>acreline-core.zip</code>) — keeps listings, agents, and bookings if the buyer later switches themes. The parent theme still registers those types when the plugin is off, so a regular install works with the theme zip alone.</li>
+    <li><strong>Acreline Child</strong> (<code>acreline-child.zip</code>) — CSS that survives parent updates.</li>
+    <li>Yoast, Rank Math, SEOPress, or AIOSEO — the theme yields native title / OG tags when one of these is active.</li>
+  </ul>
+
+  <h3>This theme does not include</h3>
+  <ul>
+    <li>A live MLS / IDX feed or payment processor</li>
+    <li>Gutenberg patterns or a page-builder kit</li>
+    <li>Bundled Unsplash image files (concept photos are hotlinks; replace them on a client site)</li>
+    <li>A license lock, Freemius, or Envato purchase-code nag</li>
+  </ul>
+
+  <h2>2. Regular install (two minutes)</h2>
+  <ol>
+    <li>WordPress 6.6+ and PHP 8.3+ on the host.</li>
+    <li>Appearance → Themes → Add New → Upload Theme → <code>acreline.zip</code> → Activate <strong>Acreline</strong>.</li>
+    <li>Optional: upload and activate the child theme, then Acreline Core.</li>
+    <li>Appearance → Customize → Identity (brand, 555-style phone, email, colors).</li>
+    <li>Tools → Seed Acreline demo if you want the preview pages and sample inventory.</li>
+  </ol>
+  <p>Full walkthrough: <a href="buyer-guide.html">buyer-guide.html</a>. Help: <a href="support.html">support.html</a>.</p>
+
+  <h2>3. Seller — paste these on the store listing</h2>
+  <p>Use this block on ThemeForest, Creative Market, TemplateMonster, Gumroad, or your own product page. Do not claim WordPress.org approval, a live MLS, or “#1 realtor theme.”</p>
+
+  <h3>Short description</h3>
+      <p class="copy">Acreline is a WordPress theme for farms, land, and historic homes — searchable listings, agents, and showing requests. Almost no plugins: Customizer + custom fields, not Elementor or ACF. Eight color styles. Classic (non-block). Concept demo by Matt Hummel.</p>
+
+  <h3>Item attributes (WordPress theme form)</h3>
+  <table>
+    <tbody>
+      <tr><th>Software version</th><td>WordPress 6.6, 6.7, 6.8, 7.0 (tested up to 7.0.1)</td></tr>
+      <tr><th>Compatible browsers</th><td>Chrome, Firefox, Safari, Edge (current two versions)</td></tr>
+      <tr><th>Compatible with</th><td>No page builder required. Optional: Yoast, Rank Math, SEOPress, AIOSEO</td></tr>
+      <tr><th>Files included</th><td>PHP, CSS, JS (compiled Vite assets + production Composer vendor)</td></tr>
+      <tr><th>Documentation</th><td>Well documented — open Documentation/index.html in this pack</td></tr>
+      <tr><th>Layout</th><td>Responsive</td></tr>
+      <tr><th>Columns</th><td>4+</td></tr>
+      <tr><th>Gutenberg optimized</th><td>No — classic metaboxes on purpose</td></tr>
+      <tr><th>High resolution</th><td>Yes</td></tr>
+      <tr><th>Widget ready</th><td>Yes (footer widgets)</td></tr>
+      <tr><th>Tags</th><td>real estate, realtor, farm, land, acreage, listings, rural, sage</td></tr>
+      <tr><th>Demo URL</th><td>https://keystonehomes.ridgesandvalleys.com/</td></tr>
+      <tr><th>Support URL</th><td>https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md</td></tr>
+      <tr><th>Author</th><td>Matt Hummel · https://matthummel.com/</td></tr>
+      <tr><th>License</th><td>GPLv2 or later (theme). Sage / Acorn remain MIT (GPL-compatible)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>What to upload where</h3>
+  <table>
+    <tbody>
+      <tr><th>ThemeForest / Creative Market</th><td>This whole pack zip (“All files &amp; documentation”). Buyers extract it, then upload <code>acreline.zip</code> in wp-admin.</td></tr>
+      <tr><th>Own site / Gumroad</th><td>Same pack zip. Lead the product page with the short description and the host table above.</td></tr>
+      <tr><th>WordPress.org</th><td>Upload <em>only</em> <code>acreline.zip</code>. Do not claim approval while this is Sage + Gutenberg-off. See the seller brief in the repo, not this buyer pack.</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Long description (paste on the item page)</h3>
+  <p class="copy">Acreline is a WordPress theme for rural real-estate offices: searchable listings, agents, and showing requests — built for farms, land, and historic homes, not a generic luxury-broker skin.
+
+Almost no plugins. The theme zip alone runs the office. You do not need Advanced Custom Fields, Elementor, a Gutenberg kit, or an IDX plugin. Brand, phone, colors, and inventory live in the Customizer and classic custom-field metaboxes, so you change headlines and prices without editing the design.
+
+Eight color styles (Forest, Clay, Navy, Burgundy, Harvest, Lake, Orchard, Charcoal). Custom logo. Primary + Footer menus. Footer widgets. Native title, description, Open Graph, and Twitter tags (yields to Yoast / Rank Math / SEOPress / AIOSEO). Translation-ready text domain acreline.
+
+Optional Acreline Core keeps listing / agent / booking post types if you later switch themes. Optional Acreline Child keeps CSS through parent updates. Both ship beside the theme zip, not inside it.
+
+Classic (non-block) on purpose. Gutenberg optimized: No. WooCommerce: No. Not a live MLS or licensed brokerage — the preview uses 555 phones and sample inventory.
+
+Documentation: open Documentation/index.html in this pack. Demo: https://keystonehomes.ridgesandvalleys.com/ — Matt Hummel, GPLv2 or later.</p>
+
+  <h3>ThemeForest / Envato — extra form fields</h3>
+  <table>
+    <tbody>
+      <tr><th>Category</th><td>WordPress / Real Estate (or Business)</td></tr>
+      <tr><th>Framework</th><td>Sage 11 (Acorn) — compiled in the zip; buyers do not run Composer</td></tr>
+      <tr><th>Compatible with</th><td>WordPress 6.6–7.0. Optional SEO plugins listed above. Not WooCommerce, not WPML</td></tr>
+      <tr><th>Retina ready</th><td>Yes (SVG house mark; custom logo from Site Identity)</td></tr>
+      <tr><th>PSD / Sketch / Figma files</th><td>No</td></tr>
+      <tr><th>Video documentation</th><td>No — HTML docs in Documentation/</td></tr>
+      <tr><th>RTL support</th><td>No</td></tr>
+      <tr><th>WPML ready</th><td>No (not tested)</td></tr>
+      <tr><th>WooCommerce</th><td>No</td></tr>
+      <tr><th>Included plugins</th><td>None required. Optional Acreline Core in this pack (not inside the theme folder)</td></tr>
+      <tr><th>CSS preprocessor</th><td>None in the zip (Vite already compiled Tailwind)</td></tr>
+      <tr><th>JS included</th><td>Compiled theme JS + Documentation/assets/docs.js</td></tr>
+      <tr><th>Extra item images</th><td>Documentation/screenshots/01–07 (homepage, listings, listing single, agents, contact, areas, book)</td></tr>
+    </tbody>
+  </table>
+
+  <h3>TemplateMonster / Creative Market extras</h3>
+  <table>
+    <tbody>
+      <tr><th>WordPress version</th><td>6.6+</td></tr>
+      <tr><th>Plugins included</th><td>Optional Acreline Core zip beside the theme (not required)</td></tr>
+      <tr><th>Dummy / sample data</th><td>Yes — Tools → Seed Acreline demo; WXR notes in Demos/</td></tr>
+      <tr><th>Documentation</th><td>Yes — HTML, start at Documentation/index.html</td></tr>
+      <tr><th>Sources and credits</th><td>Documentation/sources.html + Licensing/CREDITS.md</td></tr>
+      <tr><th>Changelog</th><td>Documentation/changelog.html</td></tr>
+      <tr><th>Support</th><td>Envato item channel (if sold there) + GitHub issues. No in-theme ticket desk</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Seller checklist before you submit</h3>
+  <ul>
+    <li>Live preview URL works; demo chrome on for honesty, one screenshot with chrome off.</li>
+    <li>Identity uses 555 numbers and <code>@acreline-concept.test</code> only.</li>
+    <li>No Unsplash <em>files</em> inside <code>acreline.zip</code>.</li>
+    <li>No Freemius, Envato banners, or “upgrade to Pro” admin ads.</li>
+    <li>Footer author credit is removable (Customize → Identity) and <code>rel="nofollow"</code>.</li>
+    <li>Child theme and Acreline Core sit <em>beside</em> the theme zip, not inside it.</li>
+    <li>Documentation hub is <code>Documentation/index.html</code> with screenshots, sources, changelog, and FAQ.</li>
+    <li>Theme Check on a stock WP install — Sage/vendor warnings are expected; do not hide them with a dummy license.</li>
+    <li>style.css Version matches readme.txt Stable tag and changelog.</li>
+  </ul>
+  </main>
+  <footer class="doc-foot">Fiction only · Equal Housing Opportunity (concept) · Theme license GPLv2 or later · Created by Matt Hummel</footer>
+  <script src="assets/docs.js"></script>
 </body>
 </html>
+

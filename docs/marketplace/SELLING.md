@@ -32,8 +32,8 @@ Creates `dist-install/`:
 - `acreline-pack/acreline-child.zip`
 - `acreline-pack/acreline-core.zip`
 - `acreline-pack/Documentation/index.html` — Envato-style docs hub (open this first)
-- `acreline-pack/Documentation/buyer-guide.html`, `requirements.html`, `customizer.html`, `templates.html`, `listings.html`, `child-theme.html`, `translation.html`, `faq.html`, `changelog.html`, `credits.html`, `support.html`
-- `acreline-pack/Documentation/css/docs.css`
+- `acreline-pack/Documentation/` — buyer-guide, branding, customizer, templates, listings, child-theme, translation, faq, requirements, support, sources, credits, changelog
+- `acreline-pack/Documentation/assets/` and `screenshots/`
 - `acreline-pack/Demos/README.txt`
 - `acreline-pack/Licensing/CREDITS.md`, `LICENSE.md`, `license.txt`
 
