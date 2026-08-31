@@ -1016,17 +1016,6 @@ body.nav-open .chat-widget{visibility:hidden;pointer-events:none;}
 .site-footer .widget a{color:rgba(255,255,255,.72);text-decoration:none;}
 .site-footer .widget a:hover{color:#fff;}
 
-.ks-breadcrumbs{padding-top:18px;padding-bottom:0;}
-.ks-breadcrumbs ol{
-  display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;
-  list-style:none;margin:0;padding:0;font-size:.82rem;color:var(--ink-faint);
-}
-.ks-breadcrumbs li{display:inline-flex;align-items:center;gap:10px;}
-.ks-breadcrumbs li:not(:last-child)::after{content:"/";color:var(--line);font-weight:500;}
-.ks-breadcrumbs a{color:var(--ink-soft);text-decoration:none;}
-.ks-breadcrumbs a:hover{color:var(--accent-dark);text-decoration:underline;}
-.ks-breadcrumbs [aria-current="page"]{color:var(--ink);font-weight:600;}
-
 /* Chat */
 .chat-widget{
   position:fixed;right:20px;bottom:88px;z-index:1500;width:330px;max-width:calc(100vw - 40px);

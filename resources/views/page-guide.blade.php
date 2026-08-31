@@ -6,12 +6,7 @@
 
 @section('content')
 <!-- ============================= BREADCRUMB ============================= -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <ol>
-    <li><a href="{{ home_url('/') }}">Home</a></li>
-    <li><span aria-current="page">Land Buyer's Guide</span></li>
-  </ol>
-</nav>
+@include('partials.breadcrumbs')
 
 @include('partials.page-hero', [
   'heroBrand' => $copy['hero_brand'] ?: 'Keystone Real Estate',

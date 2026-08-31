@@ -28,14 +28,14 @@ class Breadcrumbs
 
         if (is_singular('listing')) {
             $trail[] = ['label' => __('Listings', 'keystone-homes'), 'url' => Navigation::pageUrl('listings')];
-            $trail[] = ['label' => (string) get_the_title(), 'url' => ''];
+            $trail[] = ['label' => self::plainTitle(), 'url' => ''];
 
             return $trail;
         }
 
         if (is_singular('agent')) {
             $trail[] = ['label' => __('Agents', 'keystone-homes'), 'url' => Navigation::pageUrl('agents')];
-            $trail[] = ['label' => (string) get_the_title(), 'url' => ''];
+            $trail[] = ['label' => self::plainTitle(), 'url' => ''];
 
             return $trail;
         }
@@ -44,7 +44,7 @@ class Breadcrumbs
             $blog = get_option('page_for_posts');
             $blogUrl = $blog ? (string) get_permalink((int) $blog) : Navigation::pageUrl('blog', '/blog');
             $trail[] = ['label' => __('Blog', 'keystone-homes'), 'url' => $blogUrl];
-            $trail[] = ['label' => (string) get_the_title(), 'url' => ''];
+            $trail[] = ['label' => self::plainTitle(), 'url' => ''];
 
             return $trail;
         }
@@ -53,11 +53,11 @@ class Breadcrumbs
             $ancestors = array_reverse(get_post_ancestors(get_the_ID()));
             foreach ($ancestors as $ancestorId) {
                 $trail[] = [
-                    'label' => (string) get_the_title($ancestorId),
+                    'label' => self::plainTitle((int) $ancestorId),
                     'url' => (string) get_permalink($ancestorId),
                 ];
             }
-            $trail[] = ['label' => (string) get_the_title(), 'url' => ''];
+            $trail[] = ['label' => self::plainTitle(), 'url' => ''];
 
             return $trail;
         }
@@ -102,5 +102,12 @@ class Breadcrumbs
             '@type' => 'BreadcrumbList',
             'itemListElement' => $items,
         ];
+    }
+
+    private static function plainTitle(?int $postId = null): string
+    {
+        $raw = $postId ? get_the_title($postId) : get_the_title();
+
+        return html_entity_decode(wp_strip_all_tags((string) $raw), ENT_QUOTES, 'UTF-8');
     }
 }

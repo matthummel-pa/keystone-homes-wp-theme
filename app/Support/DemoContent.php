@@ -110,7 +110,7 @@ class DemoContent
     }
 
     /**
-     * @param list<array{title: string, url: string}> $items
+     * @param  list<array{title: string, url: string}>  $items
      */
     private static function ensureMenu(string $name, array $items): int
     {

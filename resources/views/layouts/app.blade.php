@@ -25,7 +25,6 @@
     @include('sections.header')
 
     <main id="main" class="main">
-      @include('partials.breadcrumbs')
       @yield('content')
     </main>
 

@@ -13,7 +13,6 @@
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
  * Text Domain:       keystone-core
  */
-
 defined('ABSPATH') || exit;
 
 define('KEYSTONE_CORE_VERSION', '1.0.0');

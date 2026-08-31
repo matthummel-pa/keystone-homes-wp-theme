@@ -3,7 +3,6 @@
 /**
  * Keystone Real Estate child theme.
  */
-
 defined('ABSPATH') || exit;
 
 add_action('wp_enqueue_scripts', static function (): void {

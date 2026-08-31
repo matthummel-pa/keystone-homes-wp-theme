@@ -6,12 +6,7 @@
 
 @section('content')
   @while(have_posts()) @php(the_post())
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <ol>
-        <li><a href="{{ home_url('/') }}">Home</a></li>
-        <li><span aria-current="page">{!! get_the_title() !!}</span></li>
-      </ol>
-    </nav>
+    @include('partials.breadcrumbs')
     @include('partials.page-hero', [
       'heroBrand' => $copy['hero_brand'] ?? 'Keystone Real Estate',
       'heroEyebrow' => $copy['hero_eyebrow'] ?? '',
