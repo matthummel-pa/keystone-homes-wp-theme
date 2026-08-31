@@ -1,31 +1,45 @@
-# Acreline
+# Acreline — WordPress theme for farms, land, and historic homes
 
-Sage 11 WordPress theme — **Acreline** — rural listings, agents, and showing requests. The sample office in the preview is Keystone Real Estate (change it in the Customizer). Created by [Matt Hummel](https://matthummel.com/).
+**Acreline** is a WordPress real estate theme for rural offices: searchable listings, agents, and showing requests — built for land, farms, and older houses, not a generic luxury brokerage skin.
 
-Ported from the static concept:
+The sample office in the preview is named Keystone Real Estate. Change the brand, phone, email, and colors in **Appearance → Customize → Identity**. Created by [Matt Hummel](https://matthummel.com/).
 
-- Live demo: https://matthummel-pa.github.io/realtor-keystone-homes-and-land-theme/
-- Source: https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme
+| | |
+| --- | --- |
+| **Live concept demo** | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) |
+| **Support** | [SUPPORT.md](SUPPORT.md) |
+| **Author** | [matthummel.com](https://matthummel.com/) |
+| **Install folder** | `keystone-homes` (leave this name — Vite asset URLs depend on it) |
 
-> **Fiction only.** Listings, market stats, contact details, and appointments are sample data. Not a live MLS, licensed brokerage, or booking system.
+> **Fiction only.** Listings, market stats, contact details, and appointments are sample / concept data. Not a live MLS, licensed brokerage, or booking system. Demo phones use the `555` exchange; emails use `@keystone-concept.test`.
 
-## Stack
+Ported from the static concept: [live HTML demo](https://matthummel-pa.github.io/realtor-keystone-homes-and-land-theme/) · [source](https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme).
 
-- [Roots Sage 11](https://roots.io/sage/) — Blade, Tailwind CSS v4, Vite 8, Acorn
-- Designed to drop into a [Bedrock](https://roots.io/bedrock/) `web/app/themes/` directory (or a classic `wp-content/themes/` install)
+## Who it is for
 
-## Features
+Realtors and marketers who sell **acreage, working farms, and historic homes** and want a classic (non-block) WordPress site: search the inventory, open a listing, meet an agent, request a showing. Buyers set office identity from the Customizer. Developers who already like [Sage 11](https://roots.io/sage/) get Blade, Tailwind CSS v4, Vite 8, and Acorn.
 
-- Homepage search → listings with type / price / acreage / area filters
-- Customizer identity (brand, phone, email, address, hours, CTA, accent, removable credit)
+It drops into a [Bedrock](https://roots.io/bedrock/) `web/app/themes/` directory or a classic `wp-content/themes/` install.
+
+## What you get
+
+- Homepage search → listings with type, price, acreage, and area filters
+- Grid and map views from the Listings custom post type; payment-estimate modal
+- Showing requests write Booking posts (Requested → Confirmed → Completed)
+- Agents page and singles (license, MLS/NRDS, specialties, contact)
+- Areas, land-buyer guide, contact, and blog templates
+- Customizer identity: brand, phone, email, address, hours, header button, removable author credit
+- Eight color styles (Forest, Clay, Navy, Burgundy, Harvest, Lake, Orchard, Charcoal) plus accent, paper, and ink
+- Header size and sticky toggle; Inter-based typography
 - WordPress Primary + Footer menus, custom logo, footer widgets, breadcrumbs
-- `listing`, `booking`, and `agent` types via Keystone Core (theme fallback for this concept site)
-- Grid + map listing views fed by the Listings CPT, payment estimate modal
-- House-showing scheduler writes Bookings posts (Requested → Confirmed → Completed)
-- Agents page and singles from the Agents CPT (license, MLS/NRDS, specialties, contact)
-- Each marketing page has its own Blade template and field group
-- Areas, land-buyer guide, and contact pages
-- Native SEO (title, description, OG, Twitter) plus a translation-ready `keystone-homes` text domain
+- Native title, description, Open Graph, and Twitter tags (yields to Yoast / Rank Math / SEOPress / AIOSEO)
+- Translation-ready `keystone-homes` text domain
+
+Listings, agents, and bookings are registered by **Keystone Core** (companion plugin) or in-theme as a fallback so this concept site keeps working without the plugin.
+
+## Requirements
+
+WordPress 6.6+, PHP 8.3+. Built assets (`npm run build`) must exist — the theme loads Vite’s manifest. The install folder must stay `keystone-homes`.
 
 ## Local development
 
@@ -36,7 +50,7 @@ wp server --path="$HOME/wp" --host=0.0.0.0 --port=8080 --allow-root
 
 Admin: `http://localhost:8080/wp-admin` — user `admin`, password `admin123`.
 
-On a fresh WordPress install the theme loads demo pages, eight listings, three agents, and sample blog posts on the first public request. Re-run anytime from **Tools → Seed Acreline demo** or:
+A fresh install seeds demo pages, eight listings, three agents, and sample blog posts on the first public request. Re-run from **Tools → Seed Acreline demo** or:
 
 ```bash
 wp ks seed --path="$HOME/wp" --allow-root
@@ -55,9 +69,9 @@ bin/build-theme-zip.sh            # -> dist-theme/keystone-homes.zip
 bin/build-marketplace-pack.sh     # theme + child + Keystone Core + docs
 ```
 
-Buyer install and Customizer notes: `docs/marketplace/buyer-guide.html`. Seller channels (Envato, own site, WordPress.org limits): `docs/marketplace/SELLING.md`.
+Buyer install: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html). Seller channels: [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md). Support for buyers and this repo: [`SUPPORT.md`](SUPPORT.md).
 
-Install via WP Admin → Appearance → Themes → Upload Theme, or:
+Install via **Appearance → Themes → Upload Theme**, or:
 
 ```bash
 wp theme install dist-theme/keystone-homes.zip --activate
@@ -67,7 +81,7 @@ If the theme folder is not `keystone-homes`, update `base` in `vite.config.js` a
 
 ## Update from GitHub
 
-Same flow as [matthummel-theme](https://github.com/matthummel-pa/matthummel-theme): CI publishes a built zip on the `theme-latest` release, and WordPress installs it over HTTPS.
+CI publishes a built zip on the `theme-latest` release. WordPress installs it over HTTPS (same pattern as [matthummel-theme](https://github.com/matthummel-pa/matthummel-theme)).
 
 1. Push `main` (or use **Appearance → Update Theme → Rebuild zip on GitHub**) so Actions builds `keystone-homes.zip`.
 2. In wp-admin go to **Appearance → Update Theme**.
@@ -91,4 +105,8 @@ CLI: `wp ks theme-update` and `wp ks theme-build`.
 | Listing / agent singles | `single-listing.blade.php`, `single-agent.blade.php` |
 | Posts | `single.blade.php` |
 
-Design tokens and layout CSS live in `resources/css/keystone.css`. Interactive tools live in `resources/js/`.
+Design tokens and layout CSS live in `resources/css/keystone.css`. Card chrome is locked in `resources/css/card-lock.css`. Interactive tools live in `resources/js/`.
+
+## License
+
+GPLv2 or later. See `LICENSE.md` and `CREDITS.md`.
