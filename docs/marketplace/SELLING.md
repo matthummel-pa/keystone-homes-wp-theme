@@ -21,21 +21,25 @@ WordPress.org is **not** a cash register. It is distribution. Money there is ser
 ## Pack
 
 ```bash
-bin/build-marketplace-pack.sh
+bin/build-install-pack.sh         # general seller zip
+bin/build-marketplace-pack.sh     # same files + this brief copied beside them
 ```
 
-Creates `dist-marketplace/`:
+Creates `dist-install/`:
 
-- `keystone-homes.zip` — installable theme
-- `keystone-homes-child.zip`
-- `keystone-core.zip`
-- `Documentation/buyer-guide.html`
-- `Documentation/support.html`
-- `Documentation/SUPPORT.md`
-- `Demos/README.txt`
-- `Licensing/CREDITS.md`
+- `acreline-1.1.0.zip` / `acreline.zip` — **upload this to ThemeForest / Gumroad**
+- `acreline/keystone-homes.zip` — what the buyer uploads in Appearance → Themes
+- `acreline/keystone-homes-child.zip`
+- `acreline/keystone-core.zip`
+- `acreline/Documentation/requirements.html` — host needs + listing fields to paste
+- `acreline/Documentation/buyer-guide.html`
+- `acreline/Documentation/support.html`
+- `acreline/Demos/README.txt`
+- `acreline/Licensing/CREDITS.md`
 
-Upload the **pack** to Envato (“All files & documentation”). Upload **only** `keystone-homes.zip` if you try WordPress.org.
+`SELLING.md` stays in the repo and in `dist-marketplace/SELLING.md` only. It is **not** inside the buyer zip.
+
+Upload the **outer** `acreline-*.zip` to Envato (“All files & documentation”). Buyers extract it, then upload `keystone-homes.zip`. Upload **only** `keystone-homes.zip` if you try WordPress.org.
 
 ## Before you submit anywhere
 

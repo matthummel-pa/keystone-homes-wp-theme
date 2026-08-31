@@ -65,13 +65,16 @@ npm run dev            # Vite HMR alongside wp server
 ## Package for a host or a marketplace
 
 ```bash
-bin/build-theme-zip.sh            # -> dist-theme/keystone-homes.zip
-bin/build-marketplace-pack.sh     # theme + child + Keystone Core + docs
+bin/build-theme-zip.sh            # -> dist-theme/keystone-homes.zip (WP upload)
+bin/build-install-pack.sh         # -> dist-install/acreline-1.1.0.zip (seller pack)
+bin/build-marketplace-pack.sh     # same pack, plus SELLING.md for you
 ```
 
-Buyer install: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html). Seller channels: [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md). Support for buyers and this repo: [`SUPPORT.md`](SUPPORT.md).
+**Regular WordPress install:** extract `acreline-*.zip`, then **Appearance → Themes → Upload Theme** and choose the inner `keystone-homes.zip`. Do not upload the outer pack to WordPress.
 
-Install via **Appearance → Themes → Upload Theme**, or:
+Host needs and ThemeForest / own-site listing fields: [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html). Buyer walkthrough: [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html). Seller channels: [`docs/marketplace/SELLING.md`](docs/marketplace/SELLING.md). Support: [`SUPPORT.md`](SUPPORT.md).
+
+Theme-only install (no child / plugin / docs):
 
 ```bash
 wp theme install dist-theme/keystone-homes.zip --activate

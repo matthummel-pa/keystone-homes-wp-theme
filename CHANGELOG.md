@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- General seller pack: `bin/build-install-pack.sh` → `dist-install/acreline-*.zip` (inner `keystone-homes.zip` for Appearance → Upload Theme, plus child, Keystone Core, and `Documentation/requirements.html`)
+
 ## 1.1.0
 
 - Eight color styles (Forest, Clay, Navy, Burgundy, Harvest, Lake, Orchard, Charcoal) plus accent, paper, and ink
