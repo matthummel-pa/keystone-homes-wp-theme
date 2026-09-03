@@ -9,7 +9,7 @@ The sample office in the preview is named **Acreline**. Change the brand, phone,
 | | |
 | --- | --- |
 | **Live demo** | [acreline.matthummel.com](https://acreline.matthummel.com/) |
-| **Product landing** | [matthummel.com/concept/acreline/](https://matthummel.com/concept/acreline/) |
+| **Product landing** | [matthummel.com/projects/acreline/](https://matthummel.com/projects/acreline/) |
 | **Buy / checkout** | [matthummel.com/product/acreline/](https://matthummel.com/product/acreline/) |
 | **GitHub** | [`matthummel-pa/wp-acreline`](https://github.com/matthummel-pa/wp-acreline) |
 | **Brand kit** | [`BRAND.md`](BRAND.md) · [branding.html](docs/marketplace/branding.html) |
