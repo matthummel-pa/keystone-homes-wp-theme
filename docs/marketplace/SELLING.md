@@ -27,7 +27,7 @@ bin/build-marketplace-pack.sh     # same files + this brief copied beside them
 
 Creates `dist-install/`:
 
-- `acreline-1.2.2.zip` — **upload this to ThemeForest / Gumroad** (folder inside: `acreline-pack/`)
+- `acreline-1.2.3.zip` — **upload this to ThemeForest / Gumroad** (folder inside: `acreline-pack/`)
 - `acreline-pack/acreline.zip` — what the buyer uploads in Appearance → Themes
 - `acreline-pack/acreline-child.zip`
 - `acreline-pack/acreline-core.zip`

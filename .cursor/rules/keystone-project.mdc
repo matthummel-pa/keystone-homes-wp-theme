@@ -26,7 +26,7 @@ Listings, agents, phones, emails, appointments, and market stats are **sample / 
 | **Theme** | Blade, CSS, JS, PHP, field defaults | Merge to `main` → GitHub Action publishes `theme-latest` zip → **Appearance → Update Theme** on the host |
 | **Content** | Pages, listings, agents, posts, `ks_*` meta, options | Lives in WordPress. Editing theme files does not change live posts |
 
-Live concept site: https://keystonehomes.ridgesandvalleys.com/
+Live concept site: https://acreline.matthummel.com/
 
 CI **does not FTP** to the host. Do not assume a theme PR is live until the zip is installed.
 

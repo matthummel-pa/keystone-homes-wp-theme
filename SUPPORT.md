@@ -19,10 +19,10 @@ Open **`Documentation/index.html`** in the seller pack first. That hub is what T
 | Changelog | [changelog.html](docs/marketplace/changelog.html) |
 | Customizer | [customizer.html](docs/marketplace/customizer.html) |
 | Listings & bookings | [listings.html](docs/marketplace/listings.html) |
-| How the public site looks | [Concept demo](https://keystonehomes.ridgesandvalleys.com/) |
+| How the public site looks | [Concept demo](https://acreline.matthummel.com/) |
 | Theme bugs | [GitHub issues](https://github.com/matthummel-pa/wp-acreline/issues) |
 | Author | [matthummel.com](https://matthummel.com/) |
-| Concept office form (demo only) | [Contact on the demo](https://keystonehomes.ridgesandvalleys.com/contact/) |
+| Concept office form (demo only) | [Contact on the demo](https://acreline.matthummel.com/contact/) |
 
 There is no ticket desk or live chat in the theme. Envato item support follows that marketplace’s channel. Demo phones are `555` numbers (office `(555) 010-0455`). Demo emails use `@acreline-concept.test` and do not reach a real inbox.
 

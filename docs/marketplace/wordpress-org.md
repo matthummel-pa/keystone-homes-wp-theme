@@ -10,7 +10,7 @@ Upload **only** `dist-theme/acreline.zip` (inner theme zip).
 
 Do **not** upload:
 
-- The outer pack (`acreline-1.2.2.zip`)
+- The outer pack (`acreline-1.2.3.zip`)
 - `acreline-child.zip` or `acreline-core.zip` inside the theme
 - `SELLING.md`, this file, or Unsplash binaries
 - `.git`, `.cursor/`, tests, or `bin/*.sh`
@@ -22,7 +22,7 @@ The theme folder inside the zip must be `acreline/` with `style.css` at `acrelin
 | File | Role |
 | --- | --- |
 | `style.css` | Theme Name **Acreline**, License GNU GPL v2 or later, License URI gnu.org, Text Domain `acreline`, Requires PHP 8.3, Requires at least 6.6, Tested up to 7.0.1 |
-| `readme.txt` | WP.org readme parser (Stable tag **1.2.2**) |
+| `readme.txt` | WP.org readme parser (Stable tag **1.2.3**) |
 | `screenshot.png` | **1200×900**, 4:3, homepage capture — not an ad |
 | `license.txt` | GPLv2 notice + full GPLv2 text (Theme Check) |
 | `languages/acreline.pot` | Translation-ready |

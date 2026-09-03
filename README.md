@@ -8,7 +8,7 @@ The sample office in the preview is named **Acreline**. Change the brand, phone,
 
 | | |
 | --- | --- |
-| **Live demo** | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) |
+| **Live demo** | [acreline.matthummel.com](https://acreline.matthummel.com/) |
 | **Product landing** | [matthummel.com/concept/acreline/](https://matthummel.com/concept/acreline/) |
 | **Buy / checkout** | [matthummel.com/product/acreline/](https://matthummel.com/product/acreline/) |
 | **GitHub** | [`matthummel-pa/wp-acreline`](https://github.com/matthummel-pa/wp-acreline) |
