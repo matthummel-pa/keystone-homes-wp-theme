@@ -10,9 +10,9 @@
 
 @include('partials.page-hero', [
   'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
-  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample markets',
-  'heroTitle' => $copy['hero_title'] ?: 'Areas we <em>demo</em>',
-  'heroText' => $copy['hero_text'] ?: 'Fictional North Ridge, Mill Creek, and Oak Hollow profiles — written so you can swap in your own counties.',
+  'heroEyebrow' => ($copy['hero_eyebrow'] ?? '') ?: 'Sample markets',
+  'heroTitle' => ($copy['hero_title'] ?? '') ?: 'Areas we <em>demo</em>',
+  'heroText' => ($copy['hero_text'] ?? '') ?: 'Fictional North Ridge, Mill Creek, and Oak Hollow profiles — written so you can swap in your own counties.',
   'heroActions' => [
     ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-primary'],
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-outline light'],
@@ -24,8 +24,8 @@
     <div class="wrap mkt-lead reveal">
       <p class="eyebrow">The sample market</p>
       <div>
-        <h2>{!! $copy['intro_title'] ?? 'Land, farms &amp; homesteads in a sample market' !!}</h2>
-        <p class="lede">{!! $copy['intro_text'] ?? 'The office sits at 100 Concept Way in Sample Borough. Ridges hold orchards, valley floors hold tillable ground, and the six area cards below show how a land office talks about its territory. Replace the names with yours.' !!}</p>
+        <h2>{!! ($copy['intro_title'] ?? '') ?: 'Land, farms &amp; homesteads in a sample market' !!}</h2>
+        <p class="lede">{!! ($copy['intro_text'] ?? '') ?: 'The office sits at 100 Concept Way in Sample Borough. Ridges hold orchards, valley floors hold tillable ground, and the six area cards below show how a land office talks about its territory. Replace the names with yours.' !!}</p>
       </div>
     </div>
   </section>
@@ -35,8 +35,8 @@
     <div class="wrap">
       <div class="section-head left reveal">
         <p class="eyebrow">{{ $copy['grid_eyebrow'] ?? 'Area by area' }}</p>
-        <h2>{!! $copy['grid_title'] ?? 'Where the sample office works' !!}</h2>
-        <p>{!! $copy['grid_text'] ?? 'A quick read on six rural area types — what the ground is like, what tends to list, and what a buyer should watch for.' !!}</p>
+        <h2>{!! ($copy['grid_title'] ?? '') ?: 'Where the sample office works' !!}</h2>
+        <p>{!! ($copy['grid_text'] ?? '') ?: 'A quick read on six rural area types — what the ground is like, what tends to list, and what a buyer should watch for.' !!}</p>
       </div>
 
       <div class="area-grid">

@@ -27,7 +27,7 @@ Do **not** add Freemius, Envato banners, affiliate chrome, or “upgrade to Pro�
 
 - Companion plugin: `plugins/acreline-core`. It defines `KEYSTONE_CORE_VERSION` and owns CPT + `keystone/v1/bookings`.
 - Theme `app/post-types.php` registers the same types **only when the plugin is not loaded** (concept / live demo fallback).
-- WP.org / store theme zip: define `KS_DISABLE_THEME_CPTS` (the marketplace pack script does this) so the theme is presentation-only.
+- WP.org-only theme zip (future): define `KS_DISABLE_THEME_CPTS` so the theme is presentation-only. The general install / marketplace pack does **not** set this — buyers need listings without requiring the plugin.
 - Switching themes must leave listing / agent / booking posts and `ks_*` meta in the database.
 - Theme templates may *display* those types; they must not be required to register them.
 

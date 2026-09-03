@@ -9,9 +9,9 @@
 
 @include('partials.page-hero', [
   'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
-  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Appointments',
-  'heroTitle' => $copy['hero_title'] ?: 'Book a house showing',
-  'heroText' => $copy['hero_text'] ?: 'Pick a sample listing, a date, and a time. We save the request for the listing agent — this demo does not send email.',
+  'heroEyebrow' => ($copy['hero_eyebrow'] ?? '') ?: 'Appointments',
+  'heroTitle' => ($copy['hero_title'] ?? '') ?: 'Book a house showing',
+  'heroText' => ($copy['hero_text'] ?? '') ?: 'Pick a sample listing, a date, and a time. We save the request for the listing agent — this demo does not send email.',
   'heroActions' => [
     ['href' => '#book-showing', 'label' => 'Choose a time', 'class' => 'btn btn-primary'],
     ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-outline light'],
@@ -23,8 +23,8 @@
     <header class="mkt-lead reveal">
       <p class="eyebrow">{{ $copy['book_eyebrow'] ?? 'Appointments' }}</p>
       <div>
-        <h2 id="book-heading">{!! $copy['book_title'] ?? 'Pick a listing and a time' !!}</h2>
-        <p class="lede">{!! $copy['book_text'] ?? 'Choose a sample address, a date, and a slot. The request is saved for the listing agent — this demo does not send email.' !!}</p>
+        <h2 id="book-heading">{!! ($copy['book_title'] ?? '') ?: 'Pick a listing and a time' !!}</h2>
+        <p class="lede">{!! ($copy['book_text'] ?? '') ?: 'Choose a sample address, a date, and a slot. The request is saved for the listing agent — this demo does not send email.' !!}</p>
       </div>
     </header>
     <div class="booking-shell reveal">

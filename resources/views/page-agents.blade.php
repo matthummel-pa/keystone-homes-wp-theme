@@ -11,9 +11,9 @@
 <!-- ============================= PAGE HERO ============================= -->
 @include('partials.page-hero', [
   'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
-  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample team',
-  'heroTitle' => $copy['hero_title'] ?: 'Agents who know the <em>demo ground</em>',
-  'heroText' => $copy['hero_text'] ?: 'A small local team for farms, orchards, and century houses. Profiles are Agent posts. Phones are fictional 555 lines.',
+  'heroEyebrow' => ($copy['hero_eyebrow'] ?? '') ?: 'Sample team',
+  'heroTitle' => ($copy['hero_title'] ?? '') ?: 'Agents who know the <em>demo ground</em>',
+  'heroText' => ($copy['hero_text'] ?? '') ?: 'A small local team for farms, orchards, and century houses. Profiles are Agent posts. Phones are fictional 555 lines.',
   'heroActions' => [
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
     ['href' => home_url('/contact'), 'label' => 'Contact the office', 'class' => 'btn btn-outline light'],
@@ -26,8 +26,8 @@
     <div class="wrap mkt-lead reveal">
       <p class="eyebrow">The sample team</p>
       <div>
-        <h2>{!! $copy['intro_title'] ?? 'A small, local team by design' !!}</h2>
-        <p class="lede">{!! $copy['intro_text'] ?? 'Rural property deserves an agent who understands rural property — farms, orchards, raw land and century homesteads.' !!}</p>
+        <h2>{!! ($copy['intro_title'] ?? '') ?: 'A small, local team by design' !!}</h2>
+        <p class="lede">{!! ($copy['intro_text'] ?? '') ?: 'Rural property deserves an agent who understands rural property — farms, orchards, raw land and century homesteads.' !!}</p>
       </div>
     </div>
 
@@ -69,8 +69,8 @@
       <div class="mkt-lead reveal">
         <p class="eyebrow">{{ $copy['how_eyebrow'] ?? 'How We Work' }}</p>
         <div>
-          <h2>{!! $copy['how_title'] ?? 'What working with this office looks like' !!}</h2>
-          <p class="lede">{!! $copy['how_text'] ?? 'No pressure, no jargon, and a straight answer about the ground under your feet.' !!}</p>
+          <h2>{!! ($copy['how_title'] ?? '') ?: 'What working with this office looks like' !!}</h2>
+          <p class="lede">{!! ($copy['how_text'] ?? '') ?: 'No pressure, no jargon, and a straight answer about the ground under your feet.' !!}</p>
         </div>
       </div>
       <div class="topic-grid">
