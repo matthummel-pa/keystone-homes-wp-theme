@@ -200,7 +200,8 @@
         showingConfirm.style.background = "";
         showingConfirm.style.borderColor = "";
         showingConfirm.style.color = "";
-        showingConfirm.innerHTML = "<span><strong>Showing requested.</strong> " + (message || (name + " — " + propLabel + " on " + when)) + "</span>";
+        var text = message || (name + " — " + propLabel + " on " + when);
+        showingConfirm.innerHTML = "<span>" + text + "</span>";
       }
 
       function showErr(message){
