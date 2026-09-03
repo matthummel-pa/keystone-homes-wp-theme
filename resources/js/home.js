@@ -106,6 +106,11 @@
       var btn = contactForm.querySelector("button[type=submit]");
       setBusy(btn, true);
       contactConfirm.classList.add("show");
+      if(btn){
+        btn.textContent = "Sent";
+        btn.disabled = true;
+        btn.setAttribute("aria-disabled", "true");
+      }
     });
   }
 
@@ -202,6 +207,11 @@
         showingConfirm.style.color = "";
         var text = message || (name + " — " + propLabel + " on " + when);
         showingConfirm.innerHTML = "<span>" + text + "</span>";
+        if(submitBtn){
+          submitBtn.disabled = true;
+          submitBtn.setAttribute("aria-disabled", "true");
+          submitBtn.textContent = "Requested";
+        }
       }
 
       function showErr(message){

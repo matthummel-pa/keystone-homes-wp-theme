@@ -84,6 +84,7 @@
       }
       var confirm = document.getElementById("scheduleConfirm");
       if(confirm) confirm.classList.add("show");
+      if(btn) btn.textContent = "Requested";
     });
     try{
       var dateInput = document.getElementById("schDate");
