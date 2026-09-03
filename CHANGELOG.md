@@ -2,7 +2,8 @@
 
 ## 1.2.3
 
-- Concept demo URL is https://acreline.matthummel.com/ (Theme URI, docs, Cursor rules)
+- Concept demo URL is https://acreline.matthummel.com/
+- readme.txt and marketplace docs point at matthummel.com/projects/acreline/ and the 01–07 screenshot set
 
 ## 1.2.2
 

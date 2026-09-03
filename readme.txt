@@ -16,9 +16,11 @@ Acreline is a classic (non-block) Sage 11 WordPress theme for land, farms, and h
 
 It is meant to set up with almost no plugins. The theme zip alone runs the office. You do not need Advanced Custom Fields, Elementor, a Gutenberg kit, or an IDX plugin. Buyers change brand, phone, colors, and inventory from the Customizer and custom-field metaboxes — they do not edit the design.
 
-The sample office in the preview is named Acreline — replace it under Customize → Identity. This is a concept theme. Sample phones are 555 numbers. It is not a live MLS, licensed brokerage, or booking system.
+The sample office in the preview is named Acreline — replace it under Customize → Identity. This is a concept theme. Sample phones are 555 numbers. Concept emails use @acreline-concept.test. It is not a live MLS, licensed brokerage, or booking system.
 
-House mark and wordmark (original SVG, GPLv2) ship in public/images/brand/ and Documentation/assets/. Support and ThemeForest docs: https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md
+Live concept demo: https://acreline.matthummel.com/
+Product / concept page: https://matthummel.com/projects/acreline/
+House mark and wordmark (original SVG, GPLv2) ship in public/images/brand/. Support and ThemeForest docs: https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md
 
 = Features =
 
@@ -92,15 +94,17 @@ Appearance → Update Theme. Fine-grained PAT: Contents: Read. Add Actions: Read
 
 == Screenshots ==
 
-1. Homepage — search, Acreline house mark, and the path from listing to showing.
-2. Listings — sample inventory with type, price, acreage, and area filters.
-3. Listing single — farmhouse example with agent card and book-a-showing.
-4. Agents — license, specialties, and contact fields (not a live MLS roster).
-5. Contact — office phone and address from Customize → Identity.
-6. Areas — sample markets you replace with your own counties.
-7. Book a showing — writes a Booking post (concept pipeline, not a calendar).
+Desktop captures of the seeded concept demo (also used on https://matthummel.com/projects/acreline/):
 
-Theme thumbnail: screenshot.png (1200×900). Extra captures: Documentation/screenshots/ in the seller pack, plus public/images/brand/ for the house mark and lockup.
+1. Homepage — search, Acreline house mark, and the path from listing to showing. (`docs/marketplace/screenshots/01-homepage.png`)
+2. Listings — sample inventory with type, price, acreage, and area filters. (`02-listings.png`)
+3. Listing single — farmhouse / land example with agent card and book-a-showing. (`03-listing.png`)
+4. Agents — license, specialties, and contact fields (not a live MLS roster). (`04-agents.png`)
+5. Contact — office phone and address from Customize → Identity. (`05-contact.png`)
+6. Areas — sample markets you replace with your own counties. (`06-areas.png`)
+7. Book a showing — writes a Booking post (concept pipeline, not a calendar). (`07-book.png`)
+
+Theme thumbnail: screenshot.png (1200×900). Extra captures: docs/marketplace/screenshots/ (copied into Documentation/screenshots/ in the seller pack), plus public/images/brand/ for the house mark and lockup.
 
 == Branding ==
 
@@ -109,12 +113,13 @@ Original house mark and horizontal lockup (not NAR / HUD / MLS artwork):
 * public/images/brand/acreline-mark.svg
 * public/images/brand/acreline-lockup.svg
 
-Upload your office logo under Customize → Site Identity. Colors: Forest sample ink #141210, paper #f5f4f1, accent #1f6b4a. Footer “Equal Housing Opportunity (concept)” is sample copy — use official artwork on a licensed office. See Documentation/branding.html.
+Upload your office logo under Customize → Site Identity. Colors: Forest sample ink #141210, paper #f5f4f1, accent #1f6b4a. Footer “Equal Housing Opportunity (concept)” is sample copy — use official artwork on a licensed office. See docs/marketplace/branding.html (Documentation/branding.html in the seller pack).
 
 == Changelog ==
 
 = 1.2.3 =
 * Concept demo Theme URI and docs point to https://acreline.matthummel.com/.
+* readme.txt aligned with live demo, brand SVG paths, and marketplace screenshot set used on matthummel.com/projects/acreline/.
 
 = 1.2.2 =
 * GitHub repo, updater, and support links use `matthummel-pa/wp-acreline`.
@@ -151,19 +156,21 @@ Do not rename the install folder, `ks_*` meta, or the `keystone/v1` REST namespa
 
 == Documentation ==
 
-Seller pack folder Documentation/:
+Source hub: `docs/marketplace/` (seller pack copies it to Documentation/):
 
 * index.html — contents and screenshots (start here on ThemeForest)
 * buyer-guide.html — install, homepage, Customizer, fields, menus, demo, child theme, updates, translation, SEO, file map, FAQ
 * branding.html — logos, Forest palette, fair housing note
+* customizer.html, listings.html, templates.html, child-theme.html, translation.html, faq.html
 * requirements.html — host needs + ThemeForest / TemplateMonster form fields and long description
 * support.html — help channels
 * sources.html — fonts, Sage/Acorn, original SVG marks, what is not bundled
+* credits.html — third-party credits
 * changelog.html — user-facing history
-* screenshots/ — extra item images
+* screenshots/ — item images (01–07) used on the matthummel.com concept page
 * assets/ — house mark, lockup, docs CSS/JS
 
-GitHub: README.md, SUPPORT.md, docs/marketplace/.
+GitHub: README.md, SUPPORT.md, docs/marketplace/. Product landing: https://matthummel.com/projects/acreline/
 
 == Resources ==
 

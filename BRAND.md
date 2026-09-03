@@ -53,7 +53,7 @@ Live theme: **Inter** (SIL OFL). Documentation wordmark may use Georgia for the 
 | --- | --- |
 | Live demo | [acreline.matthummel.com](https://acreline.matthummel.com/) → Customize → Identity |
 | Buyer installs | **Appearance → Customize → Identity** (+ Site Identity logo) |
-| Product landing | [matthummel.com/concept/acreline/](https://matthummel.com/concept/acreline/) |
+| Product landing | [matthummel.com/projects/acreline/](https://matthummel.com/projects/acreline/) |
 | Own-site checkout | WooCommerce product **Acreline WordPress Theme** on matthummel.com |
 
 ## Do not
