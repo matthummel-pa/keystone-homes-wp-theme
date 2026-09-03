@@ -9,9 +9,9 @@
 
 @include('partials.page-hero', [
   'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
-  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Sample inventory',
-  'heroTitle' => $copy['hero_title'] ?: 'Sample homes &amp; land <em>for demo tours</em>',
-  'heroText' => $copy['hero_text'] ?: 'Farms, historic houses, and acreage across three sample areas. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',
+  'heroEyebrow' => ($copy['hero_eyebrow'] ?? '') ?: 'Sample inventory',
+  'heroTitle' => ($copy['hero_title'] ?? '') ?: 'Sample homes &amp; land <em>for demo tours</em>',
+  'heroText' => ($copy['hero_text'] ?? '') ?: 'Farms, historic houses, and acreage across three sample areas. Filter by type, price, and acres — this is fictional inventory, not a live MLS.',
   'heroActions' => [
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
     ['href' => home_url('/guide'), 'label' => 'Buyer tools', 'class' => 'btn btn-outline light'],
@@ -77,7 +77,7 @@
           </div>
         </div>
         <div class="toolbar-bottom">
-          <p class="result-count" aria-live="polite" id="resultCount"><strong>8</strong> properties found</p>
+          <p class="result-count" role="status" aria-live="polite" id="resultCount"><strong>8</strong> properties found</p>
           <div class="toolbar-actions">
             <button type="button" class="reset-btn" id="resetFilters">Reset filters</button>
             <div class="view-toggle" role="group" aria-label="Listing view">
@@ -119,8 +119,8 @@
     <div class="wrap mkt-lead reveal">
       <p class="eyebrow">How to read a card</p>
       <div>
-        <h2 id="listing-help-heading">{!! $copy['intro_title'] ?? 'Buying rural property' !!}</h2>
-        <p class="lede">{!! $copy['intro_text'] ?? 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk. Replace this inventory with your own market.' !!}</p>
+        <h2 id="listing-help-heading">{!! ($copy['intro_title'] ?? '') ?: 'Buying rural property' !!}</h2>
+        <p class="lede">{!! ($copy['intro_text'] ?? '') ?: 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk. Replace this inventory with your own market.' !!}</p>
       </div>
     </div>
     <div class="wrap">

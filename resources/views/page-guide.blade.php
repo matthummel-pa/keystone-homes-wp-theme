@@ -10,9 +10,9 @@
 
 @include('partials.page-hero', [
   'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
-  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Buyer tools',
-  'heroTitle' => $copy['hero_title'] ?: 'A clearer path to <em>buying land or a home</em>',
-  'heroText' => $copy['hero_text'] ?: 'Wells, septic, and access change what acreage is worth. Short guides and demo calculators — then book a showing if you want to walk a sample parcel.',
+  'heroEyebrow' => ($copy['hero_eyebrow'] ?? '') ?: 'Buyer tools',
+  'heroTitle' => ($copy['hero_title'] ?? '') ?: 'A clearer path to <em>buying land or a home</em>',
+  'heroText' => ($copy['hero_text'] ?? '') ?: 'Wells, septic, and access change what acreage is worth. Short guides and demo calculators — then book a showing if you want to walk a sample parcel.',
   'heroActions' => [
     ['href' => home_url('/listings'), 'label' => 'Browse listings', 'class' => 'btn btn-primary'],
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-outline light'],
@@ -24,8 +24,8 @@
     <div class="wrap mkt-lead reveal">
       <p class="eyebrow">Buying land</p>
       <div>
-        <h2>{!! $copy['intro_title'] ?? 'What\'s different about buying land' !!}</h2>
-        <p class="lede">{!! $copy['intro_text'] ?? 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.' !!}</p>
+        <h2>{!! ($copy['intro_title'] ?? '') ?: 'What\'s different about buying land' !!}</h2>
+        <p class="lede">{!! ($copy['intro_text'] ?? '') ?: 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.' !!}</p>
       </div>
     </div>
     <div class="wrap">
@@ -137,7 +137,7 @@
               <button type="submit" class="btn btn-gold btn-block">See My Estimate</button>
             </div>
           </form>
-          <div class="calc-result" id="pqResult" style="display:none;margin-top:16px;">
+          <div class="calc-result" id="pqResult" role="status" aria-live="polite" style="display:none;margin-top:16px;">
             <div>
               <span>You may pre-qualify up to</span>
               <strong id="pqAmount">$0</strong>
@@ -157,11 +157,11 @@
             <div class="form-grid two">
               <div class="field">
                 <label for="schName">Full name</label>
-                <input type="text" id="schName" required placeholder="Jordan Weikert">
+                <input type="text" id="schName" name="name" autocomplete="name" required placeholder="Jordan Weikert">
               </div>
               <div class="field">
                 <label for="schPhone">Phone</label>
-                <input type="tel" id="schPhone" required placeholder="(555) 010-0142">
+                <input type="tel" id="schPhone" name="phone" autocomplete="tel" required placeholder="(555) 010-0142">
               </div>
               <div class="field">
                 <label for="schDate">Preferred date</label>
@@ -187,8 +187,8 @@
               </div>
             </div>
           </form>
-          <div class="confirm-msg" id="scheduleConfirm">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+          <div class="confirm-msg" id="scheduleConfirm" role="status" aria-live="polite">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
             <span>Thanks! This is a concept demo — on your live site, an agent would be notified instantly and confirm by text.</span>
           </div>
         </div>

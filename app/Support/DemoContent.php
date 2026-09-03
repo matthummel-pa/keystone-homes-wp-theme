@@ -255,7 +255,7 @@ class DemoContent
                 'showing_time' => '10:30 AM',
                 'showing_type' => 'in-person',
                 'client_name' => 'Alex Buyer',
-                'client_email' => 'alex@example.test',
+                'client_email' => 'alex@acreline-concept.test',
                 'client_phone' => '(555) 010-0199',
                 'notes' => 'Seeded sample request so the Bookings pipeline is visible.',
                 'status' => 'requested',
@@ -392,8 +392,16 @@ class DemoContent
     private static function upsertCpt(string $type, string $slug, string $title, array $meta, string $content = ''): int
     {
         $id = self::upsertPost($type, $slug, $title, $content);
+        $featured = null;
+        if (array_key_exists('featured', $meta)) {
+            $featured = Catalog::isFeaturedFlag($meta['featured']);
+            unset($meta['featured']);
+        }
         foreach ($meta as $key => $value) {
             Catalog::updateMeta($id, (string) $key, $value);
+        }
+        if ($featured !== null) {
+            Catalog::setFeaturedFlag($id, $featured);
         }
 
         return $id;

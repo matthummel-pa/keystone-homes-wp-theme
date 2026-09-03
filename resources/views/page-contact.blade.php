@@ -9,9 +9,9 @@
 
 @include('partials.page-hero', [
   'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
-  'heroEyebrow' => $copy['hero_eyebrow'] ?: 'Concept office',
-  'heroTitle' => $copy['hero_title'] ?: 'Get in touch <em>(demo only)</em>',
-  'heroText' => $copy['hero_text'] ?: '100 Concept Way, Sample Borough. Call (555) 010-0455 or send a message. Prefer the full appointment flow? Book a sample showing.',
+  'heroEyebrow' => ($copy['hero_eyebrow'] ?? '') ?: 'Concept office',
+  'heroTitle' => ($copy['hero_title'] ?? '') ?: 'Get in touch <em>(demo only)</em>',
+  'heroText' => ($copy['hero_text'] ?? '') ?: '100 Concept Way, Sample Borough. Call (555) 010-0455 or send a message. Prefer the full appointment flow? Book a sample showing.',
   'heroActions' => [
     ['href' => home_url('/book/'), 'label' => 'Book a showing', 'class' => 'btn btn-primary'],
     ['href' => 'tel:+15550100455', 'label' => 'Call the office', 'class' => 'btn btn-outline light'],
@@ -62,24 +62,24 @@
         <div class="reveal">
           <div class="tool-card">
             <h3><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16v12H5.17L4 17.17z"/></svg> {{ $copy['form_title'] ?? 'Send us a message' }}</h3>
-            <p class="form-lede">{!! $copy['form_text'] ?? 'Tell us what you\'re looking for — or what you\'re thinking of selling — and we\'ll be in touch.' !!}</p>
+            <p class="form-lede">{!! ($copy['form_text'] ?? '') ?: 'Tell us what you\'re looking for — or what you\'re thinking of selling — and we\'ll be in touch.' !!}</p>
             <form id="contactForm">
               <div class="form-grid two">
                 <div class="field">
                   <label for="cName">Full name</label>
-                  <input type="text" id="cName" required placeholder="Jordan Weikert">
+                  <input type="text" id="cName" name="name" autocomplete="name" required placeholder="Jordan Weikert">
                 </div>
                 <div class="field">
                   <label for="cPhone">Phone</label>
-                  <input type="tel" id="cPhone" required placeholder="(555) 010-0142">
+                  <input type="tel" id="cPhone" name="phone" autocomplete="tel" required placeholder="(555) 010-0142">
                 </div>
                 <div class="field">
                   <label for="cEmail">Email</label>
-                  <input type="email" id="cEmail" required placeholder="{{ 'you@acreline-concept.test' }}">
+                  <input type="email" id="cEmail" name="email" autocomplete="email" required placeholder="{{ 'you@acreline-concept.test' }}">
                 </div>
                 <div class="field">
                   <label for="cTopic">I'm interested in</label>
-                  <select id="cTopic">
+                  <select id="cTopic" name="topic">
                     <option>Buying land or a farm</option>
                     <option>Buying a home</option>
                     <option>Selling my property</option>
@@ -89,15 +89,15 @@
                 </div>
                 <div class="field field-span">
                   <label for="cMessage">Message</label>
-                  <textarea id="cMessage" rows="4" placeholder="e.g. Looking for 10+ acres near Oak Hollow with a well already in."></textarea>
+                  <textarea id="cMessage" name="message" rows="4" placeholder="e.g. Looking for 10+ acres near Oak Hollow with a well already in."></textarea>
                 </div>
                 <div class="field field-span">
                   <button type="submit" class="btn btn-primary btn-block">Send Message</button>
                 </div>
               </div>
             </form>
-            <div class="confirm-msg" id="contactConfirm">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+            <div class="confirm-msg" id="contactConfirm" role="status" aria-live="polite">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
               <span>Thanks! This is a concept demo — on your live site, this message would go to the listing office.</span>
             </div>
           </div>
@@ -155,7 +155,7 @@
               </div>
             </div>
           </form>
-          <div class="val-result" id="valResult">
+          <div class="val-result" id="valResult" role="status" aria-live="polite">
             <span style="font-size:.78rem;color:var(--ink-soft);">Estimated market range</span>
             <strong id="valResultAmount">$0 – $0</strong>
             <p style="margin:8px 0 0;font-size:.82rem;color:var(--ink-soft);">Based on recent township comps. A licensed agent will refine this with a full walkthrough.</p>

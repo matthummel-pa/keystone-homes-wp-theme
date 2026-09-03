@@ -9,9 +9,9 @@
     @include('partials.breadcrumbs')
     @include('partials.page-hero', [
       'heroBrand' => ($copy['hero_brand'] ?? '') !== '' ? $copy['hero_brand'] : ($identity['brand'] ?? 'Acreline'),
-      'heroEyebrow' => $copy['hero_eyebrow'] ?? '',
-      'heroTitle' => $copy['hero_title'] ?: get_the_title(),
-      'heroText' => $copy['hero_text'] ?? '',
+      'heroEyebrow' => ($copy['hero_eyebrow'] ?? '') ?: '',
+      'heroTitle' => ($copy['hero_title'] ?? '') ?: get_the_title(),
+      'heroText' => ($copy['hero_text'] ?? '') ?: '',
     ])
     @if (! empty($copy['body']))
     <section class="section">
