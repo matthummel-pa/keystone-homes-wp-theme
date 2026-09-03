@@ -4,19 +4,34 @@
 
 It is meant to **set up with almost no plugins**. The theme zip alone runs the office: identity, colors, menus, listings, agents, and showing requests. You do **not** need Advanced Custom Fields, Elementor, a Gutenberg kit, or an IDX plugin. Copy and inventory live in **Customizer + custom-field metaboxes**, so you change headlines, prices, and photos without touching Blade or CSS.
 
-The sample office in the preview is named Acreline. Change the brand, phone, email, and colors in **Appearance → Customize → Identity**. Created by [Matt Hummel](https://matthummel.com/).
+The sample office in the preview is named **Acreline**. Change the brand, phone, email, and colors in **Appearance → Customize → Identity**. Brand kit: [`BRAND.md`](BRAND.md). Created by [Matt Hummel](https://matthummel.com/).
 
 | | |
 | --- | --- |
-| **Live concept demo** | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) |
+| **Live demo** | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) |
+| **Product landing** | [matthummel.com/concept/acreline/](https://matthummel.com/concept/acreline/) |
+| **Buy / checkout** | [matthummel.com/product/acreline/](https://matthummel.com/product/acreline/) |
 | **GitHub** | [`matthummel-pa/wp-acreline`](https://github.com/matthummel-pa/wp-acreline) |
+| **Brand kit** | [`BRAND.md`](BRAND.md) · [branding.html](docs/marketplace/branding.html) |
 | **Support** | [SUPPORT.md](SUPPORT.md) |
 | **Author** | [matthummel.com](https://matthummel.com/) |
 | **Install folder** | **`acreline`** (leave this name — Vite asset URLs depend on it) |
 
-> **Fiction only.** Listings, market stats, contact details, and appointments are sample / concept data. Not a live MLS, licensed brokerage, or booking system. Demo phones use the `555` exchange; emails use `@acreline-concept.test`.
+> **Fiction only.** Listings, market stats, contact details, and appointments are sample / demo data. Not a live MLS, licensed brokerage, or booking system. Demo phones use the `555` exchange; emails use `@acreline-concept.test`.
 
-Ported from the static concept: [live HTML demo](https://matthummel-pa.github.io/realtor-keystone-homes-and-land-theme/) · [source](https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme).
+## Brand (Acreline)
+
+| | |
+| --- | --- |
+| **Name** | Acreline |
+| **Tagline** | Farms · land · historic homes |
+| **Mark** | [`public/images/brand/acreline-mark.svg`](public/images/brand/acreline-mark.svg) |
+| **Lockup** | [`public/images/brand/acreline-lockup.svg`](public/images/brand/acreline-lockup.svg) |
+| **Forest accent** | `#1f6b4a` on paper `#f5f4f1`, ink `#141210` |
+
+Retired **Keystone** naming is stripped by `Identity::isRetiredBrand()` so old Customizer/seed strings fall back to Acreline. Full kit: [`BRAND.md`](BRAND.md).
+
+Ported from the static concept: [live HTML demo](https://matthummel-pa.github.io/realtor-keystone-homes-and-land-theme/) · [source](https://github.com/matthummel-pa/realtor-keystone-homes-and-land-theme/).
 
 Sage 11 stack: Blade, Tailwind CSS v4, Vite 8, Acorn. Classic (non-block) editor. Not Gutenberg-optimized, not Elementor, not an IDX/MLS feed.
 
@@ -91,6 +106,7 @@ Realtors and marketers who sell **acreage, working farms, and historic homes** a
 | [`CREDITS.md`](CREDITS.md) / [`LICENSE.md`](LICENSE.md) | Fonts, GPL | Theme zip + pack `Licensing/` |
 | [`docs/marketplace/index.html`](docs/marketplace/index.html) | ThemeForest docs hub (start here) | Pack `Documentation/` |
 | [`docs/marketplace/buyer-guide.html`](docs/marketplace/buyer-guide.html) | Buyer install, Customizer, fields, FAQ | Pack `Documentation/` |
+| [`BRAND.md`](BRAND.md) | Product brand kit (name, palette, marks) | Git + seller pack |
 | [`docs/marketplace/branding.html`](docs/marketplace/branding.html) | Logos, Forest palette, fair housing | Pack `Documentation/` |
 | [`docs/marketplace/requirements.html`](docs/marketplace/requirements.html) | Host needs + store listing fields to paste | Pack `Documentation/` |
 | [`docs/marketplace/support.html`](docs/marketplace/support.html) | Buyer help | Pack `Documentation/` |

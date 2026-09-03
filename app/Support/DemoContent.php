@@ -72,7 +72,7 @@ class DemoContent
 
         $tagline = (string) get_option('blogdescription');
         if ($tagline === '' || $tagline === 'Just another WordPress site') {
-            update_option('blogdescription', 'Concept demo · Fiction only');
+            update_option('blogdescription', 'Farms · land · historic homes');
         }
     }
 
