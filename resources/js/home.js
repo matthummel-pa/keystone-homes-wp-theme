@@ -94,6 +94,11 @@
       var btn = alertForm.querySelector("button[type=submit]");
       setBusy(btn, true);
       alertConfirm.classList.add("show");
+      if(btn){
+        btn.textContent = "Saved";
+        btn.disabled = true;
+        btn.setAttribute("aria-disabled", "true");
+      }
     });
   }
 
