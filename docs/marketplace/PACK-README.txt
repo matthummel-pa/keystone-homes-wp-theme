@@ -40,7 +40,7 @@ Install
 
 No ACF, Elementor, or IDX plugin is required. Custom fields are in the theme.
 
-Demo:     https://keystonehomes.ridgesandvalleys.com/
+Demo:     https://acreline.matthummel.com/
 Support:  Documentation/support.html
           https://github.com/matthummel-pa/wp-acreline/blob/main/SUPPORT.md
 Author:   Matt Hummel  https://matthummel.com/

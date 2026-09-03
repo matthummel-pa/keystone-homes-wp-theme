@@ -59,9 +59,9 @@ Canonical Acreline header (do **not** revert to Keystone Homes / `keystone-homes
 ```css
 /*
 Theme Name:         Acreline
-Theme URI:          https://keystonehomes.ridgesandvalleys.com/
+Theme URI:          https://acreline.matthummel.com/
 Description:        WordPress theme for farms, land, and historic homes — searchable listings, agents, and showing requests. Customizer identity and eight color styles. Blade + Tailwind + Vite (Sage 11).
-Version:            1.2.2
+Version:            1.2.3
 Author:             Matt Hummel
 Author URI:         https://matthummel.com/
 Text Domain:        acreline
@@ -138,7 +138,7 @@ Keep this outline (see the file):
 Also:
 
 - Author: Matt Hummel / https://matthummel.com/
-- Demo: https://keystonehomes.ridgesandvalleys.com/
+- Demo: https://acreline.matthummel.com/
 - Buyer walkthrough lives in `docs/marketplace/`; start at **`docs/marketplace/index.html`**. Do not paste that HTML into README. Pack script copies the whole hub (`index`, buyer-guide, branding, requirements, support, sources, changelog, `assets/`, `screenshots/`) into `Documentation/`. Do not shrink the pack back to three HTML files.
 - Do **not** claim WordPress.org approval, Gutenberg-optimized, Elementor, or a live IDX/MLS
 - Do **not** paste Envato item IDs or dummy license keys

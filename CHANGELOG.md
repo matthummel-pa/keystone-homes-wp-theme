@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.2.3
+
+- Concept demo URL is https://acreline.matthummel.com/ (Theme URI, docs, Cursor rules)
+
 ## 1.2.2
 
 - GitHub repository, updater, support links, and Composer package name are `matthummel-pa/wp-acreline`

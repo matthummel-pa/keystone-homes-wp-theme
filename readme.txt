@@ -3,7 +3,7 @@ Contributors: matthummel
 Requires at least: 6.6
 Tested up to: 7.0.1
 Requires PHP: 8.3
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Tags: blog, custom-colors, custom-logo, custom-menu, featured-images, footer-widgets, theme-options, threaded-comments, translation-ready
@@ -112,6 +112,9 @@ Original house mark and horizontal lockup (not NAR / HUD / MLS artwork):
 Upload your office logo under Customize → Site Identity. Colors: Forest sample ink #141210, paper #f5f4f1, accent #1f6b4a. Footer “Equal Housing Opportunity (concept)” is sample copy — use official artwork on a licensed office. See Documentation/branding.html.
 
 == Changelog ==
+
+= 1.2.3 =
+* Concept demo Theme URI and docs point to https://acreline.matthummel.com/.
 
 = 1.2.2 =
 * GitHub repo, updater, and support links use `matthummel-pa/wp-acreline`.

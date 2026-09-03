@@ -51,7 +51,7 @@ Live theme: **Inter** (SIL OFL). Documentation wordmark may use Georgia for the 
 
 | Surface | Control |
 | --- | --- |
-| Live demo | [keystonehomes.ridgesandvalleys.com](https://keystonehomes.ridgesandvalleys.com/) → Customize → Identity |
+| Live demo | [acreline.matthummel.com](https://acreline.matthummel.com/) → Customize → Identity |
 | Buyer installs | **Appearance → Customize → Identity** (+ Site Identity logo) |
 | Product landing | [matthummel.com/concept/acreline/](https://matthummel.com/concept/acreline/) |
 | Own-site checkout | WooCommerce product **Acreline WordPress Theme** on matthummel.com |
