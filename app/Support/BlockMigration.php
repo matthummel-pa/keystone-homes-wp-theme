@@ -451,11 +451,18 @@ class BlockMigration
 
     /**
      * Resolve the hero image URL from post thumbnail or ks_hero_image meta.
+     * The meta may store either an attachment ID (numeric string) or a full URL.
      */
     private static function resolveHeroImage(int $postId): string
     {
         $stored = get_post_meta($postId, Catalog::metaKey('hero_image'), true);
         if (is_string($stored) && $stored !== '') {
+            if (ctype_digit($stored)) {
+                $url = wp_get_attachment_image_url((int) $stored, 'full');
+
+                return is_string($url) ? $url : '';
+            }
+
             return $stored;
         }
 

@@ -352,6 +352,49 @@ add_action('init', function (): void {
 }, 11);
 
 // ---------------------------------------------------------------------------
+// Sync block attributes → ks_* meta so SEO/Seo.php stays fresh after saves
+// ---------------------------------------------------------------------------
+add_action('save_post_page', function (int $postId): void {
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+    if (! current_user_can('edit_post', $postId)) {
+        return;
+    }
+
+    $post = get_post($postId);
+    if (! $post instanceof \WP_Post || ! str_contains($post->post_content, '<!-- wp:')) {
+        return;
+    }
+
+    if (! function_exists('parse_blocks')) {
+        return;
+    }
+
+    $blocks = parse_blocks($post->post_content);
+
+    foreach ($blocks as $block) {
+        $name  = $block['blockName'] ?? '';
+        $attrs = $block['attrs'] ?? [];
+
+        if (in_array($name, ['acreline/home-hero', 'acreline/page-hero'], true)) {
+            $syncMap = [
+                'eyebrow'  => 'hero_eyebrow',
+                'title'    => 'hero_title',
+                'text'     => 'hero_text',
+                'imageUrl' => 'hero_image',
+            ];
+            foreach ($syncMap as $attrKey => $metaKey) {
+                if (isset($attrs[$attrKey])) {
+                    Catalog::updateMeta($postId, $metaKey, (string) $attrs[$attrKey]);
+                }
+            }
+            break;
+        }
+    }
+}, 10);
+
+// ---------------------------------------------------------------------------
 // Migration admin page — Tools → Migrate to Blocks
 // ---------------------------------------------------------------------------
 add_action('admin_menu', function (): void {
