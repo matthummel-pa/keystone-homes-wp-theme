@@ -19,15 +19,13 @@ add_action('add_meta_boxes', function () {
     if (post_type_exists(Catalog::BOOKING)) {
         add_meta_box('ks_booking_details', __('Booking details', 'acreline'), __NAMESPACE__.'\\booking_metabox', Catalog::BOOKING, 'normal', 'high');
     }
-    add_meta_box('ks_page_fields', __('Page fields', 'acreline'), __NAMESPACE__.'\\page_metabox', 'page', 'normal', 'high');
-    add_meta_box('ks_post_fields', __('Post fields', 'acreline'), __NAMESPACE__.'\\post_metabox', 'post', 'normal', 'high');
+    // Page and post copy is now managed via Gutenberg blocks.
+    // Listing / booking / agent CPTs still use classic metaboxes below.
 });
 
 add_action('save_post_'.Catalog::LISTING, __NAMESPACE__.'\\save_listing_metabox');
 add_action('save_post_'.Catalog::AGENT, __NAMESPACE__.'\\save_agent_metabox');
 add_action('save_post_'.Catalog::BOOKING, __NAMESPACE__.'\\save_booking_metabox');
-add_action('save_post_page', __NAMESPACE__.'\\save_page_metabox');
-add_action('save_post_post', __NAMESPACE__.'\\save_post_metabox');
 
 add_action('admin_enqueue_scripts', function (string $hook): void {
     if (! in_array($hook, ['post.php', 'post-new.php'], true)) {

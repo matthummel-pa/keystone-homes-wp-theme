@@ -183,30 +183,33 @@ add_action('after_setup_theme', function () {
  * @return void
  */
 /**
- * Classic custom-field editing only — no Gutenberg, patterns, or FSE.
+ * Gutenberg is enabled for page and post.
+ * CPTs (listing, booking, agent) keep classic metabox editing.
  */
-add_filter('use_block_editor_for_post', '__return_false', 100);
-add_filter('use_block_editor_for_post_type', '__return_false', 100);
+add_filter('use_block_editor_for_post_type', function (bool $enabled, string $postType): bool {
+    if (in_array($postType, ['listing', 'booking', 'agent'], true)) {
+        return false;
+    }
+
+    return $enabled;
+}, 100, 2);
+
 add_filter('use_widgets_block_editor', '__return_false');
 add_filter('should_load_remote_block_patterns', '__return_false');
-add_filter('should_load_block_editor_scripts_and_styles', '__return_false');
 
 add_action('init', function () {
-    foreach (['post', 'page', 'listing', 'booking', 'agent'] as $type) {
+    foreach (['listing', 'booking', 'agent'] as $type) {
         remove_post_type_support($type, 'editor');
         remove_post_type_support($type, 'trackbacks');
     }
+    // Ensure page and post retain editor support for Gutenberg.
+    add_post_type_support('page', 'editor');
+    add_post_type_support('post', 'editor');
 }, 100);
 
+// Core block patterns are disabled; only Acreline patterns are registered via app/blocks.php.
 add_action('init', function () {
-    if (! class_exists(\WP_Block_Patterns_Registry::class) || ! function_exists('unregister_block_pattern')) {
-        return;
-    }
-    foreach (\WP_Block_Patterns_Registry::get_instance()->get_all_registered() as $pattern) {
-        if (! empty($pattern['name'])) {
-            unregister_block_pattern($pattern['name']);
-        }
-    }
+    remove_theme_support('core-block-patterns');
 }, 99);
 
 add_action('widgets_init', function () {
