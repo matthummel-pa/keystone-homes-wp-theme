@@ -12,14 +12,21 @@ use Illuminate\Support\Facades\Vite;
 /**
  * Inject styles into the block editor.
  *
+ * Loads the full frontend stylesheet (app.css) so blocks render with the
+ * same design tokens, typography, and card chrome as the public site.
+ * Editor-specific overrides (hero height cap, disabled form opacity, etc.)
+ * are applied on top via editor.css.
+ *
  * @return array
  */
 add_filter('block_editor_settings_all', function ($settings) {
-    $style = Vite::asset('resources/css/editor.css');
+    // Full frontend design system — tokens, sections, cards, hero, etc.
+    $appStyle = Vite::asset('resources/css/app.css');
+    $settings['styles'][] = ['css' => "@import url('{$appStyle}')"];
 
-    $settings['styles'][] = [
-        'css' => "@import url('{$style}')",
-    ];
+    // Editor-only overrides (loaded after app.css so they win).
+    $editorStyle = Vite::asset('resources/css/editor.css');
+    $settings['styles'][] = ['css' => "@import url('{$editorStyle}')"];
 
     return $settings;
 });
