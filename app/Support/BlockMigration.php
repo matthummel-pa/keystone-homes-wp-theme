@@ -21,14 +21,14 @@ class BlockMigration
      */
     public static function migrateAll(): array
     {
-        $done    = (array) get_option(self::MIGRATED_KEY, []);
+        $done = (array) get_option(self::MIGRATED_KEY, []);
         $results = ['migrated' => 0, 'skipped' => 0, 'errors' => []];
 
         $pages = get_posts([
-            'post_type'      => 'page',
-            'post_status'    => 'any',
+            'post_type' => 'page',
+            'post_status' => 'any',
             'posts_per_page' => -1,
-            'fields'         => 'ids',
+            'fields' => 'ids',
         ]);
 
         foreach ($pages as $postId) {
@@ -40,7 +40,7 @@ class BlockMigration
 
             $migrated = self::migrate((int) $postId);
             if ($migrated) {
-                $done[]              = (int) $postId;
+                $done[] = (int) $postId;
                 $results['migrated']++;
             } else {
                 $results['skipped']++;
@@ -68,14 +68,14 @@ class BlockMigration
         }
 
         $schemaKey = PageCopy::schemaKeyForPost($postId);
-        $schemas   = PageCopy::schemas();
-        $schema    = $schemas[$schemaKey] ?? $schemas['simple'];
+        $schemas = PageCopy::schemas();
+        $schema = $schemas[$schemaKey] ?? $schemas['simple'];
 
         // Read stored meta for this page.
         $meta = [];
         foreach (array_keys($schema) as $field) {
-            $stored        = get_post_meta($postId, Catalog::metaKey($field), true);
-            $meta[$field]  = is_string($stored) ? $stored : '';
+            $stored = get_post_meta($postId, Catalog::metaKey($field), true);
+            $meta[$field] = is_string($stored) ? $stored : '';
         }
 
         $blocks = self::buildBlocksForTemplate($schemaKey, $meta, $postId);
@@ -87,7 +87,7 @@ class BlockMigration
         $content = implode("\n", $blocks);
 
         wp_update_post([
-            'ID'           => $postId,
+            'ID' => $postId,
             'post_content' => $content,
         ]);
 
@@ -99,7 +99,7 @@ class BlockMigration
      */
     public static function markMigrated(int $postId): void
     {
-        $done   = (array) get_option(self::MIGRATED_KEY, []);
+        $done = (array) get_option(self::MIGRATED_KEY, []);
         $done[] = $postId;
         update_option(self::MIGRATED_KEY, array_unique($done), false);
     }
@@ -123,15 +123,15 @@ class BlockMigration
         $m = $meta;
 
         return match ($schemaKey) {
-            'home'     => self::homeBlocks($m, $postId),
+            'home' => self::homeBlocks($m, $postId),
             'listings' => self::listingsBlocks($m, $postId),
-            'areas'    => self::areasBlocks($m, $postId),
-            'guide'    => self::guideBlocks($m, $postId),
-            'agents'   => self::agentsBlocks($m, $postId),
-            'contact'  => self::contactBlocks($m, $postId),
-            'book'     => self::bookBlocks($m, $postId),
-            'blog'     => self::blogBlocks($m, $postId),
-            default    => self::simpleBlocks($m, $postId),
+            'areas' => self::areasBlocks($m, $postId),
+            'guide' => self::guideBlocks($m, $postId),
+            'agents' => self::agentsBlocks($m, $postId),
+            'contact' => self::contactBlocks($m, $postId),
+            'book' => self::bookBlocks($m, $postId),
+            'blog' => self::blogBlocks($m, $postId),
+            default => self::simpleBlocks($m, $postId),
         };
     }
 
@@ -143,49 +143,49 @@ class BlockMigration
     private static function homeBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'        => $m['hero_eyebrow'] ?? 'Farms, land, and historic homes',
-            'title'          => $m['hero_title'] ?? 'Homes worth <em>walking through.</em>',
-            'text'           => $m['hero_text'] ?? '',
-            'imageUrl'       => self::resolveHeroImage($postId),
-            'primaryLabel'   => $m['hero_cta_primary'] ?? 'Show matches',
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Farms, land, and historic homes',
+            'title' => $m['hero_title'] ?? 'Homes worth <em>walking through.</em>',
+            'text' => $m['hero_text'] ?? '',
+            'imageUrl' => self::resolveHeroImage($postId),
+            'primaryLabel' => $m['hero_cta_primary'] ?? 'Show matches',
             'secondaryLabel' => $m['hero_cta_secondary'] ?? 'Browse all listings',
         ];
 
         $intentAttrs = [
-            'eyebrow'    => $m['intent_eyebrow'] ?? 'Start here',
-            'title'      => $m['intent_title'] ?? 'Pick the path',
-            'text'       => $m['intent_text'] ?? '',
-            'buyKicker'  => $m['intent_buy_kicker'] ?? 'Buy',
-            'buyTitle'   => $m['intent_buy_title'] ?? '',
-            'buyLead'    => $m['intent_buy_lead'] ?? $m['intent_buy'] ?? '',
-            'buyCta'     => $m['intent_buy_cta'] ?? 'Browse listings',
+            'eyebrow' => $m['intent_eyebrow'] ?? 'Start here',
+            'title' => $m['intent_title'] ?? 'Pick the path',
+            'text' => $m['intent_text'] ?? '',
+            'buyKicker' => $m['intent_buy_kicker'] ?? 'Buy',
+            'buyTitle' => $m['intent_buy_title'] ?? '',
+            'buyLead' => $m['intent_buy_lead'] ?? $m['intent_buy'] ?? '',
+            'buyCta' => $m['intent_buy_cta'] ?? 'Browse listings',
             'sellKicker' => $m['intent_sell_kicker'] ?? 'Sell',
-            'sellTitle'  => $m['intent_sell_title'] ?? '',
-            'sellLead'   => $m['intent_sell_lead'] ?? $m['intent_sell'] ?? '',
-            'sellCta'    => $m['intent_sell_cta'] ?? 'Estimate value',
+            'sellTitle' => $m['intent_sell_title'] ?? '',
+            'sellLead' => $m['intent_sell_lead'] ?? $m['intent_sell'] ?? '',
+            'sellCta' => $m['intent_sell_cta'] ?? 'Estimate value',
             'tourKicker' => $m['intent_tour_kicker'] ?? 'Tour',
-            'tourTitle'  => $m['intent_tour_title'] ?? '',
-            'tourLead'   => $m['intent_tour_lead'] ?? $m['intent_tour'] ?? '',
-            'tourCta'    => $m['intent_tour_cta'] ?? 'Book a showing',
+            'tourTitle' => $m['intent_tour_title'] ?? '',
+            'tourLead' => $m['intent_tour_lead'] ?? $m['intent_tour'] ?? '',
+            'tourCta' => $m['intent_tour_cta'] ?? 'Book a showing',
             'notesLabel' => $m['intent_notes_label'] ?? 'Good to know',
             'note1Title' => $m['intent_note_1_title'] ?? 'Township first',
-            'note1Text'  => $m['intent_note_1_text'] ?? '',
+            'note1Text' => $m['intent_note_1_text'] ?? '',
             'note2Title' => $m['intent_note_2_title'] ?? 'Well and perc',
-            'note2Text'  => $m['intent_note_2_text'] ?? '',
+            'note2Text' => $m['intent_note_2_text'] ?? '',
             'note3Title' => $m['intent_note_3_title'] ?? 'Boots for showings',
-            'note3Text'  => $m['intent_note_3_text'] ?? '',
+            'note3Text' => $m['intent_note_3_text'] ?? '',
         ];
 
         $spotlightAttrs = [
             'eyebrow' => $m['spotlight_eyebrow'] ?? 'Spotlight',
-            'title'   => $m['spotlight_title'] ?? 'Three sample homes to scan',
-            'text'    => $m['spotlight_text'] ?? '',
+            'title' => $m['spotlight_title'] ?? 'Three sample homes to scan',
+            'text' => $m['spotlight_text'] ?? '',
         ];
 
         $bookAttrs = [
             'eyebrow' => $m['book_eyebrow'] ?? 'Appointments',
-            'title'   => $m['book_title'] ?? 'Book a house showing',
-            'text'    => $m['book_text'] ?? '',
+            'title' => $m['book_title'] ?? 'Book a house showing',
+            'text' => $m['book_text'] ?? '',
         ];
 
         return [
@@ -207,19 +207,19 @@ class BlockMigration
     private static function listingsBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'       => $m['hero_eyebrow'] ?? 'Sample inventory',
-            'title'         => $m['hero_title'] ?? 'Sample homes &amp; land <em>for demo tours</em>',
-            'text'          => $m['hero_text'] ?? '',
-            'imageUrl'      => self::resolveHeroImage($postId),
-            'primaryLabel'  => 'Book a showing',
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Sample inventory',
+            'title' => $m['hero_title'] ?? 'Sample homes &amp; land <em>for demo tours</em>',
+            'text' => $m['hero_text'] ?? '',
+            'imageUrl' => self::resolveHeroImage($postId),
+            'primaryLabel' => 'Book a showing',
             'secondaryLabel' => 'Buyer tools',
-            'secondaryUrl'  => home_url('/guide'),
+            'secondaryUrl' => home_url('/guide'),
         ];
 
         $ctaAttrs = [
-            'title'          => $m['cta_title'] ?? 'See a property you like?',
-            'text'           => $m['cta_text'] ?? '',
-            'primaryLabel'   => $m['cta_primary'] ?? 'Book a showing',
+            'title' => $m['cta_title'] ?? 'See a property you like?',
+            'text' => $m['cta_text'] ?? '',
+            'primaryLabel' => $m['cta_primary'] ?? 'Book a showing',
             'secondaryLabel' => $m['cta_secondary'] ?? 'Financing tools',
         ];
 
@@ -227,7 +227,7 @@ class BlockMigration
             self::block('acreline/page-hero', $heroAttrs),
             self::block('acreline/listing-grid', [
                 'introTitle' => $m['intro_title'] ?? 'Buying rural property',
-                'introText'  => $m['intro_text'] ?? '',
+                'introText' => $m['intro_text'] ?? '',
             ]),
             self::block('acreline/cta-band', $ctaAttrs),
         ];
@@ -237,36 +237,36 @@ class BlockMigration
     private static function areasBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'       => $m['hero_eyebrow'] ?? 'Sample markets',
-            'title'         => $m['hero_title'] ?? 'Areas we <em>demo</em>',
-            'text'          => $m['hero_text'] ?? '',
-            'imageUrl'      => self::resolveHeroImage($postId),
-            'primaryLabel'  => 'Browse listings',
-            'primaryUrl'    => home_url('/listings'),
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Sample markets',
+            'title' => $m['hero_title'] ?? 'Areas we <em>demo</em>',
+            'text' => $m['hero_text'] ?? '',
+            'imageUrl' => self::resolveHeroImage($postId),
+            'primaryLabel' => 'Browse listings',
+            'primaryUrl' => home_url('/listings'),
             'secondaryLabel' => 'Book a showing',
         ];
 
         $introAttrs = [
             'eyebrow' => 'The sample market',
-            'title'   => $m['intro_title'] ?? 'Land, farms &amp; homesteads in a sample market',
-            'text'    => $m['intro_text'] ?? '',
+            'title' => $m['intro_title'] ?? 'Land, farms &amp; homesteads in a sample market',
+            'text' => $m['intro_text'] ?? '',
         ];
 
         $gridAttrs = [
             'gridEyebrow' => $m['grid_eyebrow'] ?? 'Area by area',
-            'gridTitle'   => $m['grid_title'] ?? 'Where the sample office works',
-            'gridText'    => $m['grid_text'] ?? '',
+            'gridTitle' => $m['grid_title'] ?? 'Where the sample office works',
+            'gridText' => $m['grid_text'] ?? '',
         ];
 
         for ($i = 1; $i <= 6; $i++) {
-            $gridAttrs["area{$i}Meta"]  = $m["area_{$i}_meta"] ?? '';
+            $gridAttrs["area{$i}Meta"] = $m["area_{$i}_meta"] ?? '';
             $gridAttrs["area{$i}Title"] = $m["area_{$i}_title"] ?? '';
-            $gridAttrs["area{$i}Body"]  = $m["area_{$i}_body"] ?? '';
+            $gridAttrs["area{$i}Body"] = $m["area_{$i}_body"] ?? '';
         }
 
         $ctaAttrs = [
-            'title'        => $m['cta_title'] ?? 'Walk an area with us',
-            'text'         => $m['cta_text'] ?? '',
+            'title' => $m['cta_title'] ?? 'Walk an area with us',
+            'text' => $m['cta_text'] ?? '',
             'primaryLabel' => $m['cta_primary'] ?? 'Book a showing',
         ];
 
@@ -282,26 +282,26 @@ class BlockMigration
     private static function guideBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'       => $m['hero_eyebrow'] ?? 'Buyer tools',
-            'title'         => $m['hero_title'] ?? 'A clearer path to <em>buying land or a home</em>',
-            'text'          => $m['hero_text'] ?? '',
-            'imageUrl'      => self::resolveHeroImage($postId),
-            'primaryLabel'  => 'Book a showing',
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Buyer tools',
+            'title' => $m['hero_title'] ?? 'A clearer path to <em>buying land or a home</em>',
+            'text' => $m['hero_text'] ?? '',
+            'imageUrl' => self::resolveHeroImage($postId),
+            'primaryLabel' => 'Book a showing',
             'secondaryLabel' => 'Browse listings',
         ];
 
         $toolsAttrs = [
             'introTitle' => $m['intro_title'] ?? "What's different about buying land",
-            'introText'  => $m['intro_text'] ?? '',
-            'eyebrow'    => $m['tools_eyebrow'] ?? 'Run Your Numbers',
-            'title'      => $m['tools_title'] ?? 'Land-loan &amp; pre-qualification tools',
-            'text'       => $m['tools_text'] ?? '',
+            'introText' => $m['intro_text'] ?? '',
+            'eyebrow' => $m['tools_eyebrow'] ?? 'Run Your Numbers',
+            'title' => $m['tools_title'] ?? 'Land-loan &amp; pre-qualification tools',
+            'text' => $m['tools_text'] ?? '',
         ];
 
         $ctaAttrs = [
-            'title'          => $m['cta_title'] ?? 'Ready to walk a sample parcel?',
-            'text'           => $m['cta_text'] ?? '',
-            'primaryLabel'   => $m['cta_primary'] ?? 'Book a showing',
+            'title' => $m['cta_title'] ?? 'Ready to walk a sample parcel?',
+            'text' => $m['cta_text'] ?? '',
+            'primaryLabel' => $m['cta_primary'] ?? 'Book a showing',
             'secondaryLabel' => $m['cta_secondary'] ?? 'Browse listings',
         ];
 
@@ -317,26 +317,26 @@ class BlockMigration
     private static function agentsBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'  => $m['hero_eyebrow'] ?? 'Sample team',
-            'title'    => $m['hero_title'] ?? 'Agents who know the <em>demo ground</em>',
-            'text'     => $m['hero_text'] ?? '',
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Sample team',
+            'title' => $m['hero_title'] ?? 'Agents who know the <em>demo ground</em>',
+            'text' => $m['hero_text'] ?? '',
             'imageUrl' => self::resolveHeroImage($postId),
         ];
 
         $introAttrs = [
             'title' => $m['intro_title'] ?? 'A small, local team by design',
-            'text'  => $m['intro_text'] ?? '',
+            'text' => $m['intro_text'] ?? '',
         ];
 
         $howAttrs = [
             'eyebrow' => $m['how_eyebrow'] ?? 'How We Work',
-            'title'   => $m['how_title'] ?? 'What working with this office looks like',
-            'text'    => $m['how_text'] ?? '',
+            'title' => $m['how_title'] ?? 'What working with this office looks like',
+            'text' => $m['how_text'] ?? '',
         ];
 
         $ctaAttrs = [
-            'title'        => $m['cta_title'] ?? 'Talk to a sample agent',
-            'text'         => $m['cta_text'] ?? '',
+            'title' => $m['cta_title'] ?? 'Talk to a sample agent',
+            'text' => $m['cta_text'] ?? '',
             'primaryLabel' => $m['cta_primary'] ?? 'Book a showing',
         ];
 
@@ -352,17 +352,17 @@ class BlockMigration
     private static function contactBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'        => $m['hero_eyebrow'] ?? 'Concept office',
-            'title'          => $m['hero_title'] ?? 'Get in touch <em>(demo only)</em>',
-            'text'           => $m['hero_text'] ?? '',
-            'imageUrl'       => self::resolveHeroImage($postId),
-            'primaryLabel'   => 'Book a showing',
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Concept office',
+            'title' => $m['hero_title'] ?? 'Get in touch <em>(demo only)</em>',
+            'text' => $m['hero_text'] ?? '',
+            'imageUrl' => self::resolveHeroImage($postId),
+            'primaryLabel' => 'Book a showing',
             'secondaryLabel' => 'Call the office',
         ];
 
         $formAttrs = [
             'formTitle' => $m['form_title'] ?? 'Send us a message',
-            'formText'  => $m['form_text'] ?? "Tell us what you're looking for and we'll be in touch.",
+            'formText' => $m['form_text'] ?? "Tell us what you're looking for and we'll be in touch.",
         ];
 
         return [
@@ -376,9 +376,9 @@ class BlockMigration
     private static function bookBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'  => $m['hero_eyebrow'] ?? 'Appointments',
-            'title'    => $m['hero_title'] ?? 'Book a house showing',
-            'text'     => $m['hero_text'] ?? '',
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Appointments',
+            'title' => $m['hero_title'] ?? 'Book a house showing',
+            'text' => $m['hero_text'] ?? '',
             'imageUrl' => self::resolveHeroImage($postId),
         ];
 
@@ -395,18 +395,18 @@ class BlockMigration
     private static function blogBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'  => $m['hero_eyebrow'] ?? 'Guide',
-            'title'    => $m['hero_title'] ?? 'Realtor notes you can publish',
-            'text'     => $m['hero_text'] ?? '',
+            'eyebrow' => $m['hero_eyebrow'] ?? 'Guide',
+            'title' => $m['hero_title'] ?? 'Realtor notes you can publish',
+            'text' => $m['hero_text'] ?? '',
             'imageUrl' => self::resolveHeroImage($postId),
         ];
 
         return [
             self::block('acreline/page-hero', $heroAttrs),
             self::block('acreline/cta-band', [
-                'title'          => $m['cta_title'] ?? 'Ready to tour a sample home?',
-                'text'           => $m['cta_text'] ?? '',
-                'primaryLabel'   => $m['cta_primary'] ?? 'Book a showing',
+                'title' => $m['cta_title'] ?? 'Ready to tour a sample home?',
+                'text' => $m['cta_text'] ?? '',
+                'primaryLabel' => $m['cta_primary'] ?? 'Book a showing',
                 'secondaryLabel' => $m['cta_secondary'] ?? 'Browse samples',
             ]),
         ];
@@ -416,9 +416,9 @@ class BlockMigration
     private static function simpleBlocks(array $m, int $postId): array
     {
         $heroAttrs = [
-            'eyebrow'  => $m['hero_eyebrow'] ?? '',
-            'title'    => $m['hero_title'] ?? '',
-            'text'     => $m['hero_text'] ?? '',
+            'eyebrow' => $m['hero_eyebrow'] ?? '',
+            'title' => $m['hero_title'] ?? '',
+            'text' => $m['hero_text'] ?? '',
             'imageUrl' => self::resolveHeroImage($postId),
         ];
 

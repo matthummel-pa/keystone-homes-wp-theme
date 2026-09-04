@@ -9,6 +9,7 @@
 
 namespace App;
 
+use App\Support\BlockMigration;
 use App\Support\Catalog;
 use App\Support\Faqs;
 use App\Support\Identity;
@@ -18,9 +19,9 @@ use App\Support\Identity;
 // ---------------------------------------------------------------------------
 add_filter('block_categories_all', function (array $categories): array {
     array_unshift($categories, [
-        'slug'  => 'acreline',
+        'slug' => 'acreline',
         'title' => __('Acreline', 'acreline'),
-        'icon'  => null,
+        'icon' => null,
     ]);
 
     return $categories;
@@ -36,80 +37,80 @@ add_action('init', function (): void {
 function ks_register_blocks(): void
 {
     $blocks = [
-        'acreline/home-hero'      => [
+        'acreline/home-hero' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_home_hero',
-            'attributes'      => [
-                'eyebrow'        => ['type' => 'string', 'default' => 'Farms, land, and historic homes'],
-                'title'          => ['type' => 'string', 'default' => 'Homes worth <em>walking through.</em>'],
-                'text'           => ['type' => 'string', 'default' => 'Sample farms, historic houses, and acreage across three demo areas. Filter by type and township, then schedule a showing.'],
-                'imageUrl'       => ['type' => 'string', 'default' => ''],
-                'primaryLabel'   => ['type' => 'string', 'default' => 'Show matches'],
+            'attributes' => [
+                'eyebrow' => ['type' => 'string', 'default' => 'Farms, land, and historic homes'],
+                'title' => ['type' => 'string', 'default' => 'Homes worth <em>walking through.</em>'],
+                'text' => ['type' => 'string', 'default' => 'Sample farms, historic houses, and acreage across three demo areas. Filter by type and township, then schedule a showing.'],
+                'imageUrl' => ['type' => 'string', 'default' => ''],
+                'primaryLabel' => ['type' => 'string', 'default' => 'Show matches'],
                 'secondaryLabel' => ['type' => 'string', 'default' => 'Browse all listings'],
             ],
         ],
-        'acreline/page-hero'      => [
+        'acreline/page-hero' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_page_hero',
-            'attributes'      => [
-                'brand'          => ['type' => 'string', 'default' => ''],
-                'eyebrow'        => ['type' => 'string', 'default' => ''],
-                'title'          => ['type' => 'string', 'default' => ''],
-                'text'           => ['type' => 'string', 'default' => ''],
-                'imageUrl'       => ['type' => 'string', 'default' => ''],
-                'primaryLabel'   => ['type' => 'string', 'default' => 'Book a showing'],
-                'primaryUrl'     => ['type' => 'string', 'default' => ''],
+            'attributes' => [
+                'brand' => ['type' => 'string', 'default' => ''],
+                'eyebrow' => ['type' => 'string', 'default' => ''],
+                'title' => ['type' => 'string', 'default' => ''],
+                'text' => ['type' => 'string', 'default' => ''],
+                'imageUrl' => ['type' => 'string', 'default' => ''],
+                'primaryLabel' => ['type' => 'string', 'default' => 'Book a showing'],
+                'primaryUrl' => ['type' => 'string', 'default' => ''],
                 'secondaryLabel' => ['type' => 'string', 'default' => ''],
-                'secondaryUrl'   => ['type' => 'string', 'default' => ''],
+                'secondaryUrl' => ['type' => 'string', 'default' => ''],
             ],
         ],
-        'acreline/intent-cards'   => [
+        'acreline/intent-cards' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_intent_cards',
-            'attributes'      => [
-                'eyebrow'      => ['type' => 'string', 'default' => 'Start here'],
-                'title'        => ['type' => 'string', 'default' => 'Pick the path'],
-                'text'         => ['type' => 'string', 'default' => 'Then we match a listing or a tour. Township first — the rest follows.'],
-                'buyKicker'    => ['type' => 'string', 'default' => 'Buy'],
-                'buyTitle'     => ['type' => 'string', 'default' => 'Scan homes, farms, and land'],
-                'buyLead'      => ['type' => 'string', 'default' => 'Area first — North Ridge, Mill Creek, Oak Hollow. Zoning and farmland tax rules change before the listing photo does.'],
-                'buyCta'       => ['type' => 'string', 'default' => 'Browse listings'],
-                'sellKicker'   => ['type' => 'string', 'default' => 'Sell'],
-                'sellTitle'    => ['type' => 'string', 'default' => 'Price it before you list'],
-                'sellLead'     => ['type' => 'string', 'default' => 'Run a sample value range for a fictional address. Not an appraisal — a next step if you are comparing options.'],
-                'sellCta'      => ['type' => 'string', 'default' => 'Estimate value'],
-                'tourKicker'   => ['type' => 'string', 'default' => 'Tour'],
-                'tourTitle'    => ['type' => 'string', 'default' => 'Walk it on the ground'],
-                'tourLead'     => ['type' => 'string', 'default' => 'Pick a sample listing, a date, and a slot. Rural showings mean a lane, a well, and boots — mention perc or pets in the notes.'],
-                'tourCta'      => ['type' => 'string', 'default' => 'Book a showing'],
-                'notesLabel'   => ['type' => 'string', 'default' => 'Good to know'],
-                'note1Title'   => ['type' => 'string', 'default' => 'Township first'],
-                'note1Text'    => ['type' => 'string', 'default' => 'Zoning and farmland tax enrollment change from one sample area to the next.'],
-                'note2Title'   => ['type' => 'string', 'default' => 'Well and perc'],
-                'note2Text'    => ['type' => 'string', 'default' => 'Rural parcels rarely have municipal hookups — walk that before an offer.'],
-                'note3Title'   => ['type' => 'string', 'default' => 'Boots for showings'],
-                'note3Text'    => ['type' => 'string', 'default' => 'Lanes get muddy after rain. Mention pets if you are new to land.'],
+            'attributes' => [
+                'eyebrow' => ['type' => 'string', 'default' => 'Start here'],
+                'title' => ['type' => 'string', 'default' => 'Pick the path'],
+                'text' => ['type' => 'string', 'default' => 'Then we match a listing or a tour. Township first — the rest follows.'],
+                'buyKicker' => ['type' => 'string', 'default' => 'Buy'],
+                'buyTitle' => ['type' => 'string', 'default' => 'Scan homes, farms, and land'],
+                'buyLead' => ['type' => 'string', 'default' => 'Area first — North Ridge, Mill Creek, Oak Hollow. Zoning and farmland tax rules change before the listing photo does.'],
+                'buyCta' => ['type' => 'string', 'default' => 'Browse listings'],
+                'sellKicker' => ['type' => 'string', 'default' => 'Sell'],
+                'sellTitle' => ['type' => 'string', 'default' => 'Price it before you list'],
+                'sellLead' => ['type' => 'string', 'default' => 'Run a sample value range for a fictional address. Not an appraisal — a next step if you are comparing options.'],
+                'sellCta' => ['type' => 'string', 'default' => 'Estimate value'],
+                'tourKicker' => ['type' => 'string', 'default' => 'Tour'],
+                'tourTitle' => ['type' => 'string', 'default' => 'Walk it on the ground'],
+                'tourLead' => ['type' => 'string', 'default' => 'Pick a sample listing, a date, and a slot. Rural showings mean a lane, a well, and boots — mention perc or pets in the notes.'],
+                'tourCta' => ['type' => 'string', 'default' => 'Book a showing'],
+                'notesLabel' => ['type' => 'string', 'default' => 'Good to know'],
+                'note1Title' => ['type' => 'string', 'default' => 'Township first'],
+                'note1Text' => ['type' => 'string', 'default' => 'Zoning and farmland tax enrollment change from one sample area to the next.'],
+                'note2Title' => ['type' => 'string', 'default' => 'Well and perc'],
+                'note2Text' => ['type' => 'string', 'default' => 'Rural parcels rarely have municipal hookups — walk that before an offer.'],
+                'note3Title' => ['type' => 'string', 'default' => 'Boots for showings'],
+                'note3Text' => ['type' => 'string', 'default' => 'Lanes get muddy after rain. Mention pets if you are new to land.'],
             ],
         ],
-        'acreline/spotlight'      => [
+        'acreline/spotlight' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_spotlight',
-            'attributes'      => [
+            'attributes' => [
                 'eyebrow' => ['type' => 'string', 'default' => 'Spotlight'],
-                'title'   => ['type' => 'string', 'default' => 'Three sample homes to scan'],
-                'text'    => ['type' => 'string', 'default' => 'Price · beds · acres — then book a fictional walk-through.'],
+                'title' => ['type' => 'string', 'default' => 'Three sample homes to scan'],
+                'text' => ['type' => 'string', 'default' => 'Price · beds · acres — then book a fictional walk-through.'],
             ],
         ],
         'acreline/booking-section' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_booking_section',
-            'attributes'      => [
+            'attributes' => [
                 'eyebrow' => ['type' => 'string', 'default' => 'Appointments'],
-                'title'   => ['type' => 'string', 'default' => 'Book a house showing'],
-                'text'    => ['type' => 'string', 'default' => 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.'],
+                'title' => ['type' => 'string', 'default' => 'Book a house showing'],
+                'text' => ['type' => 'string', 'default' => 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.'],
             ],
         ],
-        'acreline/market-stats'   => [
+        'acreline/market-stats' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_market_stats',
-            'attributes'      => [
-                'eyebrow'  => ['type' => 'string', 'default' => 'Sample market'],
-                'title'    => ['type' => 'string', 'default' => 'Pulse at a glance'],
-                'text'     => ['type' => 'string', 'default' => 'A sample snapshot of how this inventory would read in a listing conversation — not a live CMA or MLS feed.'],
+            'attributes' => [
+                'eyebrow' => ['type' => 'string', 'default' => 'Sample market'],
+                'title' => ['type' => 'string', 'default' => 'Pulse at a glance'],
+                'text' => ['type' => 'string', 'default' => 'A sample snapshot of how this inventory would read in a listing conversation — not a live CMA or MLS feed.'],
                 'stat1Val' => ['type' => 'string', 'default' => '$398k'],
                 'stat1Lbl' => ['type' => 'string', 'default' => 'Median sale price'],
                 'stat1Sub' => ['type' => 'string', 'default' => '↑ 2.1% vs last quarter'],
@@ -124,136 +125,136 @@ function ks_register_blocks(): void
                 'stat4Sub' => ['type' => 'string', 'default' => 'Offers near asking'],
             ],
         ],
-        'acreline/how-it-works'   => [
+        'acreline/how-it-works' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_how_it_works',
-            'attributes'      => [
+            'attributes' => [
                 'eyebrow' => ['type' => 'string', 'default' => 'How a tour starts'],
-                'title'   => ['type' => 'string', 'default' => 'From search to showing'],
-                'text'    => ['type' => 'string', 'default' => 'Township first, then a walk on the ground — not office theater. This demo stops at on-page confirmation.'],
+                'title' => ['type' => 'string', 'default' => 'From search to showing'],
+                'text' => ['type' => 'string', 'default' => 'Township first, then a walk on the ground — not office theater. This demo stops at on-page confirmation.'],
             ],
         ],
-        'acreline/agent-tools'    => [
+        'acreline/agent-tools' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_agent_tools',
-            'attributes'      => [
+            'attributes' => [
                 'eyebrow' => ['type' => 'string', 'default' => 'Agent tools'],
-                'title'   => ['type' => 'string', 'default' => 'Value range and listing alerts'],
-                'text'    => ['type' => 'string', 'default' => 'Two tools buyers and sellers use first: a sample value range, then an alert for new matches.'],
+                'title' => ['type' => 'string', 'default' => 'Value range and listing alerts'],
+                'text' => ['type' => 'string', 'default' => 'Two tools buyers and sellers use first: a sample value range, then an alert for new matches.'],
             ],
         ],
-        'acreline/seo-content'    => [
+        'acreline/seo-content' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_seo_content',
-            'attributes'      => [],
+            'attributes' => [],
         ],
-        'acreline/reviews'        => [
+        'acreline/reviews' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_reviews',
-            'attributes'      => [
+            'attributes' => [
                 'eyebrow' => ['type' => 'string', 'default' => 'Samples'],
-                'title'   => ['type' => 'string', 'default' => 'What clients might say'],
-                'text'    => ['type' => 'string', 'default' => 'Placeholder quotes for layout — not real reviews. Sample names and photos only.'],
+                'title' => ['type' => 'string', 'default' => 'What clients might say'],
+                'text' => ['type' => 'string', 'default' => 'Placeholder quotes for layout — not real reviews. Sample names and photos only.'],
             ],
         ],
-        'acreline/faq-list'       => [
+        'acreline/faq-list' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_faq_list',
-            'attributes'      => [
-                'title'     => ['type' => 'string', 'default' => 'Questions buyers ask first'],
-                'text'      => ['type' => 'string', 'default' => 'Practical answers for house and acreage shoppers.'],
+            'attributes' => [
+                'title' => ['type' => 'string', 'default' => 'Questions buyers ask first'],
+                'text' => ['type' => 'string', 'default' => 'Practical answers for house and acreage shoppers.'],
                 'headClass' => ['type' => 'string', 'default' => 'left'],
             ],
         ],
-        'acreline/cta-band'       => [
+        'acreline/cta-band' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_cta_band',
-            'attributes'      => [
-                'title'          => ['type' => 'string', 'default' => 'Tour a sample home next.'],
-                'text'           => ['type' => 'string', 'default' => 'Pick an address, choose a slot, and see how a modern realtor booking flow feels.'],
-                'primaryLabel'   => ['type' => 'string', 'default' => 'Book a showing'],
-                'primaryUrl'     => ['type' => 'string', 'default' => ''],
+            'attributes' => [
+                'title' => ['type' => 'string', 'default' => 'Tour a sample home next.'],
+                'text' => ['type' => 'string', 'default' => 'Pick an address, choose a slot, and see how a modern realtor booking flow feels.'],
+                'primaryLabel' => ['type' => 'string', 'default' => 'Book a showing'],
+                'primaryUrl' => ['type' => 'string', 'default' => ''],
                 'secondaryLabel' => ['type' => 'string', 'default' => 'Browse samples'],
-                'secondaryUrl'   => ['type' => 'string', 'default' => ''],
+                'secondaryUrl' => ['type' => 'string', 'default' => ''],
             ],
         ],
-        'acreline/intro-section'  => [
+        'acreline/intro-section' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_intro_section',
-            'attributes'      => [
+            'attributes' => [
                 'eyebrow' => ['type' => 'string', 'default' => ''],
-                'title'   => ['type' => 'string', 'default' => ''],
-                'text'    => ['type' => 'string', 'default' => ''],
+                'title' => ['type' => 'string', 'default' => ''],
+                'text' => ['type' => 'string', 'default' => ''],
             ],
         ],
-        'acreline/listing-grid'   => [
+        'acreline/listing-grid' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_listing_grid',
-            'attributes'      => [
+            'attributes' => [
                 'introTitle' => ['type' => 'string', 'default' => 'Buying rural property'],
-                'introText'  => ['type' => 'string', 'default' => 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk.'],
+                'introText' => ['type' => 'string', 'default' => 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk.'],
             ],
         ],
-        'acreline/area-grid'      => [
+        'acreline/area-grid' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_area_grid',
-            'attributes'      => [
+            'attributes' => [
                 'gridEyebrow' => ['type' => 'string', 'default' => 'Area by area'],
-                'gridTitle'   => ['type' => 'string', 'default' => 'Where the sample office works'],
-                'gridText'    => ['type' => 'string', 'default' => 'A quick read on six rural area types — what the ground is like, what tends to list, and what a buyer should watch for.'],
-                'area1Meta'   => ['type' => 'string', 'default' => 'West ridge · orchards and stone houses'],
-                'area1Title'  => ['type' => 'string', 'default' => 'Oak Hollow'],
-                'area1Body'   => ['type' => 'string', 'default' => 'Century homesteads, working orchards, and wooded building lots with long views. Buyers come for the house as much as the acres.'],
-                'area2Meta'   => ['type' => 'string', 'default' => 'North valley · fruit and packing sheds'],
-                'area2Title'  => ['type' => 'string', 'default' => 'Orchard Belt'],
-                'area2Body'   => ['type' => 'string', 'default' => 'Mile after mile of fruit ground, cold storage, and roadside stands. A working farm market, not a weekend-hobby strip.'],
-                'area3Meta'   => ['type' => 'string', 'default' => 'Northeast · rolling open ground'],
-                'area3Title'  => ['type' => 'string', 'default' => 'Mill Creek'],
-                'area3Body'   => ['type' => 'string', 'default' => 'Orchard mixed with open farmland and quiet residential lots — often more value per acre than parcels next to the county seat.'],
-                'area4Meta'   => ['type' => 'string', 'default' => 'North-central · larger tracts'],
-                'area4Title'  => ['type' => 'string', 'default' => 'Grain Country'],
-                'area4Body'   => ['type' => 'string', 'default' => 'Working-farm country: tillable and orchard ground in larger pieces. Buyers here want real acreage, not a single homesite.'],
-                'area5Meta'   => ['type' => 'string', 'default' => 'West hills · timber and cabins'],
-                'area5Title'  => ['type' => 'string', 'default' => 'Hill Country'],
-                'area5Body'   => ['type' => 'string', 'default' => 'Cabins, wooded acreage, hunting ground, and recreational parcels toward state forest. Yields and access vary lot to lot.'],
-                'area6Meta'   => ['type' => 'string', 'default' => 'South line · small farms and commute'],
-                'area6Title'  => ['type' => 'string', 'default' => 'Border Farms'],
-                'area6Body'   => ['type' => 'string', 'default' => 'Small farms, pasture, and wooded homesteads with an easier drive to jobs and grocery stores. Good first-land-buyer ground.'],
+                'gridTitle' => ['type' => 'string', 'default' => 'Where the sample office works'],
+                'gridText' => ['type' => 'string', 'default' => 'A quick read on six rural area types — what the ground is like, what tends to list, and what a buyer should watch for.'],
+                'area1Meta' => ['type' => 'string', 'default' => 'West ridge · orchards and stone houses'],
+                'area1Title' => ['type' => 'string', 'default' => 'Oak Hollow'],
+                'area1Body' => ['type' => 'string', 'default' => 'Century homesteads, working orchards, and wooded building lots with long views. Buyers come for the house as much as the acres.'],
+                'area2Meta' => ['type' => 'string', 'default' => 'North valley · fruit and packing sheds'],
+                'area2Title' => ['type' => 'string', 'default' => 'Orchard Belt'],
+                'area2Body' => ['type' => 'string', 'default' => 'Mile after mile of fruit ground, cold storage, and roadside stands. A working farm market, not a weekend-hobby strip.'],
+                'area3Meta' => ['type' => 'string', 'default' => 'Northeast · rolling open ground'],
+                'area3Title' => ['type' => 'string', 'default' => 'Mill Creek'],
+                'area3Body' => ['type' => 'string', 'default' => 'Orchard mixed with open farmland and quiet residential lots — often more value per acre than parcels next to the county seat.'],
+                'area4Meta' => ['type' => 'string', 'default' => 'North-central · larger tracts'],
+                'area4Title' => ['type' => 'string', 'default' => 'Grain Country'],
+                'area4Body' => ['type' => 'string', 'default' => 'Working-farm country: tillable and orchard ground in larger pieces. Buyers here want real acreage, not a single homesite.'],
+                'area5Meta' => ['type' => 'string', 'default' => 'West hills · timber and cabins'],
+                'area5Title' => ['type' => 'string', 'default' => 'Hill Country'],
+                'area5Body' => ['type' => 'string', 'default' => 'Cabins, wooded acreage, hunting ground, and recreational parcels toward state forest. Yields and access vary lot to lot.'],
+                'area6Meta' => ['type' => 'string', 'default' => 'South line · small farms and commute'],
+                'area6Title' => ['type' => 'string', 'default' => 'Border Farms'],
+                'area6Body' => ['type' => 'string', 'default' => 'Small farms, pasture, and wooded homesteads with an easier drive to jobs and grocery stores. Good first-land-buyer ground.'],
             ],
         ],
-        'acreline/tools-section'  => [
+        'acreline/tools-section' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_tools_section',
-            'attributes'      => [
+            'attributes' => [
                 'introTitle' => ['type' => 'string', 'default' => "What's different about buying land"],
-                'introText'  => ['type' => 'string', 'default' => 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.'],
-                'eyebrow'    => ['type' => 'string', 'default' => 'Run Your Numbers'],
-                'title'      => ['type' => 'string', 'default' => 'Land-loan &amp; pre-qualification tools'],
-                'text'       => ['type' => 'string', 'default' => 'Friendly estimates to help you plan — not loan offers. A licensed lender will verify everything with full documentation.'],
+                'introText' => ['type' => 'string', 'default' => 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.'],
+                'eyebrow' => ['type' => 'string', 'default' => 'Run Your Numbers'],
+                'title' => ['type' => 'string', 'default' => 'Land-loan &amp; pre-qualification tools'],
+                'text' => ['type' => 'string', 'default' => 'Friendly estimates to help you plan — not loan offers. A licensed lender will verify everything with full documentation.'],
             ],
         ],
-        'acreline/how-we-work'    => [
+        'acreline/how-we-work' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_how_we_work',
-            'attributes'      => [
+            'attributes' => [
                 'eyebrow' => ['type' => 'string', 'default' => 'How We Work'],
-                'title'   => ['type' => 'string', 'default' => 'What working with this office looks like'],
-                'text'    => ['type' => 'string', 'default' => 'No pressure, no jargon, and a straight answer about the ground under your feet.'],
+                'title' => ['type' => 'string', 'default' => 'What working with this office looks like'],
+                'text' => ['type' => 'string', 'default' => 'No pressure, no jargon, and a straight answer about the ground under your feet.'],
             ],
         ],
-        'acreline/office-info'    => [
+        'acreline/office-info' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_office_info',
-            'attributes'      => [
+            'attributes' => [
                 'officeTitle' => ['type' => 'string', 'default' => ''],
             ],
         ],
-        'acreline/contact-form'   => [
+        'acreline/contact-form' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_contact_form',
-            'attributes'      => [
+            'attributes' => [
                 'formTitle' => ['type' => 'string', 'default' => 'Send us a message'],
-                'formText'  => ['type' => 'string', 'default' => "Tell us what you're looking for — or what you're thinking of selling — and we'll be in touch."],
+                'formText' => ['type' => 'string', 'default' => "Tell us what you're looking for — or what you're thinking of selling — and we'll be in touch."],
             ],
         ],
-        'acreline/book-note'      => [
+        'acreline/book-note' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_book_note',
-            'attributes'      => [
+            'attributes' => [
                 'note' => ['type' => 'string', 'default' => 'Demo only — no emails, texts or calendar invites are sent. Staff can advance the booking in WP Admin → Bookings.'],
             ],
         ],
-        'acreline/custom'         => [
+        'acreline/custom' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_custom_block',
-            'attributes'      => [
+            'attributes' => [
                 'blockId' => ['type' => 'string', 'default' => ''],
-                'fields'  => ['type' => 'object', 'default' => new \stdClass()],
+                'fields' => ['type' => 'object', 'default' => new \stdClass],
             ],
         ],
     ];
@@ -282,7 +283,7 @@ add_action('enqueue_block_editor_assets', function (): void {
         return;
     }
 
-    $url  = get_template_directory_uri().'/public/build/'.$manifest[$key]['file'];
+    $url = get_template_directory_uri().'/public/build/'.$manifest[$key]['file'];
     $deps = $manifest[$key]['imports'] ?? [];
 
     // Map Vite chunk refs to WP script handles.
@@ -305,10 +306,10 @@ add_action('enqueue_block_editor_assets', function (): void {
     );
 
     wp_localize_script('acreline-blocks', 'ACRELINE_BLOCKS', [
-        'themeUri'        => get_template_directory_uri(),
-        'customBlocks'    => ks_get_custom_block_definitions(),
-        'restUrl'         => rest_url('acreline/v1/'),
-        'nonce'           => wp_create_nonce('wp_rest'),
+        'themeUri' => get_template_directory_uri(),
+        'customBlocks' => ks_get_custom_block_definitions(),
+        'restUrl' => rest_url('acreline/v1/'),
+        'nonce' => wp_create_nonce('wp_rest'),
     ]);
 
     wp_enqueue_script('acreline-blocks');
@@ -323,31 +324,31 @@ add_action('init', function (): void {
     }
 
     register_block_pattern('acreline/home-page', [
-        'title'       => __('Acreline — Home page', 'acreline'),
+        'title' => __('Acreline — Home page', 'acreline'),
         'description' => __('Full homepage layout with hero, intent cards, spotlight, booking, market stats, tools, and CTA.', 'acreline'),
-        'categories'  => ['acreline'],
-        'content'     => ks_home_page_pattern(),
+        'categories' => ['acreline'],
+        'content' => ks_home_page_pattern(),
     ]);
 
     register_block_pattern('acreline/listings-page', [
-        'title'       => __('Acreline — Listings page', 'acreline'),
+        'title' => __('Acreline — Listings page', 'acreline'),
         'description' => __('Listings page: hero, filter grid, intro note, CTA.', 'acreline'),
-        'categories'  => ['acreline'],
-        'content'     => ks_listings_page_pattern(),
+        'categories' => ['acreline'],
+        'content' => ks_listings_page_pattern(),
     ]);
 
     register_block_pattern('acreline/areas-page', [
-        'title'       => __('Acreline — Areas page', 'acreline'),
+        'title' => __('Acreline — Areas page', 'acreline'),
         'description' => __('Areas page: hero, intro, area grid, CTA.', 'acreline'),
-        'categories'  => ['acreline'],
-        'content'     => ks_areas_page_pattern(),
+        'categories' => ['acreline'],
+        'content' => ks_areas_page_pattern(),
     ]);
 
     register_block_pattern('acreline/contact-page', [
-        'title'       => __('Acreline — Contact page', 'acreline'),
+        'title' => __('Acreline — Contact page', 'acreline'),
         'description' => __('Contact page: hero, office info + contact form, CTA.', 'acreline'),
-        'categories'  => ['acreline'],
-        'content'     => ks_contact_page_pattern(),
+        'categories' => ['acreline'],
+        'content' => ks_contact_page_pattern(),
     ]);
 }, 11);
 
@@ -374,14 +375,14 @@ add_action('save_post_page', function (int $postId): void {
     $blocks = parse_blocks($post->post_content);
 
     foreach ($blocks as $block) {
-        $name  = $block['blockName'] ?? '';
+        $name = $block['blockName'] ?? '';
         $attrs = $block['attrs'] ?? [];
 
         if (in_array($name, ['acreline/home-hero', 'acreline/page-hero'], true)) {
             $syncMap = [
-                'eyebrow'  => 'hero_eyebrow',
-                'title'    => 'hero_title',
-                'text'     => 'hero_text',
+                'eyebrow' => 'hero_eyebrow',
+                'title' => 'hero_title',
+                'text' => 'hero_text',
                 'imageUrl' => 'hero_image',
             ];
             foreach ($syncMap as $attrKey => $metaKey) {
@@ -422,10 +423,10 @@ function ks_migration_page(): void
         $action = sanitize_key((string) ($_POST['ks_action'] ?? ''));
 
         if ($action === 'reset') {
-            \App\Support\BlockMigration::resetMigrationRecord();
+            BlockMigration::resetMigrationRecord();
             $result = ['type' => 'info', 'msg' => __('Migration record cleared. Pages will be re-processed on next migration run.', 'acreline')];
         } else {
-            $result = \App\Support\BlockMigration::migrateAll();
+            $result = BlockMigration::migrateAll();
         }
     }
     ?>
@@ -476,26 +477,26 @@ function ks_migration_page(): void
 // ---------------------------------------------------------------------------
 add_action('rest_api_init', function (): void {
     register_rest_route('acreline/v1', '/custom-blocks', [
-        'methods'             => 'GET',
-        'callback'            => fn () => rest_ensure_response(ks_get_custom_block_definitions()),
+        'methods' => 'GET',
+        'callback' => fn () => rest_ensure_response(ks_get_custom_block_definitions()),
         'permission_callback' => fn () => current_user_can('edit_posts'),
     ]);
 
     register_rest_route('acreline/v1', '/custom-blocks', [
-        'methods'             => 'POST',
-        'callback'            => function (\WP_REST_Request $request) {
+        'methods' => 'POST',
+        'callback' => function (\WP_REST_Request $request) {
             $defs = ks_get_custom_block_definitions();
             $body = $request->get_json_params();
-            $id   = sanitize_key((string) ($body['id'] ?? uniqid('block_')));
+            $id = sanitize_key((string) ($body['id'] ?? uniqid('block_')));
             if ($id === '') {
                 return new \WP_Error('invalid', 'Block id is required.', ['status' => 400]);
             }
             $defs[$id] = [
-                'id'          => $id,
-                'title'       => sanitize_text_field((string) ($body['title'] ?? $id)),
+                'id' => $id,
+                'title' => sanitize_text_field((string) ($body['title'] ?? $id)),
                 'description' => sanitize_text_field((string) ($body['description'] ?? '')),
-                'icon'        => sanitize_key((string) ($body['icon'] ?? 'star-filled')),
-                'fields'      => ks_sanitize_block_fields((array) ($body['fields'] ?? [])),
+                'icon' => sanitize_key((string) ($body['icon'] ?? 'star-filled')),
+                'fields' => ks_sanitize_block_fields((array) ($body['fields'] ?? [])),
             ];
             update_option('ks_custom_blocks', $defs, false);
 
@@ -505,9 +506,9 @@ add_action('rest_api_init', function (): void {
     ]);
 
     register_rest_route('acreline/v1', '/custom-blocks/(?P<id>[a-z0-9_]+)', [
-        'methods'             => 'DELETE',
-        'callback'            => function (\WP_REST_Request $request) {
-            $id   = sanitize_key((string) $request['id']);
+        'methods' => 'DELETE',
+        'callback' => function (\WP_REST_Request $request) {
+            $id = sanitize_key((string) $request['id']);
             $defs = ks_get_custom_block_definitions();
             unset($defs[$id]);
             update_option('ks_custom_blocks', $defs, false);
@@ -546,9 +547,9 @@ function ks_sanitize_block_fields(array $fields): array
             $type = 'text';
         }
         $out[] = [
-            'name'    => sanitize_key((string) ($field['name'] ?? '')),
-            'label'   => sanitize_text_field((string) ($field['label'] ?? '')),
-            'type'    => $type,
+            'name' => sanitize_key((string) ($field['name'] ?? '')),
+            'label' => sanitize_text_field((string) ($field['label'] ?? '')),
+            'type' => $type,
             'default' => sanitize_text_field((string) ($field['default'] ?? '')),
         ];
     }
@@ -564,23 +565,23 @@ function ks_sanitize_block_fields(array $fields): array
 function ks_render_home_hero(array $attrs): string
 {
     $identity = Identity::toArray();
-    $listings  = Catalog::listings();
+    $listings = Catalog::listings();
     $townships = count(array_unique(array_filter(array_column($listings, 'township'))));
-    $count     = count($listings);
+    $count = count($listings);
 
-    $eyebrow   = esc_html($attrs['eyebrow'] ?? 'Farms, land, and historic homes');
-    $title     = wp_kses($attrs['title'] ?? 'Homes worth <em>walking through.</em>', ['em' => [], 'strong' => []]);
-    $text      = wp_kses($attrs['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]);
-    $primary   = esc_html($attrs['primaryLabel'] ?? 'Show matches');
+    $eyebrow = esc_html($attrs['eyebrow'] ?? 'Farms, land, and historic homes');
+    $title = wp_kses($attrs['title'] ?? 'Homes worth <em>walking through.</em>', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]);
+    $primary = esc_html($attrs['primaryLabel'] ?? 'Show matches');
     $secondary = esc_html($attrs['secondaryLabel'] ?? 'Browse all listings');
-    $imgUrl    = esc_url($attrs['imageUrl'] ?? '');
-    $bookUrl   = esc_url(home_url('/book/'));
-    $listUrl   = esc_url(home_url('/listings'));
-    $ldjson    = ks_home_ldjson($identity);
+    $imgUrl = esc_url($attrs['imageUrl'] ?? '');
+    $bookUrl = esc_url(home_url('/book/'));
+    $listUrl = esc_url(home_url('/listings'));
+    $ldjson = ks_home_ldjson($identity);
 
     ob_start();
     ?>
-    <?php echo $ldjson; // already escaped ?>
+    <?php echo $ldjson; // already escaped?>
     <section class="hero" id="top" aria-labelledby="hero-heading">
       <figure class="hero-media">
         <?php if ($imgUrl) { ?>
@@ -648,17 +649,17 @@ function ks_render_home_hero(array $attrs): string
 function ks_render_page_hero(array $attrs): string
 {
     $identity = Identity::toArray();
-    $brand    = esc_html($attrs['brand'] ?? '') ?: esc_html($identity['brand'] ?? 'Acreline');
-    $eyebrow  = esc_html($attrs['eyebrow'] ?? '');
-    $title    = wp_kses($attrs['title'] ?? '', ['em' => [], 'strong' => []]);
-    $text     = wp_kses($attrs['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]);
-    $primary  = esc_html($attrs['primaryLabel'] ?? 'Book a showing');
-    $pUrl     = esc_url($attrs['primaryUrl'] ?? '') ?: esc_url(home_url('/book/'));
+    $brand = esc_html($attrs['brand'] ?? '') ?: esc_html($identity['brand'] ?? 'Acreline');
+    $eyebrow = esc_html($attrs['eyebrow'] ?? '');
+    $title = wp_kses($attrs['title'] ?? '', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]);
+    $primary = esc_html($attrs['primaryLabel'] ?? 'Book a showing');
+    $pUrl = esc_url($attrs['primaryUrl'] ?? '') ?: esc_url(home_url('/book/'));
     $secondary = esc_html($attrs['secondaryLabel'] ?? '');
-    $sUrl      = esc_url($attrs['secondaryUrl'] ?? '');
-    $imgUrl    = esc_url($attrs['imageUrl'] ?? '');
-    $postId    = get_the_ID();
-    $thumbUrl  = $imgUrl ?: ($postId ? (string) get_the_post_thumbnail_url($postId, 'full') : '');
+    $sUrl = esc_url($attrs['secondaryUrl'] ?? '');
+    $imgUrl = esc_url($attrs['imageUrl'] ?? '');
+    $postId = get_the_ID();
+    $thumbUrl = $imgUrl ?: ($postId ? (string) get_the_post_thumbnail_url($postId, 'full') : '');
 
     ob_start();
     ?>
@@ -691,7 +692,7 @@ function ks_render_page_hero(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_intent_cards(array $attrs): string
 {
-    $a    = $attrs;
+    $a = $attrs;
     $listUrl = esc_url(home_url('/listings'));
     $bookUrl = esc_url(home_url('/book/'));
     $themeUri = esc_url(get_template_directory_uri());
@@ -747,7 +748,7 @@ function ks_render_intent_cards(array $attrs): string
               [$a['note2Title'] ?? 'Well and perc', $a['note2Text'] ?? 'Rural parcels rarely have municipal hookups — walk that before an offer.'],
               [$a['note3Title'] ?? 'Boots for showings', $a['note3Text'] ?? 'Lanes get muddy after rain. Mention pets if you are new to land.'],
           ];
-          foreach ($notes as [$nt, $nb]) { ?>
+    foreach ($notes as [$nt, $nb]) { ?>
             <li>
               <strong><?php echo wp_kses($nt, ['em' => []]); ?></strong>
               <span><?php echo wp_kses($nb, ['em' => [], 'strong' => []]); ?></span>
@@ -764,10 +765,10 @@ function ks_render_intent_cards(array $attrs): string
 function ks_render_spotlight(array $attrs): string
 {
     $featured = Catalog::featuredListings();
-    $eyebrow  = esc_html($attrs['eyebrow'] ?? 'Spotlight');
-    $title    = wp_kses($attrs['title'] ?? 'Three sample homes to scan', ['em' => [], 'strong' => []]);
-    $text     = wp_kses($attrs['text'] ?? 'Price · beds · acres — then book a fictional walk-through.', ['em' => []]);
-    $bookUrl  = esc_url(home_url('/book/'));
+    $eyebrow = esc_html($attrs['eyebrow'] ?? 'Spotlight');
+    $title = wp_kses($attrs['title'] ?? 'Three sample homes to scan', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'Price · beds · acres — then book a fictional walk-through.', ['em' => []]);
+    $bookUrl = esc_url(home_url('/book/'));
 
     ob_start();
     ?>
@@ -798,7 +799,7 @@ function ks_render_spotlight(array $attrs): string
                   </div>
                 </a>
               <?php }
-          } else { ?>
+              } else { ?>
             <p class="empty-state"><?php esc_html_e('Add featured listings in WP Admin → Listings.', 'acreline'); ?></p>
           <?php } ?>
         </div>
@@ -812,10 +813,10 @@ function ks_render_spotlight(array $attrs): string
 function ks_render_booking_section(array $attrs): string
 {
     $eyebrow = esc_html($attrs['eyebrow'] ?? 'Appointments');
-    $title   = wp_kses($attrs['title'] ?? 'Book a house showing', ['em' => [], 'strong' => []]);
-    $text    = wp_kses($attrs['text'] ?? 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.', ['em' => [], 'strong' => []]);
+    $title = wp_kses($attrs['title'] ?? 'Book a house showing', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.', ['em' => [], 'strong' => []]);
 
-    $bookingForm  = ks_booking_form_html();
+    $bookingForm = ks_booking_form_html();
     $bookingPhoto = ks_booking_photo_html();
 
     ob_start();
@@ -840,10 +841,10 @@ function ks_render_booking_section(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_market_stats(array $attrs): string
 {
-    $a       = $attrs;
+    $a = $attrs;
     $eyebrow = esc_html($a['eyebrow'] ?? 'Sample market');
-    $title   = wp_kses($a['title'] ?? 'Pulse at a glance', ['em' => [], 'strong' => []]);
-    $text    = wp_kses($a['text'] ?? '', ['em' => [], 'strong' => []]);
+    $title = wp_kses($a['title'] ?? 'Pulse at a glance', ['em' => [], 'strong' => []]);
+    $text = wp_kses($a['text'] ?? '', ['em' => [], 'strong' => []]);
 
     $stats = [
         [$a['stat1Val'] ?? '$398k', $a['stat1Lbl'] ?? 'Median sale price', $a['stat1Sub'] ?? '↑ 2.1% vs last quarter', 'up'],
@@ -883,11 +884,11 @@ function ks_render_market_stats(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_how_it_works(array $attrs): string
 {
-    $eyebrow  = esc_html($attrs['eyebrow'] ?? 'How a tour starts');
-    $title    = wp_kses($attrs['title'] ?? 'From search to showing', ['em' => [], 'strong' => []]);
-    $text     = wp_kses($attrs['text'] ?? 'Township first, then a walk on the ground — not office theater. This demo stops at on-page confirmation.', ['em' => []]);
+    $eyebrow = esc_html($attrs['eyebrow'] ?? 'How a tour starts');
+    $title = wp_kses($attrs['title'] ?? 'From search to showing', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'Township first, then a walk on the ground — not office theater. This demo stops at on-page confirmation.', ['em' => []]);
     $themeUri = esc_url(get_template_directory_uri());
-    $bookUrl  = esc_url(home_url('/book/'));
+    $bookUrl = esc_url(home_url('/book/'));
 
     $steps = [
         ['tour-step-township.jpg', 'Country road past a white farmhouse and red barn in a rural township', 'Filter the township', 'Start with the area so zoning and farmland-tax rules are not compared across Oak Hollow land and a North Ridge house.'],
@@ -932,8 +933,8 @@ function ks_render_how_it_works(array $attrs): string
 function ks_render_agent_tools(array $attrs): string
 {
     $eyebrow = esc_html($attrs['eyebrow'] ?? 'Agent tools');
-    $title   = wp_kses($attrs['title'] ?? 'Value range and listing alerts', ['em' => [], 'strong' => []]);
-    $text    = wp_kses($attrs['text'] ?? 'Two tools buyers and sellers use first.', ['em' => []]);
+    $title = wp_kses($attrs['title'] ?? 'Value range and listing alerts', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'Two tools buyers and sellers use first.', ['em' => []]);
 
     ob_start();
     ?>
@@ -1011,8 +1012,8 @@ function ks_render_agent_tools(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_seo_content(array $attrs): string
 {
-    $guideUrl    = esc_url(home_url('/guide'));
-    $areasUrl    = esc_url(home_url('/areas'));
+    $guideUrl = esc_url(home_url('/guide'));
+    $areasUrl = esc_url(home_url('/areas'));
     $listingsUrl = esc_url(home_url('/listings'));
 
     ob_start();
@@ -1044,7 +1045,7 @@ function ks_render_seo_content(array $attrs): string
                 ['Farms', 'Walk the working ground', ['Barn, shop, and outbuildings', 'Tillable versus wooded split', 'Livestock or orchard use', 'Water rights and irrigation']],
                 ['Next', 'Recommended next steps', ['Filter the sample listings', 'Read the township notes', 'Run a sample value range', 'Schedule a showing']],
             ];
-            foreach ($scanCards as [$num, $heading, $items]) { ?>
+    foreach ($scanCards as [$num, $heading, $items]) { ?>
               <article class="scan-card">
                 <span class="num"><?php echo esc_html($num); ?></span>
                 <h3><?php echo esc_html($heading); ?></h3>
@@ -1064,9 +1065,9 @@ function ks_render_seo_content(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_reviews(array $attrs): string
 {
-    $eyebrow  = esc_html($attrs['eyebrow'] ?? 'Samples');
-    $title    = wp_kses($attrs['title'] ?? 'What clients might say', ['em' => [], 'strong' => []]);
-    $text     = wp_kses($attrs['text'] ?? 'Placeholder quotes for layout — not real reviews.', ['em' => []]);
+    $eyebrow = esc_html($attrs['eyebrow'] ?? 'Samples');
+    $title = wp_kses($attrs['title'] ?? 'What clients might say', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'Placeholder quotes for layout — not real reviews.', ['em' => []]);
     $themeUri = esc_url(get_template_directory_uri());
     $starPath = 'M12 2.5l2.86 5.8 6.4.93-4.63 4.51 1.09 6.36L12 16.98 6.28 20.1l1.09-6.36L2.74 9.23l6.4-.93L12 2.5z';
 
@@ -1088,7 +1089,7 @@ function ks_render_reviews(array $attrs): string
         </header>
         <div class="testi-grid reveal" data-reviews-source="demo">
           <?php foreach ($reviews as [$author, $rating, $reviewText, $photo, $time, $loc]) {
-              $score    = number_format($rating, 1);
+              $score = number_format($rating, 1);
               $photoUrl = esc_url($themeUri.'/public/'.$photo);
               $initials = '';
               foreach (array_slice(preg_split('/\s+/', trim($author)) ?: [], 0, 2) as $part) {
@@ -1105,8 +1106,8 @@ function ks_render_reviews(array $attrs): string
                     <span class="visually-hidden"><?php echo esc_html(sprintf(__('Sample rating %s out of 5', 'acreline'), $score)); ?></span>
                     <span class="testi-stars" aria-hidden="true">
                       <?php for ($i = 1; $i <= 5; $i++) {
-                          $fill  = max(0, min(1, $rating - ($i - 1)));
-                          $cls   = $fill >= 1 ? 'is-full' : ($fill > 0 ? 'is-partial' : 'is-empty');
+                          $fill = max(0, min(1, $rating - ($i - 1)));
+                          $cls = $fill >= 1 ? 'is-full' : ($fill > 0 ? 'is-partial' : 'is-empty');
                           $style = ($fill > 0 && $fill < 1) ? ' style="--star-fill:'.((int) round($fill * 100)).'%"' : '';
                           ?>
                         <span class="testi-star <?php echo esc_attr($cls); ?>"<?php echo $style; ?>>
@@ -1132,10 +1133,10 @@ function ks_render_reviews(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_faq_list(array $attrs): string
 {
-    $title     = wp_kses($attrs['title'] ?? 'Questions buyers ask first', ['em' => [], 'strong' => []]);
-    $text      = wp_kses($attrs['text'] ?? 'Practical answers for house and acreage shoppers.', ['em' => []]);
+    $title = wp_kses($attrs['title'] ?? 'Questions buyers ask first', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'Practical answers for house and acreage shoppers.', ['em' => []]);
     $headClass = esc_attr($attrs['headClass'] ?? 'left');
-    $faqs      = Faqs::forContext();
+    $faqs = Faqs::forContext();
 
     if (empty($faqs)) {
         return '';
@@ -1166,12 +1167,12 @@ function ks_render_faq_list(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_cta_band(array $attrs): string
 {
-    $title    = wp_kses($attrs['title'] ?? 'Tour a sample home next.', ['em' => [], 'strong' => []]);
-    $text     = wp_kses($attrs['text'] ?? 'Pick an address, choose a slot, and see how a modern realtor booking flow feels.', ['em' => []]);
-    $pLabel   = esc_html($attrs['primaryLabel'] ?? 'Book a showing');
-    $pUrl     = esc_url($attrs['primaryUrl'] ?? '') ?: esc_url(home_url('/book/'));
-    $sLabel   = esc_html($attrs['secondaryLabel'] ?? 'Browse samples');
-    $sUrl     = esc_url($attrs['secondaryUrl'] ?? '') ?: esc_url(home_url('/listings'));
+    $title = wp_kses($attrs['title'] ?? 'Tour a sample home next.', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'Pick an address, choose a slot, and see how a modern realtor booking flow feels.', ['em' => []]);
+    $pLabel = esc_html($attrs['primaryLabel'] ?? 'Book a showing');
+    $pUrl = esc_url($attrs['primaryUrl'] ?? '') ?: esc_url(home_url('/book/'));
+    $sLabel = esc_html($attrs['secondaryLabel'] ?? 'Browse samples');
+    $sUrl = esc_url($attrs['secondaryUrl'] ?? '') ?: esc_url(home_url('/listings'));
 
     ob_start();
     ?>
@@ -1195,8 +1196,8 @@ function ks_render_cta_band(array $attrs): string
 function ks_render_intro_section(array $attrs): string
 {
     $eyebrow = esc_html($attrs['eyebrow'] ?? '');
-    $title   = wp_kses($attrs['title'] ?? '', ['em' => [], 'strong' => []]);
-    $text    = wp_kses($attrs['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]);
+    $title = wp_kses($attrs['title'] ?? '', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]);
 
     if (! $title && ! $text) {
         return '';
@@ -1221,7 +1222,7 @@ function ks_render_intro_section(array $attrs): string
 function ks_render_listing_grid(array $attrs): string
 {
     $introTitle = wp_kses($attrs['introTitle'] ?? 'Buying rural property', ['em' => [], 'strong' => []]);
-    $introText  = wp_kses($attrs['introText'] ?? 'Every sample parcel sits in an area.', ['em' => [], 'strong' => []]);
+    $introText = wp_kses($attrs['introText'] ?? 'Every sample parcel sits in an area.', ['em' => [], 'strong' => []]);
 
     ob_start();
     ?>
@@ -1306,11 +1307,11 @@ function ks_render_listing_grid(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_area_grid(array $attrs): string
 {
-    $a         = $attrs;
+    $a = $attrs;
     $gridEyebrow = esc_html($a['gridEyebrow'] ?? 'Area by area');
-    $gridTitle   = wp_kses($a['gridTitle'] ?? 'Where the sample office works', ['em' => [], 'strong' => []]);
-    $gridText    = wp_kses($a['gridText'] ?? '', ['em' => [], 'strong' => []]);
-    $pinSvg      = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
+    $gridTitle = wp_kses($a['gridTitle'] ?? 'Where the sample office works', ['em' => [], 'strong' => []]);
+    $gridText = wp_kses($a['gridText'] ?? '', ['em' => [], 'strong' => []]);
+    $pinSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 
     $areas = [];
     for ($i = 1; $i <= 6; $i++) {
@@ -1319,9 +1320,9 @@ function ks_render_area_grid(array $attrs): string
             continue;
         }
         $areas[] = [
-            'meta'  => (string) ($a["area{$i}Meta"] ?? ''),
+            'meta' => (string) ($a["area{$i}Meta"] ?? ''),
             'title' => $t,
-            'body'  => (string) ($a["area{$i}Body"] ?? ''),
+            'body' => (string) ($a["area{$i}Body"] ?? ''),
         ];
     }
 
@@ -1383,8 +1384,8 @@ function ks_render_tools_section(array $attrs): string
 function ks_render_how_we_work(array $attrs): string
 {
     $eyebrow = esc_html($attrs['eyebrow'] ?? 'How We Work');
-    $title   = wp_kses($attrs['title'] ?? 'What working with this office looks like', ['em' => [], 'strong' => []]);
-    $text    = wp_kses($attrs['text'] ?? 'No pressure, no jargon, and a straight answer about the ground under your feet.', ['em' => []]);
+    $title = wp_kses($attrs['title'] ?? 'What working with this office looks like', ['em' => [], 'strong' => []]);
+    $text = wp_kses($attrs['text'] ?? 'No pressure, no jargon, and a straight answer about the ground under your feet.', ['em' => []]);
 
     ob_start();
     ?>
@@ -1405,13 +1406,13 @@ function ks_render_how_we_work(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_office_info(array $attrs): string
 {
-    $identity    = Identity::toArray();
+    $identity = Identity::toArray();
     $officeTitle = esc_html($attrs['officeTitle'] ?? '') ?: esc_html($identity['brand'] ?? 'Acreline');
-    $address     = esc_html(Identity::address());
-    $phone       = esc_html(Identity::phone());
-    $phoneHref   = esc_url(Identity::phoneHref());
-    $email       = esc_html(Identity::email());
-    $hours       = esc_html(Identity::hours());
+    $address = esc_html(Identity::address());
+    $phone = esc_html(Identity::phone());
+    $phoneHref = esc_url(Identity::phoneHref());
+    $email = esc_html(Identity::email());
+    $hours = esc_html(Identity::hours());
 
     ob_start();
     ?>
@@ -1441,7 +1442,7 @@ function ks_render_office_info(array $attrs): string
 function ks_render_contact_form(array $attrs): string
 {
     $formTitle = wp_kses($attrs['formTitle'] ?? 'Send us a message', ['em' => [], 'strong' => []]);
-    $formText  = wp_kses($attrs['formText'] ?? "Tell us what you're looking for and we'll be in touch.", ['em' => [], 'strong' => []]);
+    $formText = wp_kses($attrs['formText'] ?? "Tell us what you're looking for and we'll be in touch.", ['em' => [], 'strong' => []]);
 
     ob_start();
     ?>
@@ -1475,7 +1476,7 @@ function ks_render_contact_form(array $attrs): string
               </form>
               <div class="confirm-msg" id="contactConfirm" role="status" aria-live="polite">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
-                <span><?php esc_html_e("Thanks! This is a concept demo — on your live site, this message would go to the listing office.", 'acreline'); ?></span>
+                <span><?php esc_html_e('Thanks! This is a concept demo — on your live site, this message would go to the listing office.', 'acreline'); ?></span>
               </div>
             </div>
           </div>
@@ -1490,7 +1491,7 @@ function ks_render_contact_form(array $attrs): string
 function ks_render_book_note(array $attrs): string
 {
     $note = wp_kses($attrs['note'] ?? 'Demo only — no emails, texts or calendar invites are sent.', ['em' => [], 'strong' => []]);
-    $bookingForm  = ks_booking_form_html();
+    $bookingForm = ks_booking_form_html();
     $bookingPhoto = ks_booking_photo_html();
 
     ob_start();
@@ -1523,9 +1524,9 @@ function ks_render_custom_block(array $attrs): string
         return '';
     }
 
-    $def    = $defs[$blockId];
+    $def = $defs[$blockId];
     $fields = (array) ($attrs['fields'] ?? []);
-    $title  = esc_html($def['title'] ?? $blockId);
+    $title = esc_html($def['title'] ?? $blockId);
 
     ob_start();
     ?>
@@ -1534,7 +1535,7 @@ function ks_render_custom_block(array $attrs): string
         <div class="ks-custom-block-inner reveal">
           <h2 class="ks-custom-block-title"><?php echo $title; ?></h2>
           <?php foreach ((array) ($def['fields'] ?? []) as $field) {
-              $name  = sanitize_key((string) ($field['name'] ?? ''));
+              $name = sanitize_key((string) ($field['name'] ?? ''));
               $label = esc_html($field['label'] ?? $name);
               $value = wp_kses((string) ($fields[$name] ?? $field['default'] ?? ''), ['em' => [], 'strong' => [], 'br' => [], 'a' => ['href' => []]]);
               if (! $name || ! $value) {
@@ -1547,7 +1548,7 @@ function ks_render_custom_block(array $attrs): string
               <?php } else { ?>
                 <p class="ks-field-text"><span class="ks-field-label"><?php echo $label; ?>:</span> <?php echo $value; ?></p>
               <?php }
-          } ?>
+              } ?>
         </div>
       </div>
     </section>
@@ -1603,8 +1604,8 @@ function ks_contact_page_pattern(): string
 function ks_booking_form_html(): string
 {
     $listings = Catalog::listings();
-    $restUrl  = esc_url(rest_url('keystone/v1/bookings'));
-    $nonce    = esc_attr(wp_create_nonce('wp_rest'));
+    $restUrl = esc_url(rest_url('keystone/v1/bookings'));
+    $nonce = esc_attr(wp_create_nonce('wp_rest'));
 
     ob_start();
     ?>
@@ -1732,7 +1733,7 @@ function ks_how_we_work_steps_html(): string
 function ks_home_ldjson(array $identity): string
 {
     $brand = esc_js($identity['brand'] ?? 'Acreline');
-    $url   = esc_url(home_url('/'));
+    $url = esc_url(home_url('/'));
     $email = esc_js($identity['email'] ?? 'hello@acreline-concept.test');
 
     return '<script type="application/ld+json">{"@context":"https://schema.org","@type":"RealEstateAgent","name":"'.esc_js($brand).' (Concept Demo)","description":"Fictional concept brokerage for design demonstration. Not a live MLS or licensed office.","url":"'.esc_js($url).'","telephone":"+1-555-010-0455","email":"'.esc_js($email).'","priceRange":"$$","address":{"@type":"PostalAddress","streetAddress":"100 Concept Way","addressLocality":"Sample Borough","addressRegion":"PA","postalCode":"00000","addressCountry":"US"}}</script>';

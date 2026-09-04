@@ -27,7 +27,7 @@ function ks_block_generator_page(): void
     }
 
     $defs = ks_get_custom_block_definitions();
-    $saved  = false;
+    $saved = false;
     $errors = [];
 
     // Handle form submission
@@ -44,10 +44,10 @@ function ks_block_generator_page(): void
             update_option('ks_custom_blocks', $defs, false);
             $saved = true;
         } elseif ($action === 'save') {
-            $id    = sanitize_key((string) ($_POST['ks_block_id'] ?? ''));
+            $id = sanitize_key((string) ($_POST['ks_block_id'] ?? ''));
             $title = sanitize_text_field((string) ($_POST['ks_block_title'] ?? ''));
-            $desc  = sanitize_text_field((string) ($_POST['ks_block_description'] ?? ''));
-            $icon  = sanitize_key((string) ($_POST['ks_block_icon'] ?? 'star-filled'));
+            $desc = sanitize_text_field((string) ($_POST['ks_block_description'] ?? ''));
+            $icon = sanitize_key((string) ($_POST['ks_block_icon'] ?? 'star-filled'));
 
             if ($id === '') {
                 $errors[] = __('Block ID is required.', 'acreline');
@@ -60,9 +60,9 @@ function ks_block_generator_page(): void
             }
 
             if (empty($errors)) {
-                $fieldNames   = array_map('sanitize_key', (array) ($_POST['ks_field_name'] ?? []));
-                $fieldLabels  = array_map('sanitize_text_field', (array) ($_POST['ks_field_label'] ?? []));
-                $fieldTypes   = (array) ($_POST['ks_field_type'] ?? []);
+                $fieldNames = array_map('sanitize_key', (array) ($_POST['ks_field_name'] ?? []));
+                $fieldLabels = array_map('sanitize_text_field', (array) ($_POST['ks_field_label'] ?? []));
+                $fieldTypes = (array) ($_POST['ks_field_type'] ?? []);
                 $fieldDefaults = array_map('sanitize_text_field', (array) ($_POST['ks_field_default'] ?? []));
 
                 $fields = [];
@@ -75,19 +75,19 @@ function ks_block_generator_page(): void
                         $ftype = 'text';
                     }
                     $fields[] = [
-                        'name'    => $fname,
-                        'label'   => $fieldLabels[$i] ?? $fname,
-                        'type'    => $ftype,
+                        'name' => $fname,
+                        'label' => $fieldLabels[$i] ?? $fname,
+                        'type' => $ftype,
                         'default' => $fieldDefaults[$i] ?? '',
                     ];
                 }
 
                 $defs[$id] = [
-                    'id'          => $id,
-                    'title'       => $title,
+                    'id' => $id,
+                    'title' => $title,
                     'description' => $desc,
-                    'icon'        => $icon,
-                    'fields'      => $fields,
+                    'icon' => $icon,
+                    'fields' => $fields,
                 ];
                 update_option('ks_custom_blocks', $defs, false);
                 $saved = true;
@@ -97,25 +97,25 @@ function ks_block_generator_page(): void
 
     $icons = [
         'star-filled' => __('Star', 'acreline'),
-        'admin-page'  => __('Page', 'acreline'),
-        'layout'      => __('Layout', 'acreline'),
-        'images-alt'  => __('Images', 'acreline'),
-        'text'        => __('Text', 'acreline'),
-        'email'       => __('Email', 'acreline'),
-        'location'    => __('Location', 'acreline'),
-        'phone'       => __('Phone', 'acreline'),
-        'groups'      => __('Team', 'acreline'),
-        'tag'         => __('Tag', 'acreline'),
-        'lightbulb'   => __('Idea', 'acreline'),
-        'chart-line'  => __('Chart', 'acreline'),
+        'admin-page' => __('Page', 'acreline'),
+        'layout' => __('Layout', 'acreline'),
+        'images-alt' => __('Images', 'acreline'),
+        'text' => __('Text', 'acreline'),
+        'email' => __('Email', 'acreline'),
+        'location' => __('Location', 'acreline'),
+        'phone' => __('Phone', 'acreline'),
+        'groups' => __('Team', 'acreline'),
+        'tag' => __('Tag', 'acreline'),
+        'lightbulb' => __('Idea', 'acreline'),
+        'chart-line' => __('Chart', 'acreline'),
     ];
 
     $fieldTypes = [
-        'text'     => __('Single line text', 'acreline'),
+        'text' => __('Single line text', 'acreline'),
         'textarea' => __('Multi-line text', 'acreline'),
-        'url'      => __('URL / Link', 'acreline'),
-        'image'    => __('Image URL', 'acreline'),
-        'toggle'   => __('Toggle (yes/no)', 'acreline'),
+        'url' => __('URL / Link', 'acreline'),
+        'image' => __('Image URL', 'acreline'),
+        'toggle' => __('Toggle (yes/no)', 'acreline'),
     ];
     ?>
     <div class="wrap ks-block-generator">
@@ -225,12 +225,12 @@ function ks_block_generator_page(): void
                           fn ($f) => esc_html($f['label'] ?? $f['name'] ?? ''),
                           (array) ($def['fields'] ?? [])
                       );
-                      echo esc_html(
-                          count($fieldList)
-                              ? sprintf(__('%d field(s): %s', 'acreline'), count($fieldList), implode(', ', $fieldList))
-                              : __('No fields defined', 'acreline')
-                      );
-                      ?>
+                  echo esc_html(
+                      count($fieldList)
+                          ? sprintf(__('%d field(s): %s', 'acreline'), count($fieldList), implode(', ', $fieldList))
+                          : __('No fields defined', 'acreline')
+                  );
+                  ?>
                     </p>
                   </div>
                   <div class="ks-block-card-actions">
