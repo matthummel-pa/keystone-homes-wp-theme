@@ -36,21 +36,38 @@ add_action('init', function (): void {
 
 function ks_register_blocks(): void
 {
+    // Shared attribute groups — merged into blocks that use them.
+    $typo = [
+        'headingAlign' => ['type' => 'string', 'default' => 'left'],
+        'headingSize' => ['type' => 'string', 'default' => 'default'],
+        'headingWeight' => ['type' => 'string', 'default' => 'default'],
+        'bodySize' => ['type' => 'string', 'default' => 'default'],
+    ];
+
+    $heroBase = [
+        'imageId' => ['type' => 'integer', 'default' => 0],
+        'heroHeight' => ['type' => 'string', 'default' => 'default'],
+        'overlayOpacity' => ['type' => 'integer', 'default' => 60],
+        'overlayPreset' => ['type' => 'string', 'default' => 'default'],
+        'imagePosition' => ['type' => 'string', 'default' => 'center'],
+        'textAlign' => ['type' => 'string', 'default' => 'left'],
+    ];
+
     $blocks = [
         'acreline/home-hero' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_home_hero',
-            'attributes' => [
+            'attributes' => array_merge($typo, $heroBase, [
                 'eyebrow' => ['type' => 'string', 'default' => 'Farms, land, and historic homes'],
                 'title' => ['type' => 'string', 'default' => 'Homes worth <em>walking through.</em>'],
                 'text' => ['type' => 'string', 'default' => 'Sample farms, historic houses, and acreage across three demo areas. Filter by type and township, then schedule a showing.'],
                 'imageUrl' => ['type' => 'string', 'default' => ''],
                 'primaryLabel' => ['type' => 'string', 'default' => 'Show matches'],
                 'secondaryLabel' => ['type' => 'string', 'default' => 'Browse all listings'],
-            ],
+            ]),
         ],
         'acreline/page-hero' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_page_hero',
-            'attributes' => [
+            'attributes' => array_merge($typo, $heroBase, [
                 'brand' => ['type' => 'string', 'default' => ''],
                 'eyebrow' => ['type' => 'string', 'default' => ''],
                 'title' => ['type' => 'string', 'default' => ''],
@@ -60,11 +77,11 @@ function ks_register_blocks(): void
                 'primaryUrl' => ['type' => 'string', 'default' => ''],
                 'secondaryLabel' => ['type' => 'string', 'default' => ''],
                 'secondaryUrl' => ['type' => 'string', 'default' => ''],
-            ],
+            ]),
         ],
         'acreline/intent-cards' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_intent_cards',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'Start here'],
                 'title' => ['type' => 'string', 'default' => 'Pick the path'],
                 'text' => ['type' => 'string', 'default' => 'Then we match a listing or a tour. Township first — the rest follows.'],
@@ -87,27 +104,32 @@ function ks_register_blocks(): void
                 'note2Text' => ['type' => 'string', 'default' => 'Rural parcels rarely have municipal hookups — walk that before an offer.'],
                 'note3Title' => ['type' => 'string', 'default' => 'Boots for showings'],
                 'note3Text' => ['type' => 'string', 'default' => 'Lanes get muddy after rain. Mention pets if you are new to land.'],
-            ],
+                'cardStyle' => ['type' => 'string', 'default' => 'photo'],
+                'intentCols' => ['type' => 'string', 'default' => '3'],
+            ]),
         ],
         'acreline/spotlight' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_spotlight',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'Spotlight'],
                 'title' => ['type' => 'string', 'default' => 'Three sample homes to scan'],
                 'text' => ['type' => 'string', 'default' => 'Price · beds · acres — then book a fictional walk-through.'],
-            ],
+                'itemCount' => ['type' => 'integer', 'default' => 3],
+                'gridCols' => ['type' => 'string', 'default' => 'auto'],
+            ]),
         ],
         'acreline/booking-section' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_booking_section',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'Appointments'],
                 'title' => ['type' => 'string', 'default' => 'Book a house showing'],
                 'text' => ['type' => 'string', 'default' => 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.'],
-            ],
+                'showSidePhoto' => ['type' => 'boolean', 'default' => true],
+            ]),
         ],
         'acreline/market-stats' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_market_stats',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'Sample market'],
                 'title' => ['type' => 'string', 'default' => 'Pulse at a glance'],
                 'text' => ['type' => 'string', 'default' => 'A sample snapshot of how this inventory would read in a listing conversation — not a live CMA or MLS feed.'],
@@ -123,23 +145,27 @@ function ks_register_blocks(): void
                 'stat4Val' => ['type' => 'string', 'default' => '95%'],
                 'stat4Lbl' => ['type' => 'string', 'default' => 'List-to-sale ratio'],
                 'stat4Sub' => ['type' => 'string', 'default' => 'Offers near asking'],
-            ],
+                'statsLayout' => ['type' => 'string', 'default' => '4-col'],
+            ]),
         ],
         'acreline/how-it-works' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_how_it_works',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'How a tour starts'],
                 'title' => ['type' => 'string', 'default' => 'From search to showing'],
                 'text' => ['type' => 'string', 'default' => 'Township first, then a walk on the ground — not office theater. This demo stops at on-page confirmation.'],
-            ],
+                'stepLayout' => ['type' => 'string', 'default' => 'grid'],
+            ]),
         ],
         'acreline/agent-tools' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_agent_tools',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'Agent tools'],
                 'title' => ['type' => 'string', 'default' => 'Value range and listing alerts'],
                 'text' => ['type' => 'string', 'default' => 'Two tools buyers and sellers use first: a sample value range, then an alert for new matches.'],
-            ],
+                'showValueTool' => ['type' => 'boolean', 'default' => true],
+                'showAlertTool' => ['type' => 'boolean', 'default' => true],
+            ]),
         ],
         'acreline/seo-content' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_seo_content',
@@ -147,19 +173,26 @@ function ks_register_blocks(): void
         ],
         'acreline/reviews' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_reviews',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'Samples'],
                 'title' => ['type' => 'string', 'default' => 'What clients might say'],
                 'text' => ['type' => 'string', 'default' => 'Placeholder quotes for layout — not real reviews. Sample names and photos only.'],
-            ],
+                'reviewLayout' => ['type' => 'string', 'default' => 'grid'],
+                'reviewCols' => ['type' => 'string', 'default' => '3'],
+                'showRating' => ['type' => 'boolean', 'default' => true],
+                'showPhoto' => ['type' => 'boolean', 'default' => true],
+            ]),
         ],
         'acreline/faq-list' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_faq_list',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'title' => ['type' => 'string', 'default' => 'Questions buyers ask first'],
                 'text' => ['type' => 'string', 'default' => 'Practical answers for house and acreage shoppers.'],
                 'headClass' => ['type' => 'string', 'default' => 'left'],
-            ],
+                'faqStyle' => ['type' => 'string', 'default' => 'dl'],
+                'listIcon' => ['type' => 'string', 'default' => 'none'],
+                'showNumbers' => ['type' => 'boolean', 'default' => false],
+            ]),
         ],
         'acreline/cta-band' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_cta_band',
@@ -170,26 +203,31 @@ function ks_register_blocks(): void
                 'primaryUrl' => ['type' => 'string', 'default' => ''],
                 'secondaryLabel' => ['type' => 'string', 'default' => 'Browse samples'],
                 'secondaryUrl' => ['type' => 'string', 'default' => ''],
+                'bandStyle' => ['type' => 'string', 'default' => 'light'],
+                'contentAlign' => ['type' => 'string', 'default' => 'left'],
+                'headingSize' => ['type' => 'string', 'default' => 'default'],
             ],
         ],
         'acreline/intro-section' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_intro_section',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => ''],
                 'title' => ['type' => 'string', 'default' => ''],
                 'text' => ['type' => 'string', 'default' => ''],
-            ],
+            ]),
         ],
         'acreline/listing-grid' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_listing_grid',
             'attributes' => [
                 'introTitle' => ['type' => 'string', 'default' => 'Buying rural property'],
                 'introText' => ['type' => 'string', 'default' => 'Every sample parcel sits in an area — zoning, lot size, and farmland tax rules change from one ridge to the next. Filter first, then book a walk.'],
+                'defaultView' => ['type' => 'string', 'default' => 'grid'],
+                'gridCols' => ['type' => 'string', 'default' => '3'],
             ],
         ],
         'acreline/area-grid' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_area_grid',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'gridEyebrow' => ['type' => 'string', 'default' => 'Area by area'],
                 'gridTitle' => ['type' => 'string', 'default' => 'Where the sample office works'],
                 'gridText' => ['type' => 'string', 'default' => 'A quick read on six rural area types — what the ground is like, what tends to list, and what a buyer should watch for.'],
@@ -211,30 +249,38 @@ function ks_register_blocks(): void
                 'area6Meta' => ['type' => 'string', 'default' => 'South line · small farms and commute'],
                 'area6Title' => ['type' => 'string', 'default' => 'Border Farms'],
                 'area6Body' => ['type' => 'string', 'default' => 'Small farms, pasture, and wooded homesteads with an easier drive to jobs and grocery stores. Good first-land-buyer ground.'],
-            ],
+                'gridCols' => ['type' => 'string', 'default' => '3'],
+                'showIndex' => ['type' => 'boolean', 'default' => true],
+            ]),
         ],
         'acreline/tools-section' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_tools_section',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'introTitle' => ['type' => 'string', 'default' => "What's different about buying land"],
                 'introText' => ['type' => 'string', 'default' => 'When you buy an existing home, utilities are usually sorted. Out in the townships you often have to prove water, septic and access yourself — and those answers change the value of the ground.'],
                 'eyebrow' => ['type' => 'string', 'default' => 'Run Your Numbers'],
                 'title' => ['type' => 'string', 'default' => 'Land-loan &amp; pre-qualification tools'],
                 'text' => ['type' => 'string', 'default' => 'Friendly estimates to help you plan — not loan offers. A licensed lender will verify everything with full documentation.'],
-            ],
+                'showLoanTool' => ['type' => 'boolean', 'default' => true],
+                'showPrequalTool' => ['type' => 'boolean', 'default' => true],
+            ]),
         ],
         'acreline/how-we-work' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_how_we_work',
-            'attributes' => [
+            'attributes' => array_merge($typo, [
                 'eyebrow' => ['type' => 'string', 'default' => 'How We Work'],
                 'title' => ['type' => 'string', 'default' => 'What working with this office looks like'],
                 'text' => ['type' => 'string', 'default' => 'No pressure, no jargon, and a straight answer about the ground under your feet.'],
-            ],
+                'stepsStyle' => ['type' => 'string', 'default' => 'numbered'],
+                'stepsLayout' => ['type' => 'string', 'default' => 'row'],
+            ]),
         ],
         'acreline/office-info' => [
             'render_callback' => __NAMESPACE__.'\\ks_render_office_info',
             'attributes' => [
                 'officeTitle' => ['type' => 'string', 'default' => ''],
+                'showMap' => ['type' => 'boolean', 'default' => true],
+                'infoLayout' => ['type' => 'string', 'default' => 'vertical'],
             ],
         ],
         'acreline/contact-form' => [
@@ -248,6 +294,8 @@ function ks_register_blocks(): void
             'render_callback' => __NAMESPACE__.'\\ks_render_book_note',
             'attributes' => [
                 'note' => ['type' => 'string', 'default' => 'Demo only — no emails, texts or calendar invites are sent. Staff can advance the booking in WP Admin → Bookings.'],
+                'noteStyle' => ['type' => 'string', 'default' => 'plain'],
+                'showSidePhoto' => ['type' => 'boolean', 'default' => false],
             ],
         ],
         'acreline/custom' => [
@@ -262,6 +310,112 @@ function ks_register_blocks(): void
     foreach ($blocks as $name => $args) {
         register_block_type($name, $args);
     }
+}
+
+// ---------------------------------------------------------------------------
+// PHP render helpers — apply attribute-driven classes to block HTML
+// ---------------------------------------------------------------------------
+
+/**
+ * Build section-head CSS classes from typography attributes.
+ * Adds to a base string like 'section-head left reveal'.
+ */
+function ks_head_class(array $attrs, string $base = 'section-head left reveal'): string
+{
+    $cls = $base;
+
+    $align = sanitize_key((string) ($attrs['headingAlign'] ?? 'left'));
+    if ($align === 'center') {
+        $cls = str_replace([' left', ' center'], '', $cls).' center ks-head--center';
+    }
+
+    $size = sanitize_key((string) ($attrs['headingSize'] ?? 'default'));
+    if ($size !== 'default') {
+        $cls .= ' ks-head--size-'.$size;
+    }
+
+    $weight = sanitize_key((string) ($attrs['headingWeight'] ?? 'default'));
+    if ($weight !== 'default') {
+        $cls .= ' ks-head--weight-'.$weight;
+    }
+
+    $bodySize = sanitize_key((string) ($attrs['bodySize'] ?? 'default'));
+    if ($bodySize !== 'default') {
+        $cls .= ' ks-body--'.$bodySize;
+    }
+
+    return trim($cls);
+}
+
+/**
+ * Build hero section CSS class string from hero-specific attributes.
+ */
+function ks_hero_class(array $attrs, string $base = 'hero'): string
+{
+    $cls = $base;
+
+    $height = sanitize_key((string) ($attrs['heroHeight'] ?? 'default'));
+    if (in_array($height, ['compact', 'tall'], true)) {
+        $cls .= ' ks-hero--'.$height;
+    }
+
+    $align = sanitize_key((string) ($attrs['textAlign'] ?? 'left'));
+    if ($align === 'center') {
+        $cls .= ' ks-hero--center';
+    }
+
+    $overlay = sanitize_key((string) ($attrs['overlayPreset'] ?? 'default'));
+    if (in_array($overlay, ['light', 'dark'], true)) {
+        $cls .= ' ks-overlay--'.$overlay;
+    }
+
+    $imgPos = sanitize_key((string) ($attrs['imagePosition'] ?? 'center'));
+    if (in_array($imgPos, ['top', 'bottom'], true)) {
+        $cls .= ' img-pos--'.$imgPos;
+    }
+
+    return trim($cls);
+}
+
+/**
+ * Resolve hero image URL: try stored URL, then attachment ID, then featured image.
+ */
+function ks_hero_image_url(array $attrs, int $postId = 0): string
+{
+    $url = esc_url_raw((string) ($attrs['imageUrl'] ?? ''));
+    if ($url !== '') {
+        return $url;
+    }
+
+    $id = (int) ($attrs['imageId'] ?? 0);
+    if ($id > 0) {
+        $fromId = wp_get_attachment_image_url($id, 'full');
+        if (is_string($fromId) && $fromId !== '') {
+            return $fromId;
+        }
+    }
+
+    $thumbId = $postId > 0 ? get_post_thumbnail_id($postId) : get_post_thumbnail_id();
+    if ($thumbId) {
+        $fromThumb = wp_get_attachment_image_url((int) $thumbId, 'full');
+
+        return is_string($fromThumb) ? $fromThumb : '';
+    }
+
+    return '';
+}
+
+/**
+ * Inline style string for the hero veil at a custom opacity (0-100).
+ */
+function ks_veil_style(array $attrs): string
+{
+    $opacity = max(0, min(100, (int) ($attrs['overlayOpacity'] ?? 60)));
+    if ($opacity === 60) {
+        return '';
+    }
+
+    return 'opacity:'.number_format($opacity / 100, 2);
 }
 
 // ---------------------------------------------------------------------------
@@ -574,7 +728,9 @@ function ks_render_home_hero(array $attrs): string
     $text = wp_kses($attrs['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]);
     $primary = esc_html($attrs['primaryLabel'] ?? 'Show matches');
     $secondary = esc_html($attrs['secondaryLabel'] ?? 'Browse all listings');
-    $imgUrl = esc_url($attrs['imageUrl'] ?? '');
+    $imgUrl = esc_url(ks_hero_image_url($attrs));
+    $heroClass = esc_attr(ks_hero_class($attrs, 'hero'));
+    $veilStyle = ks_veil_style($attrs);
     $bookUrl = esc_url(home_url('/book/'));
     $listUrl = esc_url(home_url('/listings'));
     $ldjson = ks_home_ldjson($identity);
@@ -582,15 +738,11 @@ function ks_render_home_hero(array $attrs): string
     ob_start();
     ?>
     <?php echo $ldjson; // already escaped?>
-    <section class="hero" id="top" aria-labelledby="hero-heading">
+    <section class="<?php echo $heroClass; ?>" id="top" aria-labelledby="hero-heading">
       <figure class="hero-media">
-        <?php if ($imgUrl) { ?>
-          <img src="<?php echo esc_url($imgUrl); ?>" width="1600" height="900" alt="" fetchpriority="high" loading="eager" decoding="sync">
-        <?php } else { ?>
-          <img src="<?php echo esc_url(get_theme_file_uri('public/images/hero.jpg')); ?>" width="1600" height="900" alt="" fetchpriority="high" loading="eager" decoding="sync">
-        <?php } ?>
+        <img src="<?php echo $imgUrl ?: esc_url(get_theme_file_uri('public/images/hero.jpg')); ?>" width="1600" height="900" alt="" fetchpriority="high" loading="eager" decoding="sync">
       </figure>
-      <div class="hero-veil" aria-hidden="true"></div>
+      <div class="hero-veil" aria-hidden="true"<?php if ($veilStyle) { ?> style="<?php echo esc_attr($veilStyle); ?>"<?php } ?>></div>
       <div class="hero-inner">
         <p class="hero-eyebrow"><?php echo $eyebrow; ?></p>
         <h1 id="hero-heading"><?php echo $title; ?></h1>
@@ -657,21 +809,17 @@ function ks_render_page_hero(array $attrs): string
     $pUrl = esc_url($attrs['primaryUrl'] ?? '') ?: esc_url(home_url('/book/'));
     $secondary = esc_html($attrs['secondaryLabel'] ?? '');
     $sUrl = esc_url($attrs['secondaryUrl'] ?? '');
-    $imgUrl = esc_url($attrs['imageUrl'] ?? '');
-    $postId = get_the_ID();
-    $thumbUrl = $imgUrl ?: ($postId ? (string) get_the_post_thumbnail_url($postId, 'full') : '');
+    $thumbUrl = esc_url(ks_hero_image_url($attrs, (int) get_the_ID()));
+    $heroClass = esc_attr(ks_hero_class($attrs, 'page-hero page-hero--photo'));
+    $veilStyle = ks_veil_style($attrs);
 
     ob_start();
     ?>
-    <section class="page-hero page-hero--photo" aria-labelledby="page-hero-heading">
+    <section class="<?php echo $heroClass; ?>" aria-labelledby="page-hero-heading">
       <figure class="page-hero-media">
-        <?php if ($thumbUrl) { ?>
-          <img src="<?php echo esc_url($thumbUrl); ?>" width="1600" height="900" alt="" fetchpriority="high" loading="eager" decoding="sync">
-        <?php } else { ?>
-          <img src="<?php echo esc_url(get_theme_file_uri('public/images/hero.jpg')); ?>" width="1600" height="900" alt="" fetchpriority="high" loading="eager" decoding="sync">
-        <?php } ?>
+        <img src="<?php echo $thumbUrl ?: esc_url(get_theme_file_uri('public/images/hero.jpg')); ?>" width="1600" height="900" alt="" fetchpriority="high" loading="eager" decoding="sync">
       </figure>
-      <div class="page-hero-veil" aria-hidden="true"></div>
+      <div class="page-hero-veil" aria-hidden="true"<?php if ($veilStyle) { ?> style="<?php echo esc_attr($veilStyle); ?>"<?php } ?>></div>
       <div class="page-hero-inner">
         <?php if ($brand) { ?><p class="hero-brand"><?php echo $brand; ?></p><?php } ?>
         <?php if ($eyebrow) { ?><p class="hero-eyebrow"><?php echo $eyebrow; ?></p><?php } ?>
@@ -697,20 +845,32 @@ function ks_render_intent_cards(array $attrs): string
     $bookUrl = esc_url(home_url('/book/'));
     $themeUri = esc_url(get_template_directory_uri());
 
+    $cardStyle = sanitize_key((string) ($a['cardStyle'] ?? 'photo'));
+    $gridClass = ks_head_class($a, 'section-head left intent-head reveal');
+
+    // Grid: 2-col or default 3-col
+    $gridCols = sanitize_key((string) ($a['intentCols'] ?? '3'));
+    $gridCls = 'intent-grid reveal'.($gridCols === '2' ? ' ks-cols--2' : '');
+
+    // Card style modifier
+    $cardCls = $cardStyle === 'flat' ? ' ks-style--flat' : '';
+
     ob_start();
     ?>
     <section class="intent-band" id="search" aria-labelledby="intent-heading">
       <div class="wrap">
-        <header class="section-head left intent-head reveal">
+        <header class="<?php echo esc_attr($gridClass); ?>">
           <p class="eyebrow"><?php echo esc_html($a['eyebrow'] ?? 'Start here'); ?></p>
           <h2 id="intent-heading"><?php echo wp_kses($a['title'] ?? 'Pick the path', ['em' => [], 'strong' => []]); ?></h2>
           <p><?php echo wp_kses($a['text'] ?? '', ['em' => [], 'strong' => [], 'br' => []]); ?></p>
         </header>
-        <div class="intent-grid reveal">
-          <a class="intent-card" href="<?php echo $listUrl; ?>">
+        <div class="<?php echo esc_attr($gridCls); ?>">
+          <a class="intent-card<?php echo esc_attr($cardCls); ?>" href="<?php echo $listUrl; ?>">
+            <?php if ($cardStyle !== 'flat') { ?>
             <figure class="intent-photo">
               <img src="<?php echo $themeUri; ?>/public/images/intent-buy.jpg" width="1200" height="900" alt="" decoding="async">
             </figure>
+            <?php } ?>
             <div class="intent-copy">
               <span class="intent-kicker"><?php echo esc_html($a['buyKicker'] ?? 'Buy'); ?></span>
               <h3><?php echo wp_kses($a['buyTitle'] ?? 'Scan homes, farms, and land', ['em' => []]); ?></h3>
@@ -718,10 +878,12 @@ function ks_render_intent_cards(array $attrs): string
               <span class="intent-go"><?php echo esc_html($a['buyCta'] ?? 'Browse listings'); ?> →</span>
             </div>
           </a>
-          <a class="intent-card" href="#value">
+          <a class="intent-card<?php echo esc_attr($cardCls); ?>" href="#value">
+            <?php if ($cardStyle !== 'flat') { ?>
             <figure class="intent-photo">
               <img src="<?php echo $themeUri; ?>/public/images/intent-sell.jpg" width="1200" height="900" alt="" decoding="async">
             </figure>
+            <?php } ?>
             <div class="intent-copy">
               <span class="intent-kicker"><?php echo esc_html($a['sellKicker'] ?? 'Sell'); ?></span>
               <h3><?php echo wp_kses($a['sellTitle'] ?? 'Price it before you list', ['em' => []]); ?></h3>
@@ -729,10 +891,12 @@ function ks_render_intent_cards(array $attrs): string
               <span class="intent-go"><?php echo esc_html($a['sellCta'] ?? 'Estimate value'); ?> →</span>
             </div>
           </a>
-          <a class="intent-card is-primary" href="<?php echo $bookUrl; ?>">
+          <a class="intent-card is-primary<?php echo esc_attr($cardCls); ?>" href="<?php echo $bookUrl; ?>">
+            <?php if ($cardStyle !== 'flat') { ?>
             <figure class="intent-photo intent-photo--ground">
               <img src="<?php echo $themeUri; ?>/public/images/intent-tour.jpg" width="1200" height="900" alt="" decoding="async">
             </figure>
+            <?php } ?>
             <div class="intent-copy">
               <span class="intent-kicker"><?php echo esc_html($a['tourKicker'] ?? 'Tour'); ?></span>
               <h3><?php echo wp_kses($a['tourTitle'] ?? 'Walk it on the ground', ['em' => []]); ?></h3>
@@ -764,22 +928,26 @@ function ks_render_intent_cards(array $attrs): string
 /** @param array<string, mixed> $attrs */
 function ks_render_spotlight(array $attrs): string
 {
-    $featured = Catalog::featuredListings();
+    $itemCount = max(1, min(8, (int) ($attrs['itemCount'] ?? 3)));
+    $featured = Catalog::featuredListings($itemCount);
     $eyebrow = esc_html($attrs['eyebrow'] ?? 'Spotlight');
     $title = wp_kses($attrs['title'] ?? 'Three sample homes to scan', ['em' => [], 'strong' => []]);
     $text = wp_kses($attrs['text'] ?? 'Price · beds · acres — then book a fictional walk-through.', ['em' => []]);
     $bookUrl = esc_url(home_url('/book/'));
+    $headClass = esc_attr(ks_head_class($attrs));
+    $gridCols = sanitize_key((string) ($attrs['gridCols'] ?? 'auto'));
+    $gridClass = $gridCols !== 'auto' ? ' listing-mini-grid--'.$gridCols.'col' : '';
 
     ob_start();
     ?>
     <section class="section section-alt" aria-labelledby="spotlight-heading">
       <div class="wrap">
-        <header class="section-head left reveal">
+        <header class="<?php echo $headClass; ?>">
           <p class="eyebrow"><?php echo $eyebrow; ?></p>
           <h2 id="spotlight-heading"><?php echo $title; ?></h2>
           <p><?php echo $text; ?></p>
         </header>
-        <div class="listing-mini-grid reveal">
+        <div class="listing-mini-grid<?php echo esc_attr($gridClass); ?> reveal">
           <?php if ($featured) {
               foreach ($featured as $listing) { ?>
                 <a class="listing-mini" href="<?php echo esc_url($bookUrl.'?listing_id='.$listing['id']); ?>" data-listing-id="<?php echo esc_attr((string) $listing['id']); ?>">
@@ -815,20 +983,21 @@ function ks_render_booking_section(array $attrs): string
     $eyebrow = esc_html($attrs['eyebrow'] ?? 'Appointments');
     $title = wp_kses($attrs['title'] ?? 'Book a house showing', ['em' => [], 'strong' => []]);
     $text = wp_kses($attrs['text'] ?? 'Demo scheduler for touring sample homes. Requests are saved to Bookings as Requested.', ['em' => [], 'strong' => []]);
-
+    $headClass = esc_attr(ks_head_class($attrs));
+    $showSidePhoto = (bool) ($attrs['showSidePhoto'] ?? true);
     $bookingForm = ks_booking_form_html();
-    $bookingPhoto = ks_booking_photo_html();
+    $bookingPhoto = $showSidePhoto ? ks_booking_photo_html() : '';
 
     ob_start();
     ?>
     <section class="section section-alt" id="book-showing" aria-labelledby="book-heading">
       <div class="wrap">
-        <header class="section-head left reveal">
+        <header class="<?php echo $headClass; ?>">
           <p class="eyebrow"><?php echo $eyebrow; ?></p>
           <h2 id="book-heading"><?php echo $title; ?></h2>
           <p><?php echo $text; ?></p>
         </header>
-        <div class="booking-shell reveal">
+        <div class="booking-shell reveal<?php echo $showSidePhoto ? '' : ' ks-no-photo'; ?>">
           <?php echo $bookingForm; ?>
           <?php echo $bookingPhoto; ?>
         </div>
@@ -845,6 +1014,9 @@ function ks_render_market_stats(array $attrs): string
     $eyebrow = esc_html($a['eyebrow'] ?? 'Sample market');
     $title = wp_kses($a['title'] ?? 'Pulse at a glance', ['em' => [], 'strong' => []]);
     $text = wp_kses($a['text'] ?? '', ['em' => [], 'strong' => []]);
+    $headClass = esc_attr(ks_head_class($attrs));
+    $statsLayout = sanitize_key((string) ($a['statsLayout'] ?? '4-col'));
+    $gridClass = $statsLayout === '2-col' ? 'market-grid ks-cols--2 reveal' : 'market-grid reveal';
 
     $stats = [
         [$a['stat1Val'] ?? '$398k', $a['stat1Lbl'] ?? 'Median sale price', $a['stat1Sub'] ?? '↑ 2.1% vs last quarter', 'up'],
@@ -857,12 +1029,12 @@ function ks_render_market_stats(array $attrs): string
     ?>
     <section class="section" aria-labelledby="market-heading">
       <div class="wrap">
-        <header class="section-head reveal">
+        <header class="<?php echo $headClass; ?>">
           <p class="eyebrow"><?php echo $eyebrow; ?></p>
           <h2 id="market-heading"><?php echo $title; ?></h2>
           <?php if ($text) { ?><p><?php echo $text; ?></p><?php } ?>
         </header>
-        <div class="market-grid reveal">
+        <div class="<?php echo esc_attr($gridClass); ?>">
           <?php foreach ($stats as [$val, $lbl, $sub, $dir]) { ?>
             <article class="market-stat">
               <strong><?php echo esc_html($val); ?></strong>
@@ -1077,17 +1249,36 @@ function ks_render_reviews(array $attrs): string
         ['Sample Seller C', 4.8, 'We used the value tool before calling — then booked a walk-through.', 'images/review-seller-c.jpg', '3 weeks ago', 'Oak Hollow · demo'],
     ];
 
+    $headClass = esc_attr(ks_head_class($attrs));
+    $reviewLayout = sanitize_key((string) ($attrs['reviewLayout'] ?? 'grid'));
+    $showRating = (bool) ($attrs['showRating'] ?? true);
+    $showPhoto = (bool) ($attrs['showPhoto'] ?? true);
+    $cols = sanitize_key((string) ($attrs['reviewCols'] ?? '3'));
+
+    $gridCls = 'testi-grid reveal';
+    if ($cols === '1') {
+        $gridCls .= ' ks-cols--1';
+    } elseif ($cols === '2') {
+        $gridCls .= ' ks-cols--2';
+    }
+    if (! $showRating) {
+        $gridCls .= ' no-rating';
+    }
+    if (! $showPhoto) {
+        $gridCls .= ' no-photo';
+    }
+
     ob_start();
     ?>
     <section class="section" aria-labelledby="stories-heading">
       <div class="wrap">
-        <header class="section-head reveal">
+        <header class="<?php echo $headClass; ?>">
           <p class="eyebrow"><?php echo $eyebrow; ?></p>
           <h2 id="stories-heading"><?php echo $title; ?></h2>
           <p><?php echo $text; ?></p>
           <p class="testi-avg"><?php esc_html_e('4.9 sample average — demo scores, not a brokerage claim.', 'acreline'); ?></p>
         </header>
-        <div class="testi-grid reveal" data-reviews-source="demo">
+        <div class="<?php echo esc_attr($gridCls); ?>" data-reviews-source="demo">
           <?php foreach ($reviews as [$author, $rating, $reviewText, $photo, $time, $loc]) {
               $score = number_format($rating, 1);
               $photoUrl = esc_url($themeUri.'/public/'.$photo);
@@ -1135,29 +1326,64 @@ function ks_render_faq_list(array $attrs): string
 {
     $title = wp_kses($attrs['title'] ?? 'Questions buyers ask first', ['em' => [], 'strong' => []]);
     $text = wp_kses($attrs['text'] ?? 'Practical answers for house and acreage shoppers.', ['em' => []]);
-    $headClass = esc_attr($attrs['headClass'] ?? 'left');
+    $headClass = esc_attr(ks_head_class($attrs));
     $faqs = Faqs::forContext();
+    $faqStyle = sanitize_key((string) ($attrs['faqStyle'] ?? 'dl'));
+    $listIcon = sanitize_key((string) ($attrs['listIcon'] ?? 'none'));
+    $showNumbers = (bool) ($attrs['showNumbers'] ?? false);
 
     if (empty($faqs)) {
         return '';
+    }
+
+    $iconMap = [
+        'arrow' => '→',
+        'check' => '✓',
+        'dash' => '–',
+        'none' => '',
+    ];
+    $icon = $iconMap[$listIcon] ?? '';
+
+    // Build faq-list CSS classes
+    $faqListClass = 'faq-list';
+    if ($faqStyle === 'flat') {
+        $faqListClass .= ' ks-faq--flat';
+    } elseif ($faqStyle === 'accordion') {
+        $faqListClass .= ' ks-faq--accordion';
+    }
+    if ($showNumbers) {
+        $faqListClass .= ' ks-numbered';
+    } elseif (in_array($listIcon, ['arrow', 'check'], true)) {
+        $faqListClass .= ' ks-icon--'.$listIcon;
     }
 
     ob_start();
     ?>
     <section class="section faq-section" aria-labelledby="faq-heading">
       <div class="wrap">
-        <header class="section-head <?php echo $headClass; ?> reveal">
+        <header class="<?php echo $headClass; ?>">
           <h2 id="faq-heading"><?php echo $title; ?></h2>
           <p><?php echo $text; ?></p>
         </header>
-        <dl class="faq-list">
-          <?php foreach ($faqs as $faq) { ?>
-            <div class="faq-item">
-              <dt><?php echo esc_html($faq['q'] ?? ''); ?></dt>
-              <dd><?php echo esc_html($faq['a'] ?? ''); ?></dd>
-            </div>
-          <?php } ?>
-        </dl>
+        <?php if ($faqStyle === 'accordion') { ?>
+          <div class="<?php echo esc_attr($faqListClass); ?>">
+            <?php foreach ($faqs as $i => $faq) { ?>
+              <details class="faq-item" <?php if ($i === 0) { ?>open<?php } ?>>
+                <summary class="faq-question"><?php echo esc_html($faq['q'] ?? ''); ?></summary>
+                <div class="faq-answer"><p><?php echo esc_html($faq['a'] ?? ''); ?></p></div>
+              </details>
+            <?php } ?>
+          </div>
+        <?php } else { ?>
+          <dl class="<?php echo esc_attr($faqListClass); ?>">
+            <?php foreach ($faqs as $n => $faq) { ?>
+              <div class="faq-item">
+                <dt><?php echo esc_html($faq['q'] ?? ''); ?></dt>
+                <dd><?php echo esc_html($faq['a'] ?? ''); ?></dd>
+              </div>
+            <?php } ?>
+          </dl>
+        <?php } ?>
       </div>
     </section>
     <?php
@@ -1173,17 +1399,42 @@ function ks_render_cta_band(array $attrs): string
     $pUrl = esc_url($attrs['primaryUrl'] ?? '') ?: esc_url(home_url('/book/'));
     $sLabel = esc_html($attrs['secondaryLabel'] ?? 'Browse samples');
     $sUrl = esc_url($attrs['secondaryUrl'] ?? '') ?: esc_url(home_url('/listings'));
+    $bandStyle = sanitize_key((string) ($attrs['bandStyle'] ?? 'light'));
+    $contentAlign = sanitize_key((string) ($attrs['contentAlign'] ?? 'left'));
+    $headingSize = sanitize_key((string) ($attrs['headingSize'] ?? 'default'));
+
+    $bandClass = 'cta-band reveal';
+    if (in_array($bandStyle, ['accent', 'dark'], true)) {
+        $bandClass .= ' ks-band--'.$bandStyle;
+    }
+    if ($contentAlign === 'center') {
+        $bandClass .= ' ks-align--center';
+    }
+    if ($headingSize !== 'default') {
+        $bandClass .= ' ks-head--size-'.$headingSize;
+    }
+    if ($headingSize !== 'default') {
+        $bandClass .= ' ks-head--size-'.$headingSize;
+    }
+
+    // Invert button styles when band is dark or accent.
+    $primaryClass = 'btn btn-primary';
+    $secondaryClass = 'btn btn-outline light';
+    if ($bandStyle === 'dark' || $bandStyle === 'accent') {
+        $primaryClass = 'btn btn-outline light';
+        $secondaryClass = 'btn btn-ghost';
+    }
 
     ob_start();
     ?>
     <section class="section section-alt" aria-labelledby="cta-heading">
       <div class="wrap">
-        <div class="cta-band reveal">
+        <div class="<?php echo esc_attr($bandClass); ?>">
           <h2 id="cta-heading"><?php echo $title; ?></h2>
           <p><?php echo $text; ?></p>
           <div class="cta-actions">
-            <a class="btn btn-primary" href="<?php echo $pUrl; ?>"><?php echo $pLabel; ?></a>
-            <a class="btn btn-outline light" href="<?php echo $sUrl; ?>"><?php echo $sLabel; ?></a>
+            <a class="<?php echo esc_attr($primaryClass); ?>" href="<?php echo $pUrl; ?>"><?php echo $pLabel; ?></a>
+            <a class="<?php echo esc_attr($secondaryClass); ?>" href="<?php echo $sUrl; ?>"><?php echo $sLabel; ?></a>
           </div>
         </div>
       </div>
@@ -1311,6 +1562,16 @@ function ks_render_area_grid(array $attrs): string
     $gridEyebrow = esc_html($a['gridEyebrow'] ?? 'Area by area');
     $gridTitle = wp_kses($a['gridTitle'] ?? 'Where the sample office works', ['em' => [], 'strong' => []]);
     $gridText = wp_kses($a['gridText'] ?? '', ['em' => [], 'strong' => []]);
+    $headClass = esc_attr(ks_head_class($attrs));
+    $gridCols = sanitize_key((string) ($a['gridCols'] ?? '3'));
+    $showIndex = (bool) ($a['showIndex'] ?? true);
+    $gridClass = 'area-grid';
+    if (in_array($gridCols, ['2', '4'], true)) {
+        $gridClass .= ' ks-cols--'.$gridCols;
+    }
+    if (! $showIndex) {
+        $gridClass .= ' no-index';
+    }
     $pinSvg = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>';
 
     $areas = [];
@@ -1330,15 +1591,17 @@ function ks_render_area_grid(array $attrs): string
     ?>
     <section class="section section-alt">
       <div class="wrap">
-        <div class="section-head left reveal">
+        <div class="<?php echo $headClass; ?>">
           <p class="eyebrow"><?php echo $gridEyebrow; ?></p>
           <h2><?php echo $gridTitle; ?></h2>
           <?php if ($gridText) { ?><p><?php echo $gridText; ?></p><?php } ?>
         </div>
-        <div class="area-grid">
+        <div class="<?php echo esc_attr($gridClass); ?>">
           <?php foreach ($areas as $idx => $area) { ?>
             <article class="area-card reveal">
-              <p class="area-index" aria-hidden="true"><?php echo esc_html(sprintf('%02d', $idx + 1)); ?></p>
+              <?php if ($showIndex) { ?>
+                <p class="area-index" aria-hidden="true"><?php echo esc_html(sprintf('%02d', $idx + 1)); ?></p>
+              <?php } ?>
               <p class="area-meta"><?php echo wp_kses($area['meta'], ['em' => [], 'strong' => []]); ?></p>
               <h3><span class="pin"><?php echo $pinSvg; ?></span><?php echo wp_kses($area['title'], ['em' => [], 'strong' => []]); ?></h3>
               <p><?php echo wp_kses($area['body'], ['em' => [], 'strong' => []]); ?></p>
@@ -1386,17 +1649,20 @@ function ks_render_how_we_work(array $attrs): string
     $eyebrow = esc_html($attrs['eyebrow'] ?? 'How We Work');
     $title = wp_kses($attrs['title'] ?? 'What working with this office looks like', ['em' => [], 'strong' => []]);
     $text = wp_kses($attrs['text'] ?? 'No pressure, no jargon, and a straight answer about the ground under your feet.', ['em' => []]);
+    $headClass = esc_attr(ks_head_class($attrs));
+    $stepsStyle = sanitize_key((string) ($attrs['stepsStyle'] ?? 'numbered'));
+    $stepsLayout = sanitize_key((string) ($attrs['stepsLayout'] ?? 'row'));
 
     ob_start();
     ?>
-    <section class="section" aria-labelledby="how-we-work-heading">
+    <section class="section ks-how-we-work--<?php echo esc_attr($stepsStyle); ?> ks-how-we-work--<?php echo esc_attr($stepsLayout); ?>" aria-labelledby="how-we-work-heading">
       <div class="wrap">
-        <header class="section-head left reveal">
+        <header class="<?php echo $headClass; ?>">
           <p class="eyebrow"><?php echo $eyebrow; ?></p>
           <h2 id="how-we-work-heading"><?php echo $title; ?></h2>
           <p><?php echo $text; ?></p>
         </header>
-        <?php echo ks_how_we_work_steps_html(); ?>
+        <?php echo ks_how_we_work_steps_html($stepsStyle); ?>
       </div>
     </section>
     <?php
@@ -1491,17 +1757,26 @@ function ks_render_contact_form(array $attrs): string
 function ks_render_book_note(array $attrs): string
 {
     $note = wp_kses($attrs['note'] ?? 'Demo only — no emails, texts or calendar invites are sent.', ['em' => [], 'strong' => []]);
+    $noteStyle = sanitize_key((string) ($attrs['noteStyle'] ?? 'plain'));
+    $showPhoto = (bool) ($attrs['showSidePhoto'] ?? true);
+
+    $noteCls = match ($noteStyle) {
+        'info' => 'ks-note--info',
+        'warning' => 'ks-note--warning',
+        default => '',
+    };
+
     $bookingForm = ks_booking_form_html();
-    $bookingPhoto = ks_booking_photo_html();
+    $bookingPhoto = $showPhoto ? ks_booking_photo_html() : '';
 
     ob_start();
     ?>
     <section class="section">
       <div class="wrap">
         <?php if ($note) { ?>
-          <p class="notice"><?php echo $note; ?></p>
+          <p class="<?php echo esc_attr(trim('notice '.$noteCls)); ?>"><?php echo $note; ?></p>
         <?php } ?>
-        <div class="booking-shell">
+        <div class="booking-shell<?php echo $showPhoto ? '' : ' ks-no-photo'; ?>">
           <?php echo $bookingForm; ?>
           <?php echo $bookingPhoto; ?>
         </div>
